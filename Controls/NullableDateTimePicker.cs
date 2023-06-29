@@ -1,4 +1,4 @@
-﻿namespace YogaCenterWinApp_Group9.Utils;
+﻿namespace YogaCenterWinApp_Group9.Controls;
 
 #nullable disable
 

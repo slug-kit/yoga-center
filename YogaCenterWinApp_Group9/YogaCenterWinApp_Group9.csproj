@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Controls\Controls.csproj" />
     <ProjectReference Include="..\YogaCenter.Repository\YogaCenter.Repository.csproj" />
   </ItemGroup>
 
