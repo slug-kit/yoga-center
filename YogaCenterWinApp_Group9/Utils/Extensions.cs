@@ -16,21 +16,21 @@ public static class Extensions
         form.StartPosition = FormStartPosition.CenterParent;
     }
 
-    public static void ConfigureMdi(this frmLogin form, Form mdiParent,
-        ICollection<LoginEventHandler> loginSuccessHandlers, ICollection<LoginEventHandler> loginFailureHandlers, ICollection<ExitEventHandler> exitHandlers)
-    {
-        form.MdiParent = mdiParent;
-        form.Dock = DockStyle.Fill;
-        form.FormBorderStyle = FormBorderStyle.None;
-        form.StartPosition = FormStartPosition.CenterParent;
+    //public static void ConfigureMdi(this frmLogin form, Form mdiParent,
+    //    ICollection<LoginEventHandler> loginSuccessHandlers, ICollection<LoginEventHandler> loginFailureHandlers, ICollection<ExitEventHandler> exitHandlers)
+    //{
+    //    form.MdiParent = mdiParent;
+    //    form.Dock = DockStyle.Fill;
+    //    form.FormBorderStyle = FormBorderStyle.None;
+    //    form.StartPosition = FormStartPosition.CenterParent;
 
-        foreach (LoginEventHandler loginSuccessHandler in loginSuccessHandlers)
-            form.AuthenticationPassed += loginSuccessHandler;
-        foreach (LoginEventHandler loginFailureHandler in loginFailureHandlers)
-            form.AuthenticationFailed += loginFailureHandler;
-        foreach (ExitEventHandler exitHandler in exitHandlers)
-            form.Exiting += exitHandler;
-    }
+    //    foreach (LoginEventHandler loginSuccessHandler in loginSuccessHandlers)
+    //        form.AuthenticationPassed += loginSuccessHandler;
+    //    foreach (LoginEventHandler loginFailureHandler in loginFailureHandlers)
+    //        form.AuthenticationFailed += loginFailureHandler;
+    //    foreach (ExitEventHandler exitHandler in exitHandlers)
+    //        form.Exiting += exitHandler;
+    //}
 
     public static string GetDataDisplayPropertyName(this Control control)
     {
