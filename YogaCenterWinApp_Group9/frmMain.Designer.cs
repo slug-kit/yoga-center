@@ -1,4 +1,4 @@
-﻿namespace SalesManagementWinApp_BUIVUDUY
+﻿namespace YogaCenterWinApp_Group9
 {
     partial class frmMain
     {
