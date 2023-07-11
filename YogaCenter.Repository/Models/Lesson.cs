@@ -11,12 +11,13 @@ namespace YogaCenter.Repository.Models
         }
 
         public int Id { get; set; }
-        public int? CourseId { get; set; }
+        public int? ProgramId { get; set; }
+        public short? CourseNumber { get; set; }
         public byte? LessonNumber { get; set; }
         public string? Description { get; set; }
         public DateTime? Date { get; set; }
+        public string? Location { get; set; }
         public byte? Timeslot { get; set; }
-        public string? Room { get; set; }
         public bool Inactive { get; set; }
 
         public virtual Course? Course { get; set; }

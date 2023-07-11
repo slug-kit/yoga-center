@@ -69,7 +69,7 @@
             // 
             // splitContainer
             // 
-            splitContainer.Dock = DockStyle.Fill;
+            splitContainer.Anchor = AnchorStyles.None;
             splitContainer.IsSplitterFixed = true;
             splitContainer.Location = new Point(0, 0);
             splitContainer.Margin = new Padding(4);
@@ -120,14 +120,14 @@
             // 
             textBox4.Location = new Point(394, 137);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(150, 34);
+            textBox4.Size = new Size(150, 29);
             textBox4.TabIndex = 15;
             // 
             // button5
             // 
             button5.Location = new Point(15, 93);
             button5.Name = "button5";
-            button5.Size = new Size(64, 41);
+            button5.Size = new Size(64, 29);
             button5.TabIndex = 14;
             button5.Text = "Clear All";
             button5.UseVisualStyleBackColor = true;
@@ -136,7 +136,7 @@
             // 
             numericUpDown2.Location = new Point(275, 93);
             numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(50, 34);
+            numericUpDown2.Size = new Size(50, 29);
             numericUpDown2.TabIndex = 13;
             // 
             // label8
@@ -144,7 +144,7 @@
             label8.AutoSize = true;
             label8.Location = new Point(350, 140);
             label8.Name = "label8";
-            label8.Size = new Size(31, 28);
+            label8.Size = new Size(24, 21);
             label8.TabIndex = 11;
             label8.Text = "to";
             // 
@@ -152,7 +152,7 @@
             // 
             textBox3.Location = new Point(180, 137);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(150, 34);
+            textBox3.Size = new Size(150, 29);
             textBox3.TabIndex = 10;
             // 
             // label7
@@ -160,7 +160,7 @@
             label7.AutoSize = true;
             label7.Location = new Point(100, 140);
             label7.Name = "label7";
-            label7.Size = new Size(46, 28);
+            label7.Size = new Size(37, 21);
             label7.TabIndex = 9;
             label7.Text = "Fee:";
             // 
@@ -169,7 +169,7 @@
             label6.AutoSize = true;
             label6.Location = new Point(240, 95);
             label6.Name = "label6";
-            label6.Size = new Size(31, 28);
+            label6.Size = new Size(24, 21);
             label6.TabIndex = 7;
             label6.Text = "to";
             // 
@@ -177,7 +177,7 @@
             // 
             numericUpDown1.Location = new Point(180, 93);
             numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(50, 34);
+            numericUpDown1.Size = new Size(50, 29);
             numericUpDown1.TabIndex = 6;
             // 
             // label5
@@ -185,7 +185,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(100, 95);
             label5.Name = "label5";
-            label5.Size = new Size(73, 28);
+            label5.Size = new Size(58, 21);
             label5.TabIndex = 5;
             label5.Text = "Rating:";
             // 
@@ -195,15 +195,15 @@
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label4.Location = new Point(15, 65);
             label4.Name = "label4";
-            label4.Size = new Size(89, 28);
+            label4.Size = new Size(71, 21);
             label4.TabIndex = 3;
             label4.Text = "FILTERS:";
             // 
             // btnsearch
             // 
-            btnsearch.Location = new Point(416, 20);
+            btnsearch.Location = new Point(415, 27);
             btnsearch.Name = "btnsearch";
-            btnsearch.Size = new Size(100, 40);
+            btnsearch.Size = new Size(100, 29);
             btnsearch.TabIndex = 2;
             btnsearch.Text = "Search";
             btnsearch.UseVisualStyleBackColor = true;
@@ -213,7 +213,7 @@
             // 
             txtSearchName.Location = new Point(180, 27);
             txtSearchName.Name = "txtSearchName";
-            txtSearchName.Size = new Size(200, 34);
+            txtSearchName.Size = new Size(200, 29);
             txtSearchName.TabIndex = 1;
             // 
             // label3
@@ -221,7 +221,7 @@
             label3.AutoSize = true;
             label3.Location = new Point(100, 30);
             label3.Name = "label3";
-            label3.Size = new Size(64, 28);
+            label3.Size = new Size(52, 21);
             label3.TabIndex = 0;
             label3.Text = "Name";
             // 
@@ -271,7 +271,7 @@
             starRatingControl.BottomMargin = 2;
             starRatingControl.HoverColor = Color.Yellow;
             starRatingControl.LeftMargin = 2;
-            starRatingControl.Location = new Point(100, 256);
+            starRatingControl.Location = new Point(100, 249);
             starRatingControl.Name = "starRatingControl";
             starRatingControl.OutlineColor = Color.DarkGray;
             starRatingControl.OutlineThickness = 1;
@@ -289,9 +289,9 @@
             // lbDescription
             // 
             lbDescription.AutoSize = true;
-            lbDescription.Location = new Point(12, 371);
+            lbDescription.Location = new Point(12, 351);
             lbDescription.Name = "lbDescription";
-            lbDescription.Size = new Size(112, 28);
+            lbDescription.Size = new Size(89, 21);
             lbDescription.TabIndex = 2;
             lbDescription.Text = "Description";
             // 
@@ -307,18 +307,18 @@
             // 
             // txtboxdescription
             // 
-            txtboxdescription.Location = new Point(12, 404);
+            txtboxdescription.Location = new Point(12, 386);
             txtboxdescription.Name = "txtboxdescription";
             txtboxdescription.ScrollBars = RichTextBoxScrollBars.ForcedVertical;
-            txtboxdescription.Size = new Size(412, 214);
+            txtboxdescription.Size = new Size(412, 232);
             txtboxdescription.TabIndex = 1;
             txtboxdescription.Text = "";
             // 
             // txtfee
             // 
-            txtfee.Location = new Point(100, 292);
+            txtfee.Location = new Point(100, 297);
             txtfee.Name = "txtfee";
-            txtfee.Size = new Size(86, 34);
+            txtfee.Size = new Size(86, 29);
             txtfee.TabIndex = 7;
             // 
             // label1
@@ -326,22 +326,22 @@
             label1.AutoSize = true;
             label1.Location = new Point(12, 250);
             label1.Name = "label1";
-            label1.Size = new Size(69, 28);
+            label1.Size = new Size(55, 21);
             label1.TabIndex = 3;
             label1.Text = "Rating";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 295);
+            label2.Location = new Point(12, 300);
             label2.Name = "label2";
-            label2.Size = new Size(42, 28);
+            label2.Size = new Size(34, 21);
             label2.TabIndex = 6;
             label2.Text = "Fee";
             // 
             // frmProgramManagement
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1029, 630);
             Controls.Add(splitContainer);

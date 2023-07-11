@@ -9,6 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="frmNav.cs" />
+    <Compile Remove="frmNav.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="frmNav.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Controls\Controls.csproj" />
     <ProjectReference Include="..\YogaCenter.Repository\YogaCenter.Repository.csproj" />
   </ItemGroup>
@@ -26,6 +35,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Images\User\" />
+    <Folder Include="Images\Program\" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +20,7 @@ namespace YogaCenter.Repository.Models
         public virtual DbSet<Course> Courses { get; set; } = null!;
         public virtual DbSet<Lesson> Lessons { get; set; } = null!;
         public virtual DbSet<Program> Programs { get; set; } = null!;
+        public virtual DbSet<Review> Reviews { get; set; } = null!;
         public virtual DbSet<Role> Roles { get; set; } = null!;
         public virtual DbSet<Timeslot> Timeslots { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
@@ -39,8 +39,8 @@ namespace YogaCenter.Repository.Models
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", true, true)
                 .Build();
-            string? connStr = config["DbConnections:DefaultDB"];
-            return connStr ?? throw new JsonException($"Connection string not found at {Directory.GetCurrentDirectory()}.");
+            return config["DbConnections:DefaultDB"]
+                ?? throw new InvalidOperationException("The default connection string was not found");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -49,49 +49,81 @@ namespace YogaCenter.Repository.Models
             {
                 entity.ToTable("course");
 
+                entity.HasIndex(e => new { e.ProgramId, e.CourseNumber }, "IX_course_program_id_course_number")
+                    .IsUnique();
+
                 entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.CourseNumber)
+                    .IsRequired()
+                    .HasColumnName("course_number");
 
                 entity.Property(e => e.EndDate)
                     .HasColumnType("date")
                     .HasColumnName("end_date");
 
-                entity.Property(e => e.EndRegisterDate)
-                    .HasColumnType("date")
-                    .HasColumnName("end_register_date");
-
                 entity.Property(e => e.Inactive).HasColumnName("inactive");
 
                 entity.Property(e => e.InstructorId).HasColumnName("instructor_id");
 
-                entity.Property(e => e.ProgramId).HasColumnName("program_id");
+                entity.Property(e => e.ProgramId)
+                    .IsRequired()
+                    .HasColumnName("program_id");
+
+                entity.Property(e => e.RegistrationCloseDate)
+                    .HasColumnType("date")
+                    .HasColumnName("registration_close_date");
+
+                entity.Property(e => e.RegistrationOpenDate)
+                    .HasColumnType("date")
+                    .HasColumnName("registration_open_date");
+
+                entity.Property(e => e.Schedule)
+                    .HasMaxLength(200)
+                    .HasColumnName("schedule");
 
                 entity.Property(e => e.StartDate)
                     .HasColumnType("date")
                     .HasColumnName("start_date");
 
-                entity.Property(e => e.StartRegisterDate)
-                    .HasColumnType("date")
-                    .HasColumnName("start_register_date");
-
                 entity.HasOne(d => d.Instructor)
                     .WithMany(p => p.Courses)
-                    .HasForeignKey(d => d.InstructorId);
+                    .HasForeignKey(d => d.InstructorId)
+                    .OnDelete(DeleteBehavior.SetNull);
 
                 entity.HasOne(d => d.Program)
                     .WithMany(p => p.Courses)
-                    .HasForeignKey(d => d.ProgramId);
+                    .HasForeignKey(d => d.ProgramId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasMany(d => d.Learners)
+                    .WithMany(p => p.CoursesNavigation)
+                    .UsingEntity<Dictionary<string, object>>(
+                        "Courseregister",
+                        l => l.HasOne<User>().WithMany().HasForeignKey("LearnerId"),
+                        r => r.HasOne<Course>().WithMany().HasForeignKey("CourseId"),
+                        j =>
+                        {
+                            j.HasKey("CourseId", "LearnerId");
+
+                            j.ToTable("courseregister");
+
+                            j.IndexerProperty<int>("CourseId").HasColumnName("course_id");
+
+                            j.IndexerProperty<long>("LearnerId").HasColumnName("learner_id");
+                        });
             });
 
             modelBuilder.Entity<Lesson>(entity =>
             {
                 entity.ToTable("lesson");
 
-                entity.HasIndex(e => new { e.CourseId, e.LessonNumber }, "IX_lesson_course_id_lesson_number")
+                entity.HasIndex(e => new { e.ProgramId, e.CourseNumber, e.LessonNumber }, "IX_lesson_course_id_course_number_lesson_number")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.CourseId).HasColumnName("course_id");
+                entity.Property(e => e.CourseNumber).HasColumnName("course_number");
 
                 entity.Property(e => e.Date)
                     .HasColumnType("date")
@@ -105,19 +137,42 @@ namespace YogaCenter.Repository.Models
 
                 entity.Property(e => e.LessonNumber).HasColumnName("lesson_number");
 
-                entity.Property(e => e.Room)
-                    .HasMaxLength(10)
-                    .HasColumnName("room");
+                entity.Property(e => e.Location)
+                    .HasMaxLength(20)
+                    .HasColumnName("location");
+
+                entity.Property(e => e.ProgramId).HasColumnName("program_id");
 
                 entity.Property(e => e.Timeslot).HasColumnName("timeslot");
 
-                entity.HasOne(d => d.Course)
-                    .WithMany(p => p.Lessons)
-                    .HasForeignKey(d => d.CourseId);
-
                 entity.HasOne(d => d.TimeslotNavigation)
                     .WithMany(p => p.Lessons)
-                    .HasForeignKey(d => d.Timeslot);
+                    .HasForeignKey(d => d.Timeslot)
+                    .OnDelete(DeleteBehavior.SetNull);
+
+                entity.HasOne(d => d.Course)
+                    .WithMany(p => p.Lessons)
+                    .HasPrincipalKey(p => new { p.ProgramId, p.CourseNumber })
+                    .HasForeignKey(d => new { d.ProgramId, d.CourseNumber })
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_lesson_course_course_id");
+
+                entity.HasMany(d => d.Learners)
+                    .WithMany(p => p.Lessons)
+                    .UsingEntity<Dictionary<string, object>>(
+                        "Attendance",
+                        l => l.HasOne<User>().WithMany().HasForeignKey("LearnerId"),
+                        r => r.HasOne<Lesson>().WithMany().HasForeignKey("LessonId"),
+                        j =>
+                        {
+                            j.HasKey("LessonId", "LearnerId");
+
+                            j.ToTable("attendance");
+
+                            j.IndexerProperty<int>("LessonId").HasColumnName("lesson_id");
+
+                            j.IndexerProperty<long>("LearnerId").HasColumnName("learner_id");
+                        });
             });
 
             modelBuilder.Entity<Program>(entity =>
@@ -130,9 +185,62 @@ namespace YogaCenter.Repository.Models
                     .HasMaxLength(4000)
                     .HasColumnName("description");
 
-                entity.Property(e => e.Fee).HasColumnName("fee");
+                entity.Property(e => e.Fee)
+                    .HasColumnType("money")
+                    .HasColumnName("fee");
+
+                entity.Property(e => e.Img)
+                    .HasMaxLength(256)
+                    .IsUnicode(false)
+                    .HasColumnName("img");
 
                 entity.Property(e => e.Inactive).HasColumnName("inactive");
+
+                entity.Property(e => e.Rating).HasColumnName("rating");
+
+                entity.HasMany(d => d.Instructors)
+                    .WithMany(p => p.Programs)
+                    .UsingEntity<Dictionary<string, object>>(
+                        "ProgramInstructor",
+                        l => l.HasOne<User>().WithMany().HasForeignKey("InstructorId"),
+                        r => r.HasOne<Program>().WithMany().HasForeignKey("ProgramId"),
+                        j =>
+                        {
+                            j.HasKey("ProgramId", "InstructorId");
+
+                            j.ToTable("program_instructor");
+
+                            j.IndexerProperty<int>("ProgramId").HasColumnName("program_id");
+
+                            j.IndexerProperty<long>("InstructorId").HasColumnName("instructor_id");
+                        });
+            });
+
+            modelBuilder.Entity<Review>(entity =>
+            {
+                entity.ToTable("review");
+
+                entity.Property(e => e.Id)
+                    .ValueGeneratedNever()
+                    .HasColumnName("id");
+
+                entity.Property(e => e.Content)
+                    .HasMaxLength(1000)
+                    .HasColumnName("content");
+
+                entity.Property(e => e.LearnerId).HasColumnName("learner_id");
+
+                entity.Property(e => e.ProgramId).HasColumnName("program_id");
+
+                entity.HasOne(d => d.Learner)
+                    .WithMany(p => p.Reviews)
+                    .HasForeignKey(d => d.LearnerId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(d => d.Program)
+                    .WithMany(p => p.Reviews)
+                    .HasForeignKey(d => d.ProgramId)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<Role>(entity =>
@@ -181,18 +289,23 @@ namespace YogaCenter.Repository.Models
                     .HasColumnName("dob");
 
                 entity.Property(e => e.Email)
-                    .HasMaxLength(100)
+                    .HasMaxLength(200)
                     .HasColumnName("email");
 
                 entity.Property(e => e.Experience)
-                    .HasMaxLength(255)
+                    .HasMaxLength(200)
                     .HasColumnName("experience");
 
                 entity.Property(e => e.Fullname)
-                    .HasMaxLength(255)
+                    .HasMaxLength(200)
                     .HasColumnName("fullname");
 
                 entity.Property(e => e.Gender).HasColumnName("gender");
+
+                entity.Property(e => e.Img)
+                    .HasMaxLength(256)
+                    .IsUnicode(false)
+                    .HasColumnName("img");
 
                 entity.Property(e => e.Inactive).HasColumnName("inactive");
 
@@ -205,7 +318,7 @@ namespace YogaCenter.Repository.Models
                     .HasColumnName("last_login");
 
                 entity.Property(e => e.Password)
-                    .HasMaxLength(255)
+                    .HasMaxLength(200)
                     .IsUnicode(false)
                     .HasColumnName("password");
 
@@ -218,15 +331,15 @@ namespace YogaCenter.Repository.Models
                     .HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.Specializations)
-                    .HasMaxLength(255)
+                    .HasMaxLength(200)
                     .HasColumnName("specializations");
 
                 entity.Property(e => e.StudyGoals)
-                    .HasMaxLength(255)
+                    .HasMaxLength(200)
                     .HasColumnName("study_goals");
 
                 entity.Property(e => e.Username)
-                    .HasMaxLength(255)
+                    .HasMaxLength(200)
                     .IsUnicode(false)
                     .HasColumnName("username");
 
@@ -234,57 +347,6 @@ namespace YogaCenter.Repository.Models
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.RoleId)
                     .OnDelete(DeleteBehavior.ClientSetNull);
-
-                entity.HasMany(d => d.CoursesNavigation)
-                    .WithMany(p => p.Learners)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "Courseregister",
-                        l => l.HasOne<Course>().WithMany().HasForeignKey("CourseId").OnDelete(DeleteBehavior.ClientSetNull),
-                        r => r.HasOne<User>().WithMany().HasForeignKey("LearnerId").OnDelete(DeleteBehavior.ClientSetNull),
-                        j =>
-                        {
-                            j.HasKey("LearnerId", "CourseId");
-
-                            j.ToTable("courseregister");
-
-                            j.IndexerProperty<long>("LearnerId").HasColumnName("learner_id");
-
-                            j.IndexerProperty<int>("CourseId").HasColumnName("course_id");
-                        });
-
-                entity.HasMany(d => d.Lessons)
-                    .WithMany(p => p.Learners)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "Timetable",
-                        l => l.HasOne<Lesson>().WithMany().HasForeignKey("LessonId").OnDelete(DeleteBehavior.ClientSetNull),
-                        r => r.HasOne<User>().WithMany().HasForeignKey("LearnerId").OnDelete(DeleteBehavior.ClientSetNull),
-                        j =>
-                        {
-                            j.HasKey("LearnerId", "LessonId");
-
-                            j.ToTable("timetable");
-
-                            j.IndexerProperty<long>("LearnerId").HasColumnName("learner_id");
-
-                            j.IndexerProperty<int>("LessonId").HasColumnName("lesson_id");
-                        });
-
-                entity.HasMany(d => d.Programs)
-                    .WithMany(p => p.Instructors)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "ProgramInstructor",
-                        l => l.HasOne<Program>().WithMany().HasForeignKey("ProgramId").OnDelete(DeleteBehavior.ClientSetNull),
-                        r => r.HasOne<User>().WithMany().HasForeignKey("InstructorId").OnDelete(DeleteBehavior.ClientSetNull),
-                        j =>
-                        {
-                            j.HasKey("InstructorId", "ProgramId");
-
-                            j.ToTable("program_instructor");
-
-                            j.IndexerProperty<long>("InstructorId").HasColumnName("instructor_id");
-
-                            j.IndexerProperty<int>("ProgramId").HasColumnName("program_id");
-                        });
             });
 
             OnModelCreatingPartial(modelBuilder);

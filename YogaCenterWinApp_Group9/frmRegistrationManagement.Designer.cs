@@ -29,11 +29,17 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            ListViewItem listViewItem1 = new ListViewItem(new string[] { "Karma Yoga", "36", "14/06/2023" }, 4);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistrationManagement));
-            ListViewItem listViewItem2 = new ListViewItem(new string[] { "Karma Yoga", "36", "14/06/2023" }, 4);
             mainSplitContainer = new SplitContainer();
-            imageListGroups = new ImageList(components);
+            listView1 = new ListView();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
             imageListSmall = new ImageList(components);
+            groupBox1 = new GroupBox();
+            button2 = new Button();
+            button1 = new Button();
             label19 = new Label();
             richTextBox3 = new RichTextBox();
             label6 = new Label();
@@ -55,19 +61,13 @@
             textBox2 = new TextBox();
             label2 = new Label();
             label1 = new Label();
-            listView1 = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
-            groupBox1 = new GroupBox();
-            button1 = new Button();
-            button2 = new Button();
+            imageListGroups = new ImageList(components);
             ((System.ComponentModel.ISupportInitialize)mainSplitContainer).BeginInit();
             mainSplitContainer.Panel1.SuspendLayout();
             mainSplitContainer.Panel2.SuspendLayout();
             mainSplitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // mainSplitContainer
@@ -110,14 +110,33 @@
             mainSplitContainer.SplitterWidth = 5;
             mainSplitContainer.TabIndex = 0;
             // 
-            // imageListGroups
+            // listView1
             // 
-            imageListGroups.ColorDepth = ColorDepth.Depth32Bit;
-            imageListGroups.ImageStream = (ImageListStreamer)resources.GetObject("imageListGroups.ImageStream");
-            imageListGroups.TransparentColor = Color.Transparent;
-            imageListGroups.Images.SetKeyName(0, "Course_InProgress.png");
-            imageListGroups.Images.SetKeyName(1, "Couse_Completed.png");
-            imageListGroups.Images.SetKeyName(2, "Course_NotCompleted.png");
+            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
+            listView1.Dock = DockStyle.Fill;
+            listView1.Items.AddRange(new ListViewItem[] { listViewItem1 });
+            listView1.Location = new Point(0, 0);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(625, 630);
+            listView1.SmallImageList = imageListSmall;
+            listView1.TabIndex = 0;
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.Details;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "Program";
+            columnHeader1.Width = 200;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "Class";
+            columnHeader2.Width = 70;
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "Registered on";
+            columnHeader3.Width = 120;
             // 
             // imageListSmall
             // 
@@ -129,6 +148,34 @@
             imageListSmall.Images.SetKeyName(2, "Kundalini-Yoga.jpg");
             imageListSmall.Images.SetKeyName(3, "Vinyasa-Yoga.jpg");
             imageListSmall.Images.SetKeyName(4, "Karma-Yoga.jpg");
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(button1);
+            groupBox1.Location = new Point(25, 561);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(343, 57);
+            groupBox1.TabIndex = 51;
+            groupBox1.TabStop = false;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(185, 18);
+            button2.Name = "button2";
+            button2.Size = new Size(135, 33);
+            button2.TabIndex = 1;
+            button2.Text = "Unenroll";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(24, 18);
+            button1.Name = "button1";
+            button1.Size = new Size(135, 33);
+            button1.TabIndex = 0;
+            button1.Text = "Change course";
+            button1.UseVisualStyleBackColor = true;
             // 
             // label19
             // 
@@ -167,7 +214,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(24, 370);
+            label5.Location = new Point(24, 365);
             label5.Name = "label5";
             label5.Size = new Size(77, 21);
             label5.TabIndex = 44;
@@ -176,7 +223,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(24, 394);
+            comboBox1.Location = new Point(24, 389);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(160, 29);
             comboBox1.TabIndex = 46;
@@ -317,61 +364,14 @@
             label1.TabIndex = 22;
             label1.Text = "Program";
             // 
-            // listView1
+            // imageListGroups
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
-            listView1.Dock = DockStyle.Fill;
-            listView1.Items.AddRange(new ListViewItem[] { listViewItem2 });
-            listView1.Location = new Point(0, 0);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(625, 630);
-            listView1.SmallImageList = imageListSmall;
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
-            // 
-            // columnHeader1
-            // 
-            columnHeader1.Text = "Program";
-            columnHeader1.Width = 200;
-            // 
-            // columnHeader2
-            // 
-            columnHeader2.Text = "Class";
-            columnHeader2.Width = 70;
-            // 
-            // columnHeader3
-            // 
-            columnHeader3.Text = "Registered on";
-            columnHeader3.Width = 120;
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(button1);
-            groupBox1.Location = new Point(25, 561);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(343, 57);
-            groupBox1.TabIndex = 51;
-            groupBox1.TabStop = false;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(24, 18);
-            button1.Name = "button1";
-            button1.Size = new Size(135, 33);
-            button1.TabIndex = 0;
-            button1.Text = "Change course";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(185, 18);
-            button2.Name = "button2";
-            button2.Size = new Size(135, 33);
-            button2.TabIndex = 1;
-            button2.Text = "Unenroll";
-            button2.UseVisualStyleBackColor = true;
+            imageListGroups.ColorDepth = ColorDepth.Depth32Bit;
+            imageListGroups.ImageStream = (ImageListStreamer)resources.GetObject("imageListGroups.ImageStream");
+            imageListGroups.TransparentColor = Color.Transparent;
+            imageListGroups.Images.SetKeyName(0, "Course_InProgress.png");
+            imageListGroups.Images.SetKeyName(1, "Couse_Completed.png");
+            imageListGroups.Images.SetKeyName(2, "Course_NotCompleted.png");
             // 
             // frmRegistrationManagement
             // 
@@ -388,8 +388,8 @@
             mainSplitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)mainSplitContainer).EndInit();
             mainSplitContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 

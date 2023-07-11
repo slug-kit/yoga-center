@@ -24,6 +24,7 @@ public class UserDAO
         using var db = new YogaCenterContext();
         return db.Users
             .Include(u => u.Role)
+            .Where(u => !u.Inactive)
             .ToList();
     }
 
@@ -32,6 +33,7 @@ public class UserDAO
         using var db = new YogaCenterContext();
         return db.Users
             .Include(u => u.Role)
+            .Where(u => !u.Inactive)
             .Where(selector)
             .ToList();
     }

@@ -8,6 +8,7 @@ namespace YogaCenter.Repository.Models
         public User()
         {
             Courses = new HashSet<Course>();
+            Reviews = new HashSet<Review>();
             CoursesNavigation = new HashSet<Course>();
             Lessons = new HashSet<Lesson>();
             Programs = new HashSet<Program>();
@@ -25,6 +26,7 @@ namespace YogaCenter.Repository.Models
         public byte? Gender { get; set; }
         public string? Email { get; set; }
         public string? Phone { get; set; }
+        public string? Img { get; set; }
         public string? StudyGoals { get; set; }
         public string? Specializations { get; set; }
         public string? Experience { get; set; }
@@ -32,6 +34,7 @@ namespace YogaCenter.Repository.Models
 
         public virtual Role Role { get; set; } = null!;
         public virtual ICollection<Course> Courses { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
 
         public virtual ICollection<Course> CoursesNavigation { get; set; }
         public virtual ICollection<Lesson> Lessons { get; set; }

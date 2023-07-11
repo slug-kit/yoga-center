@@ -8,16 +8,19 @@ namespace YogaCenter.Repository.Models
         public Program()
         {
             Courses = new HashSet<Course>();
+            Reviews = new HashSet<Review>();
             Instructors = new HashSet<User>();
         }
 
         public int Id { get; set; }
         public string? Description { get; set; }
-        public long? Fee { get; set; }
+        public decimal? Fee { get; set; }
         public byte? Rating { get; set; }
+        public string? Img { get; set; }
         public bool Inactive { get; set; }
 
         public virtual ICollection<Course> Courses { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
 
         public virtual ICollection<User> Instructors { get; set; }
     }

@@ -42,6 +42,9 @@
             switchFormControlToolStripMenuItem = new ToolStripMenuItem();
             mainTool = new ToolStrip();
             toolStripButton1 = new ToolStripButton();
+            programsToolStripMenuItem = new ToolStripMenuItem();
+            coursesToolStripMenuItem = new ToolStripMenuItem();
+            usersToolStripMenuItem = new ToolStripMenuItem();
             mainStatus.SuspendLayout();
             mainMenu.SuspendLayout();
             mainTool.SuspendLayout();
@@ -86,7 +89,7 @@
             loginToolStripMenuItem.Name = "loginToolStripMenuItem";
             loginToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.I;
             loginToolStripMenuItem.ShowShortcutKeys = false;
-            loginToolStripMenuItem.Size = new Size(105, 22);
+            loginToolStripMenuItem.Size = new Size(180, 22);
             loginToolStripMenuItem.Text = "Log&in";
             // 
             // profileToolStripMenuItem
@@ -94,7 +97,7 @@
             profileToolStripMenuItem.Name = "profileToolStripMenuItem";
             profileToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.P;
             profileToolStripMenuItem.ShowShortcutKeys = false;
-            profileToolStripMenuItem.Size = new Size(105, 22);
+            profileToolStripMenuItem.Size = new Size(180, 22);
             profileToolStripMenuItem.Text = "&Profile";
             // 
             // logoutToolStripMenuItem
@@ -102,24 +105,25 @@
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
             logoutToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.O;
             logoutToolStripMenuItem.ShowShortcutKeys = false;
-            logoutToolStripMenuItem.Size = new Size(105, 22);
+            logoutToolStripMenuItem.Size = new Size(180, 22);
             logoutToolStripMenuItem.Text = "Log&out";
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(102, 6);
+            toolStripSeparator1.Size = new Size(177, 6);
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             exitToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.X;
             exitToolStripMenuItem.ShowShortcutKeys = false;
-            exitToolStripMenuItem.Size = new Size(105, 22);
+            exitToolStripMenuItem.Size = new Size(180, 22);
             exitToolStripMenuItem.Text = "E&xit";
             // 
             // navigationToolStripMenuItem
             // 
+            navigationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { programsToolStripMenuItem, coursesToolStripMenuItem, usersToolStripMenuItem });
             navigationToolStripMenuItem.Name = "navigationToolStripMenuItem";
             navigationToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.N;
             navigationToolStripMenuItem.Size = new Size(77, 19);
@@ -152,6 +156,24 @@
             toolStripButton1.Name = "toolStripButton1";
             toolStripButton1.Size = new Size(23, 20);
             toolStripButton1.Text = "toolStripButton1";
+            // 
+            // programsToolStripMenuItem
+            // 
+            programsToolStripMenuItem.Name = "programsToolStripMenuItem";
+            programsToolStripMenuItem.Size = new Size(180, 22);
+            programsToolStripMenuItem.Text = "Programs";
+            // 
+            // coursesToolStripMenuItem
+            // 
+            coursesToolStripMenuItem.Name = "coursesToolStripMenuItem";
+            coursesToolStripMenuItem.Size = new Size(180, 22);
+            coursesToolStripMenuItem.Text = "Courses";
+            // 
+            // usersToolStripMenuItem
+            // 
+            usersToolStripMenuItem.Name = "usersToolStripMenuItem";
+            usersToolStripMenuItem.Size = new Size(180, 22);
+            usersToolStripMenuItem.Text = "Users";
             // 
             // frmMain
             // 
@@ -194,5 +216,8 @@
         private ToolStripMenuItem switchFormControlToolStripMenuItem;
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripMenuItem loginToolStripMenuItem;
+        private ToolStripMenuItem programsToolStripMenuItem;
+        private ToolStripMenuItem coursesToolStripMenuItem;
+        private ToolStripMenuItem usersToolStripMenuItem;
     }
 }

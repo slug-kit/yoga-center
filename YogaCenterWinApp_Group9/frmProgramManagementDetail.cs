@@ -30,7 +30,7 @@ namespace YogaCenterWinApp_Group9
                 var program = new YogaCenter.Repository.Models.Program
                 {
                     //Id = int.Parse(txtid.Text),
-                    Description = txtdes.Text,
+                    Description = txtdescription.Text,
                     Fee = int.Parse(txtfee.Text),
                 };
                 if (InsertOrUpdate == false)
@@ -54,7 +54,7 @@ namespace YogaCenterWinApp_Group9
             txtid.Enabled = !InsertOrUpdate;
             if (InsertOrUpdate == true)
             {
-                txtdes.Text = Programs.Description;
+                txtdescription.Text = Programs.Description;
                 txtid.Text = Programs.Id.ToString();
                 txtfee.Text = Programs.Fee.ToString();
             }

@@ -30,6 +30,6 @@ public partial class frmCourseManagement : Form
 
     private void frmCourseManagement_Load(object sender, EventArgs e)
     {
-        
+
     }
 }

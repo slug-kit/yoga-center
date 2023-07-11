@@ -38,9 +38,10 @@
             // 
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(56, 102);
+            pictureBox1.Location = new Point(72, 143);
+            pictureBox1.Margin = new Padding(4, 4, 4, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(776, 426);
+            pictureBox1.Size = new Size(998, 596);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -50,7 +51,8 @@
             lbWelcome.Anchor = AnchorStyles.None;
             lbWelcome.AutoSize = true;
             lbWelcome.Font = new Font("Blackadder ITC", 48F, FontStyle.Regular, GraphicsUnit.Point);
-            lbWelcome.Location = new Point(139, 9);
+            lbWelcome.Location = new Point(255, 40);
+            lbWelcome.Margin = new Padding(4, 0, 4, 0);
             lbWelcome.Name = "lbWelcome";
             lbWelcome.Size = new Size(642, 82);
             lbWelcome.TabIndex = 1;
@@ -58,11 +60,13 @@
             // 
             // frmHome
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(884, 561);
+            ClientSize = new Size(1137, 785);
             Controls.Add(lbWelcome);
             Controls.Add(pictureBox1);
+            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "frmHome";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
