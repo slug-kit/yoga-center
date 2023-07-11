@@ -18,26 +18,26 @@ public class ProgramDAO
         }
     }
 
-    public IEnumerable<Program> GetAll()
+    public IEnumerable<Programs> GetAll()
     {
         using var db = new YogaCenterContext();
         return db.Programs.ToList();
     }
 
-    public Program? Get(int id)
+    public Programs? Get(int id)
     {
         using var db = new YogaCenterContext();
         return db.Programs.FirstOrDefault(p => p.Id == id);
     }
 
-    public void Add(Program program)
+    public void Add(Programs program)
     {
         using var db = new YogaCenterContext();
         db.Programs.Add(program);
         db.SaveChanges();
     }
 
-    public void Update(Program program)
+    public void Update(Programs program)
     {
         var p = Get(program.Id);
         if (p != null)
@@ -48,7 +48,7 @@ public class ProgramDAO
         }
     }
 
-    public void Remove(Program program)
+    public void Remove(Programs program)
     {
         var p = Get(program.Id);
         if (p != null)
@@ -57,4 +57,10 @@ public class ProgramDAO
             Update(p);
         }
     }
+    public IEnumerable<Programs> Search(string searchText)
+    {
+        using var db = new YogaCenterContext();
+        return db.Programs.Where(p => p.Id.ToString().Contains(searchText) || p.Description.Contains(searchText)).ToList();
+    }
+
 }

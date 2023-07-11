@@ -4,9 +4,10 @@ namespace YogaCenter.Repository.Repos;
 
 public interface IProgramRepository
 {
-    public IEnumerable<Program> GetPrograms();
-    public Program? GetProgramById(int id);
-    public void Add(Program program);
-    public void Update(Program program);
-    public void Delete(Program program);
+    public IEnumerable<Programs> GetPrograms();
+    IEnumerable<Programs> SearchPrograms(string searchText);
+    public Programs? GetProgramById(int id);
+    public void Add(Programs program);
+    public void Update(Programs program);
+    public void Delete(Programs program);
 }

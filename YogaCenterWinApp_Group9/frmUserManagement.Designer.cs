@@ -174,7 +174,7 @@
             // 
             dateTimePicker5.Location = new Point(393, 217);
             dateTimePicker5.Name = "dateTimePicker5";
-            dateTimePicker5.Size = new Size(164, 29);
+            dateTimePicker5.Size = new Size(164, 34);
             dateTimePicker5.TabIndex = 31;
             // 
             // comboBox2
@@ -182,7 +182,7 @@
             comboBox2.FormattingEnabled = true;
             comboBox2.Location = new Point(425, 182);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(81, 29);
+            comboBox2.Size = new Size(81, 36);
             comboBox2.TabIndex = 29;
             // 
             // label23
@@ -190,7 +190,7 @@
             label23.AutoSize = true;
             label23.Location = new Point(326, 185);
             label23.Name = "label23";
-            label23.Size = new Size(64, 21);
+            label23.Size = new Size(80, 28);
             label23.TabIndex = 27;
             label23.Text = "Gender:";
             // 
@@ -198,7 +198,7 @@
             // 
             textBox13.Location = new Point(412, 44);
             textBox13.Name = "textBox13";
-            textBox13.Size = new Size(145, 29);
+            textBox13.Size = new Size(145, 34);
             textBox13.TabIndex = 25;
             // 
             // label16
@@ -206,7 +206,7 @@
             label16.AutoSize = true;
             label16.Location = new Point(412, 20);
             label16.Name = "label16";
-            label16.Size = new Size(109, 21);
+            label16.Size = new Size(137, 28);
             label16.TabIndex = 24;
             label16.Text = "Member Code";
             // 
@@ -214,7 +214,7 @@
             // 
             textBox12.Location = new Point(210, 114);
             textBox12.Name = "textBox12";
-            textBox12.Size = new Size(180, 29);
+            textBox12.Size = new Size(180, 34);
             textBox12.TabIndex = 23;
             // 
             // label22
@@ -222,7 +222,7 @@
             label22.AutoSize = true;
             label22.Location = new Point(210, 90);
             label22.Name = "label22";
-            label22.Size = new Size(48, 21);
+            label22.Size = new Size(59, 28);
             label22.TabIndex = 22;
             label22.Text = "Email";
             // 
@@ -230,7 +230,7 @@
             // 
             textBox11.Location = new Point(6, 114);
             textBox11.Name = "textBox11";
-            textBox11.Size = new Size(180, 29);
+            textBox11.Size = new Size(180, 34);
             textBox11.TabIndex = 21;
             // 
             // label21
@@ -238,7 +238,7 @@
             label21.AutoSize = true;
             label21.Location = new Point(6, 90);
             label21.Name = "label21";
-            label21.Size = new Size(113, 21);
+            label21.Size = new Size(140, 28);
             label21.TabIndex = 20;
             label21.Text = "Phone number";
             // 
@@ -246,7 +246,7 @@
             // 
             textBox10.Location = new Point(210, 44);
             textBox10.Name = "textBox10";
-            textBox10.Size = new Size(180, 29);
+            textBox10.Size = new Size(180, 34);
             textBox10.TabIndex = 17;
             // 
             // label20
@@ -254,7 +254,7 @@
             label20.AutoSize = true;
             label20.Location = new Point(210, 20);
             label20.Name = "label20";
-            label20.Size = new Size(74, 21);
+            label20.Size = new Size(91, 28);
             label20.TabIndex = 16;
             label20.Text = "Fullname";
             // 
@@ -272,7 +272,7 @@
             label14.AutoSize = true;
             label14.Location = new Point(355, 220);
             label14.Name = "label14";
-            label14.Size = new Size(24, 21);
+            label14.Size = new Size(31, 28);
             label14.TabIndex = 11;
             label14.Text = "to";
             // 
@@ -281,7 +281,7 @@
             label15.AutoSize = true;
             label15.Location = new Point(100, 220);
             label15.Name = "label15";
-            label15.Size = new Size(37, 21);
+            label15.Size = new Size(46, 28);
             label15.TabIndex = 9;
             label15.Text = "Fee:";
             // 
@@ -290,7 +290,7 @@
             label17.AutoSize = true;
             label17.Location = new Point(100, 185);
             label17.Name = "label17";
-            label17.Size = new Size(44, 21);
+            label17.Size = new Size(54, 28);
             label17.TabIndex = 5;
             label17.Text = "Role:";
             // 
@@ -300,7 +300,7 @@
             label18.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label18.Location = new Point(15, 160);
             label18.Name = "label18";
-            label18.Size = new Size(71, 21);
+            label18.Size = new Size(89, 28);
             label18.TabIndex = 3;
             label18.Text = "FILTERS:";
             // 
@@ -317,7 +317,7 @@
             // 
             textBox9.Location = new Point(6, 44);
             textBox9.Name = "textBox9";
-            textBox9.Size = new Size(180, 29);
+            textBox9.Size = new Size(180, 34);
             textBox9.TabIndex = 1;
             // 
             // label19
@@ -325,7 +325,7 @@
             label19.AutoSize = true;
             label19.Location = new Point(6, 20);
             label19.Name = "label19";
-            label19.Size = new Size(81, 21);
+            label19.Size = new Size(99, 28);
             label19.TabIndex = 0;
             label19.Text = "Username";
             // 
@@ -334,14 +334,14 @@
             comboBox4.FormattingEnabled = true;
             comboBox4.Location = new Point(180, 182);
             comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(100, 29);
+            comboBox4.Size = new Size(100, 36);
             comboBox4.TabIndex = 28;
             // 
             // dateTimePicker4
             // 
             dateTimePicker4.Location = new Point(180, 217);
             dateTimePicker4.Name = "dateTimePicker4";
-            dateTimePicker4.Size = new Size(164, 29);
+            dateTimePicker4.Size = new Size(164, 34);
             dateTimePicker4.TabIndex = 30;
             // 
             // groupBox1
@@ -387,6 +387,7 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(11, 289);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(563, 229);
             dataGridView1.TabIndex = 3;
@@ -396,7 +397,7 @@
             comboBox3.FormattingEnabled = true;
             comboBox3.Location = new Point(328, 122);
             comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(100, 29);
+            comboBox3.Size = new Size(100, 36);
             comboBox3.TabIndex = 27;
             // 
             // richTextBox3
@@ -412,7 +413,7 @@
             label13.AutoSize = true;
             label13.Location = new Point(27, 472);
             label13.Name = "label13";
-            label13.Size = new Size(112, 21);
+            label13.Size = new Size(141, 28);
             label13.TabIndex = 26;
             label13.Text = "Specializations";
             // 
@@ -429,7 +430,7 @@
             label12.AutoSize = true;
             label12.Location = new Point(27, 385);
             label12.Name = "label12";
-            label12.Size = new Size(84, 21);
+            label12.Size = new Size(105, 28);
             label12.TabIndex = 24;
             label12.Text = "Experience";
             // 
@@ -438,7 +439,7 @@
             label10.AutoSize = true;
             label10.Location = new Point(328, 98);
             label10.Name = "label10";
-            label10.Size = new Size(41, 21);
+            label10.Size = new Size(50, 28);
             label10.TabIndex = 20;
             label10.Text = "Role";
             // 
@@ -446,7 +447,7 @@
             // 
             textBox5.Location = new Point(242, 339);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(186, 29);
+            textBox5.Size = new Size(186, 34);
             textBox5.TabIndex = 19;
             // 
             // label9
@@ -454,7 +455,7 @@
             label9.AutoSize = true;
             label9.Location = new Point(242, 315);
             label9.Name = "label9";
-            label9.Size = new Size(48, 21);
+            label9.Size = new Size(59, 28);
             label9.TabIndex = 18;
             label9.Text = "Email";
             // 
@@ -463,7 +464,7 @@
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(242, 199);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(81, 29);
+            comboBox1.Size = new Size(81, 36);
             comboBox1.TabIndex = 17;
             // 
             // label8
@@ -471,7 +472,7 @@
             label8.AutoSize = true;
             label8.Location = new Point(242, 175);
             label8.Name = "label8";
-            label8.Size = new Size(61, 21);
+            label8.Size = new Size(76, 28);
             label8.TabIndex = 15;
             label8.Text = "Gender";
             // 
@@ -479,7 +480,7 @@
             // 
             textBox4.Location = new Point(27, 339);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(186, 29);
+            textBox4.Size = new Size(186, 34);
             textBox4.TabIndex = 14;
             // 
             // label7
@@ -487,7 +488,7 @@
             label7.AutoSize = true;
             label7.Location = new Point(27, 315);
             label7.Name = "label7";
-            label7.Size = new Size(113, 21);
+            label7.Size = new Size(140, 28);
             label7.TabIndex = 13;
             label7.Text = "Phone number";
             // 
@@ -495,7 +496,7 @@
             // 
             dateTimePicker3.Location = new Point(242, 575);
             dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(186, 29);
+            dateTimePicker3.Size = new Size(186, 34);
             dateTimePicker3.TabIndex = 12;
             // 
             // label6
@@ -503,7 +504,7 @@
             label6.AutoSize = true;
             label6.Location = new Point(242, 551);
             label6.Name = "label6";
-            label6.Size = new Size(81, 21);
+            label6.Size = new Size(100, 28);
             label6.TabIndex = 11;
             label6.Text = "Last Login";
             // 
@@ -511,7 +512,7 @@
             // 
             dateTimePicker2.Location = new Point(27, 575);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(186, 29);
+            dateTimePicker2.Size = new Size(186, 34);
             dateTimePicker2.TabIndex = 10;
             // 
             // label5
@@ -519,7 +520,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(27, 551);
             label5.Name = "label5";
-            label5.Size = new Size(55, 21);
+            label5.Size = new Size(69, 28);
             label5.TabIndex = 9;
             label5.Text = "Joined";
             // 
@@ -527,7 +528,7 @@
             // 
             dateTimePicker1.Location = new Point(27, 269);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(186, 29);
+            dateTimePicker1.Size = new Size(186, 34);
             dateTimePicker1.TabIndex = 8;
             // 
             // label4
@@ -535,7 +536,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(27, 245);
             label4.Name = "label4";
-            label4.Size = new Size(97, 21);
+            label4.Size = new Size(122, 28);
             label4.TabIndex = 7;
             label4.Text = "Date of Birth";
             // 
@@ -543,7 +544,7 @@
             // 
             textBox3.Location = new Point(27, 199);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(186, 29);
+            textBox3.Size = new Size(186, 34);
             textBox3.TabIndex = 6;
             // 
             // label3
@@ -551,7 +552,7 @@
             label3.AutoSize = true;
             label3.Location = new Point(27, 175);
             label3.Name = "label3";
-            label3.Size = new Size(74, 21);
+            label3.Size = new Size(91, 28);
             label3.TabIndex = 5;
             label3.Text = "Fullname";
             // 
@@ -559,7 +560,7 @@
             // 
             textBox2.Location = new Point(165, 122);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(145, 29);
+            textBox2.Size = new Size(145, 34);
             textBox2.TabIndex = 4;
             // 
             // label2
@@ -567,7 +568,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(165, 98);
             label2.Name = "label2";
-            label2.Size = new Size(109, 21);
+            label2.Size = new Size(137, 28);
             label2.TabIndex = 3;
             label2.Text = "Member Code";
             // 
@@ -575,7 +576,7 @@
             // 
             textBox1.Location = new Point(165, 52);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(263, 29);
+            textBox1.Size = new Size(263, 34);
             textBox1.TabIndex = 2;
             // 
             // label1
@@ -583,7 +584,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(165, 28);
             label1.Name = "label1";
-            label1.Size = new Size(81, 21);
+            label1.Size = new Size(99, 28);
             label1.TabIndex = 1;
             label1.Text = "Username";
             // 
@@ -598,9 +599,9 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(27, 385);
+            label11.Location = new Point(76, 385);
             label11.Name = "label11";
-            label11.Size = new Size(169, 21);
+            label11.Size = new Size(210, 28);
             label11.TabIndex = 23;
             label11.Text = "Goals in Learning Yoga";
             // 
@@ -614,7 +615,7 @@
             // 
             // frmUserManagement
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1029, 630);
             Controls.Add(splitContainer);
