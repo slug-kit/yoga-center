@@ -20,7 +20,7 @@ namespace YogaCenter.Repository.Models
 
         public virtual DbSet<Course> Courses { get; set; } = null!;
         public virtual DbSet<Lesson> Lessons { get; set; } = null!;
-        public virtual DbSet<Programs> Programs { get; set; } = null!;
+        public virtual DbSet<Program> Programs { get; set; } = null!;
         public virtual DbSet<Role> Roles { get; set; } = null!;
         public virtual DbSet<Timeslot> Timeslots { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
@@ -120,7 +120,7 @@ namespace YogaCenter.Repository.Models
                     .HasForeignKey(d => d.Timeslot);
             });
 
-            modelBuilder.Entity<Programs>(entity =>
+            modelBuilder.Entity<Program>(entity =>
             {
                 entity.ToTable("program");
 
@@ -273,7 +273,7 @@ namespace YogaCenter.Repository.Models
                     .WithMany(p => p.Instructors)
                     .UsingEntity<Dictionary<string, object>>(
                         "ProgramInstructor",
-                        l => l.HasOne<Programs>().WithMany().HasForeignKey("ProgramId").OnDelete(DeleteBehavior.ClientSetNull),
+                        l => l.HasOne<Program>().WithMany().HasForeignKey("ProgramId").OnDelete(DeleteBehavior.ClientSetNull),
                         r => r.HasOne<User>().WithMany().HasForeignKey("InstructorId").OnDelete(DeleteBehavior.ClientSetNull),
                         j =>
                         {

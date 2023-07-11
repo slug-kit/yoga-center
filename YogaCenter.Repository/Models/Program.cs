@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace YogaCenter.Repository.Models
 {
-    public partial class Programs
+    public partial class Program
     {
-        public Programs()
+        public Program()
         {
             Courses = new HashSet<Course>();
             Instructors = new HashSet<User>();

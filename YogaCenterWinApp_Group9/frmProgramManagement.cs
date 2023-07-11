@@ -56,9 +56,9 @@ public partial class frmProgramManagement : Form
         }
     }
     //GET PROGRAM FROM DATAGRIDVIEW------------------------------------------------------------------------------------------------------
-    private Programs GetProgram()
+    private YogaCenter.Repository.Models.Program GetProgram()
     {
-        Programs programs = null;
+        YogaCenter.Repository.Models.Program programs = null;
         try
         {
             if (dgvprogram.SelectedCells.Count > 0)
@@ -66,7 +66,7 @@ public partial class frmProgramManagement : Form
                 int selectedRowIndex = dgvprogram.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = dgvprogram.Rows[selectedRowIndex];
 
-                programs = new Programs
+                programs = new YogaCenter.Repository.Models.Program
                 {
                     Id = Convert.ToInt32(selectedRow.Cells["Id"].Value),
                     Description = selectedRow.Cells["Description"].Value.ToString(),
@@ -90,7 +90,7 @@ public partial class frmProgramManagement : Form
         {
             Text = "Add Program",
             InsertOrUpdate = false,
-            Programs = new Programs(),
+            Programs = new YogaCenter.Repository.Models.Program(),
             ProgramRepository = programRepository
         };
         if (frmProgramManagementDetail.ShowDialog() == DialogResult.OK)
@@ -118,7 +118,7 @@ public partial class frmProgramManagement : Form
         {
             int selectedRowIndex = dgvprogram.SelectedCells[0].RowIndex;
             DataGridViewRow selectedRow = dgvprogram.Rows[selectedRowIndex];
-            var p = new Programs
+            var p = new YogaCenter.Repository.Models.Program
             {
                 Id = Convert.ToInt32(selectedRow.Cells["Id"].Value),
             };

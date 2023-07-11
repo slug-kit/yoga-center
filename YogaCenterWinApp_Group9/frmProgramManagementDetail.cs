@@ -21,13 +21,13 @@ namespace YogaCenterWinApp_Group9
         public IProgramRepository ProgramRepository { get; set; }
         public bool InsertOrUpdate { get; set; }
 
-        public Programs Programs { get; set; }
+        public YogaCenter.Repository.Models.Program Programs { get; set; }
 
         private void btnsave_Click(object sender, EventArgs e)
         {
             try
             {
-                var program = new Programs
+                var program = new YogaCenter.Repository.Models.Program
                 {
                     //Id = int.Parse(txtid.Text),
                     Description = txtdes.Text,

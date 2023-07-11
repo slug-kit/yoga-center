@@ -10,7 +10,7 @@ namespace YogaCenter.Repository.Models
             Courses = new HashSet<Course>();
             CoursesNavigation = new HashSet<Course>();
             Lessons = new HashSet<Lesson>();
-            Programs = new HashSet<Programs>();
+            Programs = new HashSet<Program>();
         }
 
         public long Id { get; set; }
@@ -35,6 +35,6 @@ namespace YogaCenter.Repository.Models
 
         public virtual ICollection<Course> CoursesNavigation { get; set; }
         public virtual ICollection<Lesson> Lessons { get; set; }
-        public virtual ICollection<Programs> Programs { get; set; }
+        public virtual ICollection<Program> Programs { get; set; }
     }
 }
