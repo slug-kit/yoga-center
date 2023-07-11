@@ -14,6 +14,7 @@ namespace YogaCenter.Repository.Models
         public int Id { get; set; }
         public string? Description { get; set; }
         public long? Fee { get; set; }
+        public byte? Rating { get; set; }
         public bool Inactive { get; set; }
 
         public virtual ICollection<Course> Courses { get; set; }

@@ -57,4 +57,10 @@ public class ProgramDAO
             Update(p);
         }
     }
+    public IEnumerable<Program> Search(string searchText)
+    {
+        using var db = new YogaCenterContext();
+        return db.Programs.Where(p => p.Id.ToString().Contains(searchText) || p.Description.Contains(searchText)).ToList();
+    }
+
 }

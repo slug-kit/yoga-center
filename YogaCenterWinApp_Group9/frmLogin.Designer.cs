@@ -2,7 +2,7 @@
 using System.Configuration.Internal;
 using Microsoft.Extensions.Configuration;
 
-namespace SalesManagementWinApp_BUIVUDUY
+namespace YogaCenterWinApp_Group9
 {
     partial class frmLogin
     {
