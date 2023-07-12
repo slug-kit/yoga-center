@@ -7,12 +7,12 @@ namespace YogaCenterWinApp_Group9
     partial class frmLogin
     {
         /// <summary>
-        ///  Required designer variable.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        ///  Clean up any resources being used.
+        /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -27,107 +27,103 @@ namespace YogaCenterWinApp_Group9
         #region Windows Form Designer generated code
 
         /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            btnExit = new Button();
-            btnLogin = new Button();
-            txtPassword = new TextBox();
-            txtEmail = new TextBox();
-            lbPassword = new Label();
             lbEmail = new Label();
+            lbPassword = new Label();
+            txtEmail = new TextBox();
+            txtPassword = new TextBox();
+            lbLogin = new Label();
+            btLogin = new Button();
+            btRegister = new Button();
             SuspendLayout();
-            // 
-            // btnExit
-            // 
-            btnExit.Anchor = AnchorStyles.None;
-            btnExit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnExit.Location = new Point(408, 255);
-            btnExit.Margin = new Padding(5, 6, 5, 6);
-            btnExit.Name = "btnExit";
-            btnExit.Size = new Size(161, 45);
-            btnExit.TabIndex = 5;
-            btnExit.Text = "Exit";
-            btnExit.UseVisualStyleBackColor = true;
-            btnExit.Click += btnExit_Click;
-            // 
-            // btnLogin
-            // 
-            btnLogin.Anchor = AnchorStyles.None;
-            btnLogin.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnLogin.Location = new Point(210, 255);
-            btnLogin.Margin = new Padding(5, 6, 5, 6);
-            btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(161, 45);
-            btnLogin.TabIndex = 4;
-            btnLogin.Text = "Login";
-            btnLogin.UseVisualStyleBackColor = true;
-            btnLogin.Click += btnLogin_Click;
-            // 
-            // txtPassword
-            // 
-            txtPassword.Anchor = AnchorStyles.None;
-            txtPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPassword.Location = new Point(210, 161);
-            txtPassword.Margin = new Padding(5, 6, 5, 6);
-            txtPassword.Name = "txtPassword";
-            txtPassword.PasswordChar = '*';
-            txtPassword.Size = new Size(359, 29);
-            txtPassword.TabIndex = 3;
-            txtPassword.KeyDown += txtPassword_KeyDown;
-            // 
-            // txtEmail
-            // 
-            txtEmail.Anchor = AnchorStyles.None;
-            txtEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtEmail.Location = new Point(210, 81);
-            txtEmail.Margin = new Padding(5, 6, 5, 6);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(359, 29);
-            txtEmail.TabIndex = 1;
-            txtEmail.KeyDown += txtEmail_KeyDown;
-            // 
-            // lbPassword
-            // 
-            lbPassword.Anchor = AnchorStyles.None;
-            lbPassword.AutoSize = true;
-            lbPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbPassword.Location = new Point(98, 165);
-            lbPassword.Margin = new Padding(5, 0, 5, 0);
-            lbPassword.Name = "lbPassword";
-            lbPassword.Size = new Size(76, 21);
-            lbPassword.TabIndex = 2;
-            lbPassword.Text = "Password";
             // 
             // lbEmail
             // 
-            lbEmail.Anchor = AnchorStyles.None;
             lbEmail.AutoSize = true;
-            lbEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbEmail.Location = new Point(98, 92);
-            lbEmail.Margin = new Padding(5, 0, 5, 0);
+            lbEmail.Location = new Point(160, 98);
+            lbEmail.Margin = new Padding(2, 0, 2, 0);
             lbEmail.Name = "lbEmail";
-            lbEmail.Size = new Size(48, 21);
+            lbEmail.Size = new Size(36, 15);
             lbEmail.TabIndex = 0;
             lbEmail.Text = "Email";
             // 
+            // lbPassword
+            // 
+            lbPassword.AutoSize = true;
+            lbPassword.Location = new Point(160, 130);
+            lbPassword.Margin = new Padding(2, 0, 2, 0);
+            lbPassword.Name = "lbPassword";
+            lbPassword.Size = new Size(57, 15);
+            lbPassword.TabIndex = 1;
+            lbPassword.Text = "Password";
+            // 
+            // txtEmail
+            // 
+            txtEmail.Location = new Point(244, 97);
+            txtEmail.Margin = new Padding(2);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(180, 23);
+            txtEmail.TabIndex = 2;
+            // 
+            // txtPassword
+            // 
+            txtPassword.Location = new Point(244, 128);
+            txtPassword.Margin = new Padding(2);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(180, 23);
+            txtPassword.TabIndex = 3;
+            txtPassword.KeyDown += txtPassword_KeyDown;
+            // 
+            // lbLogin
+            // 
+            lbLogin.AutoSize = true;
+            lbLogin.Font = new Font("Segoe UI", 22F, FontStyle.Bold, GraphicsUnit.Point);
+            lbLogin.Location = new Point(239, 23);
+            lbLogin.Margin = new Padding(2, 0, 2, 0);
+            lbLogin.Name = "lbLogin";
+            lbLogin.Size = new Size(178, 41);
+            lbLogin.TabIndex = 4;
+            lbLogin.Text = "Login Form";
+            // 
+            // btLogin
+            // 
+            btLogin.Location = new Point(244, 164);
+            btLogin.Margin = new Padding(2);
+            btLogin.Name = "btLogin";
+            btLogin.Size = new Size(78, 28);
+            btLogin.TabIndex = 5;
+            btLogin.Text = "&Login";
+            btLogin.UseVisualStyleBackColor = true;
+            // 
+            // btRegister
+            // 
+            btRegister.Location = new Point(344, 164);
+            btRegister.Margin = new Padding(2);
+            btRegister.Name = "btRegister";
+            btRegister.Size = new Size(78, 28);
+            btRegister.TabIndex = 6;
+            btRegister.Text = "Register";
+            btRegister.UseVisualStyleBackColor = true;
+            // 
             // frmLogin
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(734, 378);
-            Controls.Add(btnExit);
-            Controls.Add(btnLogin);
+            ClientSize = new Size(609, 304);
+            Controls.Add(btRegister);
+            Controls.Add(btLogin);
+            Controls.Add(lbLogin);
             Controls.Add(txtPassword);
             Controls.Add(txtEmail);
             Controls.Add(lbPassword);
             Controls.Add(lbEmail);
-            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(4);
+            Margin = new Padding(2);
             Name = "frmLogin";
-            Text = "Login";
+            Text = "frmLogin";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -140,5 +136,8 @@ namespace YogaCenterWinApp_Group9
         private TextBox txtEmail;
         private Label lbPassword;
         private Label lbEmail;
+        private Label lbLogin;
+        private Button btLogin;
+        private Button btRegister;
     }
 }

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using YogaCenter.Repository.Repos;
 using YogaCenterWinApp_Group9.Utils;
@@ -28,10 +30,10 @@ public partial class frmLogin : Form
 
     public event ExitEventHandler? Exiting;
 
-    public frmLogin()
-    {
-        InitializeComponent();
-    }
+        public frmLogin()
+        {
+            InitializeComponent();
+        }
 
     private void btnLogin_Click(object sender, EventArgs e) => PerformLogin();
 

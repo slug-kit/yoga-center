@@ -50,7 +50,8 @@ public class CourseDAO
         if (c != null)
         {
             using var db = new YogaCenterContext();
-            db.Update(course);
+            //db.Update(course);
+            db.Entry(course).State= EntityState.Modified;
             db.SaveChanges();
         }
     }
