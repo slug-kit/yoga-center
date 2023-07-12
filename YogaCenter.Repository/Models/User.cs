@@ -7,10 +7,10 @@ namespace YogaCenter.Repository.Models
     {
         public User()
         {
+            Attendances = new HashSet<Attendance>();
             Courses = new HashSet<Course>();
             Reviews = new HashSet<Review>();
             CoursesNavigation = new HashSet<Course>();
-            Lessons = new HashSet<Lesson>();
             Programs = new HashSet<Program>();
         }
 
@@ -33,11 +33,11 @@ namespace YogaCenter.Repository.Models
         public bool Inactive { get; set; }
 
         public virtual Role Role { get; set; } = null!;
+        public virtual ICollection<Attendance> Attendances { get; set; }
         public virtual ICollection<Course> Courses { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
 
         public virtual ICollection<Course> CoursesNavigation { get; set; }
-        public virtual ICollection<Lesson> Lessons { get; set; }
         public virtual ICollection<Program> Programs { get; set; }
     }
 }

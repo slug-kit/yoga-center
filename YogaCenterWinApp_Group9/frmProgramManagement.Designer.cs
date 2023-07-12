@@ -55,6 +55,8 @@
             txtfee = new TextBox();
             label1 = new Label();
             label2 = new Label();
+            textBox1 = new TextBox();
+            label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer).BeginInit();
             splitContainer.Panel1.SuspendLayout();
             splitContainer.Panel2.SuspendLayout();
@@ -83,6 +85,8 @@
             // 
             // splitContainer.Panel2
             // 
+            splitContainer.Panel2.Controls.Add(textBox1);
+            splitContainer.Panel2.Controls.Add(label9);
             splitContainer.Panel2.Controls.Add(starRatingControl);
             splitContainer.Panel2.Controls.Add(lbDescription);
             splitContainer.Panel2.Controls.Add(pictureBox1);
@@ -271,7 +275,7 @@
             starRatingControl.BottomMargin = 2;
             starRatingControl.HoverColor = Color.Yellow;
             starRatingControl.LeftMargin = 2;
-            starRatingControl.Location = new Point(100, 249);
+            starRatingControl.Location = new Point(80, 299);
             starRatingControl.Name = "starRatingControl";
             starRatingControl.OutlineColor = Color.DarkGray;
             starRatingControl.OutlineThickness = 1;
@@ -316,7 +320,7 @@
             // 
             // txtfee
             // 
-            txtfee.Location = new Point(100, 297);
+            txtfee.Location = new Point(310, 247);
             txtfee.Name = "txtfee";
             txtfee.Size = new Size(86, 29);
             txtfee.TabIndex = 7;
@@ -324,7 +328,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 250);
+            label1.Location = new Point(12, 300);
             label1.Name = "label1";
             label1.Size = new Size(55, 21);
             label1.TabIndex = 3;
@@ -333,11 +337,27 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 300);
+            label2.Location = new Point(250, 250);
             label2.Name = "label2";
             label2.Size = new Size(34, 21);
             label2.TabIndex = 6;
             label2.Text = "Fee";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(80, 247);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(115, 29);
+            textBox1.TabIndex = 10;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(12, 250);
+            label9.Name = "label9";
+            label9.Size = new Size(52, 21);
+            label9.TabIndex = 9;
+            label9.Text = "Name";
             // 
             // frmProgramManagement
             // 
@@ -393,5 +413,7 @@
         private TextBox textBox3;
         private Label label7;
         private Controls.StarRatingControl starRatingControl;
+        private TextBox textBox1;
+        private Label label9;
     }
 }

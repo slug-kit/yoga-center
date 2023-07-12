@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace YogaCenterWinApp_Group9.Utils;
+namespace Utils;
 
 public static class Regexes
 {

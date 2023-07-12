@@ -19,11 +19,15 @@ public class LessonDAO
         }
     }
 
+    private LessonDAO() { }
+
     public IEnumerable<Lesson> GetAll()
     {
         using var db = new YogaCenterContext();
         return db.Lessons
+            .Where(l => !l.Inactive)
             .Include(l => l.Course)
+                .ThenInclude(c => c.Program)
             .Include(l => l.TimeslotNavigation)
             .ToList();
     }
@@ -32,7 +36,9 @@ public class LessonDAO
     {
         using var db = new YogaCenterContext();
         return db.Lessons
+            .Where(l => !l.Inactive)
             .Include(l => l.Course)
+                .ThenInclude(c => c.Program)
             .Include(l => l.TimeslotNavigation)
             .FirstOrDefault(l => l.Id == id);
     }
@@ -40,7 +46,7 @@ public class LessonDAO
     public void Add(Lesson lesson)
     {
         using var db = new YogaCenterContext();
-        db.Add(lesson);
+        db.Entry(lesson).State = EntityState.Added;
         db.SaveChanges();
     }
 
@@ -50,7 +56,7 @@ public class LessonDAO
         if (l != null)
         {
             using var db = new YogaCenterContext();
-            db.Update(lesson);
+            db.Entry(lesson).State = EntityState.Modified;
             db.SaveChanges();
         }
     }
@@ -58,7 +64,7 @@ public class LessonDAO
     public void Remove(Lesson lesson)
     {
         var l = Get(lesson.Id);
-        if(l != null)
+        if (l != null)
         {
             l.Inactive = true;
             Update(lesson);

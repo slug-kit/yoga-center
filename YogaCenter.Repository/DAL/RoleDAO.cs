@@ -18,9 +18,26 @@ public class RoleDAO
         }
     }
 
+    private RoleDAO() { }
+
     public IEnumerable<Role> GetAll()
     {
         using var db = new YogaCenterContext();
         return db.Roles.ToList();
+    }
+
+    public Role? Get(int id)
+    {
+        using var db = new YogaCenterContext();
+        return db.Roles.FirstOrDefault(r => r.Id == id);
+    }
+
+    public Role? Get(string name)
+    {
+        using var db = new YogaCenterContext();
+        return db.Roles
+            .AsEnumerable()
+            .FirstOrDefault(r => !string.IsNullOrEmpty(r.Name)
+                && r.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
     }
 }

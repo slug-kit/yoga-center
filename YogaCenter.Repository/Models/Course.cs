@@ -12,8 +12,8 @@ namespace YogaCenter.Repository.Models
         }
 
         public int Id { get; set; }
-        public int? ProgramId { get; set; }
-        public short? CourseNumber { get; set; }
+        public int ProgramId { get; set; }
+        public short CourseNumber { get; set; }
         public long? InstructorId { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
@@ -23,7 +23,7 @@ namespace YogaCenter.Repository.Models
         public bool Inactive { get; set; }
 
         public virtual User? Instructor { get; set; }
-        public virtual Program? Program { get; set; }
+        public virtual Program Program { get; set; } = null!;
         public virtual ICollection<Lesson> Lessons { get; set; }
 
         public virtual ICollection<User> Learners { get; set; }

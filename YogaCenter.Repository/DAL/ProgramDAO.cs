@@ -1,4 +1,5 @@
-﻿using YogaCenter.Repository.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using YogaCenter.Repository.Models;
 
 namespace YogaCenter.Repository.DAL;
 
@@ -18,22 +19,28 @@ public class ProgramDAO
         }
     }
 
+    private ProgramDAO() { }
+
     public IEnumerable<Program> GetAll()
     {
         using var db = new YogaCenterContext();
-        return db.Programs.ToList();
+        return db.Programs
+            .Where(p => !p.Inactive)
+            .ToList();
     }
 
     public Program? Get(int id)
     {
         using var db = new YogaCenterContext();
-        return db.Programs.FirstOrDefault(p => p.Id == id);
+        return db.Programs
+            .Where(p => !p.Inactive)
+            .FirstOrDefault(p => p.Id == id);
     }
 
     public void Add(Program program)
     {
         using var db = new YogaCenterContext();
-        db.Programs.Add(program);
+        db.Entry(program).State = EntityState.Added;
         db.SaveChanges();
     }
 
@@ -43,7 +50,7 @@ public class ProgramDAO
         if (p != null)
         {
             using var db = new YogaCenterContext();
-            db.Programs.Update(program);
+            db.Entry(program).State = EntityState.Modified;
             db.SaveChanges();
         }
     }
@@ -60,7 +67,9 @@ public class ProgramDAO
     public IEnumerable<Program> Search(string searchText)
     {
         using var db = new YogaCenterContext();
-        return db.Programs.Where(p => p.Id.ToString().Contains(searchText) || p.Description.Contains(searchText)).ToList();
+        return db.Programs
+            .Where(p => p.Id.ToString().Contains(searchText)
+                || (!string.IsNullOrEmpty(p.Description) && p.Description.Contains(searchText)))
+            .ToList();
     }
-
 }

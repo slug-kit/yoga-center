@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Controls\Controls.csproj" />
+    <ProjectReference Include="..\Utils\Utils.csproj" />
     <ProjectReference Include="..\YogaCenter.Repository\YogaCenter.Repository.csproj" />
   </ItemGroup>
 

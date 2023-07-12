@@ -18,6 +18,8 @@ public class TimeslotDAO
         }
     }
 
+    private TimeslotDAO() { }
+
     public IEnumerable<Timeslot> GetAll()
     {
         using var db = new YogaCenterContext();

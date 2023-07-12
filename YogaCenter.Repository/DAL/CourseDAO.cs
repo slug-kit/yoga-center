@@ -19,10 +19,13 @@ public class CourseDAO
         }
     }
 
+    private CourseDAO() { }
+
     public IEnumerable<Course> GetAll()
     {
         using var db = new YogaCenterContext();
         return db.Courses
+            .Where(c => !c.Inactive)
             .Include(c => c.Program)
             .Include(c => c.Instructor)
             .ToList();
@@ -32,6 +35,7 @@ public class CourseDAO
     {
         using var db = new YogaCenterContext();
         return db.Courses
+            .Where(c => !c.Inactive)
             .Include(c => c.Program)
             .Include(c => c.Instructor)
             .FirstOrDefault(c => c.Id == id);
@@ -40,7 +44,7 @@ public class CourseDAO
     public void Add(Course course)
     {
         using var db = new YogaCenterContext();
-        db.Add(course);
+        db.Entry(course).State = EntityState.Added;
         db.SaveChanges();
     }
 
@@ -50,8 +54,7 @@ public class CourseDAO
         if (c != null)
         {
             using var db = new YogaCenterContext();
-            //db.Update(course);
-            db.Entry(course).State= EntityState.Modified;
+            db.Entry(course).State = EntityState.Modified;
             db.SaveChanges();
         }
     }
@@ -59,7 +62,7 @@ public class CourseDAO
     public void Remove(Course course)
     {
         var c = Get(course.Id);
-        if(c != null)
+        if (c != null)
         {
             c.Inactive = true;
             Update(course);
