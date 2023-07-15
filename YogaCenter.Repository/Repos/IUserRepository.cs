@@ -1,13 +1,12 @@
 ﻿using YogaCenter.Repository.Models;
 
-namespace YogaCenter.Repository.Repos;
-
 public interface IUserRepository
 {
-    public IEnumerable<User> GetAllUsers();
-    public IEnumerable<User> GetUsersByCriteria(Func<User, bool> predicate);
-    public User? GetUserById(long id);
-    public void AddUser(User user);
-    public void UpdateUser(User user);
-    public void DeleteUser(User user);
+    IEnumerable<User> GetAllUsers();
+    IEnumerable<User> GetUsersByCriteria(Func<User, bool> predicate);
+    User? GetUserById(long id);
+    void AddUser(User user);
+    void UpdateUser(User user);
+    void DeleteUser(User user);
+    IEnumerable<User> SearchUsers(string keyword);
 }

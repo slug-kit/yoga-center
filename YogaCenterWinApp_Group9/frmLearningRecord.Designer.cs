@@ -29,18 +29,33 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            ListViewGroup listViewGroup4 = new ListViewGroup("In Progress", HorizontalAlignment.Left);
-            ListViewGroup listViewGroup5 = new ListViewGroup("Completed", HorizontalAlignment.Left);
-            ListViewGroup listViewGroup6 = new ListViewGroup("Not Completed", HorizontalAlignment.Left);
-            ListViewItem listViewItem5 = new ListViewItem("Vinyasa Yoga", "Vinyasa-Yoga.jpg");
-            ListViewItem listViewItem6 = new ListViewItem("Hatha Yoga", "Hatha-Yoga.jpg");
-            ListViewItem listViewItem7 = new ListViewItem("Ashtanga Yoga", "Ashtanga-Yoga.jpg");
-            ListViewItem listViewItem8 = new ListViewItem("Kundalini Yoga", "Kundalini-Yoga.jpg");
+            ListViewGroup listViewGroup1 = new ListViewGroup("In Progress", HorizontalAlignment.Left);
+            ListViewGroup listViewGroup2 = new ListViewGroup("Completed", HorizontalAlignment.Left);
+            ListViewGroup listViewGroup3 = new ListViewGroup("Not Completed", HorizontalAlignment.Left);
+            ListViewItem listViewItem1 = new ListViewItem("Vinyasa Yoga", "Vinyasa-Yoga.jpg");
+            ListViewItem listViewItem2 = new ListViewItem("Hatha Yoga", "Hatha-Yoga.jpg");
+            ListViewItem listViewItem3 = new ListViewItem("Ashtanga Yoga", "Ashtanga-Yoga.jpg");
+            ListViewItem listViewItem4 = new ListViewItem("Kundalini Yoga", "Kundalini-Yoga.jpg");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLearningRecord));
             mainSplitContainer = new SplitContainer();
             lsvCourses = new ListView();
             imageListGroups = new ImageList(components);
             imageListLarge = new ImageList(components);
+            button3 = new Button();
+            label19 = new Label();
+            richTextBox3 = new RichTextBox();
+            label6 = new Label();
+            pictureBox1 = new PictureBox();
+            label5 = new Label();
+            comboBox1 = new ComboBox();
+            richTextBox4 = new RichTextBox();
+            lbDescription = new Label();
+            richTextBox2 = new RichTextBox();
+            textBox1 = new TextBox();
+            label9 = new Label();
+            starRatingControl1 = new Controls.StarRatingControl();
+            progressBar1 = new ProgressBar();
+            label8 = new Label();
             richTextBox1 = new RichTextBox();
             label7 = new Label();
             dateTimePicker2 = new DateTimePicker();
@@ -50,21 +65,6 @@
             textBox2 = new TextBox();
             label2 = new Label();
             label1 = new Label();
-            label8 = new Label();
-            progressBar1 = new ProgressBar();
-            label9 = new Label();
-            starRatingControl1 = new Controls.StarRatingControl();
-            textBox1 = new TextBox();
-            lbDescription = new Label();
-            richTextBox2 = new RichTextBox();
-            label19 = new Label();
-            richTextBox3 = new RichTextBox();
-            label6 = new Label();
-            pictureBox1 = new PictureBox();
-            label5 = new Label();
-            comboBox1 = new ComboBox();
-            richTextBox4 = new RichTextBox();
-            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)mainSplitContainer).BeginInit();
             mainSplitContainer.Panel1.SuspendLayout();
             mainSplitContainer.Panel2.SuspendLayout();
@@ -118,18 +118,18 @@
             // 
             lsvCourses.Dock = DockStyle.Fill;
             lsvCourses.GroupImageList = imageListGroups;
-            listViewGroup4.Header = "In Progress";
-            listViewGroup4.Name = "listViewGroup1";
-            listViewGroup5.Header = "Completed";
-            listViewGroup5.Name = "listViewGroup2";
-            listViewGroup6.Header = "Not Completed";
-            listViewGroup6.Name = "listViewGroup3";
-            lsvCourses.Groups.AddRange(new ListViewGroup[] { listViewGroup4, listViewGroup5, listViewGroup6 });
-            listViewItem5.Group = listViewGroup4;
-            listViewItem6.Group = listViewGroup5;
-            listViewItem7.Group = listViewGroup5;
-            listViewItem8.Group = listViewGroup6;
-            lsvCourses.Items.AddRange(new ListViewItem[] { listViewItem5, listViewItem6, listViewItem7, listViewItem8 });
+            listViewGroup1.Header = "In Progress";
+            listViewGroup1.Name = "listViewGroup1";
+            listViewGroup2.Header = "Completed";
+            listViewGroup2.Name = "listViewGroup2";
+            listViewGroup3.Header = "Not Completed";
+            listViewGroup3.Name = "listViewGroup3";
+            lsvCourses.Groups.AddRange(new ListViewGroup[] { listViewGroup1, listViewGroup2, listViewGroup3 });
+            listViewItem1.Group = listViewGroup1;
+            listViewItem2.Group = listViewGroup2;
+            listViewItem3.Group = listViewGroup2;
+            listViewItem4.Group = listViewGroup3;
+            lsvCourses.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3, listViewItem4 });
             lsvCourses.LargeImageList = imageListLarge;
             lsvCourses.Location = new Point(0, 0);
             lsvCourses.Name = "lsvCourses";
@@ -156,104 +156,105 @@
             imageListLarge.Images.SetKeyName(2, "Kundalini-Yoga.jpg");
             imageListLarge.Images.SetKeyName(3, "Vinyasa-Yoga.jpg");
             // 
-            // richTextBox1
+            // button3
             // 
-            richTextBox1.Location = new Point(24, 319);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(344, 29);
-            richTextBox1.TabIndex = 35;
-            richTextBox1.Text = "";
+            button3.Location = new Point(143, 573);
+            button3.Name = "button3";
+            button3.Size = new Size(120, 40);
+            button3.TabIndex = 51;
+            button3.Text = "Leave a review";
+            button3.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // label19
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(24, 295);
-            label7.Name = "label7";
-            label7.Size = new Size(73, 21);
-            label7.TabIndex = 34;
-            label7.Text = "Schedule";
+            label19.AutoSize = true;
+            label19.Location = new Point(25, 502);
+            label19.Name = "label19";
+            label19.Size = new Size(105, 28);
+            label19.TabIndex = 49;
+            label19.Text = "Experience";
             // 
-            // dateTimePicker2
+            // richTextBox3
             // 
-            dateTimePicker2.Location = new Point(208, 249);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(160, 29);
-            dateTimePicker2.TabIndex = 28;
+            richTextBox3.Location = new Point(25, 526);
+            richTextBox3.Name = "richTextBox3";
+            richTextBox3.Size = new Size(343, 29);
+            richTextBox3.TabIndex = 50;
+            richTextBox3.Text = "";
             // 
-            // label4
+            // label6
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(208, 225);
-            label4.Name = "label4";
-            label4.Size = new Size(65, 21);
-            label4.TabIndex = 27;
-            label4.Text = "Ends on";
+            label6.AutoSize = true;
+            label6.Location = new Point(25, 433);
+            label6.Name = "label6";
+            label6.Size = new Size(141, 28);
+            label6.TabIndex = 47;
+            label6.Text = "Specializations";
             // 
-            // dateTimePicker1
+            // pictureBox1
             // 
-            dateTimePicker1.Location = new Point(24, 249);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(160, 29);
-            dateTimePicker1.TabIndex = 26;
+            pictureBox1.Location = new Point(250, 355);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(75, 100);
+            pictureBox1.TabIndex = 45;
+            pictureBox1.TabStop = false;
             // 
-            // label3
+            // label5
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(30, 225);
-            label3.Name = "label3";
-            label3.Size = new Size(71, 21);
-            label3.TabIndex = 25;
-            label3.Text = "Starts on";
+            label5.AutoSize = true;
+            label5.Location = new Point(24, 370);
+            label5.Name = "label5";
+            label5.Size = new Size(96, 28);
+            label5.TabIndex = 44;
+            label5.Text = "Instructor";
             // 
-            // textBox2
+            // comboBox1
             // 
-            textBox2.Location = new Point(208, 39);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(160, 29);
-            textBox2.TabIndex = 24;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(24, 394);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(160, 36);
+            comboBox1.TabIndex = 46;
             // 
-            // label2
+            // richTextBox4
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(208, 15);
-            label2.Name = "label2";
-            label2.Size = new Size(96, 21);
-            label2.TabIndex = 23;
-            label2.Text = "Course code";
+            richTextBox4.Location = new Point(24, 461);
+            richTextBox4.Name = "richTextBox4";
+            richTextBox4.Size = new Size(344, 29);
+            richTextBox4.TabIndex = 48;
+            richTextBox4.Text = "";
             // 
-            // label1
+            // lbDescription
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(24, 15);
-            label1.Name = "label1";
-            label1.Size = new Size(71, 21);
-            label1.TabIndex = 22;
-            label1.Text = "Program";
+            lbDescription.AutoSize = true;
+            lbDescription.Location = new Point(24, 110);
+            lbDescription.Name = "lbDescription";
+            lbDescription.Size = new Size(112, 28);
+            lbDescription.TabIndex = 43;
+            lbDescription.Text = "Description";
             // 
-            // label8
+            // richTextBox2
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(24, 563);
-            label8.Name = "label8";
-            label8.Size = new Size(71, 21);
-            label8.TabIndex = 37;
-            label8.Text = "Progress";
+            richTextBox2.Location = new Point(24, 134);
+            richTextBox2.Name = "richTextBox2";
+            richTextBox2.ScrollBars = RichTextBoxScrollBars.ForcedVertical;
+            richTextBox2.Size = new Size(344, 77);
+            richTextBox2.TabIndex = 42;
+            richTextBox2.Text = "";
             // 
-            // progressBar1
+            // textBox1
             // 
-            progressBar1.Location = new Point(24, 590);
-            progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(344, 23);
-            progressBar1.Step = 1;
-            progressBar1.TabIndex = 38;
-            progressBar1.Value = 40;
+            textBox1.Location = new Point(24, 39);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(160, 34);
+            textBox1.TabIndex = 41;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Location = new Point(24, 80);
             label9.Name = "label9";
-            label9.Size = new Size(55, 21);
+            label9.Size = new Size(69, 28);
             label9.TabIndex = 39;
             label9.Text = "Rating";
             // 
@@ -277,102 +278,101 @@
             starRatingControl1.Text = "starRatingControl1";
             starRatingControl1.TopMargin = 2;
             // 
-            // textBox1
+            // progressBar1
             // 
-            textBox1.Location = new Point(24, 39);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(160, 29);
-            textBox1.TabIndex = 41;
+            progressBar1.Location = new Point(24, 590);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(344, 23);
+            progressBar1.Step = 1;
+            progressBar1.TabIndex = 38;
+            progressBar1.Value = 40;
             // 
-            // lbDescription
+            // label8
             // 
-            lbDescription.AutoSize = true;
-            lbDescription.Location = new Point(24, 110);
-            lbDescription.Name = "lbDescription";
-            lbDescription.Size = new Size(89, 21);
-            lbDescription.TabIndex = 43;
-            lbDescription.Text = "Description";
+            label8.AutoSize = true;
+            label8.Location = new Point(24, 563);
+            label8.Name = "label8";
+            label8.Size = new Size(87, 28);
+            label8.TabIndex = 37;
+            label8.Text = "Progress";
             // 
-            // richTextBox2
+            // richTextBox1
             // 
-            richTextBox2.Location = new Point(24, 134);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.ScrollBars = RichTextBoxScrollBars.ForcedVertical;
-            richTextBox2.Size = new Size(344, 77);
-            richTextBox2.TabIndex = 42;
-            richTextBox2.Text = "";
+            richTextBox1.Location = new Point(24, 319);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(344, 29);
+            richTextBox1.TabIndex = 35;
+            richTextBox1.Text = "";
             // 
-            // label19
+            // label7
             // 
-            label19.AutoSize = true;
-            label19.Location = new Point(25, 502);
-            label19.Name = "label19";
-            label19.Size = new Size(84, 21);
-            label19.TabIndex = 49;
-            label19.Text = "Experience";
+            label7.AutoSize = true;
+            label7.Location = new Point(24, 295);
+            label7.Name = "label7";
+            label7.Size = new Size(91, 28);
+            label7.TabIndex = 34;
+            label7.Text = "Schedule";
             // 
-            // richTextBox3
+            // dateTimePicker2
             // 
-            richTextBox3.Location = new Point(25, 526);
-            richTextBox3.Name = "richTextBox3";
-            richTextBox3.Size = new Size(343, 29);
-            richTextBox3.TabIndex = 50;
-            richTextBox3.Text = "";
+            dateTimePicker2.Location = new Point(208, 249);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(160, 34);
+            dateTimePicker2.TabIndex = 28;
             // 
-            // label6
+            // label4
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(24, 437);
-            label6.Name = "label6";
-            label6.Size = new Size(112, 21);
-            label6.TabIndex = 47;
-            label6.Text = "Specializations";
+            label4.AutoSize = true;
+            label4.Location = new Point(208, 225);
+            label4.Name = "label4";
+            label4.Size = new Size(81, 28);
+            label4.TabIndex = 27;
+            label4.Text = "Ends on";
             // 
-            // pictureBox1
+            // dateTimePicker1
             // 
-            pictureBox1.Location = new Point(250, 355);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(75, 100);
-            pictureBox1.TabIndex = 45;
-            pictureBox1.TabStop = false;
+            dateTimePicker1.Location = new Point(24, 249);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(160, 34);
+            dateTimePicker1.TabIndex = 26;
             // 
-            // label5
+            // label3
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(24, 370);
-            label5.Name = "label5";
-            label5.Size = new Size(77, 21);
-            label5.TabIndex = 44;
-            label5.Text = "Instructor";
+            label3.AutoSize = true;
+            label3.Location = new Point(30, 225);
+            label3.Name = "label3";
+            label3.Size = new Size(89, 28);
+            label3.TabIndex = 25;
+            label3.Text = "Starts on";
             // 
-            // comboBox1
+            // textBox2
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(24, 394);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(160, 29);
-            comboBox1.TabIndex = 46;
+            textBox2.Location = new Point(208, 39);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(160, 34);
+            textBox2.TabIndex = 24;
             // 
-            // richTextBox4
+            // label2
             // 
-            richTextBox4.Location = new Point(24, 461);
-            richTextBox4.Name = "richTextBox4";
-            richTextBox4.Size = new Size(344, 29);
-            richTextBox4.TabIndex = 48;
-            richTextBox4.Text = "";
+            label2.AutoSize = true;
+            label2.Location = new Point(208, 15);
+            label2.Name = "label2";
+            label2.Size = new Size(120, 28);
+            label2.TabIndex = 23;
+            label2.Text = "Course code";
             // 
-            // button3
+            // label1
             // 
-            button3.Location = new Point(143, 573);
-            button3.Name = "button3";
-            button3.Size = new Size(120, 40);
-            button3.TabIndex = 51;
-            button3.Text = "Leave a review";
-            button3.UseVisualStyleBackColor = true;
+            label1.AutoSize = true;
+            label1.Location = new Point(24, 15);
+            label1.Name = "label1";
+            label1.Size = new Size(88, 28);
+            label1.TabIndex = 22;
+            label1.Text = "Program";
             // 
             // frmLearningRecord
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1029, 630);
             Controls.Add(mainSplitContainer);

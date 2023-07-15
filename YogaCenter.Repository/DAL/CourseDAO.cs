@@ -68,4 +68,25 @@ public class CourseDAO
             Update(course);
         }
     }
+    public IEnumerable<Course> SearchCourses(string courseCode, string schedule)
+    {
+        using var db = new YogaCenterContext();
+        var courses = db.Courses
+            .Include(c => c.Program)
+            .Include(c => c.Instructor)
+            .Where(c => !c.Inactive);
+
+        if (!string.IsNullOrEmpty(courseCode))
+        {
+            short courseCodeValue = Convert.ToInt16(courseCode);
+            courses = courses.Where(c => c.CourseNumber == courseCodeValue);
+        }
+
+        if (!string.IsNullOrEmpty(schedule))
+        {
+            courses = courses.Where(c => c.Schedule.Contains(schedule));
+        }
+
+        return courses.ToList();
+    }
 }

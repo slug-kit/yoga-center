@@ -55,7 +55,6 @@
             dgvcourse = new DataGridView();
             label20 = new Label();
             label21 = new Label();
-            comboBox5 = new ComboBox();
             label19 = new Label();
             rtbexperience = new RichTextBox();
             registationclosedate = new DateTimePicker();
@@ -72,12 +71,13 @@
             datestart = new DateTimePicker();
             label3 = new Label();
             txtcoursecode = new TextBox();
+            cboprogram = new ComboBox();
             label2 = new Label();
             label1 = new Label();
             cboinstructor = new ComboBox();
-            cboprogram = new ComboBox();
             rtbspecialization = new RichTextBox();
             numericUpDown1 = new NumericUpDown();
+            txtstatus = new TextBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -104,9 +104,9 @@
             // 
             // splitContainer1.Panel2
             // 
+            splitContainer1.Panel2.Controls.Add(txtstatus);
             splitContainer1.Panel2.Controls.Add(label20);
             splitContainer1.Panel2.Controls.Add(label21);
-            splitContainer1.Panel2.Controls.Add(comboBox5);
             splitContainer1.Panel2.Controls.Add(label19);
             splitContainer1.Panel2.Controls.Add(rtbexperience);
             splitContainer1.Panel2.Controls.Add(registationclosedate);
@@ -123,10 +123,10 @@
             splitContainer1.Panel2.Controls.Add(datestart);
             splitContainer1.Panel2.Controls.Add(label3);
             splitContainer1.Panel2.Controls.Add(txtcoursecode);
+            splitContainer1.Panel2.Controls.Add(cboprogram);
             splitContainer1.Panel2.Controls.Add(label2);
             splitContainer1.Panel2.Controls.Add(label1);
             splitContainer1.Panel2.Controls.Add(cboinstructor);
-            splitContainer1.Panel2.Controls.Add(cboprogram);
             splitContainer1.Panel2.Controls.Add(rtbspecialization);
             splitContainer1.Panel2.Controls.Add(numericUpDown1);
             splitContainer1.Size = new Size(1029, 630);
@@ -243,7 +243,7 @@
             // 
             // txtcoursecodesearch
             // 
-            txtcoursecodesearch.Location = new Point(15, 44);
+            txtcoursecodesearch.Location = new Point(19, 42);
             txtcoursecodesearch.Name = "txtcoursecodesearch";
             txtcoursecodesearch.Size = new Size(160, 29);
             txtcoursecodesearch.TabIndex = 17;
@@ -302,6 +302,7 @@
             btnsearch.TabIndex = 2;
             btnsearch.Text = "Search";
             btnsearch.UseVisualStyleBackColor = true;
+            btnsearch.Click += btnsearch_Click;
             // 
             // txtschedulesearch
             // 
@@ -337,6 +338,7 @@
             btndelete.TabIndex = 2;
             btndelete.Text = "Delete";
             btndelete.UseVisualStyleBackColor = true;
+            btndelete.Click += btndelete_Click;
             // 
             // btnadd
             // 
@@ -346,6 +348,7 @@
             btnadd.TabIndex = 0;
             btnadd.Text = "New";
             btnadd.UseVisualStyleBackColor = true;
+            btnadd.Click += btnadd_Click;
             // 
             // dgvcourse
             // 
@@ -354,8 +357,11 @@
             dgvcourse.Name = "dgvcourse";
             dgvcourse.RowHeadersWidth = 51;
             dgvcourse.RowTemplate.Height = 25;
+            dgvcourse.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvcourse.Size = new Size(622, 260);
             dgvcourse.TabIndex = 3;
+            dgvcourse.CellDoubleClick += dgvcourse_CellDoubleClick;
+            dgvcourse.CellFormatting += dgvcourse_CellFormatting;
             // 
             // label20
             // 
@@ -374,14 +380,6 @@
             label21.Size = new Size(52, 21);
             label21.TabIndex = 25;
             label21.Text = "Status";
-            // 
-            // comboBox5
-            // 
-            comboBox5.FormattingEnabled = true;
-            comboBox5.Location = new Point(19, 104);
-            comboBox5.Name = "comboBox5";
-            comboBox5.Size = new Size(160, 29);
-            comboBox5.TabIndex = 28;
             // 
             // label19
             // 
@@ -514,6 +512,14 @@
             txtcoursecode.Size = new Size(160, 29);
             txtcoursecode.TabIndex = 3;
             // 
+            // cboprogram
+            // 
+            cboprogram.FormattingEnabled = true;
+            cboprogram.Location = new Point(19, 42);
+            cboprogram.Name = "cboprogram";
+            cboprogram.Size = new Size(160, 29);
+            cboprogram.TabIndex = 21;
+            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -540,14 +546,6 @@
             cboinstructor.Size = new Size(160, 29);
             cboinstructor.TabIndex = 11;
             // 
-            // cboprogram
-            // 
-            cboprogram.FormattingEnabled = true;
-            cboprogram.Location = new Point(19, 42);
-            cboprogram.Name = "cboprogram";
-            cboprogram.Size = new Size(160, 29);
-            cboprogram.TabIndex = 21;
-            // 
             // rtbspecialization
             // 
             rtbspecialization.Location = new Point(19, 331);
@@ -562,6 +560,13 @@
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(160, 29);
             numericUpDown1.TabIndex = 29;
+            // 
+            // txtstatus
+            // 
+            txtstatus.Location = new Point(20, 104);
+            txtstatus.Name = "txtstatus";
+            txtstatus.Size = new Size(159, 29);
+            txtstatus.TabIndex = 30;
             // 
             // frmCourseManagement
             // 
@@ -634,11 +639,11 @@
         private ComboBox comboBox3;
         private Label label20;
         private Label label21;
-        private ComboBox comboBox5;
         private Label label19;
         private RichTextBox rtbexperience;
         private Label label6;
         private RichTextBox rtbspecialization;
         private NumericUpDown numericUpDown1;
+        private TextBox txtstatus;
     }
 }
