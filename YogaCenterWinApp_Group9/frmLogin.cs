@@ -81,7 +81,7 @@ public partial class frmLogin : Form
                 if (ADMIN_ROLE == curAccount.Role.Id)
                     OnLoginSuccess(new LoginEventArgs() { FullPrivilege = true });
                 else
-                    OnLoginSuccess(new LoginEventArgs() { Id = curAccount.Id, FullPrivilege = false });
+                    OnLoginSuccess(new LoginEventArgs() { Id = curAccount.Id, FullPrivilege = false });        
             }
             else
             {
@@ -110,4 +110,11 @@ public partial class frmLogin : Form
     protected virtual void OnExitCall(EventArgs e) => Exiting?.Invoke(this, e);
 
     private void btnExit_Click(object sender, EventArgs e) => OnExitCall(EventArgs.Empty);
+
+    private void btRegister_Click(object sender, EventArgs e)
+    {
+        frmRegister frmRegister = new frmRegister();
+        frmRegister.Show();
+        this.Hide();
+    }
 }

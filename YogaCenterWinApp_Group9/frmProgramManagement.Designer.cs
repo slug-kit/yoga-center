@@ -75,7 +75,7 @@
             // 
             splitContainer.Anchor = AnchorStyles.None;
             splitContainer.IsSplitterFixed = true;
-            splitContainer.Location = new Point(0, 0);
+            splitContainer.Location = new Point(27, 16);
             splitContainer.Margin = new Padding(4);
             splitContainer.Name = "splitContainer";
             // 
@@ -382,7 +382,7 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1029, 630);
+            ClientSize = new Size(1082, 663);
             Controls.Add(splitContainer);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
