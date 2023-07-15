@@ -170,4 +170,18 @@ public class UserDAO
             Update(u);
         }
     }
+    public IEnumerable<User> Search(string keyword)
+    {
+        using var db = new YogaCenterContext();
+        return db.Users
+            .Include(u => u.Role)
+            .Where(u => !u.Inactive &&
+                (u.Username.Contains(keyword) ||
+                 u.Phone.Contains(keyword) ||
+                 u.Code.Contains(keyword) ||
+                 u.Email.Contains(keyword) ||
+                 u.Fullname.Contains(keyword)))
+            .ToList();
+    }
+
 }

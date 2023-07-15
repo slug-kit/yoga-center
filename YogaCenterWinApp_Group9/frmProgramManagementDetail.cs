@@ -21,7 +21,7 @@ namespace YogaCenterWinApp_Group9
         public IProgramRepository ProgramRepository { get; set; }
         public bool InsertOrUpdate { get; set; }
 
-        public YogaCenter.Repository.Models.Program Programs { get; set; }
+        public YogaCenter.Repository.Models.Program Programme { get; set; }
 
         private void btnsave_Click(object sender, EventArgs e)
         {
@@ -54,9 +54,9 @@ namespace YogaCenterWinApp_Group9
             txtid.Enabled = !InsertOrUpdate;
             if (InsertOrUpdate == true)
             {
-                txtdescription.Text = Programs.Description;
-                txtid.Text = Programs.Id.ToString();
-                txtfee.Text = Programs.Fee.ToString();
+                txtdescription.Text = Programme.Description;
+                txtid.Text = Programme.Id.ToString();
+                txtfee.Text = Programme.Fee.ToString();
             }
         }
 

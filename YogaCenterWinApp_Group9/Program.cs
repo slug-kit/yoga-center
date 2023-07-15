@@ -23,8 +23,7 @@ namespace YogaCenterWinApp_Group9
             CultureInfo.DefaultThreadCurrentUICulture = culture;
 
             ApplicationConfiguration.Initialize();
-            //Application.Run(new frmMain());
-            Application.Run(new frmProgramManagement());
+            Application.Run(new frmUserManagement());
         }
     }
 }

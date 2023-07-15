@@ -25,9 +25,11 @@ public partial class frmProgramManagement : Form
 
         txtboxdescription.DataBindings.Clear();
         txtfee.DataBindings.Clear();
+        starRatingControl.DataBindings.Clear();
 
         txtfee.DataBindings.Add("Text", source, "Fee");
         txtboxdescription.DataBindings.Add("Text", source, "Description");
+        starRatingControl.DataBindings.Add("SelectedStar", source, "Rating");
 
         dgvprogram.DataSource = null;
         dgvprogram.DataSource = source;
@@ -47,7 +49,7 @@ public partial class frmProgramManagement : Form
         {
             Text = "Update Program",
             InsertOrUpdate = true,
-            Programs = GetProgram(),
+            Programme = GetProgram(),
             ProgramRepository = programRepository
         };
         if (frmProgramManagementDetail.ShowDialog() == DialogResult.OK)
@@ -90,7 +92,7 @@ public partial class frmProgramManagement : Form
         {
             Text = "Add Program",
             InsertOrUpdate = false,
-            Programs = new YogaCenter.Repository.Models.Program(),
+            Programme = new YogaCenter.Repository.Models.Program(),
             ProgramRepository = programRepository
         };
         if (frmProgramManagementDetail.ShowDialog() == DialogResult.OK)
@@ -110,7 +112,7 @@ public partial class frmProgramManagement : Form
     private void btndelete_Click(object sender, EventArgs e)
     {
         DialogResult d;
-        d = MessageBox.Show("Do you really want to delete this record?", "Customer",
+        d = MessageBox.Show("Do you really want to delete this record?", "Program",
             MessageBoxButtons.OKCancel, MessageBoxIcon.Question,
             MessageBoxDefaultButton.Button1);
 

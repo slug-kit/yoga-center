@@ -9,4 +9,6 @@ public interface ICourseRepository
     public void Add(Course course);
     public void Update(Course course);
     public void Delete(Course course);
+    IEnumerable<Course> SearchCourses(string courseCode, string schedule);
+
 }

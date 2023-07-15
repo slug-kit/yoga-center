@@ -10,4 +10,8 @@ public class CourseRepository : ICourseRepository
     public void Add(Course course) => CourseDAO.Instance.Add(course);
     public void Update(Course course) => CourseDAO.Instance.Update(course);
     public void Delete(Course course) => CourseDAO.Instance.Remove(course);
+    public IEnumerable<Course> SearchCourses(string courseCode, string schedule)
+    {
+        return CourseDAO.Instance.SearchCourses(courseCode, schedule);
+    }
 }
