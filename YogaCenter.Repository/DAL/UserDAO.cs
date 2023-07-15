@@ -36,9 +36,10 @@ public class UserDAO
         return db.Users
             .Where(u => !u.Inactive)
             .Include(u => u.Role)
-            .Include(u => u.Courses)
-            .Include(u => u.CoursesNavigation)
             .Include(u => u.Attendances)
+            .Include(u => u.CourseAssignmentRequests)
+            .Include(u => u.CoursesAssigned)
+            .Include(u => u.CoursesEnrolled)
             .Include(u => u.Programs)
             .Where(selector)
             .ToList();
@@ -59,9 +60,10 @@ public class UserDAO
         return db.Users
             .Where(u => !u.Inactive)
             .Include(u => u.Role)
-            .Include(u => u.Courses)
-            .Include(u => u.CoursesNavigation)
             .Include(u => u.Attendances)
+            .Include (u => u.CourseAssignmentRequests)
+            .Include(u => u.CoursesAssigned)
+            .Include(u => u.CoursesEnrolled)
             .Include(u => u.Programs)
             .Where(selector)
             .FirstOrDefault(u => u.Id == id);
@@ -89,14 +91,14 @@ public class UserDAO
     {
         using var db = new YogaCenterContext();
         var user = db.Users
-            .Include(u => u.CoursesNavigation)
+            .Include(u => u.CoursesEnrolled)
             .FirstOrDefault(u => u.Id == userId);
         if (user != null)
         {
             var course = db.Courses.SingleOrDefault(c => c.Id == courseId);
             if (course != null)
             {
-                user.CoursesNavigation.Add(course);
+                user.CoursesEnrolled.Add(course);
                 db.Users.Update(user);
                 db.SaveChanges();
             }
@@ -107,14 +109,14 @@ public class UserDAO
     {
         using var db = new YogaCenterContext();
         var user = db.Users
-            .Include(u => u.CoursesNavigation)
+            .Include(u => u.CoursesEnrolled)
             .FirstOrDefault(u => u.Id == userId);
         if (user != null)
         {
-            var course = user.CoursesNavigation.SingleOrDefault(c => c.Id == courseId);
+            var course = user.CoursesEnrolled.SingleOrDefault(c => c.Id == courseId);
             if (course != null)
             {
-                if (user.CoursesNavigation.Remove(course))
+                if (user.CoursesEnrolled.Remove(course))
                 {
                     db.Users.Update(user);
                     db.SaveChanges();

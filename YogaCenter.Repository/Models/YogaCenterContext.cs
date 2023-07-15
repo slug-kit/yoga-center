@@ -19,6 +19,7 @@ namespace YogaCenter.Repository.Models
 
         public virtual DbSet<Attendance> Attendances { get; set; } = null!;
         public virtual DbSet<Course> Courses { get; set; } = null!;
+        public virtual DbSet<CourseAssignmentRequest> CourseAssignmentRequests { get; set; } = null!;
         public virtual DbSet<Lesson> Lessons { get; set; } = null!;
         public virtual DbSet<Program> Programs { get; set; } = null!;
         public virtual DbSet<Review> Reviews { get; set; } = null!;
@@ -82,6 +83,8 @@ namespace YogaCenter.Repository.Models
                     .HasColumnType("date")
                     .HasColumnName("end_date");
 
+                entity.Property(e => e.HasNewRequest).HasColumnName("has_new_request");
+
                 entity.Property(e => e.Inactive).HasColumnName("inactive");
 
                 entity.Property(e => e.InstructorId).HasColumnName("instructor_id");
@@ -105,7 +108,7 @@ namespace YogaCenter.Repository.Models
                     .HasColumnName("start_date");
 
                 entity.HasOne(d => d.Instructor)
-                    .WithMany(p => p.Courses)
+                    .WithMany(p => p.CoursesAssigned)
                     .HasForeignKey(d => d.InstructorId)
                     .OnDelete(DeleteBehavior.SetNull);
 
@@ -114,21 +117,46 @@ namespace YogaCenter.Repository.Models
                     .HasForeignKey(d => d.ProgramId);
 
                 entity.HasMany(d => d.Learners)
-                    .WithMany(p => p.CoursesNavigation)
+                    .WithMany(p => p.CoursesEnrolled)
                     .UsingEntity<Dictionary<string, object>>(
-                        "Courseregister",
+                        "CourseRegister",
                         l => l.HasOne<User>().WithMany().HasForeignKey("LearnerId"),
                         r => r.HasOne<Course>().WithMany().HasForeignKey("CourseId"),
                         j =>
                         {
-                            j.HasKey("CourseId", "LearnerId");
+                            j.HasKey("CourseId", "LearnerId").HasName("PK_courseregister");
 
-                            j.ToTable("courseregister");
+                            j.ToTable("course_register");
 
                             j.IndexerProperty<int>("CourseId").HasColumnName("course_id");
 
                             j.IndexerProperty<long>("LearnerId").HasColumnName("learner_id");
                         });
+            });
+
+            modelBuilder.Entity<CourseAssignmentRequest>(entity =>
+            {
+                entity.HasKey(e => new { e.CourseId, e.InstructorId })
+                    .HasName("PK_courseassignmentrequest");
+
+                entity.ToTable("course_assignment_request");
+
+                entity.Property(e => e.CourseId).HasColumnName("course_id");
+
+                entity.Property(e => e.InstructorId).HasColumnName("instructor_id");
+
+                entity.Property(e => e.New)
+                    .IsRequired()
+                    .HasColumnName("new")
+                    .HasDefaultValueSql("((1))");
+
+                entity.HasOne(d => d.Course)
+                    .WithMany(p => p.CourseAssignmentRequests)
+                    .HasForeignKey(d => d.CourseId);
+
+                entity.HasOne(d => d.Instructor)
+                    .WithMany(p => p.CourseAssignmentRequests)
+                    .HasForeignKey(d => d.InstructorId);
             });
 
             modelBuilder.Entity<Lesson>(entity =>
@@ -209,14 +237,14 @@ namespace YogaCenter.Repository.Models
                 entity.HasMany(d => d.Instructors)
                     .WithMany(p => p.Programs)
                     .UsingEntity<Dictionary<string, object>>(
-                        "Programassignment",
+                        "ProgramAssignment",
                         l => l.HasOne<User>().WithMany().HasForeignKey("InstructorId"),
                         r => r.HasOne<Program>().WithMany().HasForeignKey("ProgramId"),
                         j =>
                         {
-                            j.HasKey("ProgramId", "InstructorId");
+                            j.HasKey("ProgramId", "InstructorId").HasName("PK_programassignment");
 
-                            j.ToTable("programassignment");
+                            j.ToTable("program_assignment");
 
                             j.IndexerProperty<int>("ProgramId").HasColumnName("program_id");
 

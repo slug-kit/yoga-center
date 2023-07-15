@@ -15,12 +15,12 @@ public class CourseRegisterRepository : ICourseRegisterRepository
 
         var course = CourseDAO.Instance.Get(courseId)
             ?? throw new ArgumentException("Course does not exist.");
-        if (learner.CoursesNavigation.FirstOrDefault(c => c.Id == courseId) != null)
+        if (learner.CoursesEnrolled.FirstOrDefault(c => c.Id == courseId) != null)
         {
             throw new ArgumentException("Learner is already enrolled in target Course.");
         }
 
-        learner.CoursesNavigation.Add(course);
+        learner.CoursesEnrolled.Add(course);
         UserDAO.Instance.EnrolInCourse(learner.Id, course.Id);
     }
 
@@ -35,7 +35,7 @@ public class CourseRegisterRepository : ICourseRegisterRepository
 
         _ = CourseDAO.Instance.Get(courseId)
             ?? throw new ArgumentException("Course does not exist.");
-        var course = learner.CoursesNavigation.FirstOrDefault(c => c.Id == courseId)
+        var course = learner.CoursesEnrolled.FirstOrDefault(c => c.Id == courseId)
             ?? throw new ArgumentException("Learner was not enrolled in target Course.");
 
         UserDAO.Instance.UnenrolFromCourse(learner.Id, course.Id);

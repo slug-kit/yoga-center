@@ -81,7 +81,7 @@ public partial class frmLogin : Form
                 if (ADMIN_ROLE == curAccount.Role.Id)
                     OnLoginSuccess(new LoginEventArgs() { FullPrivilege = true });
                 else
-                    OnLoginSuccess(new LoginEventArgs() { Id = curAccount.Id, FullPrivilege = false });        
+                    OnLoginSuccess(new LoginEventArgs() { Id = curAccount.Id, FullPrivilege = false });
             }
             else
             {

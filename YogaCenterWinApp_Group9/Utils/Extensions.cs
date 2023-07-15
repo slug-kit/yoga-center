@@ -17,6 +17,17 @@ public static class Extensions
                 yield return childOfT;
             }
 
+            if (child is ToolStrip toolStrip)
+            {
+                foreach (ToolStripItem toolStripItem in toolStrip.Items)
+                {
+                    if (toolStripItem is T toolStripItemOfT)
+                    {
+                        yield return toolStripItemOfT;
+                    }
+                }
+            }
+
             if (child.HasChildren)
             {
                 foreach (T descendant in Descendants<T>(child))
@@ -24,23 +35,10 @@ public static class Extensions
                     yield return descendant;
                 }
             }
-
-
-        }
-
-        if (control is ToolStrip toolStrip)
-        {
-            foreach (ToolStripItem toolStripItem in toolStrip.Items)
-            {
-                if (toolStripItem is T toolStripItemOfT)
-                {
-                    yield return toolStripItemOfT;
-                }
-            }
         }
     }
 
-    private static string STATUS_BAR_FORM_TITLE_CONTROL_NAME = "formTitleLabel";
+    private const string STATUS_BAR_FORM_TITLE_CONTROL_NAME = "formTitleLabel";
     public static void ConfigureMdi(this Form form, Form mdiParent)
     {
         form.MdiParent = mdiParent;
@@ -49,11 +47,11 @@ public static class Extensions
         form.StartPosition = FormStartPosition.CenterParent;
         if (mdiParent is frmMain frmMain)
         {
-            foreach (Control control in frmMain.Descendants<Control>())
+            foreach (ToolStripItem toolStripItem in frmMain.Descendants<ToolStripItem>())
             {
-                if (control.Name == STATUS_BAR_FORM_TITLE_CONTROL_NAME)
+                if (toolStripItem.Name == STATUS_BAR_FORM_TITLE_CONTROL_NAME)
                 {
-                    control.Text = form.Text;
+                    toolStripItem.Text = form.Text;
                     break;
                 }
             }

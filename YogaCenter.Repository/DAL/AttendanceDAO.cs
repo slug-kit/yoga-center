@@ -27,7 +27,7 @@ public class AttendanceDAO
         return db.Attendances.ToList();
     }
 
-    public IEnumerable<Attendance> GetAttendancesByLesson(int lessonId)
+    public IEnumerable<Attendance> GetByLesson(int lessonId)
     {
         using var db = new YogaCenterContext();
         return db.Attendances

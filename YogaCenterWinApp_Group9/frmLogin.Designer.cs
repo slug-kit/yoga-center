@@ -127,7 +127,7 @@ namespace YogaCenterWinApp_Group9
             Margin = new Padding(2);
             Name = "frmLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "frmLogin";
+            Text = "Login";
             ResumeLayout(false);
             PerformLayout();
         }

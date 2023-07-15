@@ -16,7 +16,7 @@ public class ProgramAssignmentRepository : IProgramAssignmentRepository
 
         var program = ProgramDAO.Instance.Get(programId)
             ?? throw new ArgumentException("Program does not exist.");
-        if (instructor.Programs.FirstOrDefault(i => i.Id == programId) != null)
+        if (instructor.Programs.FirstOrDefault(p => p.Id == programId) != null)
         {
             throw new ArgumentException("Instructor is already assigned to target Program.");
         }
@@ -36,7 +36,7 @@ public class ProgramAssignmentRepository : IProgramAssignmentRepository
 
         _ = ProgramDAO.Instance.Get(programId)
             ?? throw new ArgumentException("Program does not exist.");
-        var program = instructor.Programs.FirstOrDefault(i => i.Id == programId)
+        var program = instructor.Programs.FirstOrDefault(p => p.Id == programId)
             ?? throw new ArgumentException("Instructor was not assigned to target Program.");
 
         UserDAO.Instance.UnassignFromProgram(instructor.Id, program.Id);

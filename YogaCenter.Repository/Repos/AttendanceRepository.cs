@@ -7,7 +7,7 @@ namespace YogaCenter.Repository.Repos;
 public class AttendanceRepository : IAttendanceRepository
 {
     public IEnumerable<Attendance> GetAllAttendances() => AttendanceDAO.Instance.GetAll();
-    public IEnumerable<Attendance> GetLessonAttendances(int lessonId) => AttendanceDAO.Instance.GetAttendancesByLesson(lessonId);
+    public IEnumerable<Attendance> GetAttendancesByLesson(int lessonId) => AttendanceDAO.Instance.GetByLesson(lessonId);
     public Attendance? GetAttendance(int lessonId, long learnerId) => AttendanceDAO.Instance.Get(lessonId, learnerId);
 
     public void AddLessonAttendances(int lessonId, IEnumerable<User> learners)
@@ -35,7 +35,7 @@ public class AttendanceRepository : IAttendanceRepository
         {
             var u = users.FirstOrDefault(u => u.Id == learner.Id)!;
             var courseIdComparer = new LambdaComparer<Course>((c1, c2) => c1.Id == c2.Id);
-            if (!u.CoursesNavigation.Contains(course, courseIdComparer))
+            if (!u.CoursesEnrolled.Contains(course, courseIdComparer))
             {
                 throw new ArgumentException($"Learner [{u.Id}:{u.Username}] is not enrolled" +
                     $" in target Course #{course.Program.Code}_{course.CourseNumber}.");
@@ -51,6 +51,8 @@ public class AttendanceRepository : IAttendanceRepository
             });
         }
     }
+
+    public void TakeAttendance(Attendance attendance) => AttendanceDAO.Instance.Update(attendance);
 
     public void TakeAttendance(int lessonId, long learnerId, bool attended)
     {
