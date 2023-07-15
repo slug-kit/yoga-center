@@ -15,8 +15,8 @@ namespace YogaCenter.Repository.Models
         }
 
         public long Id { get; set; }
-        public string Username { get; set; } 
-        public string Password { get; set; } 
+        public string Username { get; set; } = null!;
+        public string Password { get; set; } = null!;
         public DateTime? JoinDate { get; set; }
         public DateTime? LastLogin { get; set; }
         public byte RoleId { get; set; }

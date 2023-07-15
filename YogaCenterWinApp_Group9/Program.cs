@@ -10,7 +10,6 @@ namespace YogaCenterWinApp_Group9
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json", true, true)
             .Build();
-        internal static User? User;
 
         /// <summary>
         ///  The main entry point for the application.
@@ -23,7 +22,7 @@ namespace YogaCenterWinApp_Group9
             CultureInfo.DefaultThreadCurrentUICulture = culture;
 
             ApplicationConfiguration.Initialize();
-            Application.Run(new frmUserManagement());
+            Application.Run(new frmMain());
         }
     }
 }

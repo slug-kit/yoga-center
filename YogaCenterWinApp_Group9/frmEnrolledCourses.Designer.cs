@@ -1,6 +1,6 @@
 ﻿namespace YogaCenterWinApp_Group9
 {
-    partial class frmRegistrationManagement
+    partial class frmEnrolledCourses
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             ListViewItem listViewItem1 = new ListViewItem(new string[] { "Karma Yoga", "36", "14/06/2023" }, 4);
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistrationManagement));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEnrolledCourses));
             mainSplitContainer = new SplitContainer();
             listView1 = new ListView();
             columnHeader1 = new ColumnHeader();

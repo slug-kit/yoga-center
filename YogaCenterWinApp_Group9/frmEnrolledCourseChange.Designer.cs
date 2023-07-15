@@ -1,6 +1,6 @@
 ﻿namespace YogaCenterWinApp_Group9
 {
-    partial class frmChangeCourse
+    partial class frmEnrolledCourseChange
     {
         /// <summary>
         /// Required designer variable.
@@ -63,7 +63,7 @@
             // richTextBox3
             // 
             richTextBox3.Location = new Point(8, 453);
-            richTextBox3.Margin = new Padding(4, 4, 4, 4);
+            richTextBox3.Margin = new Padding(4);
             richTextBox3.Name = "richTextBox3";
             richTextBox3.Size = new Size(440, 39);
             richTextBox3.TabIndex = 63;
@@ -82,7 +82,7 @@
             // pictureBox1
             // 
             pictureBox1.Location = new Point(298, 214);
-            pictureBox1.Margin = new Padding(4, 4, 4, 4);
+            pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(96, 140);
             pictureBox1.TabIndex = 58;
@@ -102,7 +102,7 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(7, 269);
-            comboBox1.Margin = new Padding(4, 4, 4, 4);
+            comboBox1.Margin = new Padding(4);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(205, 29);
             comboBox1.TabIndex = 59;
@@ -110,7 +110,7 @@
             // richTextBox4
             // 
             richTextBox4.Location = new Point(7, 362);
-            richTextBox4.Margin = new Padding(4, 4, 4, 4);
+            richTextBox4.Margin = new Padding(4);
             richTextBox4.Name = "richTextBox4";
             richTextBox4.Size = new Size(441, 39);
             richTextBox4.TabIndex = 61;
@@ -119,7 +119,7 @@
             // richTextBox1
             // 
             richTextBox1.Location = new Point(7, 164);
-            richTextBox1.Margin = new Padding(4, 4, 4, 4);
+            richTextBox1.Margin = new Padding(4);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(441, 39);
             richTextBox1.TabIndex = 56;
@@ -128,7 +128,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(7, 130);
+            label7.Location = new Point(7, 129);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(73, 21);
@@ -138,7 +138,7 @@
             // dateTimePicker2
             // 
             dateTimePicker2.Location = new Point(244, 66);
-            dateTimePicker2.Margin = new Padding(4, 4, 4, 4);
+            dateTimePicker2.Margin = new Padding(4);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(205, 29);
             dateTimePicker2.TabIndex = 54;
@@ -156,7 +156,7 @@
             // dateTimePicker1
             // 
             dateTimePicker1.Location = new Point(7, 66);
-            dateTimePicker1.Margin = new Padding(4, 4, 4, 4);
+            dateTimePicker1.Margin = new Padding(4);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(205, 29);
             dateTimePicker1.TabIndex = 52;
@@ -164,7 +164,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(15, 32);
+            label3.Location = new Point(7, 32);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(71, 21);
@@ -191,6 +191,7 @@
             groupBox1.Size = new Size(456, 520);
             groupBox1.TabIndex = 64;
             groupBox1.TabStop = false;
+            groupBox1.Text = "Preview";
             // 
             // groupBox2
             // 
@@ -206,7 +207,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(45, 30);
+            label1.Location = new Point(36, 30);
             label1.Name = "label1";
             label1.Size = new Size(74, 25);
             label1.TabIndex = 0;
@@ -215,12 +216,12 @@
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(185, 30);
+            comboBox2.Location = new Point(156, 30);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(263, 29);
+            comboBox2.Size = new Size(292, 29);
             comboBox2.TabIndex = 26;
             // 
-            // frmChangeClass
+            // frmChangeCourse
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -228,9 +229,9 @@
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(4, 4, 4, 4);
-            Name = "frmChangeClass";
-            Text = "frmChangeClass";
+            Margin = new Padding(4);
+            Name = "frmChangeCourse";
+            Text = "Change Course";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

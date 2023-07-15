@@ -68,6 +68,7 @@ namespace YogaCenterWinApp_Group9
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(180, 23);
             txtEmail.TabIndex = 2;
+            txtEmail.KeyDown += txtEmail_KeyDown;
             // 
             // txtPassword
             // 
@@ -98,6 +99,7 @@ namespace YogaCenterWinApp_Group9
             btLogin.TabIndex = 5;
             btLogin.Text = "&Login";
             btLogin.UseVisualStyleBackColor = true;
+            btLogin.Click += btnLogin_Click;
             // 
             // btRegister
             // 

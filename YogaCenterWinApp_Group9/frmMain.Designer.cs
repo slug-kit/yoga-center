@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             mainStatus = new StatusStrip();
-            toolStripStatusLabel1 = new ToolStripStatusLabel();
+            formTitleLabel = new ToolStripStatusLabel();
             mainMenu = new MenuStrip();
             userToolStripMenuItem = new ToolStripMenuItem();
             loginToolStripMenuItem = new ToolStripMenuItem();
@@ -39,12 +39,18 @@
             toolStripSeparator1 = new ToolStripSeparator();
             exitToolStripMenuItem = new ToolStripMenuItem();
             navigationToolStripMenuItem = new ToolStripMenuItem();
+            programsToolStripMenuItem = new ToolStripMenuItem();
+            myCoursesToolStripMenuItem = new ToolStripMenuItem();
+            timetableToolStripMenuItem = new ToolStripMenuItem();
             switchFormControlToolStripMenuItem = new ToolStripMenuItem();
+            managementToolStripMenuItem = new ToolStripMenuItem();
+            programManagementToolStripMenuItem = new ToolStripMenuItem();
+            courseManagementToolStripMenuItem = new ToolStripMenuItem();
+            dailyScheduleManagementToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator2 = new ToolStripSeparator();
+            userManagementToolStripMenuItem = new ToolStripMenuItem();
             mainTool = new ToolStrip();
             toolStripButton1 = new ToolStripButton();
-            programsToolStripMenuItem = new ToolStripMenuItem();
-            coursesToolStripMenuItem = new ToolStripMenuItem();
-            usersToolStripMenuItem = new ToolStripMenuItem();
             mainStatus.SuspendLayout();
             mainMenu.SuspendLayout();
             mainTool.SuspendLayout();
@@ -52,7 +58,7 @@
             // 
             // mainStatus
             // 
-            mainStatus.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1 });
+            mainStatus.Items.AddRange(new ToolStripItem[] { formTitleLabel });
             mainStatus.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
             mainStatus.Location = new Point(0, 839);
             mainStatus.Name = "mainStatus";
@@ -60,15 +66,15 @@
             mainStatus.Size = new Size(1334, 22);
             mainStatus.TabIndex = 2;
             // 
-            // toolStripStatusLabel1
+            // formTitleLabel
             // 
-            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Size = new Size(173, 17);
-            toolStripStatusLabel1.Text = "Hello, I am the Placeholder Text";
+            formTitleLabel.Name = "formTitleLabel";
+            formTitleLabel.Size = new Size(173, 17);
+            formTitleLabel.Text = "Hello, I am the Placeholder Text";
             // 
             // mainMenu
             // 
-            mainMenu.Items.AddRange(new ToolStripItem[] { userToolStripMenuItem, navigationToolStripMenuItem, switchFormControlToolStripMenuItem });
+            mainMenu.Items.AddRange(new ToolStripItem[] { userToolStripMenuItem, navigationToolStripMenuItem, switchFormControlToolStripMenuItem, managementToolStripMenuItem });
             mainMenu.Location = new Point(0, 0);
             mainMenu.MdiWindowListItem = switchFormControlToolStripMenuItem;
             mainMenu.Name = "mainMenu";
@@ -88,46 +94,70 @@
             // 
             loginToolStripMenuItem.Name = "loginToolStripMenuItem";
             loginToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.I;
-            loginToolStripMenuItem.ShowShortcutKeys = false;
-            loginToolStripMenuItem.Size = new Size(180, 22);
+            loginToolStripMenuItem.Size = new Size(151, 22);
             loginToolStripMenuItem.Text = "Log&in";
+            loginToolStripMenuItem.Click += loginToolStripMenuItem_Click;
             // 
             // profileToolStripMenuItem
             // 
             profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            profileToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.P;
-            profileToolStripMenuItem.ShowShortcutKeys = false;
-            profileToolStripMenuItem.Size = new Size(180, 22);
-            profileToolStripMenuItem.Text = "&Profile";
+            profileToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.F;
+            profileToolStripMenuItem.Size = new Size(151, 22);
+            profileToolStripMenuItem.Text = "Pro&file";
+            profileToolStripMenuItem.Click += profileToolStripMenuItem_Click;
             // 
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
             logoutToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.O;
-            logoutToolStripMenuItem.ShowShortcutKeys = false;
-            logoutToolStripMenuItem.Size = new Size(180, 22);
+            logoutToolStripMenuItem.Size = new Size(151, 22);
             logoutToolStripMenuItem.Text = "Log&out";
+            logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(177, 6);
+            toolStripSeparator1.Size = new Size(148, 6);
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             exitToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.X;
-            exitToolStripMenuItem.ShowShortcutKeys = false;
-            exitToolStripMenuItem.Size = new Size(180, 22);
+            exitToolStripMenuItem.Size = new Size(151, 22);
             exitToolStripMenuItem.Text = "E&xit";
+            exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // navigationToolStripMenuItem
             // 
-            navigationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { programsToolStripMenuItem, coursesToolStripMenuItem, usersToolStripMenuItem });
+            navigationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { programsToolStripMenuItem, myCoursesToolStripMenuItem, timetableToolStripMenuItem });
             navigationToolStripMenuItem.Name = "navigationToolStripMenuItem";
             navigationToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.N;
             navigationToolStripMenuItem.Size = new Size(77, 19);
             navigationToolStripMenuItem.Text = "&Navigation";
+            // 
+            // programsToolStripMenuItem
+            // 
+            programsToolStripMenuItem.Name = "programsToolStripMenuItem";
+            programsToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.P;
+            programsToolStripMenuItem.Size = new Size(174, 22);
+            programsToolStripMenuItem.Text = "&Programs";
+            programsToolStripMenuItem.Click += programsToolStripMenuItem_Click;
+            // 
+            // myCoursesToolStripMenuItem
+            // 
+            myCoursesToolStripMenuItem.Name = "myCoursesToolStripMenuItem";
+            myCoursesToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.C;
+            myCoursesToolStripMenuItem.Size = new Size(174, 22);
+            myCoursesToolStripMenuItem.Text = "My &Courses";
+            myCoursesToolStripMenuItem.Click += myCoursesToolStripMenuItem_Click;
+            // 
+            // timetableToolStripMenuItem
+            // 
+            timetableToolStripMenuItem.Name = "timetableToolStripMenuItem";
+            timetableToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.T;
+            timetableToolStripMenuItem.Size = new Size(174, 22);
+            timetableToolStripMenuItem.Text = "&Timetable";
+            timetableToolStripMenuItem.Click += timetableToolStripMenuItem_Click;
             // 
             // switchFormControlToolStripMenuItem
             // 
@@ -136,6 +166,51 @@
             switchFormControlToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.W;
             switchFormControlToolStripMenuItem.Size = new Size(68, 19);
             switchFormControlToolStripMenuItem.Text = "&Windows";
+            // 
+            // managementToolStripMenuItem
+            // 
+            managementToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { programManagementToolStripMenuItem, courseManagementToolStripMenuItem, dailyScheduleManagementToolStripMenuItem, toolStripSeparator2, userManagementToolStripMenuItem });
+            managementToolStripMenuItem.Name = "managementToolStripMenuItem";
+            managementToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.M;
+            managementToolStripMenuItem.Size = new Size(90, 19);
+            managementToolStripMenuItem.Text = "&Management";
+            // 
+            // programManagementToolStripMenuItem
+            // 
+            programManagementToolStripMenuItem.Name = "programManagementToolStripMenuItem";
+            programManagementToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Alt | Keys.P;
+            programManagementToolStripMenuItem.Size = new Size(214, 22);
+            programManagementToolStripMenuItem.Text = "&Program";
+            programManagementToolStripMenuItem.Click += programManagementToolStripMenuItem_Click;
+            // 
+            // courseManagementToolStripMenuItem
+            // 
+            courseManagementToolStripMenuItem.Name = "courseManagementToolStripMenuItem";
+            courseManagementToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Alt | Keys.C;
+            courseManagementToolStripMenuItem.Size = new Size(214, 22);
+            courseManagementToolStripMenuItem.Text = "&Course";
+            courseManagementToolStripMenuItem.Click += courseManagementToolStripMenuItem_Click;
+            // 
+            // dailyScheduleManagementToolStripMenuItem
+            // 
+            dailyScheduleManagementToolStripMenuItem.Name = "dailyScheduleManagementToolStripMenuItem";
+            dailyScheduleManagementToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Alt | Keys.S;
+            dailyScheduleManagementToolStripMenuItem.Size = new Size(214, 22);
+            dailyScheduleManagementToolStripMenuItem.Text = "Daily &Schedule";
+            dailyScheduleManagementToolStripMenuItem.Click += dailyScheduleManagementToolStripMenuItem_Click;
+            // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(211, 6);
+            // 
+            // userManagementToolStripMenuItem
+            // 
+            userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
+            userManagementToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Alt | Keys.U;
+            userManagementToolStripMenuItem.Size = new Size(214, 22);
+            userManagementToolStripMenuItem.Text = "&User";
+            userManagementToolStripMenuItem.Click += userManagementToolStripMenuItem_Click;
             // 
             // mainTool
             // 
@@ -156,24 +231,6 @@
             toolStripButton1.Name = "toolStripButton1";
             toolStripButton1.Size = new Size(23, 20);
             toolStripButton1.Text = "toolStripButton1";
-            // 
-            // programsToolStripMenuItem
-            // 
-            programsToolStripMenuItem.Name = "programsToolStripMenuItem";
-            programsToolStripMenuItem.Size = new Size(180, 22);
-            programsToolStripMenuItem.Text = "Programs";
-            // 
-            // coursesToolStripMenuItem
-            // 
-            coursesToolStripMenuItem.Name = "coursesToolStripMenuItem";
-            coursesToolStripMenuItem.Size = new Size(180, 22);
-            coursesToolStripMenuItem.Text = "Courses";
-            // 
-            // usersToolStripMenuItem
-            // 
-            usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            usersToolStripMenuItem.Size = new Size(180, 22);
-            usersToolStripMenuItem.Text = "Users";
             // 
             // frmMain
             // 
@@ -204,7 +261,7 @@
         #endregion
 
         private StatusStrip mainStatus;
-        private ToolStripStatusLabel toolStripStatusLabel1;
+        private ToolStripStatusLabel formTitleLabel;
         private MenuStrip mainMenu;
         private ToolStripMenuItem userToolStripMenuItem;
         private ToolStripMenuItem profileToolStripMenuItem;
@@ -217,7 +274,13 @@
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripMenuItem loginToolStripMenuItem;
         private ToolStripMenuItem programsToolStripMenuItem;
-        private ToolStripMenuItem coursesToolStripMenuItem;
-        private ToolStripMenuItem usersToolStripMenuItem;
+        private ToolStripMenuItem myCoursesToolStripMenuItem;
+        private ToolStripMenuItem timetableToolStripMenuItem;
+        private ToolStripMenuItem managementToolStripMenuItem;
+        private ToolStripMenuItem programManagementToolStripMenuItem;
+        private ToolStripMenuItem courseManagementToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripMenuItem userManagementToolStripMenuItem;
+        private ToolStripMenuItem dailyScheduleManagementToolStripMenuItem;
     }
 }

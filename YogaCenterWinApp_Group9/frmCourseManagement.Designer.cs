@@ -53,6 +53,7 @@
             btndelete = new Button();
             btnadd = new Button();
             dgvcourse = new DataGridView();
+            txtstatus = new TextBox();
             label20 = new Label();
             label21 = new Label();
             label19 = new Label();
@@ -77,7 +78,6 @@
             cboinstructor = new ComboBox();
             rtbspecialization = new RichTextBox();
             numericUpDown1 = new NumericUpDown();
-            txtstatus = new TextBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -235,7 +235,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(76, 215);
+            label17.Location = new Point(77, 215);
             label17.Name = "label17";
             label17.Size = new Size(97, 21);
             label17.TabIndex = 18;
@@ -269,7 +269,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(100, 170);
+            label11.Location = new Point(119, 170);
             label11.Name = "label11";
             label11.Size = new Size(55, 21);
             label11.TabIndex = 9;
@@ -332,7 +332,7 @@
             // 
             // btndelete
             // 
-            btndelete.Location = new Point(328, 36);
+            btndelete.Location = new Point(397, 41);
             btndelete.Name = "btndelete";
             btndelete.Size = new Size(100, 40);
             btndelete.TabIndex = 2;
@@ -362,6 +362,13 @@
             dgvcourse.TabIndex = 3;
             dgvcourse.CellDoubleClick += dgvcourse_CellDoubleClick;
             dgvcourse.CellFormatting += dgvcourse_CellFormatting;
+            // 
+            // txtstatus
+            // 
+            txtstatus.Location = new Point(20, 104);
+            txtstatus.Name = "txtstatus";
+            txtstatus.Size = new Size(159, 29);
+            txtstatus.TabIndex = 30;
             // 
             // label20
             // 
@@ -560,13 +567,6 @@
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(160, 29);
             numericUpDown1.TabIndex = 29;
-            // 
-            // txtstatus
-            // 
-            txtstatus.Location = new Point(20, 104);
-            txtstatus.Name = "txtstatus";
-            txtstatus.Size = new Size(159, 29);
-            txtstatus.TabIndex = 30;
             // 
             // frmCourseManagement
             // 

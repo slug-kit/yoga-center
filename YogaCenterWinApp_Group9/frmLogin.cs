@@ -31,10 +31,10 @@ public partial class frmLogin : Form
 
     public event ExitEventHandler? Exiting;
 
-        public frmLogin()
-        {
-            InitializeComponent();
-        }
+    public frmLogin()
+    {
+        InitializeComponent();
+    }
 
     private void btnLogin_Click(object sender, EventArgs e) => PerformLogin();
 
@@ -43,6 +43,7 @@ public partial class frmLogin : Form
         if (e.KeyCode == Keys.Enter && Validate())
             PerformLogin();
     }
+
     private void txtEmail_KeyDown(object sender, KeyEventArgs e)
     {
         if (e.KeyCode == Keys.Enter && Validate())
@@ -81,9 +82,6 @@ public partial class frmLogin : Form
                     OnLoginSuccess(new LoginEventArgs() { FullPrivilege = true });
                 else
                     OnLoginSuccess(new LoginEventArgs() { Id = curAccount.Id, FullPrivilege = false });
-                frmMain frmMain = new frmMain();
-                frmMain.Show();
-                Hide();
             }
             else
             {
@@ -105,7 +103,7 @@ public partial class frmLogin : Form
 
     protected virtual void OnLoginFailure(LoginEventArgs e)
     {
-        LoginEventHandler? loginEventDelegate = (LoginEventHandler?)EventHandlers[(authFailedEventKey)];
+        LoginEventHandler? loginEventDelegate = (LoginEventHandler?)EventHandlers[authFailedEventKey];
         loginEventDelegate?.Invoke(this, e);
     }
 

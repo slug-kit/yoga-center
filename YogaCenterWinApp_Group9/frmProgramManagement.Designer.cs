@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProgramManagement));
             splitContainer = new SplitContainer();
             groupBox2 = new GroupBox();
+            textBox5 = new TextBox();
+            lbCode = new Label();
             textBox4 = new TextBox();
             button5 = new Button();
             numericUpDown2 = new NumericUpDown();
@@ -49,14 +51,14 @@
             btnnew = new Button();
             dgvprogram = new DataGridView();
             starRatingControl = new Controls.StarRatingControl();
+            textBox1 = new TextBox();
+            label9 = new Label();
             lbDescription = new Label();
             pictureBox1 = new PictureBox();
             txtboxdescription = new RichTextBox();
             txtfee = new TextBox();
             label1 = new Label();
             label2 = new Label();
-            textBox1 = new TextBox();
-            label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer).BeginInit();
             splitContainer.Panel1.SuspendLayout();
             splitContainer.Panel2.SuspendLayout();
@@ -85,9 +87,9 @@
             // 
             // splitContainer.Panel2
             // 
+            splitContainer.Panel2.Controls.Add(starRatingControl);
             splitContainer.Panel2.Controls.Add(textBox1);
             splitContainer.Panel2.Controls.Add(label9);
-            splitContainer.Panel2.Controls.Add(starRatingControl);
             splitContainer.Panel2.Controls.Add(lbDescription);
             splitContainer.Panel2.Controls.Add(pictureBox1);
             splitContainer.Panel2.Controls.Add(txtboxdescription);
@@ -101,6 +103,8 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(textBox5);
+            groupBox2.Controls.Add(lbCode);
             groupBox2.Controls.Add(textBox4);
             groupBox2.Controls.Add(button5);
             groupBox2.Controls.Add(numericUpDown2);
@@ -116,20 +120,36 @@
             groupBox2.Controls.Add(label3);
             groupBox2.Location = new Point(12, 0);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(563, 181);
+            groupBox2.Size = new Size(563, 235);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(180, 77);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(122, 29);
+            textBox5.TabIndex = 19;
+            // 
+            // lbCode
+            // 
+            lbCode.AutoSize = true;
+            lbCode.Location = new Point(100, 80);
+            lbCode.Name = "lbCode";
+            lbCode.Size = new Size(49, 21);
+            lbCode.TabIndex = 18;
+            lbCode.Text = "Code:";
+            // 
             // textBox4
             // 
-            textBox4.Location = new Point(394, 137);
+            textBox4.Location = new Point(340, 144);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(150, 29);
+            textBox4.Size = new Size(100, 29);
             textBox4.TabIndex = 15;
             // 
             // button5
             // 
-            button5.Location = new Point(15, 93);
+            button5.Location = new Point(15, 143);
             button5.Name = "button5";
             button5.Size = new Size(64, 29);
             button5.TabIndex = 14;
@@ -138,7 +158,7 @@
             // 
             // numericUpDown2
             // 
-            numericUpDown2.Location = new Point(275, 93);
+            numericUpDown2.Location = new Point(290, 195);
             numericUpDown2.Name = "numericUpDown2";
             numericUpDown2.Size = new Size(50, 29);
             numericUpDown2.TabIndex = 13;
@@ -146,7 +166,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(350, 140);
+            label8.Location = new Point(301, 147);
             label8.Name = "label8";
             label8.Size = new Size(24, 21);
             label8.TabIndex = 11;
@@ -154,15 +174,15 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(180, 137);
+            textBox3.Location = new Point(180, 144);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(150, 29);
+            textBox3.Size = new Size(100, 29);
             textBox3.TabIndex = 10;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(100, 140);
+            label7.Location = new Point(100, 147);
             label7.Name = "label7";
             label7.Size = new Size(37, 21);
             label7.TabIndex = 9;
@@ -171,7 +191,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(240, 95);
+            label6.Location = new Point(250, 197);
             label6.Name = "label6";
             label6.Size = new Size(24, 21);
             label6.TabIndex = 7;
@@ -179,7 +199,7 @@
             // 
             // numericUpDown1
             // 
-            numericUpDown1.Location = new Point(180, 93);
+            numericUpDown1.Location = new Point(180, 195);
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(50, 29);
             numericUpDown1.TabIndex = 6;
@@ -187,7 +207,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(100, 95);
+            label5.Location = new Point(100, 197);
             label5.Name = "label5";
             label5.Size = new Size(58, 21);
             label5.TabIndex = 5;
@@ -197,7 +217,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(15, 65);
+            label4.Location = new Point(15, 115);
             label4.Name = "label4";
             label4.Size = new Size(71, 21);
             label4.TabIndex = 3;
@@ -205,9 +225,9 @@
             // 
             // btnsearch
             // 
-            btnsearch.Location = new Point(415, 27);
+            btnsearch.Location = new Point(438, 51);
             btnsearch.Name = "btnsearch";
-            btnsearch.Size = new Size(100, 29);
+            btnsearch.Size = new Size(100, 40);
             btnsearch.TabIndex = 2;
             btnsearch.Text = "Search";
             btnsearch.UseVisualStyleBackColor = true;
@@ -262,38 +282,53 @@
             // dgvprogram
             // 
             dgvprogram.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvprogram.Location = new Point(12, 187);
+            dgvprogram.Location = new Point(12, 247);
             dgvprogram.Name = "dgvprogram";
             dgvprogram.RowHeadersWidth = 51;
             dgvprogram.RowTemplate.Height = 25;
-            dgvprogram.Size = new Size(563, 334);
+            dgvprogram.Size = new Size(563, 274);
             dgvprogram.TabIndex = 0;
             dgvprogram.CellDoubleClick += dgvprogram_CellDoubleClick;
             // 
             // starRatingControl
             // 
             starRatingControl.BottomMargin = 2;
-            starRatingControl.HoverColor = Color.Yellow;
+            starRatingControl.HoverColor = Color.Gold;
             starRatingControl.LeftMargin = 2;
-            starRatingControl.Location = new Point(80, 299);
+            starRatingControl.Location = new Point(80, 300);
             starRatingControl.Name = "starRatingControl";
             starRatingControl.OutlineColor = Color.DarkGray;
             starRatingControl.OutlineThickness = 1;
             starRatingControl.ReadOnly = false;
             starRatingControl.RightMargin = 2;
-            starRatingControl.SelectedColor = Color.RoyalBlue;
-            starRatingControl.SelectedStar = 0;
-            starRatingControl.Size = new Size(150, 22);
+            starRatingControl.SelectedColor = Color.Gold;
+            starRatingControl.SelectedStar = 4;
+            starRatingControl.Size = new Size(132, 21);
             starRatingControl.StarCount = 5;
             starRatingControl.StarSpacing = 8;
-            starRatingControl.TabIndex = 8;
-            starRatingControl.Text = "starRatingControl";
+            starRatingControl.TabIndex = 11;
             starRatingControl.TopMargin = 2;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(80, 247);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(115, 29);
+            textBox1.TabIndex = 10;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(12, 250);
+            label9.Name = "label9";
+            label9.Size = new Size(52, 21);
+            label9.TabIndex = 9;
+            label9.Text = "Name";
             // 
             // lbDescription
             // 
             lbDescription.AutoSize = true;
-            lbDescription.Location = new Point(12, 351);
+            lbDescription.Location = new Point(12, 350);
             lbDescription.Name = "lbDescription";
             lbDescription.Size = new Size(89, 21);
             lbDescription.TabIndex = 2;
@@ -311,10 +346,10 @@
             // 
             // txtboxdescription
             // 
-            txtboxdescription.Location = new Point(12, 386);
+            txtboxdescription.Location = new Point(12, 374);
             txtboxdescription.Name = "txtboxdescription";
             txtboxdescription.ScrollBars = RichTextBoxScrollBars.ForcedVertical;
-            txtboxdescription.Size = new Size(412, 232);
+            txtboxdescription.Size = new Size(412, 244);
             txtboxdescription.TabIndex = 1;
             txtboxdescription.Text = "";
             // 
@@ -343,22 +378,6 @@
             label2.TabIndex = 6;
             label2.Text = "Fee";
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(80, 247);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(115, 29);
-            textBox1.TabIndex = 10;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(12, 250);
-            label9.Name = "label9";
-            label9.Size = new Size(52, 21);
-            label9.TabIndex = 9;
-            label9.Text = "Name";
-            // 
             // frmProgramManagement
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
@@ -368,7 +387,7 @@
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
             Name = "frmProgramManagement";
-            Text = "frmProgramManagement";
+            Text = "Program Management";
             Load += frmProgramManagement_Load;
             splitContainer.Panel1.ResumeLayout(false);
             splitContainer.Panel2.ResumeLayout(false);
@@ -412,8 +431,10 @@
         private Label label8;
         private TextBox textBox3;
         private Label label7;
-        private Controls.StarRatingControl starRatingControl;
         private TextBox textBox1;
         private Label label9;
+        private TextBox textBox5;
+        private Label lbCode;
+        private Controls.StarRatingControl starRatingControl;
     }
 }

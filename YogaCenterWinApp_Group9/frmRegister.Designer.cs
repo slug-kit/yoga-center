@@ -54,7 +54,7 @@
             // lbUsername
             // 
             lbUsername.AutoSize = true;
-            lbUsername.Location = new Point(96, 67);
+            lbUsername.Location = new Point(30, 67);
             lbUsername.Margin = new Padding(2, 0, 2, 0);
             lbUsername.Name = "lbUsername";
             lbUsername.Size = new Size(60, 15);
@@ -64,7 +64,7 @@
             // lbPassword
             // 
             lbPassword.AutoSize = true;
-            lbPassword.Location = new Point(96, 93);
+            lbPassword.Location = new Point(30, 93);
             lbPassword.Margin = new Padding(2, 0, 2, 0);
             lbPassword.Name = "lbPassword";
             lbPassword.Size = new Size(57, 15);
@@ -75,17 +75,17 @@
             // 
             lbRegister.AutoSize = true;
             lbRegister.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lbRegister.Location = new Point(226, 9);
+            lbRegister.Location = new Point(198, 9);
             lbRegister.Margin = new Padding(2, 0, 2, 0);
             lbRegister.Name = "lbRegister";
-            lbRegister.Size = new Size(173, 32);
+            lbRegister.Size = new Size(94, 32);
             lbRegister.TabIndex = 2;
-            lbRegister.Text = "Register Form";
+            lbRegister.Text = "Signup";
             // 
             // lbConfirm
             // 
             lbConfirm.AutoSize = true;
-            lbConfirm.Location = new Point(95, 121);
+            lbConfirm.Location = new Point(29, 121);
             lbConfirm.Margin = new Padding(2, 0, 2, 0);
             lbConfirm.Name = "lbConfirm";
             lbConfirm.Size = new Size(104, 15);
@@ -95,7 +95,7 @@
             // lbFullname
             // 
             lbFullname.AutoSize = true;
-            lbFullname.Location = new Point(96, 148);
+            lbFullname.Location = new Point(30, 148);
             lbFullname.Margin = new Padding(2, 0, 2, 0);
             lbFullname.Name = "lbFullname";
             lbFullname.Size = new Size(61, 15);
@@ -105,7 +105,7 @@
             // lbGender
             // 
             lbGender.AutoSize = true;
-            lbGender.Location = new Point(96, 202);
+            lbGender.Location = new Point(30, 202);
             lbGender.Margin = new Padding(2, 0, 2, 0);
             lbGender.Name = "lbGender";
             lbGender.Size = new Size(45, 15);
@@ -115,7 +115,7 @@
             // lbDateBirth
             // 
             lbDateBirth.AutoSize = true;
-            lbDateBirth.Location = new Point(96, 175);
+            lbDateBirth.Location = new Point(30, 175);
             lbDateBirth.Margin = new Padding(2, 0, 2, 0);
             lbDateBirth.Name = "lbDateBirth";
             lbDateBirth.Size = new Size(73, 15);
@@ -125,7 +125,7 @@
             // lbMail
             // 
             lbMail.AutoSize = true;
-            lbMail.Location = new Point(96, 223);
+            lbMail.Location = new Point(30, 223);
             lbMail.Margin = new Padding(2, 0, 2, 0);
             lbMail.Name = "lbMail";
             lbMail.Size = new Size(36, 15);
@@ -135,7 +135,7 @@
             // lbPhone
             // 
             lbPhone.AutoSize = true;
-            lbPhone.Location = new Point(95, 249);
+            lbPhone.Location = new Point(29, 249);
             lbPhone.Margin = new Padding(2, 0, 2, 0);
             lbPhone.Name = "lbPhone";
             lbPhone.Size = new Size(88, 15);
@@ -144,7 +144,7 @@
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(209, 65);
+            txtUsername.Location = new Point(143, 65);
             txtUsername.Margin = new Padding(2);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(206, 23);
@@ -152,7 +152,7 @@
             // 
             // txtFullname
             // 
-            txtFullname.Location = new Point(209, 146);
+            txtFullname.Location = new Point(143, 146);
             txtFullname.Margin = new Padding(2);
             txtFullname.Name = "txtFullname";
             txtFullname.Size = new Size(206, 23);
@@ -160,7 +160,7 @@
             // 
             // txtConfirm
             // 
-            txtConfirm.Location = new Point(209, 119);
+            txtConfirm.Location = new Point(143, 119);
             txtConfirm.Margin = new Padding(2);
             txtConfirm.Name = "txtConfirm";
             txtConfirm.Size = new Size(206, 23);
@@ -168,7 +168,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(209, 92);
+            txtPassword.Location = new Point(143, 92);
             txtPassword.Margin = new Padding(2);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(206, 23);
@@ -176,7 +176,7 @@
             // 
             // mtxtDateBirth
             // 
-            mtxtDateBirth.Location = new Point(209, 173);
+            mtxtDateBirth.Location = new Point(143, 173);
             mtxtDateBirth.Margin = new Padding(2);
             mtxtDateBirth.Name = "mtxtDateBirth";
             mtxtDateBirth.Size = new Size(206, 23);
@@ -185,7 +185,7 @@
             // lbMale
             // 
             lbMale.AutoSize = true;
-            lbMale.Location = new Point(243, 200);
+            lbMale.Location = new Point(177, 200);
             lbMale.Margin = new Padding(2);
             lbMale.Name = "lbMale";
             lbMale.Size = new Size(51, 19);
@@ -197,7 +197,7 @@
             // lbFemale
             // 
             lbFemale.AutoSize = true;
-            lbFemale.Location = new Point(314, 200);
+            lbFemale.Location = new Point(248, 200);
             lbFemale.Margin = new Padding(2);
             lbFemale.Name = "lbFemale";
             lbFemale.Size = new Size(63, 19);
@@ -208,7 +208,7 @@
             // 
             // maskedTextBox3
             // 
-            maskedTextBox3.Location = new Point(209, 248);
+            maskedTextBox3.Location = new Point(143, 248);
             maskedTextBox3.Margin = new Padding(2);
             maskedTextBox3.Name = "maskedTextBox3";
             maskedTextBox3.Size = new Size(206, 23);
@@ -217,7 +217,7 @@
             // chkInstructor
             // 
             chkInstructor.AutoSize = true;
-            chkInstructor.Location = new Point(209, 279);
+            chkInstructor.Location = new Point(143, 279);
             chkInstructor.Margin = new Padding(2);
             chkInstructor.Name = "chkInstructor";
             chkInstructor.Size = new Size(113, 19);
@@ -229,18 +229,18 @@
             // chkAccept
             // 
             chkAccept.AutoSize = true;
-            chkAccept.Location = new Point(209, 300);
+            chkAccept.Location = new Point(143, 300);
             chkAccept.Margin = new Padding(2);
             chkAccept.Name = "chkAccept";
-            chkAccept.Size = new Size(136, 19);
+            chkAccept.Size = new Size(235, 19);
             chkAccept.TabIndex = 19;
             chkAccept.TabStop = false;
-            chkAccept.Text = "I accept with the app";
+            chkAccept.Text = "I agree to YogaCenter's Terms of Service";
             chkAccept.UseVisualStyleBackColor = true;
             // 
             // btRegister
             // 
-            btRegister.Location = new Point(209, 337);
+            btRegister.Location = new Point(143, 337);
             btRegister.Margin = new Padding(2);
             btRegister.Name = "btRegister";
             btRegister.Size = new Size(205, 27);
@@ -251,7 +251,7 @@
             // txtEmail
             // 
             txtEmail.ForeColor = SystemColors.InactiveCaption;
-            txtEmail.Location = new Point(209, 221);
+            txtEmail.Location = new Point(143, 221);
             txtEmail.Margin = new Padding(2);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(206, 23);
@@ -262,7 +262,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(467, 397);
+            ClientSize = new Size(389, 381);
             Controls.Add(txtEmail);
             Controls.Add(btRegister);
             Controls.Add(chkAccept);

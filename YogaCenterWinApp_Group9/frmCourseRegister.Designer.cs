@@ -28,16 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem11 = new ListViewItem(new string[] { "Jane Doe", "16/20" }, -1);
-            ListViewItem listViewItem12 = new ListViewItem(new string[] { "John Hack", "20/20" }, -1);
-            ListViewItem listViewItem13 = new ListViewItem(new string[] { "Joe Dot", "20/20" }, -1);
-            ListViewItem listViewItem14 = new ListViewItem(new string[] { "Linda Rut", "19/20" }, -1);
-            ListViewItem listViewItem15 = new ListViewItem(new string[] { "Bob Thing", "19/20" }, -1);
+            ListViewItem listViewItem1 = new ListViewItem(new string[] { "Jane Doe", "16/20" }, -1);
+            ListViewItem listViewItem2 = new ListViewItem(new string[] { "John Hack", "20/20" }, -1);
+            ListViewItem listViewItem3 = new ListViewItem(new string[] { "Joe Dot", "20/20" }, -1);
+            ListViewItem listViewItem4 = new ListViewItem(new string[] { "Linda Rut", "19/20" }, -1);
+            ListViewItem listViewItem5 = new ListViewItem(new string[] { "Bob Thing", "19/20" }, -1);
             listView1 = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             button1 = new Button();
             splitContainer = new SplitContainer();
+            groupBox2 = new GroupBox();
+            button4 = new Button();
+            button3 = new Button();
             comboBox3 = new ComboBox();
             label10 = new Label();
             textBox5 = new TextBox();
@@ -58,27 +61,24 @@
             label11 = new Label();
             richTextBox1 = new RichTextBox();
             groupBox1 = new GroupBox();
-            button2 = new Button();
-            groupBox2 = new GroupBox();
-            button3 = new Button();
-            button4 = new Button();
             button5 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer).BeginInit();
             splitContainer.Panel1.SuspendLayout();
             splitContainer.Panel2.SuspendLayout();
             splitContainer.SuspendLayout();
+            groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
             listView1.Dock = DockStyle.Top;
-            listView1.Items.AddRange(new ListViewItem[] { listViewItem11, listViewItem12, listViewItem13, listViewItem14, listViewItem15 });
+            listView1.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3, listViewItem4, listViewItem5 });
             listView1.Location = new Point(0, 0);
-            listView1.Margin = new Padding(4, 4, 4, 4);
+            listView1.Margin = new Padding(4);
             listView1.Name = "listView1";
             listView1.Size = new Size(258, 495);
             listView1.TabIndex = 10;
@@ -98,7 +98,7 @@
             // button1
             // 
             button1.Location = new Point(76, 22);
-            button1.Margin = new Padding(4, 4, 4, 4);
+            button1.Margin = new Padding(4);
             button1.Name = "button1";
             button1.Size = new Size(120, 40);
             button1.TabIndex = 7;
@@ -139,6 +139,36 @@
             splitContainer.Size = new Size(707, 570);
             splitContainer.SplitterDistance = 258;
             splitContainer.TabIndex = 12;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(button4);
+            groupBox2.Controls.Add(button3);
+            groupBox2.Location = new Point(3, 498);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(252, 69);
+            groupBox2.TabIndex = 52;
+            groupBox2.TabStop = false;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(131, 22);
+            button4.Margin = new Padding(4);
+            button4.Name = "button4";
+            button4.Size = new Size(120, 40);
+            button4.TabIndex = 9;
+            button4.Text = "Kick";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(3, 22);
+            button3.Margin = new Padding(4);
+            button3.Name = "button3";
+            button3.Size = new Size(120, 40);
+            button3.TabIndex = 8;
+            button3.Text = "Add";
+            button3.UseVisualStyleBackColor = true;
             // 
             // comboBox3
             // 
@@ -306,46 +336,6 @@
             groupBox1.TabIndex = 51;
             groupBox1.TabStop = false;
             // 
-            // button2
-            // 
-            button2.Location = new Point(525, 22);
-            button2.Margin = new Padding(4);
-            button2.Name = "button2";
-            button2.Size = new Size(120, 40);
-            button2.TabIndex = 8;
-            button2.Text = "Reset";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(button4);
-            groupBox2.Controls.Add(button3);
-            groupBox2.Location = new Point(3, 498);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(252, 69);
-            groupBox2.TabIndex = 52;
-            groupBox2.TabStop = false;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(3, 22);
-            button3.Margin = new Padding(4);
-            button3.Name = "button3";
-            button3.Size = new Size(120, 40);
-            button3.TabIndex = 8;
-            button3.Text = "Add";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            button4.Location = new Point(131, 22);
-            button4.Margin = new Padding(4);
-            button4.Name = "button4";
-            button4.Size = new Size(120, 40);
-            button4.TabIndex = 9;
-            button4.Text = "Kick";
-            button4.UseVisualStyleBackColor = true;
-            // 
             // button5
             // 
             button5.Location = new Point(293, 22);
@@ -356,6 +346,16 @@
             button5.Text = "Cancel";
             button5.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            button2.Location = new Point(525, 22);
+            button2.Margin = new Padding(4);
+            button2.Name = "button2";
+            button2.Size = new Size(120, 40);
+            button2.TabIndex = 8;
+            button2.Text = "Reset";
+            button2.UseVisualStyleBackColor = true;
+            // 
             // frmCourseRegister
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
@@ -364,17 +364,17 @@
             Controls.Add(groupBox1);
             Controls.Add(splitContainer);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "frmCourseRegister";
-            Text = "frmCourseRegister";
+            Text = "Course Register";
             splitContainer.Panel1.ResumeLayout(false);
             splitContainer.Panel2.ResumeLayout(false);
             splitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer).EndInit();
             splitContainer.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox1.ResumeLayout(false);
-            groupBox2.ResumeLayout(false);
             ResumeLayout(false);
         }
 

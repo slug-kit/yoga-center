@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace YogaCenterWinApp_Group9
 {
-    public partial class frmChangeCourse : Form
+    public partial class frmEnrolledCourseChange : Form
     {
-        public frmChangeCourse()
+        public frmEnrolledCourseChange()
         {
             InitializeComponent();
         }
