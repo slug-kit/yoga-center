@@ -44,10 +44,10 @@
             mtxtDateBirth = new MaskedTextBox();
             lbMale = new RadioButton();
             lbFemale = new RadioButton();
-            maskedTextBox3 = new MaskedTextBox();
             chkInstructor = new CheckBox();
             chkAccept = new CheckBox();
             btRegister = new Button();
+            txtPhone = new TextBox();
             txtEmail = new TextBox();
             SuspendLayout();
             // 
@@ -173,14 +173,17 @@
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(206, 23);
             txtPassword.TabIndex = 12;
+            txtPassword.UseSystemPasswordChar = true;
             // 
             // mtxtDateBirth
             // 
             mtxtDateBirth.Location = new Point(143, 173);
             mtxtDateBirth.Margin = new Padding(2);
+            mtxtDateBirth.Mask = "00/00/0000";
             mtxtDateBirth.Name = "mtxtDateBirth";
             mtxtDateBirth.Size = new Size(206, 23);
             mtxtDateBirth.TabIndex = 13;
+            mtxtDateBirth.ValidatingType = typeof(DateTime);
             // 
             // lbMale
             // 
@@ -206,14 +209,6 @@
             lbFemale.Text = "Female";
             lbFemale.UseVisualStyleBackColor = true;
             // 
-            // maskedTextBox3
-            // 
-            maskedTextBox3.Location = new Point(143, 248);
-            maskedTextBox3.Margin = new Padding(2);
-            maskedTextBox3.Name = "maskedTextBox3";
-            maskedTextBox3.Size = new Size(206, 23);
-            maskedTextBox3.TabIndex = 17;
-            // 
             // chkInstructor
             // 
             chkInstructor.AutoSize = true;
@@ -222,7 +217,6 @@
             chkInstructor.Name = "chkInstructor";
             chkInstructor.Size = new Size(113, 19);
             chkInstructor.TabIndex = 18;
-            chkInstructor.TabStop = false;
             chkInstructor.Text = "I'm an instructor";
             chkInstructor.UseVisualStyleBackColor = true;
             // 
@@ -247,6 +241,15 @@
             btRegister.TabIndex = 20;
             btRegister.Text = "Register";
             btRegister.UseVisualStyleBackColor = true;
+            btRegister.Click += btRegister_Click;
+            // 
+            // txtPhone
+            // 
+            txtPhone.Location = new Point(209, 248);
+            txtPhone.Margin = new Padding(2);
+            txtPhone.Name = "txtPhone";
+            txtPhone.Size = new Size(206, 23);
+            txtPhone.TabIndex = 20;
             // 
             // txtEmail
             // 
@@ -256,18 +259,18 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(206, 23);
             txtEmail.TabIndex = 21;
-            txtEmail.Text = "yoga@gmail.com";
+            txtEmail.Enter += txtEmail_Enter;
+            txtEmail.Leave += txtEmail_Leave;
             // 
             // frmRegister
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(389, 381);
+            ClientSize = new Size(467, 397);
             Controls.Add(txtEmail);
             Controls.Add(btRegister);
             Controls.Add(chkAccept);
             Controls.Add(chkInstructor);
-            Controls.Add(maskedTextBox3);
             Controls.Add(lbFemale);
             Controls.Add(lbMale);
             Controls.Add(mtxtDateBirth);
@@ -286,7 +289,9 @@
             Controls.Add(lbUsername);
             Margin = new Padding(2);
             Name = "frmRegister";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmRegister";
+            Load += frmRegister_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -309,10 +314,10 @@
         private MaskedTextBox mtxtDateBirth;
         private RadioButton lbMale;
         private RadioButton lbFemale;
-        private MaskedTextBox maskedTextBox3;
         private CheckBox chkInstructor;
         private CheckBox chkAccept;
         private Button btRegister;
+        private TextBox txtPhone;
         private TextBox txtEmail;
     }
 }

@@ -110,12 +110,13 @@ namespace YogaCenterWinApp_Group9
             btRegister.TabIndex = 6;
             btRegister.Text = "Register";
             btRegister.UseVisualStyleBackColor = true;
+            btRegister.Click += btRegister_Click;
             // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(609, 304);
+            ClientSize = new Size(606, 245);
             Controls.Add(btRegister);
             Controls.Add(btLogin);
             Controls.Add(lbLogin);
@@ -125,6 +126,7 @@ namespace YogaCenterWinApp_Group9
             Controls.Add(lbEmail);
             Margin = new Padding(2);
             Name = "frmLogin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmLogin";
             ResumeLayout(false);
             PerformLayout();
@@ -132,8 +134,7 @@ namespace YogaCenterWinApp_Group9
 
         #endregion
 
-        private Button btnExit;
-        private Button btnLogin;
+
         private TextBox txtPassword;
         private TextBox txtEmail;
         private Label lbPassword;
