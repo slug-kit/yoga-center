@@ -24,10 +24,10 @@ public partial class frmProgramManagement : Form
         source.DataSource = programList;
 
         txtboxdescription.DataBindings.Clear();
-        txtfee.DataBindings.Clear();
+        txtFee.DataBindings.Clear();
         starRatingControl.DataBindings.Clear();
 
-        txtfee.DataBindings.Add("Text", source, "Fee");
+        txtFee.DataBindings.Add("Text", source, "Fee");
         txtboxdescription.DataBindings.Add("Text", source, "Description");
         starRatingControl.DataBindings.Add("SelectedStar", source, "Rating");
 
@@ -72,7 +72,7 @@ public partial class frmProgramManagement : Form
                 {
                     Id = Convert.ToInt32(selectedRow.Cells["Id"].Value),
                     Description = selectedRow.Cells["Description"].Value.ToString(),
-                    Fee = int.Parse(txtfee.Text),
+                    Fee = int.Parse(txtFee.Text),
                 };
             }
         }
@@ -106,7 +106,7 @@ public partial class frmProgramManagement : Form
     public void ClearText()
     {
         txtboxdescription.Text = string.Empty;
-        txtfee.Text = string.Empty;
+        txtFee.Text = string.Empty;
     }
     //REMOVE -------------------------------------------------------------
     private void btndelete_Click(object sender, EventArgs e)
@@ -145,9 +145,9 @@ public partial class frmProgramManagement : Form
                 source.DataSource = programList;
 
                 txtboxdescription.DataBindings.Clear();
-                txtfee.DataBindings.Clear();
+                txtFee.DataBindings.Clear();
 
-                txtfee.DataBindings.Add("Text", source, "Fee");
+                txtFee.DataBindings.Add("Text", source, "Fee");
                 txtboxdescription.DataBindings.Add("Text", source, "Description");
 
                 dgvprogram.DataSource = null;

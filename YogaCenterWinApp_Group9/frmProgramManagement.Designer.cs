@@ -31,16 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProgramManagement));
             splitContainer = new SplitContainer();
             groupBox2 = new GroupBox();
-            textBox5 = new TextBox();
-            lbCode = new Label();
-            textBox4 = new TextBox();
+            txtSearchCode = new TextBox();
+            lbSearchCode = new Label();
+            txtSearchFeeHigh = new TextBox();
             button5 = new Button();
-            numericUpDown2 = new NumericUpDown();
+            nudSearchRatingHigh = new NumericUpDown();
             label8 = new Label();
-            textBox3 = new TextBox();
+            txtSearchFeeLow = new TextBox();
             label7 = new Label();
             label6 = new Label();
-            numericUpDown1 = new NumericUpDown();
+            nudSearchRatingLow = new NumericUpDown();
             label5 = new Label();
             label4 = new Label();
             btnsearch = new Button();
@@ -51,21 +51,23 @@
             btnnew = new Button();
             dgvprogram = new DataGridView();
             starRatingControl = new Controls.StarRatingControl();
-            textBox1 = new TextBox();
+            txtName = new TextBox();
             label9 = new Label();
             lbDescription = new Label();
             pictureBox1 = new PictureBox();
             txtboxdescription = new RichTextBox();
-            txtfee = new TextBox();
+            txtFee = new TextBox();
             label1 = new Label();
             label2 = new Label();
+            lbCode = new Label();
+            txtCode = new TextBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer).BeginInit();
             splitContainer.Panel1.SuspendLayout();
             splitContainer.Panel2.SuspendLayout();
             splitContainer.SuspendLayout();
             groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudSearchRatingHigh).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudSearchRatingLow).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvprogram).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -87,13 +89,15 @@
             // 
             // splitContainer.Panel2
             // 
+            splitContainer.Panel2.Controls.Add(txtCode);
+            splitContainer.Panel2.Controls.Add(lbCode);
             splitContainer.Panel2.Controls.Add(starRatingControl);
-            splitContainer.Panel2.Controls.Add(textBox1);
+            splitContainer.Panel2.Controls.Add(txtName);
             splitContainer.Panel2.Controls.Add(label9);
             splitContainer.Panel2.Controls.Add(lbDescription);
             splitContainer.Panel2.Controls.Add(pictureBox1);
             splitContainer.Panel2.Controls.Add(txtboxdescription);
-            splitContainer.Panel2.Controls.Add(txtfee);
+            splitContainer.Panel2.Controls.Add(txtFee);
             splitContainer.Panel2.Controls.Add(label1);
             splitContainer.Panel2.Controls.Add(label2);
             splitContainer.Size = new Size(1029, 630);
@@ -103,16 +107,16 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(textBox5);
-            groupBox2.Controls.Add(lbCode);
-            groupBox2.Controls.Add(textBox4);
+            groupBox2.Controls.Add(txtSearchCode);
+            groupBox2.Controls.Add(lbSearchCode);
+            groupBox2.Controls.Add(txtSearchFeeHigh);
             groupBox2.Controls.Add(button5);
-            groupBox2.Controls.Add(numericUpDown2);
+            groupBox2.Controls.Add(nudSearchRatingHigh);
             groupBox2.Controls.Add(label8);
-            groupBox2.Controls.Add(textBox3);
+            groupBox2.Controls.Add(txtSearchFeeLow);
             groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(label6);
-            groupBox2.Controls.Add(numericUpDown1);
+            groupBox2.Controls.Add(nudSearchRatingLow);
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(btnsearch);
@@ -124,28 +128,28 @@
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             // 
-            // textBox5
+            // txtSearchCode
             // 
-            textBox5.Location = new Point(180, 77);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(122, 29);
-            textBox5.TabIndex = 19;
+            txtSearchCode.Location = new Point(180, 77);
+            txtSearchCode.Name = "txtSearchCode";
+            txtSearchCode.Size = new Size(122, 29);
+            txtSearchCode.TabIndex = 19;
             // 
-            // lbCode
+            // lbSearchCode
             // 
-            lbCode.AutoSize = true;
-            lbCode.Location = new Point(100, 80);
-            lbCode.Name = "lbCode";
-            lbCode.Size = new Size(49, 21);
-            lbCode.TabIndex = 18;
-            lbCode.Text = "Code:";
+            lbSearchCode.AutoSize = true;
+            lbSearchCode.Location = new Point(100, 80);
+            lbSearchCode.Name = "lbSearchCode";
+            lbSearchCode.Size = new Size(49, 21);
+            lbSearchCode.TabIndex = 18;
+            lbSearchCode.Text = "Code:";
             // 
-            // textBox4
+            // txtSearchFeeHigh
             // 
-            textBox4.Location = new Point(340, 144);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(100, 29);
-            textBox4.TabIndex = 15;
+            txtSearchFeeHigh.Location = new Point(340, 144);
+            txtSearchFeeHigh.Name = "txtSearchFeeHigh";
+            txtSearchFeeHigh.Size = new Size(100, 29);
+            txtSearchFeeHigh.TabIndex = 15;
             // 
             // button5
             // 
@@ -156,12 +160,12 @@
             button5.Text = "Clear All";
             button5.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown2
+            // nudSearchRatingHigh
             // 
-            numericUpDown2.Location = new Point(290, 195);
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(50, 29);
-            numericUpDown2.TabIndex = 13;
+            nudSearchRatingHigh.Location = new Point(290, 195);
+            nudSearchRatingHigh.Name = "nudSearchRatingHigh";
+            nudSearchRatingHigh.Size = new Size(50, 29);
+            nudSearchRatingHigh.TabIndex = 13;
             // 
             // label8
             // 
@@ -172,12 +176,12 @@
             label8.TabIndex = 11;
             label8.Text = "to";
             // 
-            // textBox3
+            // txtSearchFeeLow
             // 
-            textBox3.Location = new Point(180, 144);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 29);
-            textBox3.TabIndex = 10;
+            txtSearchFeeLow.Location = new Point(180, 144);
+            txtSearchFeeLow.Name = "txtSearchFeeLow";
+            txtSearchFeeLow.Size = new Size(100, 29);
+            txtSearchFeeLow.TabIndex = 10;
             // 
             // label7
             // 
@@ -197,12 +201,12 @@
             label6.TabIndex = 7;
             label6.Text = "to";
             // 
-            // numericUpDown1
+            // nudSearchRatingLow
             // 
-            numericUpDown1.Location = new Point(180, 195);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(50, 29);
-            numericUpDown1.TabIndex = 6;
+            nudSearchRatingLow.Location = new Point(180, 195);
+            nudSearchRatingLow.Name = "nudSearchRatingLow";
+            nudSearchRatingLow.Size = new Size(50, 29);
+            nudSearchRatingLow.TabIndex = 6;
             // 
             // label5
             // 
@@ -309,12 +313,12 @@
             starRatingControl.TabIndex = 11;
             starRatingControl.TopMargin = 2;
             // 
-            // textBox1
+            // txtName
             // 
-            textBox1.Location = new Point(80, 247);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(115, 29);
-            textBox1.TabIndex = 10;
+            txtName.Location = new Point(80, 247);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(115, 29);
+            txtName.TabIndex = 10;
             // 
             // label9
             // 
@@ -353,12 +357,12 @@
             txtboxdescription.TabIndex = 1;
             txtboxdescription.Text = "";
             // 
-            // txtfee
+            // txtFee
             // 
-            txtfee.Location = new Point(310, 247);
-            txtfee.Name = "txtfee";
-            txtfee.Size = new Size(86, 29);
-            txtfee.TabIndex = 7;
+            txtFee.Location = new Point(310, 297);
+            txtFee.Name = "txtFee";
+            txtFee.Size = new Size(86, 29);
+            txtFee.TabIndex = 7;
             // 
             // label1
             // 
@@ -372,11 +376,27 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(250, 250);
+            label2.Location = new Point(250, 300);
             label2.Name = "label2";
             label2.Size = new Size(34, 21);
             label2.TabIndex = 6;
             label2.Text = "Fee";
+            // 
+            // lbCode
+            // 
+            lbCode.AutoSize = true;
+            lbCode.Location = new Point(250, 250);
+            lbCode.Name = "lbCode";
+            lbCode.Size = new Size(46, 21);
+            lbCode.TabIndex = 12;
+            lbCode.Text = "Code";
+            // 
+            // txtCode
+            // 
+            txtCode.Location = new Point(310, 247);
+            txtCode.Name = "txtCode";
+            txtCode.Size = new Size(114, 29);
+            txtCode.TabIndex = 20;
             // 
             // frmProgramManagement
             // 
@@ -396,8 +416,8 @@
             splitContainer.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudSearchRatingHigh).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudSearchRatingLow).EndInit();
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvprogram).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -410,7 +430,7 @@
         private Label lbDescription;
         private RichTextBox txtboxdescription;
         private PictureBox pictureBox1;
-        private TextBox txtfee;
+        private TextBox txtFee;
         private Label label1;
         private Label label2;
         private GroupBox groupBox1;
@@ -422,19 +442,21 @@
         private TextBox txtSearchName;
         private Label label3;
         private Label label6;
-        private NumericUpDown numericUpDown1;
+        private NumericUpDown nudSearchRatingLow;
         private Label label5;
         private Label label4;
-        private TextBox textBox4;
+        private TextBox txtSearchFeeHigh;
         private Button button5;
-        private NumericUpDown numericUpDown2;
+        private NumericUpDown nudSearchRatingHigh;
         private Label label8;
-        private TextBox textBox3;
+        private TextBox txtSearchFeeLow;
         private Label label7;
-        private TextBox textBox1;
+        private TextBox txtName;
         private Label label9;
-        private TextBox textBox5;
-        private Label lbCode;
+        private TextBox txtSearchCode;
+        private Label lbSearchCode;
         private Controls.StarRatingControl starRatingControl;
+        private Label lbCode;
+        private TextBox txtCode;
     }
 }

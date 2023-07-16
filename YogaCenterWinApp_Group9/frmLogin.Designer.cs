@@ -43,6 +43,7 @@ namespace YogaCenterWinApp_Group9
             // 
             // lbEmail
             // 
+            lbEmail.Anchor = AnchorStyles.None;
             lbEmail.AutoSize = true;
             lbEmail.Location = new Point(160, 98);
             lbEmail.Margin = new Padding(2, 0, 2, 0);
@@ -53,6 +54,7 @@ namespace YogaCenterWinApp_Group9
             // 
             // lbPassword
             // 
+            lbPassword.Anchor = AnchorStyles.None;
             lbPassword.AutoSize = true;
             lbPassword.Location = new Point(160, 130);
             lbPassword.Margin = new Padding(2, 0, 2, 0);
@@ -63,6 +65,7 @@ namespace YogaCenterWinApp_Group9
             // 
             // txtEmail
             // 
+            txtEmail.Anchor = AnchorStyles.None;
             txtEmail.Location = new Point(244, 97);
             txtEmail.Margin = new Padding(2);
             txtEmail.Name = "txtEmail";
@@ -72,6 +75,7 @@ namespace YogaCenterWinApp_Group9
             // 
             // txtPassword
             // 
+            txtPassword.Anchor = AnchorStyles.None;
             txtPassword.Location = new Point(244, 128);
             txtPassword.Margin = new Padding(2);
             txtPassword.Name = "txtPassword";
@@ -81,6 +85,7 @@ namespace YogaCenterWinApp_Group9
             // 
             // lbLogin
             // 
+            lbLogin.Anchor = AnchorStyles.None;
             lbLogin.AutoSize = true;
             lbLogin.Font = new Font("Segoe UI", 22F, FontStyle.Bold, GraphicsUnit.Point);
             lbLogin.Location = new Point(239, 23);
@@ -92,6 +97,7 @@ namespace YogaCenterWinApp_Group9
             // 
             // btLogin
             // 
+            btLogin.Anchor = AnchorStyles.None;
             btLogin.Location = new Point(244, 164);
             btLogin.Margin = new Padding(2);
             btLogin.Name = "btLogin";
@@ -103,6 +109,7 @@ namespace YogaCenterWinApp_Group9
             // 
             // btRegister
             // 
+            btRegister.Anchor = AnchorStyles.None;
             btRegister.Location = new Point(344, 164);
             btRegister.Margin = new Padding(2);
             btRegister.Name = "btRegister";
