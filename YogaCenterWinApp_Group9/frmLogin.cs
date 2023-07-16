@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using YogaCenter.Repository.Repos;
-using YogaCenterWinApp_Group9.Utils;
+using YogaCenterWinApp_Group9.Utils.CustomEventHandlers;
+using YogaCenterWinApp_Group9.Utils.CustomEventArgs;
 using Utils;
 
 namespace YogaCenterWinApp_Group9;
@@ -11,7 +9,7 @@ public partial class frmLogin : Form
 {
     private const int ADMIN_ROLE = 1;
 
-    private readonly IUserRepository _userRepository = new UserRepository();
+    private readonly IUserRepository userRepository = new UserRepository();
 
     protected EventHandlerList EventHandlers = new EventHandlerList();
 
@@ -44,7 +42,7 @@ public partial class frmLogin : Form
             PerformLogin();
     }
 
-    private void txtEmail_KeyDown(object sender, KeyEventArgs e)
+    private void txtUsername_KeyDown(object sender, KeyEventArgs e)
     {
         if (e.KeyCode == Keys.Enter && Validate())
             PerformLogin();
@@ -54,18 +52,12 @@ public partial class frmLogin : Form
     {
         try
         {
-            var email = txtEmail.Text;
+            var username = txtUsername.Text;
             var password = txtPassword.Text;
-            if (string.IsNullOrEmpty(email))
+            if (string.IsNullOrEmpty(username))
             {
-                MessageBox.Show("Please enter your email address.");
-                txtEmail.Focus();
-                return;
-            }
-            if (!email.IsValidEmailAddress())
-            {
-                MessageBox.Show("Please enter a valid email address.");
-                txtEmail.Focus();
+                MessageBox.Show("Please enter your username.");
+                txtUsername.Focus();
                 return;
             }
             if (string.IsNullOrEmpty(password))
@@ -75,11 +67,11 @@ public partial class frmLogin : Form
                 return;
             }
 
-            var curAccount = _userRepository.GetUsersByCriteria(u => email == u.Email && password == u.Password).SingleOrDefault();
+            var curAccount = userRepository.GetUsersByCriteria(u => username == u.Username && password == u.Password).FirstOrDefault();
             if (curAccount != null)
             {
                 if (ADMIN_ROLE == curAccount.Role.Id)
-                    OnLoginSuccess(new LoginEventArgs() { FullPrivilege = true });
+                    OnLoginSuccess(new LoginEventArgs() { Id = curAccount.Id, FullPrivilege = true });
                 else
                     OnLoginSuccess(new LoginEventArgs() { Id = curAccount.Id, FullPrivilege = false });
             }
@@ -113,8 +105,19 @@ public partial class frmLogin : Form
 
     private void btRegister_Click(object sender, EventArgs e)
     {
-        frmRegister frmRegister = new frmRegister();
-        frmRegister.Show();
-        this.Hide();
+        frmRegister frmRegister = new();
+        frmRegister.NewUserRegistered += LoginNewlyRegisteredUser;
+        frmRegister.ShowDialog();
+    }
+
+    private void LoginNewlyRegisteredUser(object sender, SignupEventArgs e)
+    {
+        e.User ??= userRepository.GetUsersByCriteria(u => u.Username == e.Username).First();
+        if (e.User != null)
+        {
+            txtUsername.Text = e.User.Username.ToString();
+            txtPassword.Text = e.User.Password.ToString();
+            PerformLogin();
+        }
     }
 }

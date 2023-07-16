@@ -1,10 +1,6 @@
-﻿using System.Runtime.CompilerServices;
+﻿using YogaCenterWinApp_Group9.Utils.CustomEventHandlers;
 
 namespace YogaCenterWinApp_Group9.Utils;
-
-public delegate void LoginEventHandler(object sender, LoginEventArgs e);
-public delegate void ExitEventHandler(object sender, EventArgs e);
-public delegate void UserChangedEventHandler(object sender, UserChangedEventArgs e);
 
 public static class Extensions
 {

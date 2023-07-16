@@ -1,5 +1,6 @@
 ﻿using YogaCenter.Repository.Models;
 using YogaCenterWinApp_Group9.Utils;
+using YogaCenterWinApp_Group9.Utils.CustomEventHandlers;
 
 namespace YogaCenterWinApp_Group9;
 

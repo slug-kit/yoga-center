@@ -311,6 +311,12 @@ namespace YogaCenter.Repository.Models
             {
                 entity.ToTable("user");
 
+                entity.HasIndex(e => e.Email, "IX_user_email")
+                    .IsUnique();
+
+                entity.HasIndex(e => e.Username, "IX_user_username")
+                    .IsUnique();
+
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Code)

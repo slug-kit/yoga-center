@@ -1,4 +1,6 @@
 ﻿using YogaCenterWinApp_Group9.Utils;
+using YogaCenterWinApp_Group9.Utils.CustomEventArgs;
+using YogaCenterWinApp_Group9.Utils.CustomEventHandlers;
 using static YogaCenterWinApp_Group9.Utils.Extensions;
 
 namespace YogaCenterWinApp_Group9;
@@ -30,8 +32,8 @@ public partial class frmMain : Form
 
         navigationToolStripMenuItem.Enabled = authenticated;
         navigationToolStripMenuItem.Visible = authenticated;
-        programsToolStripMenuItem.Enabled = authenticated && !adminMode;
-        programsToolStripMenuItem.Visible = authenticated && !adminMode;
+        programsToolStripMenuItem.Enabled = authenticated;
+        programsToolStripMenuItem.Visible = authenticated;
         myCoursesToolStripMenuItem.Enabled = authenticated && !adminMode;
         myCoursesToolStripMenuItem.Visible = authenticated && !adminMode;
         timetableToolStripMenuItem.Enabled = authenticated && !adminMode;
