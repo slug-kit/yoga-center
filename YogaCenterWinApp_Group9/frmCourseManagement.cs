@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using YogaCenter.Repository.Repos;
+﻿using System.Data;
 using YogaCenter.Repository.Models;
+using YogaCenter.Repository.Repos;
 
 namespace YogaCenterWinApp_Group9;
 

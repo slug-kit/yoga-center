@@ -49,7 +49,9 @@
             groupBox1 = new GroupBox();
             btndelete = new Button();
             btnnew = new Button();
-            dgvprogram = new DataGridView();
+            dgvPrograms = new DataGridView();
+            txtCode = new TextBox();
+            lbCode = new Label();
             starRatingControl = new Controls.StarRatingControl();
             txtName = new TextBox();
             label9 = new Label();
@@ -59,8 +61,6 @@
             txtFee = new TextBox();
             label1 = new Label();
             label2 = new Label();
-            lbCode = new Label();
-            txtCode = new TextBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer).BeginInit();
             splitContainer.Panel1.SuspendLayout();
             splitContainer.Panel2.SuspendLayout();
@@ -69,7 +69,7 @@
             ((System.ComponentModel.ISupportInitialize)nudSearchRatingHigh).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudSearchRatingLow).BeginInit();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvprogram).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPrograms).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -85,7 +85,7 @@
             // 
             splitContainer.Panel1.Controls.Add(groupBox2);
             splitContainer.Panel1.Controls.Add(groupBox1);
-            splitContainer.Panel1.Controls.Add(dgvprogram);
+            splitContainer.Panel1.Controls.Add(dgvPrograms);
             // 
             // splitContainer.Panel2
             // 
@@ -283,16 +283,32 @@
             btnnew.UseVisualStyleBackColor = true;
             btnnew.Click += btnnew_Click;
             // 
-            // dgvprogram
+            // dgvPrograms
             // 
-            dgvprogram.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvprogram.Location = new Point(12, 247);
-            dgvprogram.Name = "dgvprogram";
-            dgvprogram.RowHeadersWidth = 51;
-            dgvprogram.RowTemplate.Height = 25;
-            dgvprogram.Size = new Size(563, 274);
-            dgvprogram.TabIndex = 0;
-            dgvprogram.CellDoubleClick += dgvprogram_CellDoubleClick;
+            dgvPrograms.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPrograms.Location = new Point(12, 247);
+            dgvPrograms.Name = "dgvPrograms";
+            dgvPrograms.RowHeadersWidth = 51;
+            dgvPrograms.RowTemplate.Height = 25;
+            dgvPrograms.Size = new Size(563, 274);
+            dgvPrograms.TabIndex = 0;
+            dgvPrograms.CellDoubleClick += dgvprogram_CellDoubleClick;
+            // 
+            // txtCode
+            // 
+            txtCode.Location = new Point(310, 247);
+            txtCode.Name = "txtCode";
+            txtCode.Size = new Size(114, 29);
+            txtCode.TabIndex = 20;
+            // 
+            // lbCode
+            // 
+            lbCode.AutoSize = true;
+            lbCode.Location = new Point(250, 250);
+            lbCode.Name = "lbCode";
+            lbCode.Size = new Size(46, 21);
+            lbCode.TabIndex = 12;
+            lbCode.Text = "Code";
             // 
             // starRatingControl
             // 
@@ -382,22 +398,6 @@
             label2.TabIndex = 6;
             label2.Text = "Fee";
             // 
-            // lbCode
-            // 
-            lbCode.AutoSize = true;
-            lbCode.Location = new Point(250, 250);
-            lbCode.Name = "lbCode";
-            lbCode.Size = new Size(46, 21);
-            lbCode.TabIndex = 12;
-            lbCode.Text = "Code";
-            // 
-            // txtCode
-            // 
-            txtCode.Location = new Point(310, 247);
-            txtCode.Name = "txtCode";
-            txtCode.Size = new Size(114, 29);
-            txtCode.TabIndex = 20;
-            // 
             // frmProgramManagement
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
@@ -419,7 +419,7 @@
             ((System.ComponentModel.ISupportInitialize)nudSearchRatingHigh).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudSearchRatingLow).EndInit();
             groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvprogram).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPrograms).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
@@ -434,7 +434,7 @@
         private Label label1;
         private Label label2;
         private GroupBox groupBox1;
-        private DataGridView dgvprogram;
+        private DataGridView dgvPrograms;
         private Button btndelete;
         private Button btnnew;
         private GroupBox groupBox2;

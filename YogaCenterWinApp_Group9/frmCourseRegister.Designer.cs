@@ -1,4 +1,6 @@
-﻿namespace YogaCenterWinApp_Group9
+﻿using YogaCenterWinApp_Group9.Controls;
+
+namespace YogaCenterWinApp_Group9
 {
     partial class frmCourseRegister
     {
@@ -33,57 +35,56 @@
             ListViewItem listViewItem3 = new ListViewItem(new string[] { "Joe Dot", "20/20" }, -1);
             ListViewItem listViewItem4 = new ListViewItem(new string[] { "Linda Rut", "19/20" }, -1);
             ListViewItem listViewItem5 = new ListViewItem(new string[] { "Bob Thing", "19/20" }, -1);
-            listView1 = new ListView();
+            lsvLearners = new BindableListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
-            button1 = new Button();
+            btnSave = new Button();
             splitContainer = new SplitContainer();
-            groupBox2 = new GroupBox();
-            button4 = new Button();
-            button3 = new Button();
-            comboBox3 = new ComboBox();
-            label10 = new Label();
-            textBox5 = new TextBox();
-            label9 = new Label();
-            comboBox1 = new ComboBox();
-            label8 = new Label();
-            textBox4 = new TextBox();
-            label7 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            label4 = new Label();
-            textBox3 = new TextBox();
-            label3 = new Label();
-            textBox2 = new TextBox();
-            label2 = new Label();
-            textBox1 = new TextBox();
-            label1 = new Label();
-            pictureBox1 = new PictureBox();
-            label11 = new Label();
-            richTextBox1 = new RichTextBox();
-            groupBox1 = new GroupBox();
-            button5 = new Button();
-            button2 = new Button();
+            grbListActions = new GroupBox();
+            btnKick = new Button();
+            btnAdd = new Button();
+            txtGender = new TextBox();
+            txtRole = new TextBox();
+            lbRole = new Label();
+            txtEmail = new TextBox();
+            lbEmail = new Label();
+            lbGender = new Label();
+            txtPhone = new TextBox();
+            lbPhone = new Label();
+            dtpDob = new DateTimePicker();
+            lbDob = new Label();
+            txtFullname = new TextBox();
+            lbFullname = new Label();
+            txtCode = new TextBox();
+            lbCode = new Label();
+            txtUsername = new TextBox();
+            lbUsername = new Label();
+            picImg = new PictureBox();
+            lbStudyGoals = new Label();
+            rtbStudyGoals = new RichTextBox();
+            grbFormActions = new GroupBox();
+            btnCancel = new Button();
+            btnReset = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer).BeginInit();
             splitContainer.Panel1.SuspendLayout();
             splitContainer.Panel2.SuspendLayout();
             splitContainer.SuspendLayout();
-            groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            groupBox1.SuspendLayout();
+            grbListActions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picImg).BeginInit();
+            grbFormActions.SuspendLayout();
             SuspendLayout();
             // 
-            // listView1
+            // lsvLearners
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
-            listView1.Dock = DockStyle.Top;
-            listView1.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3, listViewItem4, listViewItem5 });
-            listView1.Location = new Point(0, 0);
-            listView1.Margin = new Padding(4);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(258, 495);
-            listView1.TabIndex = 10;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            lsvLearners.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
+            lsvLearners.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3, listViewItem4, listViewItem5 });
+            lsvLearners.Location = new Point(0, 0);
+            lsvLearners.Margin = new Padding(4);
+            lsvLearners.Name = "lsvLearners";
+            lsvLearners.Size = new Size(258, 495);
+            lsvLearners.TabIndex = 10;
+            lsvLearners.UseCompatibleStateImageBehavior = false;
+            lsvLearners.View = View.Details;
             // 
             // columnHeader1
             // 
@@ -95,15 +96,15 @@
             columnHeader2.Text = "Attendance";
             columnHeader2.Width = 90;
             // 
-            // button1
+            // btnSave
             // 
-            button1.Location = new Point(76, 22);
-            button1.Margin = new Padding(4);
-            button1.Name = "button1";
-            button1.Size = new Size(120, 40);
-            button1.TabIndex = 7;
-            button1.Text = "Save";
-            button1.UseVisualStyleBackColor = true;
+            btnSave.Location = new Point(76, 22);
+            btnSave.Margin = new Padding(4);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(120, 40);
+            btnSave.TabIndex = 7;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = true;
             // 
             // splitContainer
             // 
@@ -112,256 +113,254 @@
             // 
             // splitContainer.Panel1
             // 
-            splitContainer.Panel1.Controls.Add(groupBox2);
-            splitContainer.Panel1.Controls.Add(listView1);
+            splitContainer.Panel1.Controls.Add(grbListActions);
+            splitContainer.Panel1.Controls.Add(lsvLearners);
             // 
             // splitContainer.Panel2
             // 
-            splitContainer.Panel2.Controls.Add(comboBox3);
-            splitContainer.Panel2.Controls.Add(label10);
-            splitContainer.Panel2.Controls.Add(textBox5);
-            splitContainer.Panel2.Controls.Add(label9);
-            splitContainer.Panel2.Controls.Add(comboBox1);
-            splitContainer.Panel2.Controls.Add(label8);
-            splitContainer.Panel2.Controls.Add(textBox4);
-            splitContainer.Panel2.Controls.Add(label7);
-            splitContainer.Panel2.Controls.Add(dateTimePicker1);
-            splitContainer.Panel2.Controls.Add(label4);
-            splitContainer.Panel2.Controls.Add(textBox3);
-            splitContainer.Panel2.Controls.Add(label3);
-            splitContainer.Panel2.Controls.Add(textBox2);
-            splitContainer.Panel2.Controls.Add(label2);
-            splitContainer.Panel2.Controls.Add(textBox1);
-            splitContainer.Panel2.Controls.Add(label1);
-            splitContainer.Panel2.Controls.Add(pictureBox1);
-            splitContainer.Panel2.Controls.Add(label11);
-            splitContainer.Panel2.Controls.Add(richTextBox1);
+            splitContainer.Panel2.Controls.Add(txtGender);
+            splitContainer.Panel2.Controls.Add(txtRole);
+            splitContainer.Panel2.Controls.Add(lbRole);
+            splitContainer.Panel2.Controls.Add(txtEmail);
+            splitContainer.Panel2.Controls.Add(lbEmail);
+            splitContainer.Panel2.Controls.Add(lbGender);
+            splitContainer.Panel2.Controls.Add(txtPhone);
+            splitContainer.Panel2.Controls.Add(lbPhone);
+            splitContainer.Panel2.Controls.Add(dtpDob);
+            splitContainer.Panel2.Controls.Add(lbDob);
+            splitContainer.Panel2.Controls.Add(txtFullname);
+            splitContainer.Panel2.Controls.Add(lbFullname);
+            splitContainer.Panel2.Controls.Add(txtCode);
+            splitContainer.Panel2.Controls.Add(lbCode);
+            splitContainer.Panel2.Controls.Add(txtUsername);
+            splitContainer.Panel2.Controls.Add(lbUsername);
+            splitContainer.Panel2.Controls.Add(picImg);
+            splitContainer.Panel2.Controls.Add(lbStudyGoals);
+            splitContainer.Panel2.Controls.Add(rtbStudyGoals);
             splitContainer.Size = new Size(707, 570);
             splitContainer.SplitterDistance = 258;
             splitContainer.TabIndex = 12;
             // 
-            // groupBox2
+            // grbListActions
             // 
-            groupBox2.Controls.Add(button4);
-            groupBox2.Controls.Add(button3);
-            groupBox2.Location = new Point(3, 498);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(252, 69);
-            groupBox2.TabIndex = 52;
-            groupBox2.TabStop = false;
+            grbListActions.Controls.Add(btnKick);
+            grbListActions.Controls.Add(btnAdd);
+            grbListActions.Location = new Point(3, 498);
+            grbListActions.Name = "grbListActions";
+            grbListActions.Size = new Size(252, 69);
+            grbListActions.TabIndex = 52;
+            grbListActions.TabStop = false;
             // 
-            // button4
+            // btnKick
             // 
-            button4.Location = new Point(131, 22);
-            button4.Margin = new Padding(4);
-            button4.Name = "button4";
-            button4.Size = new Size(120, 40);
-            button4.TabIndex = 9;
-            button4.Text = "Kick";
-            button4.UseVisualStyleBackColor = true;
+            btnKick.Location = new Point(131, 22);
+            btnKick.Margin = new Padding(4);
+            btnKick.Name = "btnKick";
+            btnKick.Size = new Size(120, 40);
+            btnKick.TabIndex = 9;
+            btnKick.Text = "Kick";
+            btnKick.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnAdd
             // 
-            button3.Location = new Point(3, 22);
-            button3.Margin = new Padding(4);
-            button3.Name = "button3";
-            button3.Size = new Size(120, 40);
-            button3.TabIndex = 8;
-            button3.Text = "Add";
-            button3.UseVisualStyleBackColor = true;
+            btnAdd.Location = new Point(3, 22);
+            btnAdd.Margin = new Padding(4);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(120, 40);
+            btnAdd.TabIndex = 8;
+            btnAdd.Text = "Add";
+            btnAdd.UseVisualStyleBackColor = true;
             // 
-            // comboBox3
+            // txtGender
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(325, 108);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(100, 29);
-            comboBox3.TabIndex = 50;
+            txtGender.Location = new Point(239, 185);
+            txtGender.Name = "txtGender";
+            txtGender.Size = new Size(81, 29);
+            txtGender.TabIndex = 52;
             // 
-            // label10
+            // txtRole
             // 
-            label10.AutoSize = true;
-            label10.Location = new Point(325, 84);
-            label10.Name = "label10";
-            label10.Size = new Size(41, 21);
-            label10.TabIndex = 43;
-            label10.Text = "Role";
+            txtRole.Location = new Point(325, 108);
+            txtRole.Name = "txtRole";
+            txtRole.Size = new Size(100, 29);
+            txtRole.TabIndex = 51;
             // 
-            // textBox5
+            // lbRole
             // 
-            textBox5.Location = new Point(239, 325);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(186, 29);
-            textBox5.TabIndex = 42;
+            lbRole.AutoSize = true;
+            lbRole.Location = new Point(325, 84);
+            lbRole.Name = "lbRole";
+            lbRole.Size = new Size(41, 21);
+            lbRole.TabIndex = 43;
+            lbRole.Text = "Role";
             // 
-            // label9
+            // txtEmail
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(239, 301);
-            label9.Name = "label9";
-            label9.Size = new Size(48, 21);
-            label9.TabIndex = 41;
-            label9.Text = "Email";
+            txtEmail.Location = new Point(239, 325);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(186, 29);
+            txtEmail.TabIndex = 42;
             // 
-            // comboBox1
+            // lbEmail
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(239, 185);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(81, 29);
-            comboBox1.TabIndex = 40;
+            lbEmail.AutoSize = true;
+            lbEmail.Location = new Point(239, 301);
+            lbEmail.Name = "lbEmail";
+            lbEmail.Size = new Size(48, 21);
+            lbEmail.TabIndex = 41;
+            lbEmail.Text = "Email";
             // 
-            // label8
+            // lbGender
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(239, 161);
-            label8.Name = "label8";
-            label8.Size = new Size(61, 21);
-            label8.TabIndex = 39;
-            label8.Text = "Gender";
+            lbGender.AutoSize = true;
+            lbGender.Location = new Point(239, 161);
+            lbGender.Name = "lbGender";
+            lbGender.Size = new Size(61, 21);
+            lbGender.TabIndex = 39;
+            lbGender.Text = "Gender";
             // 
-            // textBox4
+            // txtPhone
             // 
-            textBox4.Location = new Point(24, 325);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(186, 29);
-            textBox4.TabIndex = 38;
+            txtPhone.Location = new Point(24, 325);
+            txtPhone.Name = "txtPhone";
+            txtPhone.Size = new Size(186, 29);
+            txtPhone.TabIndex = 38;
             // 
-            // label7
+            // lbPhone
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(24, 301);
-            label7.Name = "label7";
-            label7.Size = new Size(113, 21);
-            label7.TabIndex = 37;
-            label7.Text = "Phone number";
+            lbPhone.AutoSize = true;
+            lbPhone.Location = new Point(24, 301);
+            lbPhone.Name = "lbPhone";
+            lbPhone.Size = new Size(113, 21);
+            lbPhone.TabIndex = 37;
+            lbPhone.Text = "Phone number";
             // 
-            // dateTimePicker1
+            // dtpDob
             // 
-            dateTimePicker1.Location = new Point(24, 255);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(186, 29);
-            dateTimePicker1.TabIndex = 36;
+            dtpDob.Location = new Point(24, 255);
+            dtpDob.Name = "dtpDob";
+            dtpDob.Size = new Size(186, 29);
+            dtpDob.TabIndex = 36;
             // 
-            // label4
+            // lbDob
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(24, 231);
-            label4.Name = "label4";
-            label4.Size = new Size(97, 21);
-            label4.TabIndex = 35;
-            label4.Text = "Date of Birth";
+            lbDob.AutoSize = true;
+            lbDob.Location = new Point(24, 231);
+            lbDob.Name = "lbDob";
+            lbDob.Size = new Size(97, 21);
+            lbDob.TabIndex = 35;
+            lbDob.Text = "Date of Birth";
             // 
-            // textBox3
+            // txtFullname
             // 
-            textBox3.Location = new Point(24, 185);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(186, 29);
-            textBox3.TabIndex = 34;
+            txtFullname.Location = new Point(24, 185);
+            txtFullname.Name = "txtFullname";
+            txtFullname.Size = new Size(186, 29);
+            txtFullname.TabIndex = 34;
             // 
-            // label3
+            // lbFullname
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(24, 161);
-            label3.Name = "label3";
-            label3.Size = new Size(74, 21);
-            label3.TabIndex = 33;
-            label3.Text = "Fullname";
+            lbFullname.AutoSize = true;
+            lbFullname.Location = new Point(24, 161);
+            lbFullname.Name = "lbFullname";
+            lbFullname.Size = new Size(74, 21);
+            lbFullname.TabIndex = 33;
+            lbFullname.Text = "Fullname";
             // 
-            // textBox2
+            // txtCode
             // 
-            textBox2.Location = new Point(162, 108);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(145, 29);
-            textBox2.TabIndex = 32;
+            txtCode.Location = new Point(162, 108);
+            txtCode.Name = "txtCode";
+            txtCode.Size = new Size(145, 29);
+            txtCode.TabIndex = 32;
             // 
-            // label2
+            // lbCode
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(162, 84);
-            label2.Name = "label2";
-            label2.Size = new Size(109, 21);
-            label2.TabIndex = 31;
-            label2.Text = "Member Code";
+            lbCode.AutoSize = true;
+            lbCode.Location = new Point(162, 84);
+            lbCode.Name = "lbCode";
+            lbCode.Size = new Size(109, 21);
+            lbCode.TabIndex = 31;
+            lbCode.Text = "Member Code";
             // 
-            // textBox1
+            // txtUsername
             // 
-            textBox1.Location = new Point(162, 38);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(263, 29);
-            textBox1.TabIndex = 30;
+            txtUsername.Location = new Point(162, 38);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(263, 29);
+            txtUsername.TabIndex = 30;
             // 
-            // label1
+            // lbUsername
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(162, 14);
-            label1.Name = "label1";
-            label1.Size = new Size(81, 21);
-            label1.TabIndex = 29;
-            label1.Text = "Username";
+            lbUsername.AutoSize = true;
+            lbUsername.Location = new Point(162, 14);
+            lbUsername.Name = "lbUsername";
+            lbUsername.Size = new Size(81, 21);
+            lbUsername.TabIndex = 29;
+            lbUsername.Text = "Username";
             // 
-            // pictureBox1
+            // picImg
             // 
-            pictureBox1.Location = new Point(31, 14);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(90, 120);
-            pictureBox1.TabIndex = 28;
-            pictureBox1.TabStop = false;
+            picImg.Location = new Point(31, 14);
+            picImg.Name = "picImg";
+            picImg.Size = new Size(90, 120);
+            picImg.TabIndex = 28;
+            picImg.TabStop = false;
             // 
-            // label11
+            // lbStudyGoals
             // 
-            label11.AutoSize = true;
-            label11.Location = new Point(24, 371);
-            label11.Name = "label11";
-            label11.Size = new Size(169, 21);
-            label11.TabIndex = 45;
-            label11.Text = "Goals in Learning Yoga";
+            lbStudyGoals.AutoSize = true;
+            lbStudyGoals.Location = new Point(24, 371);
+            lbStudyGoals.Name = "lbStudyGoals";
+            lbStudyGoals.Size = new Size(169, 21);
+            lbStudyGoals.TabIndex = 45;
+            lbStudyGoals.Text = "Goals in Learning Yoga";
             // 
-            // richTextBox1
+            // rtbStudyGoals
             // 
-            richTextBox1.Location = new Point(24, 395);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(401, 165);
-            richTextBox1.TabIndex = 44;
-            richTextBox1.Text = "";
+            rtbStudyGoals.Location = new Point(24, 395);
+            rtbStudyGoals.Name = "rtbStudyGoals";
+            rtbStudyGoals.Size = new Size(401, 165);
+            rtbStudyGoals.TabIndex = 44;
+            rtbStudyGoals.Text = "";
             // 
-            // groupBox1
+            // grbFormActions
             // 
-            groupBox1.Controls.Add(button5);
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(button1);
-            groupBox1.Location = new Point(12, 595);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(707, 69);
-            groupBox1.TabIndex = 51;
-            groupBox1.TabStop = false;
+            grbFormActions.Controls.Add(btnCancel);
+            grbFormActions.Controls.Add(btnReset);
+            grbFormActions.Controls.Add(btnSave);
+            grbFormActions.Location = new Point(12, 595);
+            grbFormActions.Name = "grbFormActions";
+            grbFormActions.Size = new Size(707, 69);
+            grbFormActions.TabIndex = 51;
+            grbFormActions.TabStop = false;
             // 
-            // button5
+            // btnCancel
             // 
-            button5.Location = new Point(293, 22);
-            button5.Margin = new Padding(4);
-            button5.Name = "button5";
-            button5.Size = new Size(120, 40);
-            button5.TabIndex = 9;
-            button5.Text = "Cancel";
-            button5.UseVisualStyleBackColor = true;
+            btnCancel.Location = new Point(293, 22);
+            btnCancel.Margin = new Padding(4);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(120, 40);
+            btnCancel.TabIndex = 9;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnReset
             // 
-            button2.Location = new Point(525, 22);
-            button2.Margin = new Padding(4);
-            button2.Name = "button2";
-            button2.Size = new Size(120, 40);
-            button2.TabIndex = 8;
-            button2.Text = "Reset";
-            button2.UseVisualStyleBackColor = true;
+            btnReset.Location = new Point(525, 22);
+            btnReset.Margin = new Padding(4);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(120, 40);
+            btnReset.TabIndex = 8;
+            btnReset.Text = "Reset";
+            btnReset.UseVisualStyleBackColor = true;
             // 
             // frmCourseRegister
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(731, 676);
-            Controls.Add(groupBox1);
+            Controls.Add(grbFormActions);
             Controls.Add(splitContainer);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
@@ -372,43 +371,45 @@
             splitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer).EndInit();
             splitContainer.ResumeLayout(false);
-            groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            groupBox1.ResumeLayout(false);
+            grbListActions.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picImg).EndInit();
+            grbFormActions.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private ListView listView1;
+        private BindableListView lsvLearners;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
-        private Button button1;
+        private Button btnSave;
         private SplitContainer splitContainer;
-        private ComboBox comboBox3;
-        private Label label10;
-        private TextBox textBox5;
-        private Label label9;
+        private Label lbRole;
+        private TextBox txtEmail;
+        private Label lbEmail;
         private ComboBox comboBox1;
-        private Label label8;
-        private TextBox textBox4;
-        private Label label7;
-        private DateTimePicker dateTimePicker1;
-        private Label label4;
+        private Label lbGender;
+        private TextBox txtPhone;
+        private Label lbPhone;
+        private DateTimePicker dtpDob;
+        private Label lbDob;
         private TextBox textBox3;
-        private Label label3;
-        private TextBox textBox2;
-        private Label label2;
-        private TextBox textBox1;
-        private Label label1;
-        private PictureBox pictureBox1;
-        private Label label11;
-        private RichTextBox richTextBox1;
-        private GroupBox groupBox2;
-        private Button button4;
-        private Button button3;
-        private GroupBox groupBox1;
-        private Button button2;
-        private Button button5;
+        private Label lbFullname;
+        private TextBox txtCode;
+        private Label lbCode;
+        private TextBox txtUsername;
+        private Label lbUsername;
+        private PictureBox picImg;
+        private Label lbStudyGoals;
+        private RichTextBox rtbStudyGoals;
+        private GroupBox grbListActions;
+        private Button btnKick;
+        private Button btnAdd;
+        private GroupBox grbFormActions;
+        private Button btnReset;
+        private Button btnCancel;
+        private TextBox txtRole;
+        private TextBox txtFullname;
+        private TextBox txtGender;
     }
 }

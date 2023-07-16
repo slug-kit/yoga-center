@@ -10,10 +10,5 @@ public class ProgramRepository : IProgramRepository
     public void Add(Program program) => ProgramDAO.Instance.Add(program);
     public void Update(Program program) => ProgramDAO.Instance.Update(program);
     public void Delete(Program program) => ProgramDAO.Instance.Remove(program);
-
-    public IEnumerable<Program> SearchPrograms(string searchText)
-    {
-        var dao = ProgramDAO.Instance;
-        return dao.Search(searchText);
-    }
+    public IEnumerable<Program> SearchPrograms(string searchText) => ProgramDAO.Instance.Search(searchText);
 }

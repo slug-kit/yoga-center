@@ -155,9 +155,9 @@ public partial class frmMain : Form
     {
         if (authenticated)
         {
-            //frmProgramList frmProgramList = new() { AdminMode = adminMode };
-            //frmProgramList.ConfigureMdi(this);
-            //frmProgramList.Show();
+            frmProgramList frmProgramList = new() { AdminMode = adminMode };
+            frmProgramList.ConfigureMdi(this);
+            frmProgramList.Show();
         }
     }
 

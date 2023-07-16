@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvListProgram = new DataGridView();
+            dgvPrograms = new DataGridView();
             lbProgram = new Label();
             lbFilterName = new Label();
             txtFilterName = new TextBox();
@@ -36,7 +36,7 @@
             lbFilterFee = new Label();
             btnApply = new Button();
             pictureBox = new PictureBox();
-            textBox1 = new TextBox();
+            txtName = new TextBox();
             lbName = new Label();
             lbRating = new Label();
             txtFee = new TextBox();
@@ -51,24 +51,30 @@
             lbFilterFeeTo = new Label();
             txtFilterFeeHigh = new TextBox();
             starRatingControl = new Controls.StarRatingControl();
-            pnlFilter = new Panel();
-            panel1 = new Panel();
-            ((System.ComponentModel.ISupportInitialize)dgvListProgram).BeginInit();
+            pnlFilters = new Panel();
+            pnlDetails = new Panel();
+            ((System.ComponentModel.ISupportInitialize)dgvPrograms).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
+            pnlFilters.SuspendLayout();
+            pnlDetails.SuspendLayout();
             SuspendLayout();
             // 
-            // dgvListProgram
+            // dgvPrograms
             // 
-            dgvListProgram.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvListProgram.Location = new Point(10, 202);
-            dgvListProgram.Margin = new Padding(4);
-            dgvListProgram.Name = "dgvListProgram";
-            dgvListProgram.RowTemplate.Height = 25;
-            dgvListProgram.Size = new Size(636, 279);
-            dgvListProgram.TabIndex = 0;
+            dgvPrograms.Anchor = AnchorStyles.None;
+            dgvPrograms.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPrograms.Location = new Point(10, 202);
+            dgvPrograms.Margin = new Padding(4);
+            dgvPrograms.Name = "dgvPrograms";
+            dgvPrograms.RowTemplate.Height = 25;
+            dgvPrograms.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPrograms.Size = new Size(636, 326);
+            dgvPrograms.TabIndex = 0;
+            dgvPrograms.CellFormatting += dgvPrograms_CellFormatting;
             // 
             // lbProgram
             // 
+            lbProgram.Anchor = AnchorStyles.None;
             lbProgram.AutoSize = true;
             lbProgram.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
             lbProgram.Location = new Point(10, 63);
@@ -81,7 +87,7 @@
             // lbFilterName
             // 
             lbFilterName.AutoSize = true;
-            lbFilterName.Location = new Point(325, 45);
+            lbFilterName.Location = new Point(4, 10);
             lbFilterName.Margin = new Padding(4, 0, 4, 0);
             lbFilterName.Name = "lbFilterName";
             lbFilterName.Size = new Size(52, 21);
@@ -90,7 +96,7 @@
             // 
             // txtFilterName
             // 
-            txtFilterName.Location = new Point(408, 42);
+            txtFilterName.Location = new Point(90, 7);
             txtFilterName.Margin = new Padding(4);
             txtFilterName.Name = "txtFilterName";
             txtFilterName.Size = new Size(200, 29);
@@ -98,6 +104,7 @@
             // 
             // lbFilter
             // 
+            lbFilter.Anchor = AnchorStyles.None;
             lbFilter.AutoSize = true;
             lbFilter.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             lbFilter.Location = new Point(430, 2);
@@ -110,7 +117,7 @@
             // lbFilterFee
             // 
             lbFilterFee.AutoSize = true;
-            lbFilterFee.Location = new Point(325, 85);
+            lbFilterFee.Location = new Point(4, 50);
             lbFilterFee.Margin = new Padding(4, 0, 4, 0);
             lbFilterFee.Name = "lbFilterFee";
             lbFilterFee.Size = new Size(34, 21);
@@ -119,35 +126,39 @@
             // 
             // btnApply
             // 
-            btnApply.Location = new Point(345, 158);
+            btnApply.Location = new Point(25, 123);
             btnApply.Margin = new Padding(4);
             btnApply.Name = "btnApply";
             btnApply.Size = new Size(96, 32);
             btnApply.TabIndex = 7;
             btnApply.Text = "Apply";
             btnApply.UseVisualStyleBackColor = true;
+            btnApply.Click += btnApply_Click;
             // 
             // pictureBox
             // 
-            pictureBox.Location = new Point(669, 17);
+            pictureBox.ImageLocation = ".\\Images\\Ashtanga-Yoga.jpg";
+            pictureBox.Location = new Point(9, 5);
             pictureBox.Margin = new Padding(4);
             pictureBox.Name = "pictureBox";
             pictureBox.Size = new Size(320, 160);
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox.TabIndex = 8;
             pictureBox.TabStop = false;
             // 
-            // textBox1
+            // txtName
             // 
-            textBox1.Location = new Point(762, 197);
-            textBox1.Margin = new Padding(4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(225, 29);
-            textBox1.TabIndex = 10;
+            txtName.Location = new Point(102, 182);
+            txtName.Margin = new Padding(4);
+            txtName.Name = "txtName";
+            txtName.ReadOnly = true;
+            txtName.Size = new Size(225, 29);
+            txtName.TabIndex = 10;
             // 
             // lbName
             // 
             lbName.AutoSize = true;
-            lbName.Location = new Point(669, 202);
+            lbName.Location = new Point(9, 185);
             lbName.Margin = new Padding(4, 0, 4, 0);
             lbName.Name = "lbName";
             lbName.Size = new Size(52, 21);
@@ -157,7 +168,7 @@
             // lbRating
             // 
             lbRating.AutoSize = true;
-            lbRating.Location = new Point(669, 242);
+            lbRating.Location = new Point(9, 230);
             lbRating.Margin = new Padding(4, 0, 4, 0);
             lbRating.Name = "lbRating";
             lbRating.Size = new Size(55, 21);
@@ -166,16 +177,17 @@
             // 
             // txtFee
             // 
-            txtFee.Location = new Point(762, 279);
+            txtFee.Location = new Point(102, 272);
             txtFee.Margin = new Padding(4);
             txtFee.Name = "txtFee";
+            txtFee.ReadOnly = true;
             txtFee.Size = new Size(96, 29);
             txtFee.TabIndex = 14;
             // 
             // lbFee
             // 
             lbFee.AutoSize = true;
-            lbFee.Location = new Point(669, 283);
+            lbFee.Location = new Point(9, 275);
             lbFee.Margin = new Padding(4, 0, 4, 0);
             lbFee.Name = "lbFee";
             lbFee.Size = new Size(34, 21);
@@ -185,7 +197,7 @@
             // lbDescription
             // 
             lbDescription.AutoSize = true;
-            lbDescription.Location = new Point(669, 323);
+            lbDescription.Location = new Point(9, 320);
             lbDescription.Margin = new Padding(4, 0, 4, 0);
             lbDescription.Name = "lbDescription";
             lbDescription.Size = new Size(89, 21);
@@ -194,27 +206,30 @@
             // 
             // rtbDescription
             // 
-            rtbDescription.Location = new Point(762, 323);
+            rtbDescription.Location = new Point(9, 345);
             rtbDescription.Margin = new Padding(4);
             rtbDescription.Name = "rtbDescription";
-            rtbDescription.Size = new Size(225, 116);
+            rtbDescription.ReadOnly = true;
+            rtbDescription.Size = new Size(318, 128);
             rtbDescription.TabIndex = 16;
             rtbDescription.Text = "";
             // 
             // btnCourses
             // 
-            btnCourses.Location = new Point(669, 449);
+            btnCourses.Anchor = AnchorStyles.None;
+            btnCourses.Location = new Point(669, 496);
             btnCourses.Margin = new Padding(4);
             btnCourses.Name = "btnCourses";
             btnCourses.Size = new Size(320, 32);
             btnCourses.TabIndex = 17;
             btnCourses.Text = "See available courses";
             btnCourses.UseVisualStyleBackColor = true;
+            btnCourses.Click += btnCourses_Click;
             // 
             // lbFilterInstructor
             // 
             lbFilterInstructor.AutoSize = true;
-            lbFilterInstructor.Location = new Point(325, 125);
+            lbFilterInstructor.Location = new Point(4, 90);
             lbFilterInstructor.Margin = new Padding(4, 0, 4, 0);
             lbFilterInstructor.Name = "lbFilterInstructor";
             lbFilterInstructor.Size = new Size(77, 21);
@@ -223,7 +238,7 @@
             // 
             // txtFilterInstructor
             // 
-            txtFilterInstructor.Location = new Point(408, 122);
+            txtFilterInstructor.Location = new Point(90, 87);
             txtFilterInstructor.Margin = new Padding(4);
             txtFilterInstructor.Name = "txtFilterInstructor";
             txtFilterInstructor.Size = new Size(200, 29);
@@ -231,26 +246,30 @@
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(492, 158);
+            btnClear.Location = new Point(170, 123);
             btnClear.Margin = new Padding(4);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(96, 32);
             btnClear.TabIndex = 20;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // txtFilterFeeLow
             // 
-            txtFilterFeeLow.Location = new Point(408, 82);
+            txtFilterFeeLow.Location = new Point(90, 47);
             txtFilterFeeLow.Margin = new Padding(4);
             txtFilterFeeLow.Name = "txtFilterFeeLow";
             txtFilterFeeLow.Size = new Size(70, 29);
             txtFilterFeeLow.TabIndex = 6;
+            txtFilterFeeLow.KeyPress += FilterFee_KeyPress;
+            txtFilterFeeLow.Validating += FilterFee_Validating;
+            txtFilterFeeLow.Validated += FilterFee_Validated;
             // 
             // lbFilterFeeTo
             // 
             lbFilterFeeTo.AutoSize = true;
-            lbFilterFeeTo.Location = new Point(500, 85);
+            lbFilterFeeTo.Location = new Point(181, 50);
             lbFilterFeeTo.Margin = new Padding(4, 0, 4, 0);
             lbFilterFeeTo.Name = "lbFilterFeeTo";
             lbFilterFeeTo.Size = new Size(24, 21);
@@ -259,22 +278,25 @@
             // 
             // txtFilterFeeHigh
             // 
-            txtFilterFeeHigh.Location = new Point(538, 82);
+            txtFilterFeeHigh.Location = new Point(220, 47);
             txtFilterFeeHigh.Margin = new Padding(4);
             txtFilterFeeHigh.Name = "txtFilterFeeHigh";
             txtFilterFeeHigh.Size = new Size(70, 29);
             txtFilterFeeHigh.TabIndex = 22;
+            txtFilterFeeHigh.KeyPress += FilterFee_KeyPress;
+            txtFilterFeeHigh.Validating += FilterFee_Validating;
+            txtFilterFeeHigh.Validated += FilterFee_Validated;
             // 
             // starRatingControl
             // 
             starRatingControl.BottomMargin = 2;
             starRatingControl.HoverColor = Color.Yellow;
             starRatingControl.LeftMargin = 2;
-            starRatingControl.Location = new Point(762, 242);
+            starRatingControl.Location = new Point(102, 230);
             starRatingControl.Name = "starRatingControl";
             starRatingControl.OutlineColor = Color.DarkGray;
             starRatingControl.OutlineThickness = 1;
-            starRatingControl.ReadOnly = false;
+            starRatingControl.ReadOnly = true;
             starRatingControl.RightMargin = 2;
             starRatingControl.SelectedColor = Color.RoyalBlue;
             starRatingControl.SelectedStar = 0;
@@ -284,64 +306,70 @@
             starRatingControl.TabIndex = 23;
             starRatingControl.TopMargin = 2;
             // 
-            // pnlFilter
+            // pnlFilters
             // 
-            pnlFilter.Location = new Point(318, 35);
-            pnlFilter.Name = "pnlFilter";
-            pnlFilter.Size = new Size(298, 160);
-            pnlFilter.TabIndex = 24;
+            pnlFilters.Anchor = AnchorStyles.None;
+            pnlFilters.Controls.Add(lbFilterName);
+            pnlFilters.Controls.Add(btnClear);
+            pnlFilters.Controls.Add(lbFilterFeeTo);
+            pnlFilters.Controls.Add(txtFilterInstructor);
+            pnlFilters.Controls.Add(txtFilterFeeHigh);
+            pnlFilters.Controls.Add(lbFilterFee);
+            pnlFilters.Controls.Add(txtFilterName);
+            pnlFilters.Controls.Add(lbFilterInstructor);
+            pnlFilters.Controls.Add(txtFilterFeeLow);
+            pnlFilters.Controls.Add(btnApply);
+            pnlFilters.Location = new Point(318, 35);
+            pnlFilters.Name = "pnlFilters";
+            pnlFilters.Size = new Size(298, 160);
+            pnlFilters.TabIndex = 24;
             // 
-            // panel1
+            // pnlDetails
             // 
-            panel1.Location = new Point(660, 8);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(338, 437);
-            panel1.TabIndex = 25;
+            pnlDetails.Anchor = AnchorStyles.None;
+            pnlDetails.Controls.Add(starRatingControl);
+            pnlDetails.Controls.Add(rtbDescription);
+            pnlDetails.Controls.Add(pictureBox);
+            pnlDetails.Controls.Add(txtFee);
+            pnlDetails.Controls.Add(lbName);
+            pnlDetails.Controls.Add(lbRating);
+            pnlDetails.Controls.Add(lbDescription);
+            pnlDetails.Controls.Add(txtName);
+            pnlDetails.Controls.Add(lbFee);
+            pnlDetails.Location = new Point(660, 8);
+            pnlDetails.Name = "pnlDetails";
+            pnlDetails.Size = new Size(338, 481);
+            pnlDetails.TabIndex = 25;
             // 
             // frmProgramList
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1000, 490);
-            Controls.Add(starRatingControl);
-            Controls.Add(txtFilterFeeHigh);
-            Controls.Add(lbFilterFeeTo);
-            Controls.Add(btnClear);
-            Controls.Add(txtFilterInstructor);
-            Controls.Add(lbFilterInstructor);
+            ClientSize = new Size(1000, 541);
             Controls.Add(btnCourses);
-            Controls.Add(rtbDescription);
-            Controls.Add(lbDescription);
-            Controls.Add(txtFee);
-            Controls.Add(lbFee);
-            Controls.Add(lbRating);
-            Controls.Add(textBox1);
-            Controls.Add(lbName);
-            Controls.Add(pictureBox);
-            Controls.Add(btnApply);
-            Controls.Add(txtFilterFeeLow);
-            Controls.Add(lbFilterFee);
             Controls.Add(lbFilter);
-            Controls.Add(txtFilterName);
-            Controls.Add(lbFilterName);
             Controls.Add(lbProgram);
-            Controls.Add(dgvListProgram);
-            Controls.Add(pnlFilter);
-            Controls.Add(panel1);
+            Controls.Add(dgvPrograms);
+            Controls.Add(pnlFilters);
+            Controls.Add(pnlDetails);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
             Name = "frmProgramList";
             Text = "ListProgram";
             Load += frmProgramList_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvListProgram).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPrograms).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
+            pnlFilters.ResumeLayout(false);
+            pnlFilters.PerformLayout();
+            pnlDetails.ResumeLayout(false);
+            pnlDetails.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dgvListProgram;
+        private DataGridView dgvPrograms;
         private Label lbProgram;
         private Label lbFilterName;
         private TextBox txtFilterName;
@@ -349,7 +377,7 @@
         private Label lbFilterFee;
         private Button btnApply;
         private PictureBox pictureBox;
-        private TextBox textBox1;
+        private TextBox txtName;
         private Label lbName;
         private Label lbRating;
         private TextBox txtFee;
@@ -364,7 +392,7 @@
         private Label lbFilterFeeTo;
         private TextBox txtFilterFeeHigh;
         private Controls.StarRatingControl starRatingControl;
-        private Panel pnlFilter;
-        private Panel panel1;
+        private Panel pnlFilters;
+        private Panel pnlDetails;
     }
 }

@@ -1,10 +1,6 @@
-﻿namespace YogaCenterWinApp_Group9;
+﻿using YogaCenter.Repository.Repos;
 
-using System.Security.Cryptography.X509Certificates;
-using YogaCenter.Repository;
-using YogaCenter.Repository.DAL;
-using YogaCenter.Repository.Models;
-using YogaCenter.Repository.Repos;
+namespace YogaCenterWinApp_Group9;
 
 public partial class frmProgramManagement : Form
 {
@@ -31,8 +27,8 @@ public partial class frmProgramManagement : Form
         txtboxdescription.DataBindings.Add("Text", source, "Description");
         starRatingControl.DataBindings.Add("SelectedStar", source, "Rating");
 
-        dgvprogram.DataSource = null;
-        dgvprogram.DataSource = source;
+        dgvPrograms.DataSource = null;
+        dgvPrograms.DataSource = source;
     }
 
 
@@ -63,10 +59,10 @@ public partial class frmProgramManagement : Form
         YogaCenter.Repository.Models.Program programs = null;
         try
         {
-            if (dgvprogram.SelectedCells.Count > 0)
+            if (dgvPrograms.SelectedCells.Count > 0)
             {
-                int selectedRowIndex = dgvprogram.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = dgvprogram.Rows[selectedRowIndex];
+                int selectedRowIndex = dgvPrograms.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dgvPrograms.Rows[selectedRowIndex];
 
                 programs = new YogaCenter.Repository.Models.Program
                 {
@@ -118,8 +114,8 @@ public partial class frmProgramManagement : Form
 
         if (d == DialogResult.OK)
         {
-            int selectedRowIndex = dgvprogram.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = dgvprogram.Rows[selectedRowIndex];
+            int selectedRowIndex = dgvPrograms.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = dgvPrograms.Rows[selectedRowIndex];
             var p = new YogaCenter.Repository.Models.Program
             {
                 Id = Convert.ToInt32(selectedRow.Cells["Id"].Value),
@@ -150,8 +146,8 @@ public partial class frmProgramManagement : Form
                 txtFee.DataBindings.Add("Text", source, "Fee");
                 txtboxdescription.DataBindings.Add("Text", source, "Description");
 
-                dgvprogram.DataSource = null;
-                dgvprogram.DataSource = source;
+                dgvPrograms.DataSource = null;
+                dgvPrograms.DataSource = source;
             }
             else
             {

@@ -58,7 +58,8 @@
             // 
             lbCourseNum.AutoSize = true;
             lbCourseNum.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbCourseNum.Location = new Point(3, 164);
+            lbCourseNum.Location = new Point(4, 230);
+            lbCourseNum.Margin = new Padding(4, 0, 4, 0);
             lbCourseNum.Name = "lbCourseNum";
             lbCourseNum.Size = new Size(121, 21);
             lbCourseNum.TabIndex = 0;
@@ -66,9 +67,10 @@
             // 
             // btBack
             // 
-            btBack.Location = new Point(-6, -2);
+            btBack.Location = new Point(-8, -3);
+            btBack.Margin = new Padding(4, 4, 4, 4);
             btBack.Name = "btBack";
-            btBack.Size = new Size(84, 35);
+            btBack.Size = new Size(108, 49);
             btBack.TabIndex = 2;
             btBack.Text = "Back";
             btBack.UseVisualStyleBackColor = true;
@@ -77,7 +79,8 @@
             // 
             lbInstructor.AutoSize = true;
             lbInstructor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbInstructor.Location = new Point(3, 199);
+            lbInstructor.Location = new Point(4, 279);
+            lbInstructor.Margin = new Padding(4, 0, 4, 0);
             lbInstructor.Name = "lbInstructor";
             lbInstructor.Size = new Size(77, 21);
             lbInstructor.TabIndex = 3;
@@ -87,7 +90,8 @@
             // 
             lbProgram.AutoSize = true;
             lbProgram.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lbProgram.Location = new Point(156, 23);
+            lbProgram.Location = new Point(201, 32);
+            lbProgram.Margin = new Padding(4, 0, 4, 0);
             lbProgram.Name = "lbProgram";
             lbProgram.Size = new Size(147, 32);
             lbProgram.TabIndex = 5;
@@ -96,44 +100,49 @@
             // txtProgramId
             // 
             txtProgramId.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtProgramId.Location = new Point(144, 58);
+            txtProgramId.Location = new Point(185, 81);
+            txtProgramId.Margin = new Padding(4, 4, 4, 4);
             txtProgramId.Name = "txtProgramId";
             txtProgramId.ReadOnly = true;
-            txtProgramId.Size = new Size(169, 29);
+            txtProgramId.Size = new Size(216, 29);
             txtProgramId.TabIndex = 6;
             // 
             // comboBox1
             // 
             comboBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(144, 161);
+            comboBox1.Location = new Point(185, 225);
+            comboBox1.Margin = new Padding(4, 4, 4, 4);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 29);
+            comboBox1.Size = new Size(154, 29);
             comboBox1.TabIndex = 7;
             // 
             // comboBox2
             // 
             comboBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(144, 196);
+            comboBox2.Location = new Point(185, 274);
+            comboBox2.Margin = new Padding(4, 4, 4, 4);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(121, 29);
+            comboBox2.Size = new Size(154, 29);
             comboBox2.TabIndex = 8;
             // 
             // comboBox3
             // 
             comboBox3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(144, 231);
+            comboBox3.Location = new Point(185, 323);
+            comboBox3.Margin = new Padding(4, 4, 4, 4);
             comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(121, 29);
+            comboBox3.Size = new Size(154, 29);
             comboBox3.TabIndex = 10;
             // 
             // lbTimeSlot
             // 
             lbTimeSlot.AutoSize = true;
             lbTimeSlot.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbTimeSlot.Location = new Point(3, 234);
+            lbTimeSlot.Location = new Point(4, 328);
+            lbTimeSlot.Margin = new Padding(4, 0, 4, 0);
             lbTimeSlot.Name = "lbTimeSlot";
             lbTimeSlot.Size = new Size(75, 21);
             lbTimeSlot.TabIndex = 9;
@@ -143,7 +152,8 @@
             // 
             lbCourseStart.AutoSize = true;
             lbCourseStart.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbCourseStart.Location = new Point(3, 272);
+            lbCourseStart.Location = new Point(4, 381);
+            lbCourseStart.Margin = new Padding(4, 0, 4, 0);
             lbCourseStart.Name = "lbCourseStart";
             lbCourseStart.Size = new Size(136, 21);
             lbCourseStart.TabIndex = 12;
@@ -153,7 +163,8 @@
             // 
             lbTo.AutoSize = true;
             lbTo.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbTo.Location = new Point(316, 272);
+            lbTo.Location = new Point(406, 381);
+            lbTo.Margin = new Padding(4, 0, 4, 0);
             lbTo.Name = "lbTo";
             lbTo.Size = new Size(25, 21);
             lbTo.TabIndex = 14;
@@ -163,7 +174,8 @@
             // 
             lbNonAvailable.AutoSize = true;
             lbNonAvailable.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbNonAvailable.Location = new Point(619, 64);
+            lbNonAvailable.Location = new Point(796, 90);
+            lbNonAvailable.Margin = new Padding(4, 0, 4, 0);
             lbNonAvailable.Name = "lbNonAvailable";
             lbNonAvailable.Size = new Size(25, 21);
             lbNonAvailable.TabIndex = 18;
@@ -173,7 +185,8 @@
             // 
             lbAvailable.AutoSize = true;
             lbAvailable.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbAvailable.Location = new Point(332, 61);
+            lbAvailable.Location = new Point(427, 85);
+            lbAvailable.Margin = new Padding(4, 0, 4, 0);
             lbAvailable.Name = "lbAvailable";
             lbAvailable.Size = new Size(114, 21);
             lbAvailable.TabIndex = 16;
@@ -182,65 +195,73 @@
             // dateTimePickerAvailableFrom
             // 
             dateTimePickerAvailableFrom.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePickerAvailableFrom.Location = new Point(452, 58);
+            dateTimePickerAvailableFrom.Location = new Point(581, 81);
+            dateTimePickerAvailableFrom.Margin = new Padding(4, 4, 4, 4);
             dateTimePickerAvailableFrom.Name = "dateTimePickerAvailableFrom";
-            dateTimePickerAvailableFrom.Size = new Size(161, 29);
+            dateTimePickerAvailableFrom.Size = new Size(206, 29);
             dateTimePickerAvailableFrom.TabIndex = 19;
             // 
             // dateTimePickerAvailableTo
             // 
             dateTimePickerAvailableTo.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePickerAvailableTo.Location = new Point(650, 58);
+            dateTimePickerAvailableTo.Location = new Point(836, 81);
+            dateTimePickerAvailableTo.Margin = new Padding(4, 4, 4, 4);
             dateTimePickerAvailableTo.Name = "dateTimePickerAvailableTo";
-            dateTimePickerAvailableTo.Size = new Size(164, 29);
+            dateTimePickerAvailableTo.Size = new Size(210, 29);
             dateTimePickerAvailableTo.TabIndex = 20;
             // 
             // dateTimePickerCourseEnd
             // 
             dateTimePickerCourseEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePickerCourseEnd.Location = new Point(347, 266);
+            dateTimePickerCourseEnd.Location = new Point(446, 372);
+            dateTimePickerCourseEnd.Margin = new Padding(4, 4, 4, 4);
             dateTimePickerCourseEnd.Name = "dateTimePickerCourseEnd";
-            dateTimePickerCourseEnd.Size = new Size(184, 29);
+            dateTimePickerCourseEnd.Size = new Size(235, 29);
             dateTimePickerCourseEnd.TabIndex = 21;
             // 
             // dateTimePickerCourseStart
             // 
             dateTimePickerCourseStart.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePickerCourseStart.Location = new Point(144, 266);
+            dateTimePickerCourseStart.Location = new Point(185, 372);
+            dateTimePickerCourseStart.Margin = new Padding(4, 4, 4, 4);
             dateTimePickerCourseStart.Name = "dateTimePickerCourseStart";
-            dateTimePickerCourseStart.Size = new Size(169, 29);
+            dateTimePickerCourseStart.Size = new Size(216, 29);
             dateTimePickerCourseStart.TabIndex = 22;
             // 
             // btEnroll
             // 
-            btEnroll.Location = new Point(283, 350);
+            btEnroll.Location = new Point(364, 490);
+            btEnroll.Margin = new Padding(4, 4, 4, 4);
             btEnroll.Name = "btEnroll";
-            btEnroll.Size = new Size(248, 47);
+            btEnroll.Size = new Size(319, 66);
             btEnroll.TabIndex = 23;
             btEnroll.Text = "Enroll This Course";
             btEnroll.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(283, 161);
+            pictureBox1.Location = new Point(364, 225);
+            pictureBox1.Margin = new Padding(4, 4, 4, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(75, 99);
+            pictureBox1.Size = new Size(96, 139);
             pictureBox1.TabIndex = 24;
             pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
-            pictureBox2.Location = new Point(536, 93);
+            pictureBox2.Location = new Point(689, 130);
+            pictureBox2.Margin = new Padding(4, 4, 4, 4);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(278, 99);
+            pictureBox2.Size = new Size(357, 139);
             pictureBox2.TabIndex = 25;
             pictureBox2.TabStop = false;
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(615, 201);
+            richTextBox1.Location = new Point(791, 281);
+            richTextBox1.Margin = new Padding(4, 4, 4, 4);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(199, 94);
+            richTextBox1.Size = new Size(255, 130);
             richTextBox1.TabIndex = 26;
             richTextBox1.Text = "";
             // 
@@ -248,7 +269,8 @@
             // 
             lbSchedule.AutoSize = true;
             lbSchedule.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbSchedule.Location = new Point(536, 204);
+            lbSchedule.Location = new Point(689, 286);
+            lbSchedule.Margin = new Padding(4, 0, 4, 0);
             lbSchedule.Name = "lbSchedule";
             lbSchedule.Size = new Size(73, 21);
             lbSchedule.TabIndex = 27;
@@ -256,9 +278,9 @@
             // 
             // frmCourseList
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(838, 450);
+            ClientSize = new Size(1077, 630);
             Controls.Add(lbSchedule);
             Controls.Add(richTextBox1);
             Controls.Add(pictureBox2);
@@ -281,6 +303,8 @@
             Controls.Add(lbInstructor);
             Controls.Add(btBack);
             Controls.Add(lbCourseNum);
+            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "frmCourseList";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();

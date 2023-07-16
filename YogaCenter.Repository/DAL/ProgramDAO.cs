@@ -26,6 +26,7 @@ public class ProgramDAO
         using var db = new YogaCenterContext();
         return db.Programs
             .Where(p => !p.Inactive)
+            .Include(p => p.Instructors)
             .ToList();
     }
 
@@ -34,6 +35,7 @@ public class ProgramDAO
         using var db = new YogaCenterContext();
         return db.Programs
             .Where(p => !p.Inactive)
+            .Include(p => p.Instructors)
             .FirstOrDefault(p => p.Id == id);
     }
 

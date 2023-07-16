@@ -1,4 +1,5 @@
 ﻿using YogaCenter.Repository.DAL;
+using YogaCenter.Repository.Models;
 
 namespace YogaCenter.Repository.Repos;
 
@@ -15,13 +16,15 @@ public class CourseRegisterRepository : ICourseRegisterRepository
 
         var course = CourseDAO.Instance.Get(courseId)
             ?? throw new ArgumentException("Course does not exist.");
-        if (learner.CoursesEnrolled.FirstOrDefault(c => c.Id == courseId) != null)
-        {
+        if (CourseRegisterDAO.Instance.Get(courseId, learnerId) != null)
             throw new ArgumentException("Learner is already enrolled in target Course.");
-        }
 
-        learner.CoursesEnrolled.Add(course);
-        UserDAO.Instance.EnrolInCourse(learner.Id, course.Id);
+        CourseRegisterDAO.Instance.Add(new CourseRegister()
+        {
+            CourseId = courseId,
+            LearnerId = learnerId,
+            EnrolDatetime = DateTime.Now
+        });
     }
 
     public void Delete(long learnerId, int courseId)
@@ -35,9 +38,9 @@ public class CourseRegisterRepository : ICourseRegisterRepository
 
         _ = CourseDAO.Instance.Get(courseId)
             ?? throw new ArgumentException("Course does not exist.");
-        var course = learner.CoursesEnrolled.FirstOrDefault(c => c.Id == courseId)
+        _ = CourseRegisterDAO.Instance.Get(courseId, learnerId)
             ?? throw new ArgumentException("Learner was not enrolled in target Course.");
 
-        UserDAO.Instance.UnenrolFromCourse(learner.Id, course.Id);
+        CourseRegisterDAO.Instance.Delete(courseId, learnerId);
     }
 }
