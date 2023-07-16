@@ -32,6 +32,13 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             dataGridView1 = new DataGridView();
+            Nothing = new DataGridViewTextBoxColumn();
+            colMonday = new DataGridViewTextBoxColumn();
+            colTuesday = new DataGridViewTextBoxColumn();
+            colWednesday = new DataGridViewTextBoxColumn();
+            colThursday = new DataGridViewTextBoxColumn();
+            colFriday = new DataGridViewTextBoxColumn();
+            colSaturday = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -46,6 +53,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Nothing, colMonday, colTuesday, colWednesday, colThursday, colFriday, colSaturday });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -73,6 +81,49 @@
             dataGridView1.Size = new Size(890, 638);
             dataGridView1.TabIndex = 0;
             // 
+            // Nothing
+            // 
+            Nothing.Frozen = true;
+            Nothing.HeaderText = "";
+            Nothing.Name = "Nothing";
+            Nothing.ReadOnly = true;
+            // 
+            // colMonday
+            // 
+            colMonday.HeaderText = "Monday";
+            colMonday.Name = "colMonday";
+            colMonday.ReadOnly = true;
+            // 
+            // colTuesday
+            // 
+            colTuesday.HeaderText = "Tuesday";
+            colTuesday.Name = "colTuesday";
+            colTuesday.ReadOnly = true;
+            // 
+            // colWednesday
+            // 
+            colWednesday.HeaderText = "Wednesday";
+            colWednesday.Name = "colWednesday";
+            colWednesday.ReadOnly = true;
+            // 
+            // colThursday
+            // 
+            colThursday.HeaderText = "Thursday";
+            colThursday.Name = "colThursday";
+            colThursday.ReadOnly = true;
+            // 
+            // colFriday
+            // 
+            colFriday.HeaderText = "Friday";
+            colFriday.Name = "colFriday";
+            colFriday.ReadOnly = true;
+            // 
+            // colSaturday
+            // 
+            colSaturday.HeaderText = "Saturday";
+            colSaturday.Name = "colSaturday";
+            colSaturday.ReadOnly = true;
+            // 
             // frmTimetable
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -90,5 +141,12 @@
         #endregion
 
         private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn Nothing;
+        private DataGridViewTextBoxColumn colMonday;
+        private DataGridViewTextBoxColumn colTuesday;
+        private DataGridViewTextBoxColumn colWednesday;
+        private DataGridViewTextBoxColumn colThursday;
+        private DataGridViewTextBoxColumn colFriday;
+        private DataGridViewTextBoxColumn colSaturday;
     }
 }
