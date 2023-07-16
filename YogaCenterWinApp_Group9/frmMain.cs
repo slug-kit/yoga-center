@@ -1,8 +1,6 @@
-﻿using static YogaCenterWinApp_Group9.Utils.Extensions;
-using YogaCenterWinApp_Group9;
-using YogaCenter.Repository.Models;
+﻿using YogaCenter.Repository.Models;
 using YogaCenterWinApp_Group9.Utils;
-using YogaCenter.Repository.Repos;
+using static YogaCenterWinApp_Group9.Utils.Extensions;
 
 namespace YogaCenterWinApp_Group9;
 
@@ -10,16 +8,6 @@ public partial class frmMain : Form
 {
     private bool authenticated;
     private bool adminMode;
-    private User? _curUser;
-
-    public User? CurrentUser
-    {
-        get => _curUser;
-        private set
-        {
-            _curUser = value;
-        }
-    }
 
     public frmMain()
     {
@@ -68,7 +56,7 @@ public partial class frmMain : Form
         {
             authenticated = true;
             adminMode = e.FullPrivilege;
-            if (!adminMode) CurrentUser = new UserRepository().GetUserById(e.Id)
+            if (!adminMode) Program.CurrentUser = new UserRepository().GetUserById(e.Id)
                     ?? throw new ArgumentException("A error has occurred during the login process.");
 
             Form frmLogin = (Form)sender;
@@ -95,7 +83,7 @@ public partial class frmMain : Form
     {
         if (sender is frmProfile frmProfile)
         {
-            CurrentUser = frmProfile.User;
+            Program.CurrentUser = frmProfile.User;
             if (e.ReAuthenticate)
                 PerformLogout();
         }
@@ -133,7 +121,7 @@ public partial class frmMain : Form
     {
         adminMode = false;
         authenticated = false;
-        CurrentUser = null;
+        Program.CurrentUser = null;
         foreach (Form f in MdiChildren)
         {
             f.Close();
@@ -147,7 +135,7 @@ public partial class frmMain : Form
 
     private void profileToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        if (CurrentUser == null) throw new InvalidOperationException("User is unauthenticated or does not have a profile.");
+        if (Program.CurrentUser == null) throw new InvalidOperationException("User is unauthenticated or does not have a profile.");
         frmProfile frmProfile = new();
         frmProfile.ConfigureMdi(this);
         frmProfile.ProfileUpdated += UpdateProfileObject;
