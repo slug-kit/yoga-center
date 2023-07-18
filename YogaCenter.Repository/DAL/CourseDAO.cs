@@ -89,4 +89,14 @@ public class CourseDAO
 
         return courses.ToList();
     }
+    public IEnumerable<Course> SearchCoursesByProgramId(int programId)
+    {
+        using var db = new YogaCenterContext();
+        return db.Courses
+            .Include(c => c.Program)
+            .Include(c => c.Instructor)
+            .Where(c => c.ProgramId == programId && !c.Inactive)
+            .ToList();
+    }
+
 }
