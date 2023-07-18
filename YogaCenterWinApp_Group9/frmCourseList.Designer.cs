@@ -33,9 +33,6 @@
             lbInstructor = new Label();
             lbProgram = new Label();
             txtProgramId = new TextBox();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
-            comboBox3 = new ComboBox();
             lbTimeSlot = new Label();
             lbCourseStart = new Label();
             lbTo = new Label();
@@ -47,18 +44,27 @@
             dateTimePickerCourseStart = new DateTimePicker();
             btEnroll = new Button();
             pictureBox1 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            richTextBox1 = new RichTextBox();
+            rtbschedule = new RichTextBox();
             lbSchedule = new Label();
+            dataGridView1 = new DataGridView();
+            txtCoursenumber = new TextBox();
+            txtInstructor = new TextBox();
+            txtTimeslot = new TextBox();
+            label1 = new Label();
+            dateTimePickerStartDate = new DateTimePicker();
+            dateTimePickerEndDate = new DateTimePicker();
+            btnSearch = new Button();
+            txtStatusfilter = new TextBox();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // lbCourseNum
             // 
             lbCourseNum.AutoSize = true;
             lbCourseNum.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbCourseNum.Location = new Point(4, 230);
+            lbCourseNum.Location = new Point(20, 332);
             lbCourseNum.Margin = new Padding(4, 0, 4, 0);
             lbCourseNum.Name = "lbCourseNum";
             lbCourseNum.Size = new Size(121, 21);
@@ -68,7 +74,7 @@
             // btBack
             // 
             btBack.Location = new Point(-8, -3);
-            btBack.Margin = new Padding(4, 4, 4, 4);
+            btBack.Margin = new Padding(4);
             btBack.Name = "btBack";
             btBack.Size = new Size(108, 49);
             btBack.TabIndex = 2;
@@ -79,7 +85,7 @@
             // 
             lbInstructor.AutoSize = true;
             lbInstructor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbInstructor.Location = new Point(4, 279);
+            lbInstructor.Location = new Point(20, 381);
             lbInstructor.Margin = new Padding(4, 0, 4, 0);
             lbInstructor.Name = "lbInstructor";
             lbInstructor.Size = new Size(77, 21);
@@ -101,47 +107,17 @@
             // 
             txtProgramId.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtProgramId.Location = new Point(185, 81);
-            txtProgramId.Margin = new Padding(4, 4, 4, 4);
+            txtProgramId.Margin = new Padding(4);
             txtProgramId.Name = "txtProgramId";
             txtProgramId.ReadOnly = true;
             txtProgramId.Size = new Size(216, 29);
             txtProgramId.TabIndex = 6;
             // 
-            // comboBox1
-            // 
-            comboBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(185, 225);
-            comboBox1.Margin = new Padding(4, 4, 4, 4);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(154, 29);
-            comboBox1.TabIndex = 7;
-            // 
-            // comboBox2
-            // 
-            comboBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(185, 274);
-            comboBox2.Margin = new Padding(4, 4, 4, 4);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(154, 29);
-            comboBox2.TabIndex = 8;
-            // 
-            // comboBox3
-            // 
-            comboBox3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(185, 323);
-            comboBox3.Margin = new Padding(4, 4, 4, 4);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(154, 29);
-            comboBox3.TabIndex = 10;
-            // 
             // lbTimeSlot
             // 
             lbTimeSlot.AutoSize = true;
             lbTimeSlot.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbTimeSlot.Location = new Point(4, 328);
+            lbTimeSlot.Location = new Point(20, 430);
             lbTimeSlot.Margin = new Padding(4, 0, 4, 0);
             lbTimeSlot.Name = "lbTimeSlot";
             lbTimeSlot.Size = new Size(75, 21);
@@ -152,7 +128,7 @@
             // 
             lbCourseStart.AutoSize = true;
             lbCourseStart.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbCourseStart.Location = new Point(4, 381);
+            lbCourseStart.Location = new Point(20, 483);
             lbCourseStart.Margin = new Padding(4, 0, 4, 0);
             lbCourseStart.Name = "lbCourseStart";
             lbCourseStart.Size = new Size(136, 21);
@@ -163,7 +139,7 @@
             // 
             lbTo.AutoSize = true;
             lbTo.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbTo.Location = new Point(406, 381);
+            lbTo.Location = new Point(472, 481);
             lbTo.Margin = new Padding(4, 0, 4, 0);
             lbTo.Name = "lbTo";
             lbTo.Size = new Size(25, 21);
@@ -174,7 +150,7 @@
             // 
             lbNonAvailable.AutoSize = true;
             lbNonAvailable.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbNonAvailable.Location = new Point(796, 90);
+            lbNonAvailable.Location = new Point(762, 542);
             lbNonAvailable.Margin = new Padding(4, 0, 4, 0);
             lbNonAvailable.Name = "lbNonAvailable";
             lbNonAvailable.Size = new Size(25, 21);
@@ -185,7 +161,7 @@
             // 
             lbAvailable.AutoSize = true;
             lbAvailable.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbAvailable.Location = new Point(427, 85);
+            lbAvailable.Location = new Point(383, 538);
             lbAvailable.Margin = new Padding(4, 0, 4, 0);
             lbAvailable.Name = "lbAvailable";
             lbAvailable.Size = new Size(114, 21);
@@ -195,95 +171,179 @@
             // dateTimePickerAvailableFrom
             // 
             dateTimePickerAvailableFrom.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePickerAvailableFrom.Location = new Point(581, 81);
-            dateTimePickerAvailableFrom.Margin = new Padding(4, 4, 4, 4);
+            dateTimePickerAvailableFrom.Location = new Point(505, 536);
+            dateTimePickerAvailableFrom.Margin = new Padding(4);
             dateTimePickerAvailableFrom.Name = "dateTimePickerAvailableFrom";
-            dateTimePickerAvailableFrom.Size = new Size(206, 29);
+            dateTimePickerAvailableFrom.Size = new Size(249, 29);
             dateTimePickerAvailableFrom.TabIndex = 19;
             // 
             // dateTimePickerAvailableTo
             // 
             dateTimePickerAvailableTo.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePickerAvailableTo.Location = new Point(836, 81);
-            dateTimePickerAvailableTo.Margin = new Padding(4, 4, 4, 4);
+            dateTimePickerAvailableTo.Location = new Point(795, 536);
+            dateTimePickerAvailableTo.Margin = new Padding(4);
             dateTimePickerAvailableTo.Name = "dateTimePickerAvailableTo";
-            dateTimePickerAvailableTo.Size = new Size(210, 29);
+            dateTimePickerAvailableTo.Size = new Size(250, 29);
             dateTimePickerAvailableTo.TabIndex = 20;
             // 
             // dateTimePickerCourseEnd
             // 
             dateTimePickerCourseEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePickerCourseEnd.Location = new Point(446, 372);
-            dateTimePickerCourseEnd.Margin = new Padding(4, 4, 4, 4);
+            dateTimePickerCourseEnd.Location = new Point(515, 475);
+            dateTimePickerCourseEnd.Margin = new Padding(4);
             dateTimePickerCourseEnd.Name = "dateTimePickerCourseEnd";
-            dateTimePickerCourseEnd.Size = new Size(235, 29);
+            dateTimePickerCourseEnd.Size = new Size(250, 29);
             dateTimePickerCourseEnd.TabIndex = 21;
             // 
             // dateTimePickerCourseStart
             // 
             dateTimePickerCourseStart.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePickerCourseStart.Location = new Point(185, 372);
-            dateTimePickerCourseStart.Margin = new Padding(4, 4, 4, 4);
+            dateTimePickerCourseStart.Location = new Point(201, 474);
+            dateTimePickerCourseStart.Margin = new Padding(4);
             dateTimePickerCourseStart.Name = "dateTimePickerCourseStart";
-            dateTimePickerCourseStart.Size = new Size(216, 29);
+            dateTimePickerCourseStart.Size = new Size(251, 29);
             dateTimePickerCourseStart.TabIndex = 22;
             // 
             // btEnroll
             // 
-            btEnroll.Location = new Point(364, 490);
-            btEnroll.Margin = new Padding(4, 4, 4, 4);
+            btEnroll.Location = new Point(677, 332);
+            btEnroll.Margin = new Padding(4);
             btEnroll.Name = "btEnroll";
-            btEnroll.Size = new Size(319, 66);
+            btEnroll.Size = new Size(278, 70);
             btEnroll.TabIndex = 23;
             btEnroll.Text = "Enroll This Course";
             btEnroll.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(364, 225);
-            pictureBox1.Margin = new Padding(4, 4, 4, 4);
+            pictureBox1.Location = new Point(377, 317);
+            pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(96, 139);
             pictureBox1.TabIndex = 24;
             pictureBox1.TabStop = false;
             // 
-            // pictureBox2
+            // rtbschedule
             // 
-            pictureBox2.Location = new Point(689, 130);
-            pictureBox2.Margin = new Padding(4, 4, 4, 4);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(357, 139);
-            pictureBox2.TabIndex = 25;
-            pictureBox2.TabStop = false;
-            // 
-            // richTextBox1
-            // 
-            richTextBox1.Location = new Point(791, 281);
-            richTextBox1.Margin = new Padding(4, 4, 4, 4);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(255, 130);
-            richTextBox1.TabIndex = 26;
-            richTextBox1.Text = "";
+            rtbschedule.Location = new Point(148, 527);
+            rtbschedule.Margin = new Padding(4);
+            rtbschedule.Name = "rtbschedule";
+            rtbschedule.Size = new Size(227, 75);
+            rtbschedule.TabIndex = 26;
+            rtbschedule.Text = "";
             // 
             // lbSchedule
             // 
             lbSchedule.AutoSize = true;
             lbSchedule.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbSchedule.Location = new Point(689, 286);
+            lbSchedule.Location = new Point(20, 530);
             lbSchedule.Margin = new Padding(4, 0, 4, 0);
             lbSchedule.Name = "lbSchedule";
             lbSchedule.Size = new Size(73, 21);
             lbSchedule.TabIndex = 27;
             lbSchedule.Text = "Schedule";
             // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(120, 129);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(835, 181);
+            dataGridView1.TabIndex = 28;
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
+            // 
+            // txtCoursenumber
+            // 
+            txtCoursenumber.Location = new Point(148, 332);
+            txtCoursenumber.Name = "txtCoursenumber";
+            txtCoursenumber.Size = new Size(187, 29);
+            txtCoursenumber.TabIndex = 29;
+            // 
+            // txtInstructor
+            // 
+            txtInstructor.Location = new Point(148, 381);
+            txtInstructor.Name = "txtInstructor";
+            txtInstructor.Size = new Size(187, 29);
+            txtInstructor.TabIndex = 30;
+            // 
+            // txtTimeslot
+            // 
+            txtTimeslot.Location = new Point(148, 427);
+            txtTimeslot.Name = "txtTimeslot";
+            txtTimeslot.Size = new Size(187, 29);
+            txtTimeslot.TabIndex = 31;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(536, 18);
+            label1.Name = "label1";
+            label1.Size = new Size(45, 21);
+            label1.TabIndex = 32;
+            label1.Text = "Filter";
+            // 
+            // dateTimePickerStartDate
+            // 
+            dateTimePickerStartDate.Location = new Point(617, 18);
+            dateTimePickerStartDate.Name = "dateTimePickerStartDate";
+            dateTimePickerStartDate.Size = new Size(269, 29);
+            dateTimePickerStartDate.TabIndex = 0;
+            // 
+            // dateTimePickerEndDate
+            // 
+            dateTimePickerEndDate.Location = new Point(617, 78);
+            dateTimePickerEndDate.Name = "dateTimePickerEndDate";
+            dateTimePickerEndDate.Size = new Size(269, 29);
+            dateTimePickerEndDate.TabIndex = 1;
+            // 
+            // btnSearch
+            // 
+            btnSearch.Location = new Point(515, 42);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(86, 28);
+            btnSearch.TabIndex = 33;
+            btnSearch.Text = "Apply";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // txtStatusfilter
+            // 
+            txtStatusfilter.Location = new Point(908, 53);
+            txtStatusfilter.Name = "txtStatusfilter";
+            txtStatusfilter.Size = new Size(100, 29);
+            txtStatusfilter.TabIndex = 34;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(931, 25);
+            label2.Name = "label2";
+            label2.Size = new Size(52, 21);
+            label2.TabIndex = 35;
+            label2.Text = "Status";
+            // 
             // frmCourseList
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1077, 630);
+            Controls.Add(label2);
+            Controls.Add(txtStatusfilter);
+            Controls.Add(btnSearch);
+            Controls.Add(label1);
+            Controls.Add(dateTimePickerEndDate);
+            Controls.Add(txtTimeslot);
+            Controls.Add(dateTimePickerStartDate);
+            Controls.Add(txtInstructor);
+            Controls.Add(txtCoursenumber);
+            Controls.Add(dataGridView1);
             Controls.Add(lbSchedule);
-            Controls.Add(richTextBox1);
-            Controls.Add(pictureBox2);
+            Controls.Add(rtbschedule);
             Controls.Add(pictureBox1);
             Controls.Add(btEnroll);
             Controls.Add(dateTimePickerCourseStart);
@@ -294,20 +354,18 @@
             Controls.Add(lbAvailable);
             Controls.Add(lbTo);
             Controls.Add(lbCourseStart);
-            Controls.Add(comboBox3);
             Controls.Add(lbTimeSlot);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
             Controls.Add(txtProgramId);
             Controls.Add(lbProgram);
             Controls.Add(lbInstructor);
             Controls.Add(btBack);
             Controls.Add(lbCourseNum);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "frmCourseList";
+            Load += frmCourseList_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -319,9 +377,6 @@
         private Label lbInstructor;
         private Label lbProgram;
         private TextBox txtProgramId;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
-        private ComboBox comboBox3;
         private Label lbTimeSlot;
         private Label lbCourseStart;
         private Label lbTo;
@@ -333,8 +388,17 @@
         private DateTimePicker dateTimePickerCourseStart;
         private Button btEnroll;
         private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
-        private RichTextBox richTextBox1;
+        private RichTextBox rtbschedule;
         private Label lbSchedule;
+        private DataGridView dataGridView1;
+        private TextBox txtCoursenumber;
+        private TextBox txtInstructor;
+        private TextBox txtTimeslot;
+        private Label label1;
+        private DateTimePicker dateTimePickerStartDate;
+        private DateTimePicker dateTimePickerEndDate;
+        private Button btnSearch;
+        private TextBox txtStatusfilter;
+        private Label label2;
     }
 }

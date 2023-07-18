@@ -298,7 +298,19 @@ public partial class frmProgramList : Form
 
     private void btnCourses_Click(object sender, EventArgs e)
     {
-        //frmCourseList frmCourseList = new();
-        //frmCourseList.ShowDialog();
+        if (dgvPrograms.SelectedRows.Count > 0)
+        {
+            int selectedRowIndex = dgvPrograms.SelectedRows[0].Index;
+            DataGridViewRow selectedRow = dgvPrograms.Rows[selectedRowIndex];
+            int programId = (int)selectedRow.Cells[nameof(Programme.Id)].Value;
+
+            frmCourseList frmCourseList = new frmCourseList(programId);
+            frmCourseList.ShowDialog();
+        }
+        else
+        {
+            MessageBox.Show("Please select a program.");
+        }
     }
+
 }
