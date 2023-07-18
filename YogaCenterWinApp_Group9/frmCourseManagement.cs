@@ -75,6 +75,15 @@ public partial class frmCourseManagement : Form
             var course = (Course)dgvcourse.Rows[e.RowIndex].DataBoundItem;
             e.Value = course?.Instructor?.Fullname;
         }
+        if (e.ColumnIndex == dgvcourse.Columns["StartDate"].Index || e.ColumnIndex == dgvcourse.Columns["EndDate"].Index || e.ColumnIndex == dgvcourse.Columns["RegistrationOpenDate"].Index || e.ColumnIndex == dgvcourse.Columns["RegistrationCloseDate"].Index)
+        {
+            if (e.Value != null && e.Value is DateTime)
+            {
+                DateTime dateValue = (DateTime)e.Value;
+                e.Value = dateValue.ToString("dd/MM/yyyy");
+                e.FormattingApplied = true;
+            }
+        }
     }
 
     //DELETE(BUG NOT FIX --SQL BUG) ----------------------------------------------------------------------------------
@@ -154,15 +163,40 @@ public partial class frmCourseManagement : Form
     {
         string courseCode = txtcoursecodesearch.Text.Trim();
         string schedule = txtschedulesearch.Text.Trim();
+        string instructorName = txtInstructorSearch.Text.Trim();
 
-        // Gọi phương thức tìm kiếm từ repository 
-        var searchResult = courseRepository.SearchCourses(courseCode, schedule);
+        DateTime? startDate = null;
+        DateTime? endDate = null;
+        DateTime? registrationOpenDate = null;
+        DateTime? registrationCloseDate = null;
 
-        // Hiển thị kết quả tìm kiếm trong DataGridView
+        if (dateTimePickerStartDate.Checked)
+        {
+            startDate = dateTimePickerStartDate.Value.Date;
+        }
+
+        if (dateTimePickerEndDate.Checked)
+        {
+            endDate = dateTimePickerEndDate.Value.Date;
+        }
+
+        if (dateTimePickerRegistrationOpenDate.Checked)
+        {
+            registrationOpenDate = dateTimePickerRegistrationOpenDate.Value.Date;
+        }
+
+        if (dateTimePickerRegistrationCloseDate.Checked)
+        {
+            registrationCloseDate = dateTimePickerRegistrationCloseDate.Value.Date;
+        }
+
+        var searchResult = courseRepository.SearchCourses(courseCode, schedule, instructorName, startDate, endDate, registrationOpenDate, registrationCloseDate);
+
         BindingSource source = new BindingSource();
         source.DataSource = searchResult;
         dgvcourse.DataSource = source;
     }
+
 
 }
 

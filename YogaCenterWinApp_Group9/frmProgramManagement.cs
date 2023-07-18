@@ -128,11 +128,35 @@ public partial class frmProgramManagement : Form
     //SEARCH-------------------------------------------------------------------------------------------------
     private void btnsearch_Click(object sender, EventArgs e)
     {
-        string searchText = txtSearchName.Text.Trim(); // Lấy giá trị tìm kiếm từ textbox
+        string searchText = txtSearchName.Text.Trim(); // Get the search value from the textbox
+        int? minFee = null;
+        int? maxFee = null;
+        int? minRating = null;
+        int? maxRating = null;
 
-        if (!string.IsNullOrEmpty(searchText))
+        if (!string.IsNullOrEmpty(txtMinFee.Text))
         {
-            var programList = programRepository.SearchPrograms(searchText); // Gọi phương thức tìm kiếm từ lớp DAO
+            minFee = int.Parse(txtMinFee.Text);
+        }
+
+        if (!string.IsNullOrEmpty(txtMaxFee.Text))
+        {
+            maxFee = int.Parse(txtMaxFee.Text);
+        }
+
+        if (!string.IsNullOrEmpty(txtMinRating.Text))
+        {
+            minRating = int.Parse(txtMinRating.Text);
+        }
+
+        if (!string.IsNullOrEmpty(txtMaxRating.Text))
+        {
+            maxRating = int.Parse(txtMaxRating.Text);
+        }
+
+        if (!string.IsNullOrEmpty(searchText) || minFee.HasValue || maxFee.HasValue || minRating.HasValue || maxRating.HasValue)
+        {
+            var programList = programRepository.SearchPrograms(searchText, minFee, maxFee, minRating, maxRating);
 
             if (programList != null && programList.Any())
             {
@@ -155,7 +179,7 @@ public partial class frmProgramManagement : Form
         }
         else
         {
-            LoadProgramList(); // Nếu không có giá trị tìm kiếm, hiển thị tất cả chương trình
+            LoadProgramList();
         }
     }
 }

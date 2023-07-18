@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using YogaCenter.Repository.Models;
 using YogaCenter.Repository.Repos;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace YogaCenterWinApp_Group9
 {
@@ -18,9 +19,9 @@ namespace YogaCenterWinApp_Group9
         {
             InitializeComponent();
         }
+
         public IProgramRepository ProgramRepository { get; set; }
         public bool InsertOrUpdate { get; set; }
-
         public YogaCenter.Repository.Models.Program Programme { get; set; }
 
         private void btnsave_Click(object sender, EventArgs e)
@@ -29,22 +30,42 @@ namespace YogaCenterWinApp_Group9
             {
                 var program = new YogaCenter.Repository.Models.Program
                 {
-                    //Id = int.Parse(txtid.Text),
+                    Code = txtCode.Text, // Get the value from the code textbox
                     Description = txtdescription.Text,
-                    Fee = int.Parse(txtfee.Text),
+                    Fee = int.Parse(txtfee.Text)
                 };
+
                 if (InsertOrUpdate == false)
                 {
-                    ProgramRepository.Add(program);
+                    // Check if the code is unique before adding the program
+                    if (ProgramRepository.IsCodeUnique(program.Code))
+                    {
+                        ProgramRepository.Add(program);
+                        MessageBox.Show("Program saved successfully.", InsertOrUpdate == true ? "Update a program" : "Add a new program");
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Code must be unique. Please enter a different code.", "Code Validation Error");
+                    }
                 }
-                else { ProgramRepository.Update(program); }
-
-                MessageBox.Show("Program saved successfully.", InsertOrUpdate == true ? "Update a program" : "Add a new program");
-                Close();
+                else
+                {
+                    // Check if the code is unique before updating the program
+                    if (ProgramRepository.IsCodeUnique(program.Code, program.Id))
+                    {
+                        ProgramRepository.Update(program);
+                        MessageBox.Show("Program saved successfully.", InsertOrUpdate == true ? "Update a program" : "Add a new program");
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Code must be unique. Please enter a different code.", "Code Validation Error");
+                    }
+                }
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -54,6 +75,7 @@ namespace YogaCenterWinApp_Group9
             txtid.Enabled = !InsertOrUpdate;
             if (InsertOrUpdate == true)
             {
+                txtCode.Text = Programme.Code;
                 txtdescription.Text = Programme.Description;
                 txtid.Text = Programme.Id.ToString();
                 txtfee.Text = Programme.Fee.ToString();

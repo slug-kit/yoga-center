@@ -19,6 +19,7 @@ public partial class frmProfile : Form
     private readonly User _pom = new()
     {
         Id = Program.CurrentUser!.Id,
+        Password = Program.CurrentUser.Password,
         Username = Program.CurrentUser.Username,
         Fullname = Program.CurrentUser.Fullname,
         Dob = Program.CurrentUser.Dob,
@@ -37,6 +38,7 @@ public partial class frmProfile : Form
             txtEmail,
             txtFullname,
             txtUsername,
+            txtpassword,
             dob,
             mtbphonenumber,
             txtgender
@@ -49,8 +51,8 @@ public partial class frmProfile : Form
     {
         LoadUserprofile();
         LoadCourseOfUser();
-    }
 
+    }
     private void LoadCourseOfUser()
     {
         long userId = _pom.Id;
@@ -75,6 +77,8 @@ public partial class frmProfile : Form
         bindingSource.DataSource = _pom;
 
         txtEmail.DataBindings.Add("Text", bindingSource, "Email", true)
+            .Parse += DataField_DetectChange!;
+        txtpassword.DataBindings.Add("Text", bindingSource, "Password", true)
             .Parse += DataField_DetectChange!;
         txtFullname.DataBindings.Add("Text", bindingSource, "Fullname", true)
             .Parse += DataField_DetectChange!;

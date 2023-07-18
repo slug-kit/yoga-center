@@ -36,12 +36,14 @@
             txtid = new TextBox();
             label1 = new Label();
             richTextBox1 = new RichTextBox();
+            lbcode = new Label();
+            txtCode = new TextBox();
             SuspendLayout();
             // 
             // txtdescription
             // 
             txtdescription.AutoSize = true;
-            txtdescription.Location = new Point(15, 113);
+            txtdescription.Location = new Point(13, 147);
             txtdescription.Margin = new Padding(4, 0, 4, 0);
             txtdescription.Name = "txtdescription";
             txtdescription.Size = new Size(89, 21);
@@ -108,18 +110,36 @@
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(134, 109);
-            richTextBox1.Margin = new Padding(4, 4, 4, 4);
+            richTextBox1.Location = new Point(134, 147);
+            richTextBox1.Margin = new Padding(4);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(253, 136);
+            richTextBox1.Size = new Size(253, 98);
             richTextBox1.TabIndex = 15;
             richTextBox1.Text = "";
+            // 
+            // lbcode
+            // 
+            lbcode.AutoSize = true;
+            lbcode.Location = new Point(12, 107);
+            lbcode.Name = "lbcode";
+            lbcode.Size = new Size(46, 21);
+            lbcode.TabIndex = 16;
+            lbcode.Text = "Code";
+            // 
+            // txtCode
+            // 
+            txtCode.Location = new Point(134, 107);
+            txtCode.Name = "txtCode";
+            txtCode.Size = new Size(253, 29);
+            txtCode.TabIndex = 17;
             // 
             // frmProgramManagementEdit
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(410, 295);
+            Controls.Add(txtCode);
+            Controls.Add(lbcode);
             Controls.Add(richTextBox1);
             Controls.Add(label1);
             Controls.Add(txtid);
@@ -147,5 +167,7 @@
         private TextBox txtid;
         private Label label1;
         private RichTextBox richTextBox1;
+        private Label lbcode;
+        private TextBox txtCode;
     }
 }

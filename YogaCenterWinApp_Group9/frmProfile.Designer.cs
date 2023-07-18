@@ -31,7 +31,6 @@
             pictureBox1 = new PictureBox();
             txtEmail = new TextBox();
             mtbphonenumber = new MaskedTextBox();
-            lbFemale = new RadioButton();
             txtFullname = new TextBox();
             txtUsername = new TextBox();
             lbPhone = new Label();
@@ -49,6 +48,8 @@
             btnUpdate = new Button();
             btnSave = new Button();
             btnCancel = new Button();
+            txtpassword = new TextBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCourse).BeginInit();
             SuspendLayout();
@@ -64,7 +65,7 @@
             // txtEmail
             // 
             txtEmail.ForeColor = SystemColors.InactiveCaption;
-            txtEmail.Location = new Point(147, 297);
+            txtEmail.Location = new Point(147, 334);
             txtEmail.Name = "txtEmail";
             txtEmail.ReadOnly = true;
             txtEmail.Size = new Size(264, 29);
@@ -73,22 +74,11 @@
             // 
             // mtbphonenumber
             // 
-            mtbphonenumber.Location = new Point(147, 335);
+            mtbphonenumber.Location = new Point(147, 374);
             mtbphonenumber.Name = "mtbphonenumber";
             mtbphonenumber.ReadOnly = true;
             mtbphonenumber.Size = new Size(264, 29);
             mtbphonenumber.TabIndex = 37;
-            // 
-            // lbFemale
-            // 
-            lbFemale.AutoSize = true;
-            lbFemale.Location = new Point(282, 298);
-            lbFemale.Name = "lbFemale";
-            lbFemale.Size = new Size(78, 25);
-            lbFemale.TabIndex = 36;
-            lbFemale.TabStop = true;
-            lbFemale.Text = "Female";
-            lbFemale.UseVisualStyleBackColor = true;
             // 
             // txtFullname
             // 
@@ -109,7 +99,7 @@
             // lbPhone
             // 
             lbPhone.AutoSize = true;
-            lbPhone.Location = new Point(22, 337);
+            lbPhone.Location = new Point(22, 382);
             lbPhone.Name = "lbPhone";
             lbPhone.Size = new Size(116, 21);
             lbPhone.TabIndex = 29;
@@ -118,7 +108,7 @@
             // lbMail
             // 
             lbMail.AutoSize = true;
-            lbMail.Location = new Point(22, 300);
+            lbMail.Location = new Point(22, 337);
             lbMail.Name = "lbMail";
             lbMail.Size = new Size(48, 21);
             lbMail.TabIndex = 28;
@@ -127,7 +117,7 @@
             // lbDateBirth
             // 
             lbDateBirth.AutoSize = true;
-            lbDateBirth.Location = new Point(22, 230);
+            lbDateBirth.Location = new Point(22, 255);
             lbDateBirth.Name = "lbDateBirth";
             lbDateBirth.Size = new Size(97, 21);
             lbDateBirth.TabIndex = 27;
@@ -136,7 +126,7 @@
             // lbGender
             // 
             lbGender.AutoSize = true;
-            lbGender.Location = new Point(22, 269);
+            lbGender.Location = new Point(22, 293);
             lbGender.Name = "lbGender";
             lbGender.Size = new Size(61, 21);
             lbGender.TabIndex = 26;
@@ -193,7 +183,7 @@
             // chkInstructor
             // 
             chkInstructor.AutoSize = true;
-            chkInstructor.Location = new Point(147, 372);
+            chkInstructor.Location = new Point(442, 382);
             chkInstructor.Name = "chkInstructor";
             chkInstructor.Size = new Size(143, 25);
             chkInstructor.TabIndex = 44;
@@ -204,7 +194,7 @@
             // dob
             // 
             dob.Enabled = false;
-            dob.Location = new Point(147, 227);
+            dob.Location = new Point(147, 256);
             dob.Margin = new Padding(4);
             dob.Name = "dob";
             dob.Size = new Size(264, 29);
@@ -212,7 +202,7 @@
             // 
             // txtgender
             // 
-            txtgender.Location = new Point(147, 265);
+            txtgender.Location = new Point(147, 293);
             txtgender.Margin = new Padding(4);
             txtgender.Name = "txtgender";
             txtgender.ReadOnly = true;
@@ -256,11 +246,29 @@
             btnCancel.Visible = false;
             btnCancel.Click += btnCancel_Click;
             // 
+            // txtpassword
+            // 
+            txtpassword.Location = new Point(147, 223);
+            txtpassword.Name = "txtpassword";
+            txtpassword.Size = new Size(261, 29);
+            txtpassword.TabIndex = 50;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(31, 226);
+            label1.Name = "label1";
+            label1.Size = new Size(76, 21);
+            label1.TabIndex = 51;
+            label1.Text = "Password";
+            // 
             // frmProfile
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(837, 465);
+            Controls.Add(label1);
+            Controls.Add(txtpassword);
             Controls.Add(btnUpdate);
             Controls.Add(txtgender);
             Controls.Add(dob);
@@ -270,7 +278,6 @@
             Controls.Add(lbProfile);
             Controls.Add(txtEmail);
             Controls.Add(mtbphonenumber);
-            Controls.Add(lbFemale);
             Controls.Add(txtFullname);
             Controls.Add(txtUsername);
             Controls.Add(lbPhone);
@@ -297,7 +304,6 @@
         private PictureBox pictureBox1;
         private TextBox txtEmail;
         private MaskedTextBox mtbphonenumber;
-        private RadioButton lbFemale;
         private TextBox txtFullname;
         private TextBox txtUsername;
         private Label lbPhone;
@@ -315,5 +321,7 @@
         private Button btnUpdate;
         private Button btnSave;
         private Button btnCancel;
+        private TextBox txtpassword;
+        private Label label1;
     }
 }

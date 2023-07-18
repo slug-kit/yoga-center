@@ -11,7 +11,7 @@ public interface ICourseRepository
     public void Update(Course course);
     public void Delete(Course course);
     public void Restore(int programId, int courseNumber);
-    IEnumerable<Course> SearchCourses(string courseCode, string schedule);
+    IEnumerable<Course> SearchCourses(string courseCode, string schedule, string instructorName, DateTime? startDate, DateTime? endDate, DateTime? registrationOpenDate, DateTime? registrationCloseDate);
 
     IEnumerable<User> GetInstructors();
 }

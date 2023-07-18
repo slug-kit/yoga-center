@@ -33,14 +33,12 @@
             groupBox2 = new GroupBox();
             txtSearchCode = new TextBox();
             lbSearchCode = new Label();
-            txtSearchFeeHigh = new TextBox();
+            txtMaxFee = new TextBox();
             button5 = new Button();
-            nudSearchRatingHigh = new NumericUpDown();
             label8 = new Label();
-            txtSearchFeeLow = new TextBox();
+            txtMinFee = new TextBox();
             label7 = new Label();
             label6 = new Label();
-            nudSearchRatingLow = new NumericUpDown();
             label5 = new Label();
             label4 = new Label();
             btnsearch = new Button();
@@ -61,13 +59,13 @@
             txtFee = new TextBox();
             label1 = new Label();
             label2 = new Label();
+            txtMinRating = new TextBox();
+            txtMaxRating = new TextBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer).BeginInit();
             splitContainer.Panel1.SuspendLayout();
             splitContainer.Panel2.SuspendLayout();
             splitContainer.SuspendLayout();
             groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)nudSearchRatingHigh).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nudSearchRatingLow).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPrograms).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -107,16 +105,16 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(txtMaxRating);
+            groupBox2.Controls.Add(txtMinRating);
             groupBox2.Controls.Add(txtSearchCode);
             groupBox2.Controls.Add(lbSearchCode);
-            groupBox2.Controls.Add(txtSearchFeeHigh);
+            groupBox2.Controls.Add(txtMaxFee);
             groupBox2.Controls.Add(button5);
-            groupBox2.Controls.Add(nudSearchRatingHigh);
             groupBox2.Controls.Add(label8);
-            groupBox2.Controls.Add(txtSearchFeeLow);
+            groupBox2.Controls.Add(txtMinFee);
             groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(label6);
-            groupBox2.Controls.Add(nudSearchRatingLow);
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(btnsearch);
@@ -144,12 +142,12 @@
             lbSearchCode.TabIndex = 18;
             lbSearchCode.Text = "Code:";
             // 
-            // txtSearchFeeHigh
+            // txtMaxFee
             // 
-            txtSearchFeeHigh.Location = new Point(340, 144);
-            txtSearchFeeHigh.Name = "txtSearchFeeHigh";
-            txtSearchFeeHigh.Size = new Size(100, 29);
-            txtSearchFeeHigh.TabIndex = 15;
+            txtMaxFee.Location = new Point(340, 144);
+            txtMaxFee.Name = "txtMaxFee";
+            txtMaxFee.Size = new Size(100, 29);
+            txtMaxFee.TabIndex = 15;
             // 
             // button5
             // 
@@ -160,13 +158,6 @@
             button5.Text = "Clear All";
             button5.UseVisualStyleBackColor = true;
             // 
-            // nudSearchRatingHigh
-            // 
-            nudSearchRatingHigh.Location = new Point(290, 195);
-            nudSearchRatingHigh.Name = "nudSearchRatingHigh";
-            nudSearchRatingHigh.Size = new Size(50, 29);
-            nudSearchRatingHigh.TabIndex = 13;
-            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -176,12 +167,12 @@
             label8.TabIndex = 11;
             label8.Text = "to";
             // 
-            // txtSearchFeeLow
+            // txtMinFee
             // 
-            txtSearchFeeLow.Location = new Point(180, 144);
-            txtSearchFeeLow.Name = "txtSearchFeeLow";
-            txtSearchFeeLow.Size = new Size(100, 29);
-            txtSearchFeeLow.TabIndex = 10;
+            txtMinFee.Location = new Point(180, 144);
+            txtMinFee.Name = "txtMinFee";
+            txtMinFee.Size = new Size(100, 29);
+            txtMinFee.TabIndex = 10;
             // 
             // label7
             // 
@@ -200,13 +191,6 @@
             label6.Size = new Size(24, 21);
             label6.TabIndex = 7;
             label6.Text = "to";
-            // 
-            // nudSearchRatingLow
-            // 
-            nudSearchRatingLow.Location = new Point(180, 195);
-            nudSearchRatingLow.Name = "nudSearchRatingLow";
-            nudSearchRatingLow.Size = new Size(50, 29);
-            nudSearchRatingLow.TabIndex = 6;
             // 
             // label5
             // 
@@ -404,6 +388,20 @@
             label2.TabIndex = 6;
             label2.Text = "Fee";
             // 
+            // txtMinRating
+            // 
+            txtMinRating.Location = new Point(178, 197);
+            txtMinRating.Name = "txtMinRating";
+            txtMinRating.Size = new Size(66, 29);
+            txtMinRating.TabIndex = 20;
+            // 
+            // txtMaxRating
+            // 
+            txtMaxRating.Location = new Point(280, 197);
+            txtMaxRating.Name = "txtMaxRating";
+            txtMaxRating.Size = new Size(66, 29);
+            txtMaxRating.TabIndex = 21;
+            // 
             // frmProgramManagement
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
@@ -422,8 +420,6 @@
             splitContainer.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)nudSearchRatingHigh).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nudSearchRatingLow).EndInit();
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvPrograms).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -448,14 +444,12 @@
         private TextBox txtSearchName;
         private Label label3;
         private Label label6;
-        private NumericUpDown nudSearchRatingLow;
         private Label label5;
         private Label label4;
-        private TextBox txtSearchFeeHigh;
+        private TextBox txtMaxFee;
         private Button button5;
-        private NumericUpDown nudSearchRatingHigh;
         private Label label8;
-        private TextBox txtSearchFeeLow;
+        private TextBox txtMinFee;
         private Label label7;
         private TextBox txtName;
         private Label label9;
@@ -464,5 +458,7 @@
         private Controls.StarRatingControl starRatingControl;
         private Label lbCode;
         private TextBox txtCode;
+        private TextBox txtMaxRating;
+        private TextBox txtMinRating;
     }
 }

@@ -91,6 +91,15 @@ public partial class frmUserManagement : Form
                 e.Value = string.Empty; // Gán giá trị rỗng nếu không có giá trị Role
             }
         }
+        if (e.ColumnIndex == dgvuser.Columns["JoinDate"].Index || e.ColumnIndex == dgvuser.Columns["LastLogin"].Index || e.ColumnIndex == dgvuser.Columns["Dob"].Index)
+        {
+            if (e.Value is DateTime)
+            {
+                DateTime dateValue = (DateTime)e.Value;
+                e.Value = dateValue.ToString("dd/MM/yyyy");
+                e.FormattingApplied = true;
+            }
+        }
     }
 
     //ADD USER --------------------------------------------------------------------------------------------------------
