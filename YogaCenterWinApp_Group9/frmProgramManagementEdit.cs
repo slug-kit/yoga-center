@@ -12,9 +12,9 @@ using YogaCenter.Repository.Repos;
 
 namespace YogaCenterWinApp_Group9
 {
-    public partial class frmProgramManagementDetail : Form
+    public partial class frmProgramManagementEdit : Form
     {
-        public frmProgramManagementDetail()
+        public frmProgramManagementEdit()
         {
             InitializeComponent();
         }

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using YogaCenter.Repository.Models;
 
 namespace YogaCenterWinApp_Group9.DisplayModels;
 
@@ -12,13 +11,33 @@ public static class CourseStatus
         private static Dictionary<int, string> StatusNames { get; set; } = new Dictionary<int, string>()
         {
             { -1, "<COULD NOT BE DETERMINED>" },
+
             { 0, "Schedule Not Set" },
-            { 1, "Registration Dates Pending" },
-            { 2, "Registration Not Open Yet" },
-            { 3, "Registration Open" },
-            { 4, "Registration Closed; Ready to Start" },
-            { 5, "Course In Progress" },
-            { 6, "Course Finished" },
+            { 0, "Schedule Not Set - Instructor Pending" },
+            { 1, "Schedule Not Set - Instructor Assigned" },
+
+            { 10, "Registration Dates Pending" },
+            { 10, "Registration Dates Pending - Instructor Pending" },
+            { 11, "Registration Dates Pending - Instructor Assigned" },
+
+            { 20, "Registration Not Open Yet" },
+            { 20, "Registration Not Open Yet - Instructor Pending" },
+            { 21, "Registration Not Open Yet - Instructor Assigned" },
+
+            { 30, "Registration Open" },
+            { 30, "Registration Open - Instructor Pending" },
+            { 31, "Registration Open - Instructor Assigned" },
+
+            { 40, "Registration Closed - Ready to Start" },
+            { 40, "Registration Closed - Instructor Pending" },
+            { 40, "Registration Closed - Instructor Assigned" },
+
+            { 50, "Course In Progress" },
+            
+            { 60, "Course On Hold" },
+            { 62, "Cannot Start - No Instructor" },
+
+            { 70, "Course Finished" },
         };
 
         public string this[int index]

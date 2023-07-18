@@ -77,6 +77,7 @@ namespace YogaCenterWinApp_Group9
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(230, 29);
             txtPassword.TabIndex = 3;
+            txtPassword.UseSystemPasswordChar = true;
             txtPassword.KeyDown += txtPassword_KeyDown;
             // 
             // lbLogin

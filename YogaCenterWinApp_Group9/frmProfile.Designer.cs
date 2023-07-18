@@ -41,7 +41,6 @@
             lbFullname = new Label();
             lbUsername = new Label();
             lbProfile = new Label();
-            btBackHome = new Button();
             lbCourse = new Label();
             dgvCourse = new DataGridView();
             chkInstructor = new CheckBox();
@@ -56,38 +55,36 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(8, 29);
-            pictureBox1.Margin = new Padding(2);
+            pictureBox1.Location = new Point(10, 41);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(97, 59);
+            pictureBox1.Size = new Size(125, 83);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // txtEmail
             // 
             txtEmail.ForeColor = SystemColors.InactiveCaption;
-            txtEmail.Location = new Point(114, 212);
-            txtEmail.Margin = new Padding(2);
+            txtEmail.Location = new Point(147, 297);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(206, 23);
+            txtEmail.ReadOnly = true;
+            txtEmail.Size = new Size(264, 29);
             txtEmail.TabIndex = 38;
             txtEmail.Text = "yoga@gmail.com";
             // 
             // mtbphonenumber
             // 
-            mtbphonenumber.Location = new Point(114, 239);
-            mtbphonenumber.Margin = new Padding(2);
+            mtbphonenumber.Location = new Point(147, 335);
             mtbphonenumber.Name = "mtbphonenumber";
-            mtbphonenumber.Size = new Size(206, 23);
+            mtbphonenumber.ReadOnly = true;
+            mtbphonenumber.Size = new Size(264, 29);
             mtbphonenumber.TabIndex = 37;
             // 
             // lbFemale
             // 
             lbFemale.AutoSize = true;
-            lbFemale.Location = new Point(219, 213);
-            lbFemale.Margin = new Padding(2);
+            lbFemale.Location = new Point(282, 298);
             lbFemale.Name = "lbFemale";
-            lbFemale.Size = new Size(63, 19);
+            lbFemale.Size = new Size(78, 25);
             lbFemale.TabIndex = 36;
             lbFemale.TabStop = true;
             lbFemale.Text = "Female";
@@ -95,77 +92,71 @@
             // 
             // txtFullname
             // 
-            txtFullname.Location = new Point(114, 134);
-            txtFullname.Margin = new Padding(2);
+            txtFullname.Location = new Point(147, 188);
             txtFullname.Name = "txtFullname";
-            txtFullname.Size = new Size(206, 23);
+            txtFullname.ReadOnly = true;
+            txtFullname.Size = new Size(264, 29);
             txtFullname.TabIndex = 31;
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(114, 107);
-            txtUsername.Margin = new Padding(2);
+            txtUsername.Location = new Point(147, 150);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(206, 23);
+            txtUsername.ReadOnly = true;
+            txtUsername.Size = new Size(264, 29);
             txtUsername.TabIndex = 30;
             // 
             // lbPhone
             // 
             lbPhone.AutoSize = true;
-            lbPhone.Location = new Point(17, 241);
-            lbPhone.Margin = new Padding(2, 0, 2, 0);
+            lbPhone.Location = new Point(22, 337);
             lbPhone.Name = "lbPhone";
-            lbPhone.Size = new Size(88, 15);
+            lbPhone.Size = new Size(116, 21);
             lbPhone.TabIndex = 29;
             lbPhone.Text = "Phone Number";
             // 
             // lbMail
             // 
             lbMail.AutoSize = true;
-            lbMail.Location = new Point(17, 214);
-            lbMail.Margin = new Padding(2, 0, 2, 0);
+            lbMail.Location = new Point(22, 300);
             lbMail.Name = "lbMail";
-            lbMail.Size = new Size(36, 15);
+            lbMail.Size = new Size(48, 21);
             lbMail.TabIndex = 28;
             lbMail.Text = "Email";
             // 
             // lbDateBirth
             // 
             lbDateBirth.AutoSize = true;
-            lbDateBirth.Location = new Point(17, 164);
-            lbDateBirth.Margin = new Padding(2, 0, 2, 0);
+            lbDateBirth.Location = new Point(22, 230);
             lbDateBirth.Name = "lbDateBirth";
-            lbDateBirth.Size = new Size(73, 15);
+            lbDateBirth.Size = new Size(97, 21);
             lbDateBirth.TabIndex = 27;
             lbDateBirth.Text = "Date of Birth";
             // 
             // lbGender
             // 
             lbGender.AutoSize = true;
-            lbGender.Location = new Point(17, 192);
-            lbGender.Margin = new Padding(2, 0, 2, 0);
+            lbGender.Location = new Point(22, 269);
             lbGender.Name = "lbGender";
-            lbGender.Size = new Size(45, 15);
+            lbGender.Size = new Size(61, 21);
             lbGender.TabIndex = 26;
             lbGender.Text = "Gender";
             // 
             // lbFullname
             // 
             lbFullname.AutoSize = true;
-            lbFullname.Location = new Point(17, 135);
-            lbFullname.Margin = new Padding(2, 0, 2, 0);
+            lbFullname.Location = new Point(22, 189);
             lbFullname.Name = "lbFullname";
-            lbFullname.Size = new Size(61, 15);
+            lbFullname.Size = new Size(81, 21);
             lbFullname.TabIndex = 25;
             lbFullname.Text = "Full Name";
             // 
             // lbUsername
             // 
             lbUsername.AutoSize = true;
-            lbUsername.Location = new Point(17, 109);
-            lbUsername.Margin = new Padding(2, 0, 2, 0);
+            lbUsername.Location = new Point(22, 153);
             lbUsername.Name = "lbUsername";
-            lbUsername.Size = new Size(60, 15);
+            lbUsername.Size = new Size(81, 21);
             lbUsername.TabIndex = 22;
             lbUsername.Text = "Username";
             // 
@@ -173,29 +164,17 @@
             // 
             lbProfile.AutoSize = true;
             lbProfile.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lbProfile.Location = new Point(148, 43);
-            lbProfile.Margin = new Padding(2, 0, 2, 0);
+            lbProfile.Location = new Point(190, 60);
             lbProfile.Name = "lbProfile";
             lbProfile.Size = new Size(150, 32);
             lbProfile.TabIndex = 40;
             lbProfile.Text = "Your Profile";
             // 
-            // btBackHome
-            // 
-            btBackHome.Location = new Point(0, 0);
-            btBackHome.Margin = new Padding(2);
-            btBackHome.Name = "btBackHome";
-            btBackHome.Size = new Size(78, 25);
-            btBackHome.TabIndex = 41;
-            btBackHome.Text = "Back";
-            btBackHome.UseVisualStyleBackColor = true;
-            // 
             // lbCourse
             // 
             lbCourse.AutoSize = true;
             lbCourse.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            lbCourse.Location = new Point(420, 80);
-            lbCourse.Margin = new Padding(2, 0, 2, 0);
+            lbCourse.Location = new Point(540, 112);
             lbCourse.Name = "lbCourse";
             lbCourse.Size = new Size(113, 25);
             lbCourse.TabIndex = 42;
@@ -204,21 +183,19 @@
             // dgvCourse
             // 
             dgvCourse.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCourse.Location = new Point(344, 107);
-            dgvCourse.Margin = new Padding(2);
+            dgvCourse.Location = new Point(442, 150);
             dgvCourse.Name = "dgvCourse";
             dgvCourse.RowHeadersWidth = 62;
             dgvCourse.RowTemplate.Height = 33;
-            dgvCourse.Size = new Size(273, 155);
+            dgvCourse.Size = new Size(351, 217);
             dgvCourse.TabIndex = 43;
             // 
             // chkInstructor
             // 
             chkInstructor.AutoSize = true;
-            chkInstructor.Location = new Point(114, 266);
-            chkInstructor.Margin = new Padding(2);
+            chkInstructor.Location = new Point(147, 372);
             chkInstructor.Name = "chkInstructor";
-            chkInstructor.Size = new Size(113, 19);
+            chkInstructor.Size = new Size(143, 25);
             chkInstructor.TabIndex = 44;
             chkInstructor.TabStop = false;
             chkInstructor.Text = "I'm an instructor";
@@ -226,23 +203,28 @@
             // 
             // dob
             // 
-            dob.Location = new Point(114, 162);
+            dob.Enabled = false;
+            dob.Location = new Point(147, 227);
+            dob.Margin = new Padding(4);
             dob.Name = "dob";
-            dob.Size = new Size(206, 23);
+            dob.Size = new Size(264, 29);
             dob.TabIndex = 45;
             // 
             // txtgender
             // 
-            txtgender.Location = new Point(114, 189);
+            txtgender.Location = new Point(147, 265);
+            txtgender.Margin = new Padding(4);
             txtgender.Name = "txtgender";
-            txtgender.Size = new Size(100, 23);
+            txtgender.ReadOnly = true;
+            txtgender.Size = new Size(127, 29);
             txtgender.TabIndex = 46;
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(170, 297);
+            btnUpdate.Location = new Point(147, 416);
+            btnUpdate.Margin = new Padding(4);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(75, 23);
+            btnUpdate.Size = new Size(96, 32);
             btnUpdate.TabIndex = 47;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = true;
@@ -250,38 +232,41 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(79, 297);
+            btnSave.Enabled = false;
+            btnSave.Location = new Point(147, 416);
+            btnSave.Margin = new Padding(4);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(75, 23);
+            btnSave.Size = new Size(96, 32);
             btnSave.TabIndex = 48;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Visible = false;
             btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(274, 297);
+            btnCancel.Enabled = false;
+            btnCancel.Location = new Point(315, 416);
+            btnCancel.Margin = new Padding(4);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(75, 23);
+            btnCancel.Size = new Size(96, 32);
             btnCancel.TabIndex = 49;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Visible = false;
             btnCancel.Click += btnCancel_Click;
             // 
             // frmProfile
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(651, 332);
-            Controls.Add(btnCancel);
-            Controls.Add(btnSave);
+            ClientSize = new Size(837, 465);
             Controls.Add(btnUpdate);
             Controls.Add(txtgender);
             Controls.Add(dob);
             Controls.Add(chkInstructor);
             Controls.Add(dgvCourse);
             Controls.Add(lbCourse);
-            Controls.Add(btBackHome);
             Controls.Add(lbProfile);
             Controls.Add(txtEmail);
             Controls.Add(mtbphonenumber);
@@ -295,7 +280,9 @@
             Controls.Add(lbFullname);
             Controls.Add(lbUsername);
             Controls.Add(pictureBox1);
-            Margin = new Padding(2);
+            Controls.Add(btnSave);
+            Controls.Add(btnCancel);
+            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "frmProfile";
             Text = "frmProfile";
             Load += frmProfile_Load;
@@ -320,7 +307,6 @@
         private Label lbFullname;
         private Label lbUsername;
         private Label lbProfile;
-        private Button btBackHome;
         private Label lbCourse;
         private DataGridView dgvCourse;
         private CheckBox chkInstructor;

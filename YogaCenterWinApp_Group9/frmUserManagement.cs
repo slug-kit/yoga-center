@@ -93,11 +93,11 @@ public partial class frmUserManagement : Form
     //ADD USER --------------------------------------------------------------------------------------------------------
     private void btnadd_Click(object sender, EventArgs e)
     {
-        frmUserManagementDetail frmUserManagementDetail = new frmUserManagementDetail()
+        frmUserManagementEdit frmUserManagementDetail = new frmUserManagementEdit()
         {
             Text = "New User",
             InsertOrUpdate = false,
-            userRepository = userRepository,
+            UserRepository = userRepository,
         };
 
         if (frmUserManagementDetail.ShowDialog() == DialogResult.OK)
@@ -108,12 +108,12 @@ public partial class frmUserManagement : Form
     //UPDATE USER --------------------------------------------------------------------------------------------------
     private void dgvuser_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
-        frmUserManagementDetail frmUserManagementDetail = new frmUserManagementDetail()
+        frmUserManagementEdit frmUserManagementDetail = new frmUserManagementEdit()
         {
             Text = "Update User",
             InsertOrUpdate = true,
-            userDetail = GetUser(),
-            userRepository = userRepository,
+            UserDetail = GetUser(),
+            UserRepository = userRepository,
         };
 
         if (frmUserManagementDetail.ShowDialog() == DialogResult.OK)

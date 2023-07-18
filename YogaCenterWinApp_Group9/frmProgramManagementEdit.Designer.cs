@@ -1,6 +1,6 @@
 ﻿namespace YogaCenterWinApp_Group9
 {
-    partial class frmProgramManagementDetail
+    partial class frmProgramManagementEdit
     {
         /// <summary>
         /// Required designer variable.
@@ -41,35 +41,37 @@
             // txtdescription
             // 
             txtdescription.AutoSize = true;
-            txtdescription.Location = new Point(12, 81);
+            txtdescription.Location = new Point(15, 113);
+            txtdescription.Margin = new Padding(4, 0, 4, 0);
             txtdescription.Name = "txtdescription";
-            txtdescription.Size = new Size(67, 15);
+            txtdescription.Size = new Size(89, 21);
             txtdescription.TabIndex = 0;
             txtdescription.Text = "Description";
             // 
             // txttFee
             // 
             txttFee.AutoSize = true;
-            txttFee.Location = new Point(12, 47);
+            txttFee.Location = new Point(15, 66);
+            txttFee.Margin = new Padding(4, 0, 4, 0);
             txttFee.Name = "txttFee";
-            txttFee.Size = new Size(25, 15);
+            txttFee.Size = new Size(34, 21);
             txttFee.TabIndex = 1;
             txttFee.Text = "Fee";
             // 
             // txtfee
             // 
-            txtfee.Location = new Point(104, 44);
-            txtfee.Margin = new Padding(3, 2, 3, 2);
+            txtfee.Location = new Point(134, 62);
+            txtfee.Margin = new Padding(4, 3, 4, 3);
             txtfee.Name = "txtfee";
-            txtfee.Size = new Size(198, 23);
+            txtfee.Size = new Size(253, 29);
             txtfee.TabIndex = 8;
             // 
             // button2
             // 
-            button2.Location = new Point(220, 181);
-            button2.Margin = new Padding(3, 2, 3, 2);
+            button2.Location = new Point(283, 253);
+            button2.Margin = new Padding(4, 3, 4, 3);
             button2.Name = "button2";
-            button2.Size = new Size(82, 22);
+            button2.Size = new Size(105, 31);
             button2.TabIndex = 11;
             button2.Text = "Exit";
             button2.UseVisualStyleBackColor = true;
@@ -77,10 +79,10 @@
             // 
             // btnsave
             // 
-            btnsave.Location = new Point(104, 181);
-            btnsave.Margin = new Padding(3, 2, 3, 2);
+            btnsave.Location = new Point(134, 253);
+            btnsave.Margin = new Padding(4, 3, 4, 3);
             btnsave.Name = "btnsave";
-            btnsave.Size = new Size(82, 22);
+            btnsave.Size = new Size(105, 31);
             btnsave.TabIndex = 12;
             btnsave.Text = "Save";
             btnsave.UseVisualStyleBackColor = true;
@@ -88,34 +90,36 @@
             // 
             // txtid
             // 
-            txtid.Location = new Point(104, 11);
-            txtid.Margin = new Padding(3, 2, 3, 2);
+            txtid.Location = new Point(134, 15);
+            txtid.Margin = new Padding(4, 3, 4, 3);
             txtid.Name = "txtid";
-            txtid.Size = new Size(198, 23);
+            txtid.Size = new Size(253, 29);
             txtid.TabIndex = 13;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 14);
+            label1.Location = new Point(15, 20);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(17, 15);
+            label1.Size = new Size(23, 21);
             label1.TabIndex = 14;
             label1.Text = "Id";
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(104, 78);
+            richTextBox1.Location = new Point(134, 109);
+            richTextBox1.Margin = new Padding(4, 4, 4, 4);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(198, 98);
+            richTextBox1.Size = new Size(253, 136);
             richTextBox1.TabIndex = 15;
             richTextBox1.Text = "";
             // 
-            // frmProgramManagementDetail
+            // frmProgramManagementEdit
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(319, 211);
+            ClientSize = new Size(410, 295);
             Controls.Add(richTextBox1);
             Controls.Add(label1);
             Controls.Add(txtid);
@@ -124,9 +128,10 @@
             Controls.Add(txtfee);
             Controls.Add(txttFee);
             Controls.Add(txtdescription);
-            Margin = new Padding(3, 2, 3, 2);
-            Name = "frmProgramManagementDetail";
-            Text = "frmProgramManagementDetail";
+            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "frmProgramManagementEdit";
+            Text = "Program Details";
             Load += frmProgramManagementDetail_Load;
             ResumeLayout(false);
             PerformLayout();

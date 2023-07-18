@@ -59,7 +59,7 @@ public partial class frmTimetable : Form
             dataGridView1.Columns.Add(day.ToString(), day.ToString());
         }
 
-        var courses = repository.GetCourses();
+        var courses = repository.GetAllCourses();
 
         // Loop through the courses and populate the timetable
         foreach (var course in courses)

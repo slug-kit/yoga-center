@@ -73,6 +73,7 @@
             // mainSplitContainer
             // 
             mainSplitContainer.Dock = DockStyle.Fill;
+            mainSplitContainer.IsSplitterFixed = true;
             mainSplitContainer.Location = new Point(0, 0);
             mainSplitContainer.Margin = new Padding(4);
             mainSplitContainer.Name = "mainSplitContainer";

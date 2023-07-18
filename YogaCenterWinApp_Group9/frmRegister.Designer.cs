@@ -153,6 +153,7 @@
             txtConfirm.Name = "txtConfirm";
             txtConfirm.Size = new Size(264, 29);
             txtConfirm.TabIndex = 6;
+            txtConfirm.UseSystemPasswordChar = true;
             // 
             // txtPassword
             // 

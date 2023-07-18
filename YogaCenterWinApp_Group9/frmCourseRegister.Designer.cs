@@ -30,11 +30,11 @@ namespace YogaCenterWinApp_Group9
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem(new string[] { "Jane Doe", "16/20" }, -1);
-            ListViewItem listViewItem2 = new ListViewItem(new string[] { "John Hack", "20/20" }, -1);
-            ListViewItem listViewItem3 = new ListViewItem(new string[] { "Joe Dot", "20/20" }, -1);
-            ListViewItem listViewItem4 = new ListViewItem(new string[] { "Linda Rut", "19/20" }, -1);
-            ListViewItem listViewItem5 = new ListViewItem(new string[] { "Bob Thing", "19/20" }, -1);
+            ListViewItem listViewItem6 = new ListViewItem(new string[] { "Jane Doe", "16/20" }, -1);
+            ListViewItem listViewItem7 = new ListViewItem(new string[] { "John Hack", "20/20" }, -1);
+            ListViewItem listViewItem8 = new ListViewItem(new string[] { "Joe Dot", "20/20" }, -1);
+            ListViewItem listViewItem9 = new ListViewItem(new string[] { "Linda Rut", "19/20" }, -1);
+            ListViewItem listViewItem10 = new ListViewItem(new string[] { "Bob Thing", "19/20" }, -1);
             lsvLearners = new BindableListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
@@ -77,11 +77,13 @@ namespace YogaCenterWinApp_Group9
             // lsvLearners
             // 
             lsvLearners.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
-            lsvLearners.Items.AddRange(new ListViewItem[] { listViewItem1, listViewItem2, listViewItem3, listViewItem4, listViewItem5 });
+            lsvLearners.DataMember = null;
+            lsvLearners.DataSource = null;
+            lsvLearners.Items.AddRange(new ListViewItem[] { listViewItem6, listViewItem7, listViewItem8, listViewItem9, listViewItem10 });
             lsvLearners.Location = new Point(0, 0);
             lsvLearners.Margin = new Padding(4);
             lsvLearners.Name = "lsvLearners";
-            lsvLearners.Size = new Size(258, 495);
+            lsvLearners.Size = new Size(489, 495);
             lsvLearners.TabIndex = 10;
             lsvLearners.UseCompatibleStateImageBehavior = false;
             lsvLearners.View = View.Details;
@@ -137,8 +139,8 @@ namespace YogaCenterWinApp_Group9
             splitContainer.Panel2.Controls.Add(picImg);
             splitContainer.Panel2.Controls.Add(lbStudyGoals);
             splitContainer.Panel2.Controls.Add(rtbStudyGoals);
-            splitContainer.Size = new Size(707, 570);
-            splitContainer.SplitterDistance = 258;
+            splitContainer.Size = new Size(941, 570);
+            splitContainer.SplitterDistance = 493;
             splitContainer.TabIndex = 12;
             // 
             // grbListActions
@@ -147,13 +149,13 @@ namespace YogaCenterWinApp_Group9
             grbListActions.Controls.Add(btnAdd);
             grbListActions.Location = new Point(3, 498);
             grbListActions.Name = "grbListActions";
-            grbListActions.Size = new Size(252, 69);
+            grbListActions.Size = new Size(486, 69);
             grbListActions.TabIndex = 52;
             grbListActions.TabStop = false;
             // 
             // btnKick
             // 
-            btnKick.Location = new Point(131, 22);
+            btnKick.Location = new Point(293, 22);
             btnKick.Margin = new Padding(4);
             btnKick.Name = "btnKick";
             btnKick.Size = new Size(120, 40);
@@ -163,7 +165,7 @@ namespace YogaCenterWinApp_Group9
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(3, 22);
+            btnAdd.Location = new Point(73, 22);
             btnAdd.Margin = new Padding(4);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(120, 40);
@@ -175,6 +177,7 @@ namespace YogaCenterWinApp_Group9
             // 
             txtGender.Location = new Point(239, 185);
             txtGender.Name = "txtGender";
+            txtGender.ReadOnly = true;
             txtGender.Size = new Size(81, 29);
             txtGender.TabIndex = 52;
             // 
@@ -182,6 +185,7 @@ namespace YogaCenterWinApp_Group9
             // 
             txtRole.Location = new Point(325, 108);
             txtRole.Name = "txtRole";
+            txtRole.ReadOnly = true;
             txtRole.Size = new Size(100, 29);
             txtRole.TabIndex = 51;
             // 
@@ -198,6 +202,7 @@ namespace YogaCenterWinApp_Group9
             // 
             txtEmail.Location = new Point(239, 325);
             txtEmail.Name = "txtEmail";
+            txtEmail.ReadOnly = true;
             txtEmail.Size = new Size(186, 29);
             txtEmail.TabIndex = 42;
             // 
@@ -223,6 +228,7 @@ namespace YogaCenterWinApp_Group9
             // 
             txtPhone.Location = new Point(24, 325);
             txtPhone.Name = "txtPhone";
+            txtPhone.ReadOnly = true;
             txtPhone.Size = new Size(186, 29);
             txtPhone.TabIndex = 38;
             // 
@@ -255,6 +261,7 @@ namespace YogaCenterWinApp_Group9
             // 
             txtFullname.Location = new Point(24, 185);
             txtFullname.Name = "txtFullname";
+            txtFullname.ReadOnly = true;
             txtFullname.Size = new Size(186, 29);
             txtFullname.TabIndex = 34;
             // 
@@ -271,6 +278,7 @@ namespace YogaCenterWinApp_Group9
             // 
             txtCode.Location = new Point(162, 108);
             txtCode.Name = "txtCode";
+            txtCode.ReadOnly = true;
             txtCode.Size = new Size(145, 29);
             txtCode.TabIndex = 32;
             // 
@@ -287,6 +295,7 @@ namespace YogaCenterWinApp_Group9
             // 
             txtUsername.Location = new Point(162, 38);
             txtUsername.Name = "txtUsername";
+            txtUsername.ReadOnly = true;
             txtUsername.Size = new Size(263, 29);
             txtUsername.TabIndex = 30;
             // 
@@ -320,6 +329,7 @@ namespace YogaCenterWinApp_Group9
             // 
             rtbStudyGoals.Location = new Point(24, 395);
             rtbStudyGoals.Name = "rtbStudyGoals";
+            rtbStudyGoals.ReadOnly = true;
             rtbStudyGoals.Size = new Size(401, 165);
             rtbStudyGoals.TabIndex = 44;
             rtbStudyGoals.Text = "";
@@ -331,13 +341,13 @@ namespace YogaCenterWinApp_Group9
             grbFormActions.Controls.Add(btnSave);
             grbFormActions.Location = new Point(12, 595);
             grbFormActions.Name = "grbFormActions";
-            grbFormActions.Size = new Size(707, 69);
+            grbFormActions.Size = new Size(941, 69);
             grbFormActions.TabIndex = 51;
             grbFormActions.TabStop = false;
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(293, 22);
+            btnCancel.Location = new Point(406, 22);
             btnCancel.Margin = new Padding(4);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(120, 40);
@@ -347,7 +357,7 @@ namespace YogaCenterWinApp_Group9
             // 
             // btnReset
             // 
-            btnReset.Location = new Point(525, 22);
+            btnReset.Location = new Point(736, 22);
             btnReset.Margin = new Padding(4);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(120, 40);
@@ -359,13 +369,14 @@ namespace YogaCenterWinApp_Group9
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(731, 676);
+            ClientSize = new Size(965, 676);
             Controls.Add(grbFormActions);
             Controls.Add(splitContainer);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
             Name = "frmCourseRegister";
             Text = "Course Register";
+            Load += frmCourseRegister_Load;
             splitContainer.Panel1.ResumeLayout(false);
             splitContainer.Panel2.ResumeLayout(false);
             splitContainer.Panel2.PerformLayout();

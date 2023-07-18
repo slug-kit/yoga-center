@@ -386,8 +386,8 @@ public class BindableListView : System.Windows.Forms.ListView
         {
             // Use the PropertyDescriptors to extract the property value -
             // this might be a virtual property.
-
-            itemText[column] = m_properties[column].GetValue(row).ToString();
+            object rowValue = m_properties[column].GetValue(row);
+            itemText[column] = rowValue == null ? null : m_properties[column].GetValue(row).ToString();
         }
         return new ListViewItem(itemText);
     }

@@ -1,6 +1,6 @@
 ﻿namespace YogaCenterWinApp_Group9
 {
-    partial class frmUserManagementDetail
+    partial class frmUserManagementEdit
     {
         /// <summary>
         /// Required designer variable.

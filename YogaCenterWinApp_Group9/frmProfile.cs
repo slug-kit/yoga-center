@@ -9,6 +9,7 @@ namespace YogaCenterWinApp_Group9;
 public partial class frmProfile : Form
 {
     public event UserChangedEventHandler? ProfileUpdated;
+
     private readonly IUserRepository userRepository = new UserRepository();
     private readonly BindingSource bindingSource = new();
     private bool isModified = false;
@@ -17,7 +18,7 @@ public partial class frmProfile : Form
 
     private readonly User _pom = new()
     {
-        Id= Program.CurrentUser.Id,
+        Id = Program.CurrentUser!.Id,
         Username = Program.CurrentUser.Username,
         Fullname = Program.CurrentUser.Fullname,
         Dob = Program.CurrentUser.Dob,
@@ -49,9 +50,10 @@ public partial class frmProfile : Form
         LoadUserprofile();
         LoadCourseOfUser();
     }
+
     private void LoadCourseOfUser()
     {
-        long userId = Program.CurrentUser.Id; 
+        long userId = _pom.Id;
 
         // Get the enrolled courses for the user
         IEnumerable<Course> enrolledCourses = userRepository.GetEnrolledCourses(userId);
@@ -85,7 +87,9 @@ public partial class frmProfile : Form
         mtbphonenumber.DataBindings.Add("Text", bindingSource, "Phone", true)
             .Parse += DataField_DetectChange!;
     }
+
     private void DataField_DetectChange(object sender, ConvertEventArgs e) => isModified = true;
+
     private void TurnOnUpdateMode()
     {
         foreach (Control c in dataInputControls)
@@ -99,7 +103,10 @@ public partial class frmProfile : Form
 
         btnSave.Visible = true;
         btnSave.Enabled = true;
+        btnCancel.Visible = true;
+        btnCancel.Enabled = true;
     }
+
     private void TurnOffUpdateMode()
     {
         foreach (Control c in dataInputControls)
@@ -121,12 +128,11 @@ public partial class frmProfile : Form
     private void btnSave_Click(object sender, EventArgs e) => PerformSave();
 
     private void btnUpdate_Click(object sender, EventArgs e) => TurnOnUpdateMode();
+
     private void PerformSave()
     {
         try
         {
-
-
             userRepository.UpdateUser(_pom);
             OnProfileUpdate(new() { ReAuthenticate = false });
 

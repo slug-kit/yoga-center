@@ -201,7 +201,14 @@ public class StarRatingControl : Control
     public int SelectedStar
     {
         get => m_selectedStar;
-        set => m_selectedStar = value;
+        set
+        {
+            if (m_selectedStar != value)
+            {
+                m_selectedStar = value;
+                Invalidate();
+            }
+        }
     }
 
     #endregion

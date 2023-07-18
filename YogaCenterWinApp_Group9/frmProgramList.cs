@@ -3,7 +3,7 @@ using System.Globalization;
 using Utils;
 using YogaCenter.Repository.Repos;
 using YogaCenterWinApp_Group9.Controls;
-using Programme = YogaCenter.Repository.Models.Program;
+using ProgramModel = YogaCenter.Repository.Models.Program;
 
 namespace YogaCenterWinApp_Group9;
 
@@ -61,33 +61,35 @@ public partial class frmProgramList : Form
             bindingSource.DataSource = null;
 
             // 2. Bind table to DGV + Customize columns
-            var programs = programRepository.GetPrograms();
+            var programs = programRepository.GetPrograms().ToList();
             bindingSource.DataSource = programs;
             dgvPrograms.DataSource = bindingSource;
 
-            dgvPrograms.Columns[nameof(Programme.Id)].Visible = false;
-            dgvPrograms.Columns[nameof(Programme.Img)].Visible = false;
-            dgvPrograms.Columns[nameof(Programme.Inactive)].Visible = false;
-            dgvPrograms.Columns[nameof(Programme.Instructors)].Visible = false;
+            dgvPrograms.Columns[nameof(ProgramModel.Id)].Visible = false;
+            dgvPrograms.Columns[nameof(ProgramModel.Img)].Visible = false;
+            dgvPrograms.Columns[nameof(ProgramModel.Inactive)].Visible = false;
+            dgvPrograms.Columns[nameof(ProgramModel.Courses)].Visible = false;
+            dgvPrograms.Columns[nameof(ProgramModel.Instructors)].Visible = false;
+            dgvPrograms.Columns[nameof(ProgramModel.Reviews)].Visible = false;
 
             // 3. Bind properties to output boxes
             // Image
-            var imageBinding = new Binding(nameof(PictureBox.ImageLocation), bindingSource, nameof(Programme.Img),
+            var imageBinding = new Binding(nameof(PictureBox.ImageLocation), bindingSource, nameof(ProgramModel.Img),
                 true, DataSourceUpdateMode.Never);
             imageBinding.Format += EmptyImageLocationToDefaultImage!;
             pictureBox.DataBindings.Add(imageBinding);
             // ***
-            txtName.DataBindings.Add(nameof(TextBox.Text), bindingSource, nameof(Programme.Name),
+            txtName.DataBindings.Add(nameof(TextBox.Text), bindingSource, nameof(ProgramModel.Name),
                 true, DataSourceUpdateMode.Never);
-            starRatingControl.DataBindings.Add(nameof(StarRatingControl.SelectedStar), bindingSource, nameof(Programme.Rating),
+            starRatingControl.DataBindings.Add(nameof(StarRatingControl.SelectedStar), bindingSource, nameof(ProgramModel.Rating),
                 true, DataSourceUpdateMode.Never);
             // Fee
-            var feeBinding = new Binding(nameof(TextBox.Text), bindingSource, nameof(Programme.Fee),
+            var feeBinding = new Binding(nameof(TextBox.Text), bindingSource, nameof(ProgramModel.Fee),
                 true, DataSourceUpdateMode.Never);
             feeBinding.Format += DecimalToCurrencyString!;
             txtFee.DataBindings.Add(feeBinding);
             // ***
-            rtbDescription.DataBindings.Add(nameof(RichTextBox.Text), bindingSource, nameof(Programme.Description),
+            rtbDescription.DataBindings.Add(nameof(RichTextBox.Text), bindingSource, nameof(ProgramModel.Description),
                 true, DataSourceUpdateMode.Never);
 
             // 4. Update button states
@@ -98,8 +100,6 @@ public partial class frmProgramList : Form
             MessageBox.Show(ex.Message, "ERROR -- Load data");
         }
     }
-
-
 
     private void UpdateButtons()
     {
@@ -194,7 +194,7 @@ public partial class frmProgramList : Form
         }
         catch (InvalidCastException ex)
         {
-            MessageBox.Show($"{ex.Message} /n***It would seem a programmer had used the wrong UI component.***");
+            MessageBox.Show($"{ex.Message} /n***It would seem a ProgramModelr had used the wrong UI component.***");
         }
     }
 
@@ -211,7 +211,7 @@ public partial class frmProgramList : Form
         }
         catch (InvalidCastException ex)
         {
-            MessageBox.Show($"{ex.Message} /n***It would seem a programmer had used the wrong UI component.***");
+            MessageBox.Show($"{ex.Message} /n***It would seem a ProgramModelr had used the wrong UI component.***");
         }
     }
 

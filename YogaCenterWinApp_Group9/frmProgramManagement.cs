@@ -4,15 +4,14 @@ namespace YogaCenterWinApp_Group9;
 
 public partial class frmProgramManagement : Form
 {
+    IProgramRepository programRepository = new ProgramRepository();
+
     public frmProgramManagement()
     {
         InitializeComponent();
     }
-    IProgramRepository programRepository = new ProgramRepository();
-
 
     //LOAD PROGRAMLIST------------------------------------------------------------------------------------------------------------------
-
     public void LoadProgramList()
     {
         var programList = programRepository.GetPrograms();
@@ -31,17 +30,15 @@ public partial class frmProgramManagement : Form
         dgvPrograms.DataSource = source;
     }
 
-
     private void frmProgramManagement_Load(object sender, EventArgs e)
     {
         LoadProgramList();
-
-
     }
+
     //UPDATE PROGRAM------------------------------------------------------------------------------------------------------------------
     private void dgvprogram_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
-        frmProgramManagementDetail frmProgramManagementDetail = new frmProgramManagementDetail()
+        frmProgramManagementEdit frmProgramManagementDetail = new frmProgramManagementEdit()
         {
             Text = "Update Program",
             InsertOrUpdate = true,
@@ -53,6 +50,7 @@ public partial class frmProgramManagement : Form
             LoadProgramList();
         }
     }
+
     //GET PROGRAM FROM DATAGRIDVIEW------------------------------------------------------------------------------------------------------
     private YogaCenter.Repository.Models.Program GetProgram()
     {
@@ -84,7 +82,7 @@ public partial class frmProgramManagement : Form
     private void btnnew_Click(object sender, EventArgs e)
     {
         ClearText();
-        frmProgramManagementDetail frmProgramManagementDetail = new frmProgramManagementDetail()
+        frmProgramManagementEdit frmProgramManagementDetail = new frmProgramManagementEdit()
         {
             Text = "Add Program",
             InsertOrUpdate = false,
@@ -96,7 +94,6 @@ public partial class frmProgramManagement : Form
             LoadProgramList();
         }
     }
-
 
     //CLEAR TEXT------------------------------------------------------------------------------------------------------------------------   
     public void ClearText()
@@ -126,6 +123,7 @@ public partial class frmProgramManagement : Form
 
         }
     }
+
     //SEARCH-------------------------------------------------------------------------------------------------
     private void btnsearch_Click(object sender, EventArgs e)
     {
