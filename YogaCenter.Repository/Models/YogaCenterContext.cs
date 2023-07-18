@@ -73,7 +73,7 @@ namespace YogaCenter.Repository.Models
             {
                 entity.ToTable("course");
 
-                entity.HasIndex(e => new { e.ProgramId, e.CourseNumber }, "IX_course_program_id_course_number")
+                entity.HasIndex(e => new { e.ProgramId, e.CourseNumber }, "IX_course_program_id_course_number_unique")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -171,7 +171,7 @@ namespace YogaCenter.Repository.Models
             {
                 entity.ToTable("lesson");
 
-                entity.HasIndex(e => new { e.ProgramId, e.CourseNumber, e.LessonNumber }, "IX_lesson_course_id_course_number_lesson_number")
+                entity.HasIndex(e => new { e.ProgramId, e.CourseNumber, e.LessonNumber }, "IX_lesson_course_id_course_number_lesson_number_unique")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -185,8 +185,6 @@ namespace YogaCenter.Repository.Models
                 entity.Property(e => e.Description)
                     .HasMaxLength(1000)
                     .HasColumnName("description");
-
-                entity.Property(e => e.Inactive).HasColumnName("inactive");
 
                 entity.Property(e => e.LessonNumber).HasColumnName("lesson_number");
 
@@ -213,6 +211,9 @@ namespace YogaCenter.Repository.Models
             modelBuilder.Entity<Program>(entity =>
             {
                 entity.ToTable("program");
+
+                entity.HasIndex(e => e.Code, "IX_program_code_unique")
+                    .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -319,10 +320,11 @@ namespace YogaCenter.Repository.Models
             {
                 entity.ToTable("user");
 
-                entity.HasIndex(e => e.Email, "IX_user_email")
-                    .IsUnique();
+                entity.HasIndex(e => e.Email, "IX_user_email_nullableunique")
+                    .IsUnique()
+                    .HasFilter("([email] IS NOT NULL)");
 
-                entity.HasIndex(e => e.Username, "IX_user_username")
+                entity.HasIndex(e => e.Username, "IX_user_username_unique")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");

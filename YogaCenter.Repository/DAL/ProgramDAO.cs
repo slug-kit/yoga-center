@@ -26,6 +26,8 @@ public class ProgramDAO
         using var db = new YogaCenterContext();
         return db.Programs
             .Where(p => !p.Inactive)
+            .Include(p => p.Courses)
+                .ThenInclude(c => c.Lessons)
             .Include(p => p.Instructors)
             .ToList();
     }
@@ -35,6 +37,8 @@ public class ProgramDAO
         using var db = new YogaCenterContext();
         return db.Programs
             .Where(p => !p.Inactive)
+            .Include(p => p.Courses)
+                .ThenInclude(c => c.Lessons)
             .Include(p => p.Instructors)
             .FirstOrDefault(p => p.Id == id);
     }
@@ -66,6 +70,19 @@ public class ProgramDAO
             Update(p);
         }
     }
+
+    public void Restore(int programId)
+    {
+        using var db = new YogaCenterContext();
+        var programToRestore = db.Programs.Find(programId);
+        if (programToRestore != null && programToRestore.Inactive)
+        {
+            programToRestore.Inactive = false;
+            db.Entry(programToRestore).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+    }
+
     public IEnumerable<Program> Search(string searchText)
     {
         using var db = new YogaCenterContext();

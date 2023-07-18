@@ -18,7 +18,6 @@ namespace YogaCenter.Repository.Models
         public DateTime? Date { get; set; }
         public string? Location { get; set; }
         public byte? Timeslot { get; set; }
-        public bool Inactive { get; set; }
 
         public virtual Course Course { get; set; } = null!;
         public virtual Timeslot? TimeslotNavigation { get; set; }

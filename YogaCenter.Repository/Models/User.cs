@@ -22,7 +22,7 @@ namespace YogaCenter.Repository.Models
         public DateTime? LastLogin { get; set; }
         public byte RoleId { get; set; }
         public string? Code { get; set; }
-        public string? Fullname { get; set; }
+        public string Fullname { get; set; } = null!;
         public DateTime? Dob { get; set; }
         public byte? Gender { get; set; }
         public string? Email { get; set; }

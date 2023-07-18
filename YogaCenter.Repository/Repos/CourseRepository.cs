@@ -5,13 +5,15 @@ namespace YogaCenter.Repository.Repos;
 
 public class CourseRepository : ICourseRepository
 {
-    public IEnumerable<Course> GetCourses() => CourseDAO.Instance.GetAll();
+    public IEnumerable<Course> GetAllCourses() => CourseDAO.Instance.GetAll();
+    public IEnumerable<Course> GetCoursesByProgram(int programId) => CourseDAO.Instance.GetByProgram(programId);
     public Course? GetCourse(int id) => CourseDAO.Instance.Get(id);
     public void Add(Course course) => CourseDAO.Instance.Add(course);
     public void Update(Course course) => CourseDAO.Instance.Update(course);
     public void Delete(Course course) => CourseDAO.Instance.Remove(course);
-    public IEnumerable<Course> SearchCourses(string courseCode, string schedule)
-    {
-        return CourseDAO.Instance.SearchCourses(courseCode, schedule);
-    }
+    public void Restore(int programId, int courseNumber) => CourseDAO.Instance.Restore(programId, courseNumber);
+    public IEnumerable<Course> SearchCourses(string courseCode, string schedule) => CourseDAO.Instance.SearchCourses(courseCode, schedule);
+
+    // The role ID ought to be injected or read from some shared resource
+    public IEnumerable<User> GetInstructors() => UserDAO.Instance.GetAll(u => u.RoleId == 3);
 }

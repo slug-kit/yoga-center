@@ -5,6 +5,12 @@ namespace YogaCenter.Repository.Repos;
 
 public class CourseRegisterRepository : ICourseRegisterRepository
 {
+    public IEnumerable<CourseRegister> GetAllCourseRegisterEntries() => CourseRegisterDAO.Instance.GetAll();
+    public IEnumerable<CourseRegister> GetCourseRegisterEntriesByCourse(int courseId) => CourseRegisterDAO.Instance.GetByCourse(courseId);
+    public IEnumerable<CourseRegister> GetCourseRegisterEntriesByLearner(long learnerId) => CourseRegisterDAO.Instance.GetByLearner(learnerId);
+    public CourseRegister? GetCourseRegisterEntry(int courseId, long learnerId) => CourseRegisterDAO.Instance.Get(courseId, learnerId);
+
+
     public void Add(long learnerId, int courseId)
     {
         var learnerRole = RoleDAO.Instance.Get("learner")
