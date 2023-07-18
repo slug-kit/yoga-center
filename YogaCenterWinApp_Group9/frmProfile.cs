@@ -135,7 +135,6 @@ public partial class frmProfile : Form
         {
             userRepository.UpdateUser(_pom);
             OnProfileUpdate(new() { ReAuthenticate = false });
-
             TurnOffUpdateMode();
         }
         catch (Exception ex)

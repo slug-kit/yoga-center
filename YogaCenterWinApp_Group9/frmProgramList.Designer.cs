@@ -301,7 +301,7 @@
             starRatingControl.OutlineThickness = 1;
             starRatingControl.ReadOnly = true;
             starRatingControl.RightMargin = 2;
-            starRatingControl.SelectedColor = Color.RoyalBlue;
+            starRatingControl.SelectedColor = Color.Gold;
             starRatingControl.SelectedStar = 0;
             starRatingControl.Size = new Size(116, 21);
             starRatingControl.StarCount = 5;

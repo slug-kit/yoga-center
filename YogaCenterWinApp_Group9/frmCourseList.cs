@@ -3,6 +3,7 @@ using YogaCenter.Repository.Models;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using YogaCenterWinApp_Group9.DisplayModels;
 
 namespace YogaCenterWinApp_Group9
 {
@@ -23,7 +24,7 @@ namespace YogaCenterWinApp_Group9
 
         private void LoadCourses()
         {
-            var courses = CourseDAO.Instance.SearchCoursesByProgramId(_programId);
+            var courses = CourseDAO.Instance.GetByProgram(_programId);
             dataGridView1.DataSource = courses.ToList();
 
             dataGridView1.Columns.Remove("HasNewRequest");
@@ -74,7 +75,7 @@ namespace YogaCenterWinApp_Group9
             DateTime startDate = dateTimePickerStartDate.Value.Date;
             DateTime endDate = dateTimePickerEndDate.Value.Date.AddDays(1).AddSeconds(-1);
 
-            var courses = CourseDAO.Instance.SearchCoursesByProgramId(_programId)
+            var courses = CourseDAO.Instance.GetByProgram(_programId)
                 .Where(c => c.StartDate >= startDate && c.EndDate <= endDate)
                 .ToList();
 

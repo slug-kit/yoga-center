@@ -32,7 +32,7 @@ public class CourseDAO
             .ToList();
     }
 
-    public IEnumerable<Course> SearchCoursesByProgramId(int programId)
+    public IEnumerable<Course> GetByProgram(int programId)
     {
         using var db = new YogaCenterContext();
         return db.Courses

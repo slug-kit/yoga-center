@@ -13,24 +13,24 @@ public static class CourseStatus
             { -1, "<COULD NOT BE DETERMINED>" },
 
             { 0, "Schedule Not Set" },
-            { 0, "Schedule Not Set - Instructor Pending" },
-            { 1, "Schedule Not Set - Instructor Assigned" },
+            { 1, "Schedule Not Set - Instructor Pending" },
+            { 2, "Schedule Not Set - Instructor Assigned" },
 
             { 10, "Registration Dates Pending" },
-            { 10, "Registration Dates Pending - Instructor Pending" },
-            { 11, "Registration Dates Pending - Instructor Assigned" },
+            { 11, "Registration Dates Pending - Instructor Pending" },
+            { 12, "Registration Dates Pending - Instructor Assigned" },
 
             { 20, "Registration Not Open Yet" },
-            { 20, "Registration Not Open Yet - Instructor Pending" },
-            { 21, "Registration Not Open Yet - Instructor Assigned" },
+            { 21, "Registration Not Open Yet - Instructor Pending" },
+            { 22, "Registration Not Open Yet - Instructor Assigned" },
 
             { 30, "Registration Open" },
-            { 30, "Registration Open - Instructor Pending" },
-            { 31, "Registration Open - Instructor Assigned" },
+            { 31, "Registration Open - Instructor Pending" },
+            { 32, "Registration Open - Instructor Assigned" },
 
             { 40, "Registration Closed - Ready to Start" },
-            { 40, "Registration Closed - Instructor Pending" },
-            { 40, "Registration Closed - Instructor Assigned" },
+            { 41, "Registration Closed - Instructor Pending" },
+            { 42, "Registration Closed - Instructor Assigned" },
 
             { 50, "Course In Progress" },
             

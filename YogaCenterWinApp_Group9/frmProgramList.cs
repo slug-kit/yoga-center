@@ -194,7 +194,7 @@ public partial class frmProgramList : Form
         }
         catch (InvalidCastException ex)
         {
-            MessageBox.Show($"{ex.Message} /n***It would seem a ProgramModelr had used the wrong UI component.***");
+            MessageBox.Show($"{ex.Message} /n***It would seem a Programmer had used the wrong UI component.***");
         }
     }
 
@@ -211,7 +211,7 @@ public partial class frmProgramList : Form
         }
         catch (InvalidCastException ex)
         {
-            MessageBox.Show($"{ex.Message} /n***It would seem a ProgramModelr had used the wrong UI component.***");
+            MessageBox.Show($"{ex.Message} /n***It would seem a Programmer had used the wrong UI component.***");
         }
     }
 
@@ -261,7 +261,7 @@ public partial class frmProgramList : Form
             UpdateButtons();
             if (!searchResults.Any())
             {
-                MessageBox.Show("No bouquet matching such criteria was found.");
+                MessageBox.Show("No program matching such criteria was found.");
             }
         }
         catch (Exception ex)
@@ -302,7 +302,7 @@ public partial class frmProgramList : Form
         {
             int selectedRowIndex = dgvPrograms.SelectedRows[0].Index;
             DataGridViewRow selectedRow = dgvPrograms.Rows[selectedRowIndex];
-            int programId = (int)selectedRow.Cells[nameof(Programme.Id)].Value;
+            int programId = (int)selectedRow.Cells[nameof(ProgramModel.Id)].Value;
 
             frmCourseList frmCourseList = new frmCourseList(programId);
             frmCourseList.ShowDialog();

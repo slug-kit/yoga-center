@@ -41,6 +41,8 @@ public partial class frmCourseManagementEdit : Form
         };
     }
 
+    private ProgramModel Program { get; set; }
+
     // false -> Add; true -> Update
     private bool _update;
     public bool UpdateMode
@@ -172,7 +174,7 @@ public partial class frmCourseManagementEdit : Form
             true, DataSourceUpdateMode.Never);
         dtpLessonDate.DataBindings.Add(nameof(DateTimePicker.Value), lessonListBindingSource, nameof(Lesson.Date),
             true, DataSourceUpdateMode.Never);
-        txtLessonTimeslot.DataBindings.Add(nameof(TextBox.Text), lessonListBindingSource, $"{nameof(Lesson.Timeslot)}.{nameof(Timeslot.Name)}",
+        txtLessonTimeslot.DataBindings.Add(nameof(TextBox.Text), lessonListBindingSource, $"{nameof(Lesson.TimeslotNavigation)}.{nameof(Timeslot.Name)}",
             true, DataSourceUpdateMode.Never);
 
         // 4. Update Lesson Actions buttons

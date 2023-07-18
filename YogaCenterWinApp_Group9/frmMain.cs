@@ -213,7 +213,7 @@ public partial class frmMain : Form
     {
         if (authenticated)
         {
-            frmCalendarDetail frmDailyScheduleManagement = new();
+            frmCalendar frmDailyScheduleManagement = new();
             frmDailyScheduleManagement.ConfigureMdi(this);
             frmDailyScheduleManagement.Show();
         }

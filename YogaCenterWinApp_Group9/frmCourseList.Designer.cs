@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             lbCourseNum = new Label();
-            btBack = new Button();
             lbInstructor = new Label();
             lbProgram = new Label();
             txtProgramId = new TextBox();
@@ -70,16 +69,6 @@
             lbCourseNum.Size = new Size(121, 21);
             lbCourseNum.TabIndex = 0;
             lbCourseNum.Text = "Course Number";
-            // 
-            // btBack
-            // 
-            btBack.Location = new Point(-8, -3);
-            btBack.Margin = new Padding(4);
-            btBack.Name = "btBack";
-            btBack.Size = new Size(108, 49);
-            btBack.TabIndex = 2;
-            btBack.Text = "Back";
-            btBack.UseVisualStyleBackColor = true;
             // 
             // lbInstructor
             // 
@@ -228,6 +217,7 @@
             rtbschedule.Location = new Point(148, 527);
             rtbschedule.Margin = new Padding(4);
             rtbschedule.Name = "rtbschedule";
+            rtbschedule.ReadOnly = true;
             rtbschedule.Size = new Size(227, 75);
             rtbschedule.TabIndex = 26;
             rtbschedule.Text = "";
@@ -261,6 +251,7 @@
             // 
             txtCoursenumber.Location = new Point(148, 332);
             txtCoursenumber.Name = "txtCoursenumber";
+            txtCoursenumber.ReadOnly = true;
             txtCoursenumber.Size = new Size(187, 29);
             txtCoursenumber.TabIndex = 29;
             // 
@@ -268,6 +259,7 @@
             // 
             txtInstructor.Location = new Point(148, 381);
             txtInstructor.Name = "txtInstructor";
+            txtInstructor.ReadOnly = true;
             txtInstructor.Size = new Size(187, 29);
             txtInstructor.TabIndex = 30;
             // 
@@ -275,6 +267,7 @@
             // 
             txtTimeslot.Location = new Point(148, 427);
             txtTimeslot.Name = "txtTimeslot";
+            txtTimeslot.ReadOnly = true;
             txtTimeslot.Size = new Size(187, 29);
             txtTimeslot.TabIndex = 31;
             // 
@@ -315,6 +308,7 @@
             // 
             txtStatusfilter.Location = new Point(908, 53);
             txtStatusfilter.Name = "txtStatusfilter";
+            txtStatusfilter.ReadOnly = true;
             txtStatusfilter.Size = new Size(100, 29);
             txtStatusfilter.TabIndex = 34;
             // 
@@ -358,11 +352,11 @@
             Controls.Add(txtProgramId);
             Controls.Add(lbProgram);
             Controls.Add(lbInstructor);
-            Controls.Add(btBack);
             Controls.Add(lbCourseNum);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
             Name = "frmCourseList";
+            StartPosition = FormStartPosition.CenterParent;
             Load += frmCourseList_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
