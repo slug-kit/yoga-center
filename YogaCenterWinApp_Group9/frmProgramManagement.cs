@@ -1,4 +1,5 @@
-﻿using YogaCenter.Repository.Models;
+﻿using System.Windows.Forms;
+using YogaCenter.Repository.Models;
 using YogaCenter.Repository.Repos;
 
 namespace YogaCenterWinApp_Group9;
@@ -30,6 +31,9 @@ public partial class frmProgramManagement : Form
         txtFee.DataBindings.Add("Text", source, "Fee");
         txtboxdescription.DataBindings.Add("Text", source, "Description");
         starRatingControl.DataBindings.Add("SelectedStar", source, "Rating");
+        var imageBinding = new Binding(nameof(PictureBox.ImageLocation), source, nameof(Program.CurrentUser.Img),
+                true, DataSourceUpdateMode.Never);
+        pictureBox1.DataBindings.Add(imageBinding);
 
         dgvPrograms.DataSource = null;
         dgvPrograms.DataSource = source;
