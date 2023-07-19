@@ -462,20 +462,20 @@ public partial class frmCourseManagementEdit : Form
 
         if (_update && !courseHasStartedOrFinished)
         {
-            if (regOpenDate < now)
-            {
-                MessageBox.Show("Pending Course's Registration Open must not be in the past.",
-                    "Invalid Course Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dtpRegistrationOpenDate.Focus();
-                return false;
-            }
-            if (regCloseDate < now)
-            {
-                MessageBox.Show("Pending Course's Registration Close must not be in the past.",
-                    "Invalid Course Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dtpRegistrationCloseDate.Focus();
-                return false;
-            }
+            //if (regOpenDate < now)
+            //{
+            //    MessageBox.Show("Pending Course's Registration Open Date must not be in the past.",
+            //        "Invalid Course Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    dtpRegistrationOpenDate.Focus();
+            //    return false;
+            //}
+            //if (regCloseDate < now)
+            //{
+            //    MessageBox.Show("Pending Course's Registration Close Date must not be in the past.",
+            //        "Invalid Course Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    dtpRegistrationCloseDate.Focus();
+            //    return false;
+            //}
             if (startDate < now)
             {
                 MessageBox.Show("Pending Course's Start Date must not be in the past.",

@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using YogaCenter.Repository.ModelExtensions;
 using YogaCenter.Repository.Models;
 using YogaCenter.Repository.Repos;
 
@@ -86,12 +87,21 @@ public partial class frmCourseManagement : Form
         }
     }
 
+    private const int COURSE_HAS_STARTED_STATUS_CODE = 52;
+    private const int COURSE_HAS_FINISHED_STATUS_CODE = 70;
     //DELETE(BUG NOT FIX --SQL BUG) ----------------------------------------------------------------------------------
     private void btndelete_Click(object sender, EventArgs e)
     {
         if (dgvcourse.SelectedRows.Count > 0)
         {
             var selectedCourse = GetCourse();
+            var statusCode = selectedCourse.GetStatusCode(true);
+            if (statusCode == COURSE_HAS_STARTED_STATUS_CODE || statusCode == COURSE_HAS_FINISHED_STATUS_CODE)
+            {
+                MessageBox.Show("A Course that is in progress or has finished may not be deleted.",
+                    "Invalid Course State", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
 
             // Confirmation dialog before deleting the course
             var confirmationResult = MessageBox.Show("Are you sure you want to delete this course?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
