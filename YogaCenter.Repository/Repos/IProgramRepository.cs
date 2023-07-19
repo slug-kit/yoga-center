@@ -5,7 +5,7 @@ namespace YogaCenter.Repository.Repos;
 public interface IProgramRepository
 {
     public IEnumerable<Program> GetPrograms();
-    IEnumerable<Program> SearchPrograms(string searchText, int? minFee, int? maxFee, int? minRating, int? maxRating);
+    IEnumerable<Program> SearchPrograms(string searchText, string searchCode, int? minFee, int? maxFee, int? minRating, int? maxRating);
     public Program? GetProgramById(int id);
     public void Add(Program program);
     public void Update(Program program);

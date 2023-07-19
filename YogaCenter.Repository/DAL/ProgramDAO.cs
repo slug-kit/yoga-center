@@ -83,11 +83,13 @@ public class ProgramDAO
         }
     }
 
-    public IEnumerable<Program> Search(string searchText, int? minFee, int? maxFee, int? minRating, int? maxRating)
+    public IEnumerable<Program> Search(string searchText, string searchCode, int? minFee, int? maxFee, int? minRating, int? maxRating)
     {
         using var db = new YogaCenterContext();
-        var query = db.Programs.Where(p => p.Id.ToString().Contains(searchText)
-            || (!string.IsNullOrEmpty(p.Description) && p.Description.Contains(searchText)));
+        var query = db.Programs.Where(p =>
+            (p.Id.ToString().Contains(searchText) ||
+             (!string.IsNullOrEmpty(p.Description) && p.Description.Contains(searchText))) &&
+            (string.IsNullOrEmpty(searchCode) || p.Code == searchCode));
 
         if (minFee.HasValue)
         {

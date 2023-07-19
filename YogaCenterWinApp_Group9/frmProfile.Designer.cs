@@ -50,15 +50,20 @@
             btnCancel = new Button();
             txtpassword = new TextBox();
             label1 = new Label();
+            txtGoalOrExper = new TextBox();
+            txtSpecialization = new TextBox();
+            lbStudyGoal = new Label();
+            lbSpecialization = new Label();
+            lbExperience = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCourse).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(10, 41);
+            pictureBox1.Location = new Point(10, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(125, 83);
+            pictureBox1.Size = new Size(125, 125);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -211,7 +216,7 @@
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(147, 416);
+            btnUpdate.Location = new Point(147, 482);
             btnUpdate.Margin = new Padding(4);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(96, 32);
@@ -223,7 +228,7 @@
             // btnSave
             // 
             btnSave.Enabled = false;
-            btnSave.Location = new Point(147, 416);
+            btnSave.Location = new Point(147, 482);
             btnSave.Margin = new Padding(4);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(96, 32);
@@ -236,7 +241,7 @@
             // btnCancel
             // 
             btnCancel.Enabled = false;
-            btnCancel.Location = new Point(315, 416);
+            btnCancel.Location = new Point(312, 482);
             btnCancel.Margin = new Padding(4);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(96, 32);
@@ -262,11 +267,57 @@
             label1.TabIndex = 51;
             label1.Text = "Password";
             // 
+            // txtGoalOrExper
+            // 
+            txtGoalOrExper.Location = new Point(147, 409);
+            txtGoalOrExper.Name = "txtGoalOrExper";
+            txtGoalOrExper.Size = new Size(261, 29);
+            txtGoalOrExper.TabIndex = 52;
+            // 
+            // txtSpecialization
+            // 
+            txtSpecialization.Location = new Point(147, 444);
+            txtSpecialization.Name = "txtSpecialization";
+            txtSpecialization.Size = new Size(261, 29);
+            txtSpecialization.TabIndex = 53;
+            // 
+            // lbStudyGoal
+            // 
+            lbStudyGoal.AutoSize = true;
+            lbStudyGoal.Location = new Point(22, 417);
+            lbStudyGoal.Name = "lbStudyGoal";
+            lbStudyGoal.Size = new Size(85, 21);
+            lbStudyGoal.TabIndex = 54;
+            lbStudyGoal.Text = "Study Goal";
+            // 
+            // lbSpecialization
+            // 
+            lbSpecialization.AutoSize = true;
+            lbSpecialization.Location = new Point(20, 452);
+            lbSpecialization.Name = "lbSpecialization";
+            lbSpecialization.Size = new Size(105, 21);
+            lbSpecialization.TabIndex = 55;
+            lbSpecialization.Text = "Specialization";
+            // 
+            // lbExperience
+            // 
+            lbExperience.AutoSize = true;
+            lbExperience.Location = new Point(22, 417);
+            lbExperience.Name = "lbExperience";
+            lbExperience.Size = new Size(84, 21);
+            lbExperience.TabIndex = 56;
+            lbExperience.Text = "Experience";
+            // 
             // frmProfile
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(837, 465);
+            ClientSize = new Size(852, 538);
+            Controls.Add(lbExperience);
+            Controls.Add(lbSpecialization);
+            Controls.Add(lbStudyGoal);
+            Controls.Add(txtSpecialization);
+            Controls.Add(txtGoalOrExper);
             Controls.Add(label1);
             Controls.Add(txtpassword);
             Controls.Add(btnUpdate);
@@ -323,5 +374,10 @@
         private Button btnCancel;
         private TextBox txtpassword;
         private Label label1;
+        private TextBox txtGoalOrExper;
+        private TextBox txtSpecialization;
+        private Label lbStudyGoal;
+        private Label lbSpecialization;
+        private Label lbExperience;
     }
 }

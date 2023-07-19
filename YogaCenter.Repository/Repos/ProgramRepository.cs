@@ -18,7 +18,6 @@ public class ProgramRepository : IProgramRepository
             return !db.Programs.Any(p => p.Code == code);
         }
     }
-
     public bool IsCodeUnique(string code, int programId)
     {
         using (var db = new YogaCenterContext())
@@ -26,5 +25,5 @@ public class ProgramRepository : IProgramRepository
             return !db.Programs.Any(p => p.Code == code && p.Id != programId);
         }
     }
-    public IEnumerable<Program> SearchPrograms(string searchText, int? minFee, int? maxFee, int? minRating, int? maxRating) => ProgramDAO.Instance.Search(searchText, minFee, maxFee, minRating, maxRating);
+    public IEnumerable<Program> SearchPrograms(string searchText, string searchCode, int? minFee, int? maxFee, int? minRating, int? maxRating) => ProgramDAO.Instance.Search(searchText, searchCode, minFee, maxFee, minRating, maxRating);
 }

@@ -38,14 +38,12 @@
             label9 = new Label();
             label10 = new Label();
             label11 = new Label();
-            label12 = new Label();
             txtusername = new TextBox();
             txtpassword = new TextBox();
             txtcode = new TextBox();
             txtfullname = new TextBox();
             txtemail = new TextBox();
             txtphonenumber = new TextBox();
-            txtstudygoal = new TextBox();
             dob = new DateTimePicker();
             datejoin = new DateTimePicker();
             cboroleid = new ComboBox();
@@ -156,16 +154,6 @@
             label11.TabIndex = 10;
             label11.Text = "Phone Number";
             // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.Location = new Point(147, 507);
-            label12.Name = "label12";
-            label12.Size = new Size(85, 21);
-            label12.TabIndex = 11;
-            label12.Text = "Study Goal";
-            // 
             // txtusername
             // 
             txtusername.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
@@ -213,14 +201,6 @@
             txtphonenumber.Name = "txtphonenumber";
             txtphonenumber.Size = new Size(158, 27);
             txtphonenumber.TabIndex = 18;
-            // 
-            // txtstudygoal
-            // 
-            txtstudygoal.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            txtstudygoal.Location = new Point(238, 509);
-            txtstudygoal.Name = "txtstudygoal";
-            txtstudygoal.Size = new Size(228, 27);
-            txtstudygoal.TabIndex = 19;
             // 
             // dob
             // 
@@ -286,7 +266,7 @@
             btnexit.UseVisualStyleBackColor = true;
             btnexit.Click += btnexit_Click;
             // 
-            // frmUserManagementDetail
+            // frmUserManagementEdit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -298,14 +278,12 @@
             Controls.Add(cboroleid);
             Controls.Add(datejoin);
             Controls.Add(dob);
-            Controls.Add(txtstudygoal);
             Controls.Add(txtphonenumber);
             Controls.Add(txtemail);
             Controls.Add(txtfullname);
             Controls.Add(txtcode);
             Controls.Add(txtpassword);
             Controls.Add(txtusername);
-            Controls.Add(label12);
             Controls.Add(label11);
             Controls.Add(label10);
             Controls.Add(label9);
@@ -316,7 +294,7 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Name = "frmUserManagementDetail";
+            Name = "frmUserManagementEdit";
             Text = "frmUserManagementDetail";
             Load += frmUserManagementDetail_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -335,14 +313,12 @@
         private Label label9;
         private Label label10;
         private Label label11;
-        private Label label12;
         private TextBox txtusername;
         private TextBox txtpassword;
         private TextBox txtcode;
         private TextBox txtfullname;
         private TextBox txtemail;
         private TextBox txtphonenumber;
-        private TextBox txtstudygoal;
         private DateTimePicker dob;
         private DateTimePicker datejoin;
         private ComboBox cboroleid;

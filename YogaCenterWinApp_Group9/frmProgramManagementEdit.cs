@@ -28,20 +28,35 @@ namespace YogaCenterWinApp_Group9
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(txtCode.Text) || string.IsNullOrWhiteSpace(txtName.Text) || string.IsNullOrWhiteSpace(txtFee.Text))
+                {
+                    MessageBox.Show("Please fill in all the required fields.", "Input Validation Error");
+                    return;
+                }
+
                 var program = new YogaCenter.Repository.Models.Program
                 {
-                    Code = txtCode.Text, // Get the value from the code textbox
+                    Code = txtCode.Text,
                     Description = txtdescription.Text,
-                    Fee = int.Parse(txtfee.Text)
+                    Name = txtName.Text,
+                    Img = txtImgLink.Text,
                 };
 
-                if (InsertOrUpdate == false)
+                if (!int.TryParse(txtFee.Text, out int fee))
+                {
+                    MessageBox.Show("Invalid fee value. Please enter a valid integer.", "Input Validation Error");
+                    return;
+                }
+
+                program.Fee = fee;
+
+                if (!InsertOrUpdate)
                 {
                     // Check if the code is unique before adding the program
                     if (ProgramRepository.IsCodeUnique(program.Code))
                     {
                         ProgramRepository.Add(program);
-                        MessageBox.Show("Program saved successfully.", InsertOrUpdate == true ? "Update a program" : "Add a new program");
+                        MessageBox.Show("Program saved successfully.", "Add a new program");
                         Close();
                     }
                     else
@@ -51,24 +66,19 @@ namespace YogaCenterWinApp_Group9
                 }
                 else
                 {
-                    // Check if the code is unique before updating the program
-                    if (ProgramRepository.IsCodeUnique(program.Code, program.Id))
-                    {
-                        ProgramRepository.Update(program);
-                        MessageBox.Show("Program saved successfully.", InsertOrUpdate == true ? "Update a program" : "Add a new program");
-                        Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Code must be unique. Please enter a different code.", "Code Validation Error");
-                    }
+                    // Update the program without checking for code uniqueness
+                    ProgramRepository.Update(program);
+                    MessageBox.Show("Program updated successfully.", "Update a program");
+                    Close();
                 }
+                DialogResult = DialogResult.OK;
             }
             catch (Exception)
             {
                 throw;
             }
         }
+
 
         private void frmProgramManagementDetail_Load(object sender, EventArgs e)
         {
@@ -78,7 +88,9 @@ namespace YogaCenterWinApp_Group9
                 txtCode.Text = Programme.Code;
                 txtdescription.Text = Programme.Description;
                 txtid.Text = Programme.Id.ToString();
-                txtfee.Text = Programme.Fee.ToString();
+                txtFee.Text = Programme.Fee.ToString();
+                txtName.Text = Programme?.Name?.ToString();
+                txtImgLink.Text = Programme?.Img?.ToString();
             }
         }
 

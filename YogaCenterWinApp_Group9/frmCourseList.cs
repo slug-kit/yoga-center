@@ -70,7 +70,7 @@ namespace YogaCenterWinApp_Group9
             catch (Exception)
             {
 
-                throw;
+                MessageBox.Show(Text, "Error");
             }
         }
         private void btnSearch_Click(object sender, EventArgs e)
