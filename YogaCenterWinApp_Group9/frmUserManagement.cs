@@ -56,6 +56,10 @@ public partial class frmUserManagement : Form
             dob.DataBindings.Add("Text", source, "Dob");
             rtbSpecialization.DataBindings.Add("Text", source, "Specializations");
 
+            var imageBinding = new Binding(nameof(PictureBox.ImageLocation), source, nameof(Program.CurrentUser.Img),
+                true, DataSourceUpdateMode.Never);
+            pictureBox1.DataBindings.Add(imageBinding);
+
             dgvuser.DataSource = null;
             dgvuser.DataSource = source;
 

@@ -30,6 +30,8 @@
         {
             splitContainer = new SplitContainer();
             groupBox2 = new GroupBox();
+            txtGenderSearch = new TextBox();
+            txtRoleSearch = new TextBox();
             dtpJoinDateTo = new DateTimePicker();
             label23 = new Label();
             txtmembercodeSearch = new TextBox();
@@ -79,8 +81,6 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             lbgoal = new Label();
-            txtRoleSearch = new TextBox();
-            txtGenderSearch = new TextBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer).BeginInit();
             splitContainer.Panel1.SuspendLayout();
             splitContainer.Panel2.SuspendLayout();
@@ -166,6 +166,20 @@
             groupBox2.Size = new Size(563, 265);
             groupBox2.TabIndex = 5;
             groupBox2.TabStop = false;
+            // 
+            // txtGenderSearch
+            // 
+            txtGenderSearch.Location = new Point(396, 182);
+            txtGenderSearch.Name = "txtGenderSearch";
+            txtGenderSearch.Size = new Size(100, 29);
+            txtGenderSearch.TabIndex = 33;
+            // 
+            // txtRoleSearch
+            // 
+            txtRoleSearch.Location = new Point(180, 177);
+            txtRoleSearch.Name = "txtRoleSearch";
+            txtRoleSearch.Size = new Size(100, 29);
+            txtRoleSearch.TabIndex = 32;
             // 
             // dtpJoinDateTo
             // 
@@ -569,7 +583,7 @@
             // 
             pictureBox1.Location = new Point(34, 28);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(90, 120);
+            pictureBox1.Size = new Size(125, 144);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -581,20 +595,6 @@
             lbgoal.Size = new Size(169, 21);
             lbgoal.TabIndex = 23;
             lbgoal.Text = "Goals in Learning Yoga";
-            // 
-            // txtRoleSearch
-            // 
-            txtRoleSearch.Location = new Point(180, 177);
-            txtRoleSearch.Name = "txtRoleSearch";
-            txtRoleSearch.Size = new Size(100, 29);
-            txtRoleSearch.TabIndex = 32;
-            // 
-            // txtGenderSearch
-            // 
-            txtGenderSearch.Location = new Point(396, 182);
-            txtGenderSearch.Name = "txtGenderSearch";
-            txtGenderSearch.Size = new Size(100, 29);
-            txtGenderSearch.TabIndex = 33;
             // 
             // frmUserManagement
             // 
