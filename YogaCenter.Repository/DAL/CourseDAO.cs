@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Utils;
 using YogaCenter.Repository.Models;
 
 namespace YogaCenter.Repository.DAL;
@@ -28,6 +29,7 @@ public class CourseDAO
             .Where(c => !c.Inactive)
             .Include(c => c.Program)
             .Include(c => c.Lessons)
+                .ThenInclude(l => l.TimeslotNavigation)
             .Include(c => c.Instructor)
             .ToList();
     }
@@ -40,6 +42,7 @@ public class CourseDAO
             .Where(c => c.ProgramId == programId)
             .Include(c => c.Program)
             .Include(c => c.Lessons)
+                .ThenInclude(l => l.TimeslotNavigation)
             .Include(c => c.Instructor)
             .ToList();
     }
@@ -51,6 +54,7 @@ public class CourseDAO
             .Where(c => !c.Inactive)
             .Include(c => c.Program)
             .Include(c => c.Lessons)
+                .ThenInclude(l => l.TimeslotNavigation)
             .Include(c => c.Instructor)
             .FirstOrDefault(c => c.Id == id);
     }
@@ -59,6 +63,10 @@ public class CourseDAO
     {
         using var db = new YogaCenterContext();
         db.Entry(course).State = EntityState.Added;
+        foreach (var lesson in course.Lessons)
+        {
+            db.Entry(lesson).State = EntityState.Added;
+        }
         db.SaveChanges();
     }
 
@@ -69,6 +77,30 @@ public class CourseDAO
         {
             using var db = new YogaCenterContext();
             db.Entry(course).State = EntityState.Modified;
+
+            var lessonComparer = new LambdaComparer<Lesson>((l1, l2) =>
+                l1.ProgramId == l2.ProgramId
+                && l1.CourseNumber == l2.CourseNumber
+                && l1.LessonNumber == l2.LessonNumber
+            );
+            var oldLessonList = c.Lessons.ToHashSet();
+            var updatedLessonList = course.Lessons.ToHashSet();
+            var existingLessons = updatedLessonList.Intersect(oldLessonList, lessonComparer);
+            var newLessons = updatedLessonList.Except(oldLessonList, lessonComparer);
+            var deletedLessons = oldLessonList.Except(updatedLessonList, lessonComparer);
+            foreach (var lesson in existingLessons)
+            {
+                db.Entry(lesson).State = EntityState.Modified;
+            }
+            foreach (var lesson in newLessons)
+            {
+                db.Entry(lesson).State = EntityState.Added;
+            }
+            foreach (var lesson in deletedLessons)
+            {
+                db.Entry(lesson).State = EntityState.Deleted;
+            }
+
             db.SaveChanges();
         }
     }

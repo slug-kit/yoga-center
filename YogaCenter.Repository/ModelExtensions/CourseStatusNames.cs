@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace YogaCenterWinApp_Group9.DisplayModels;
+namespace YogaCenter.Repository.ModelExtensions;
 
 public static class CourseStatus
 {
@@ -12,9 +12,9 @@ public static class CourseStatus
         {
             { -1, "<COULD NOT BE DETERMINED>" },
 
-            { 0, "Schedule Not Set" },
-            { 1, "Schedule Not Set - Instructor Pending" },
-            { 2, "Schedule Not Set - Instructor Assigned" },
+            { 0, "Dates Not Set" },
+            { 1, "Dates Not Set - Instructor Pending" },
+            { 2, "Dates Not Set - Instructor Assigned" },
 
             { 10, "Registration Dates Pending" },
             { 11, "Registration Dates Pending - Instructor Pending" },
@@ -35,7 +35,8 @@ public static class CourseStatus
             { 50, "Course In Progress" },
             
             { 60, "Course On Hold" },
-            { 62, "Cannot Start - No Instructor" },
+            { 61, "Cannot Start - No Instructor" },
+            { 62, "<YOU SHOULD BE SEEING THIS>" },
 
             { 70, "Course Finished" },
         };

@@ -1,15 +1,27 @@
 ﻿using YogaCenter.Repository.DAL;
 using YogaCenter.Repository.Models;
-using System;
-using System.Linq;
-using System.Windows.Forms;
-using YogaCenterWinApp_Group9.DisplayModels;
+using YogaCenter.Repository.Repos;
+using YogaCenter.Repository.ModelExtensions;
 
 namespace YogaCenterWinApp_Group9
 {
     public partial class frmCourseList : Form
     {
         private readonly int _programId;
+
+        // Think of a way to inject these things later
+        private const byte LEARNER_ROLE = 2;
+        private const byte INSTRUCTOR_ROLE = 3;
+
+        private readonly ICourseRegisterRepository courseRegisterRepository = new CourseRegisterRepository();
+        private readonly ICourseAssignmentRequestRepository courseAssignmentRequestRepository = new CourseAssignmentRequestRepository();
+
+        private User _user = new()
+        {
+            Id = Program.CurrentUser!.Id,
+            Username = Program.CurrentUser.Username,
+            RoleId = Program.CurrentUser.RoleId,
+        };
 
         public frmCourseList(int programId)
         {
@@ -20,6 +32,11 @@ namespace YogaCenterWinApp_Group9
         private void frmCourseList_Load(object sender, EventArgs e)
         {
             LoadCourses();
+
+            btnEnrol.Enabled = _user.RoleId == LEARNER_ROLE;
+            btnEnrol.Visible = _user.RoleId == LEARNER_ROLE;
+            btnRequestAssignment.Enabled = _user.RoleId == INSTRUCTOR_ROLE;
+            btnRequestAssignment.Visible = _user.RoleId == INSTRUCTOR_ROLE;
         }
 
         private void LoadCourses()
@@ -118,5 +135,44 @@ namespace YogaCenterWinApp_Group9
             }
         }
 
+        #region Form Actions
+
+        private void btnEnrol_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                courseRegisterRepository.Add(_user.Id, GetCourseObject().Id);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.InnerException is null ? ex.Message : ex.InnerException.Message,
+                    "ERROR -- Enrol");
+            }
+        }
+
+        private void btnRequestAssignment_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                courseAssignmentRequestRepository.Add(new()
+                {
+                    InstructorId = _user.Id,
+                    CourseId = GetCourseObject().Id,
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.InnerException is null ? ex.Message : ex.InnerException.Message,
+                    "ERROR -- Request Assignment");
+            }
+        }
+
+        private Course GetCourseObject()
+        {
+            var course = dataGridView1.SelectedRows[0].DataBoundItem as Course;
+            return course ?? throw new Exception("Could not retrieve object model.");
+        }
+
+        #endregion
     }
 }

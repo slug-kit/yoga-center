@@ -19,12 +19,28 @@ public class CourseAssignmentRequestRepository : ICourseAssignmentRequestReposit
 
         var course = CourseDAO.Instance.Get(courseAssignmentRequest.CourseId)
             ?? throw new ArgumentException("Course does not exist.");
-        if (instructor.CourseAssignmentRequests.FirstOrDefault(r => r.CourseId == courseAssignmentRequest.CourseId) != null)
+        if (course.InstructorId == courseAssignmentRequest.InstructorId)
         {
-            throw new ArgumentException("Instructor has already submitted an assignment request for target Course.");
+            throw new ArgumentException("Instructor is already assigned to target Course.");
         }
 
-        CourseAssignmentRequestDAO.Instance.Add(courseAssignmentRequest);
+        var existingRequest = instructor.CourseAssignmentRequests
+            .FirstOrDefault(r => r.CourseId == courseAssignmentRequest.CourseId);
+        if (existingRequest != null)
+        {
+            if (existingRequest.New == false)
+            {
+                existingRequest.New = true;
+                Update(existingRequest);
+            }
+            else throw new ArgumentException("Instructor has already submitted an assignment request for target Course.");
+        }
+        else
+        {
+            courseAssignmentRequest.New = true;
+            CourseAssignmentRequestDAO.Instance.Add(courseAssignmentRequest);
+        }
+
     }
 
     public void Update(CourseAssignmentRequest courseAssignmentRequest) => CourseAssignmentRequestDAO.Instance.Update(courseAssignmentRequest);

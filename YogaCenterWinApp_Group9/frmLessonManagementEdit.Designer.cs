@@ -52,10 +52,10 @@
             // 
             // txtId
             // 
-            txtId.Location = new Point(200, 37);
+            txtId.Location = new Point(180, 37);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
-            txtId.Size = new Size(250, 29);
+            txtId.Size = new Size(270, 29);
             txtId.TabIndex = 0;
             // 
             // lbId
@@ -78,10 +78,10 @@
             // 
             // txtProgramCode
             // 
-            txtProgramCode.Location = new Point(200, 92);
+            txtProgramCode.Location = new Point(180, 92);
             txtProgramCode.Name = "txtProgramCode";
             txtProgramCode.ReadOnly = true;
-            txtProgramCode.Size = new Size(250, 29);
+            txtProgramCode.Size = new Size(270, 29);
             txtProgramCode.TabIndex = 3;
             // 
             // lbCourseNumber
@@ -95,10 +95,10 @@
             // 
             // txtCourseNumber
             // 
-            txtCourseNumber.Location = new Point(200, 147);
+            txtCourseNumber.Location = new Point(180, 147);
             txtCourseNumber.Name = "txtCourseNumber";
             txtCourseNumber.ReadOnly = true;
-            txtCourseNumber.Size = new Size(250, 29);
+            txtCourseNumber.Size = new Size(270, 29);
             txtCourseNumber.TabIndex = 5;
             // 
             // lbLessonNumber
@@ -112,10 +112,11 @@
             // 
             // txtLessonNumber
             // 
-            txtLessonNumber.Location = new Point(200, 202);
+            txtLessonNumber.Location = new Point(180, 202);
             txtLessonNumber.Name = "txtLessonNumber";
-            txtLessonNumber.Size = new Size(250, 29);
+            txtLessonNumber.Size = new Size(270, 29);
             txtLessonNumber.TabIndex = 7;
+            txtLessonNumber.KeyDown += DataField_KeyDown;
             txtLessonNumber.KeyPress += txtLessonNumber_KeyPress;
             txtLessonNumber.Validating += txtLessonNumber_Validating;
             // 
@@ -130,12 +131,11 @@
             // 
             // txtLessonCode
             // 
-            txtLessonCode.Location = new Point(200, 257);
+            txtLessonCode.Location = new Point(180, 257);
             txtLessonCode.Name = "txtLessonCode";
             txtLessonCode.ReadOnly = true;
-            txtLessonCode.Size = new Size(250, 29);
+            txtLessonCode.Size = new Size(270, 29);
             txtLessonCode.TabIndex = 9;
-            txtLessonCode.KeyDown += DataField_KeyDown;
             // 
             // lbLocation
             // 
@@ -148,9 +148,9 @@
             // 
             // txtLocation
             // 
-            txtLocation.Location = new Point(200, 312);
+            txtLocation.Location = new Point(180, 312);
             txtLocation.Name = "txtLocation";
-            txtLocation.Size = new Size(250, 29);
+            txtLocation.Size = new Size(270, 29);
             txtLocation.TabIndex = 11;
             txtLocation.KeyDown += DataField_KeyDown;
             // 
@@ -165,9 +165,9 @@
             // 
             // dtpDate
             // 
-            dtpDate.Location = new Point(200, 364);
+            dtpDate.Location = new Point(180, 364);
             dtpDate.Name = "dtpDate";
-            dtpDate.Size = new Size(250, 29);
+            dtpDate.Size = new Size(270, 29);
             dtpDate.TabIndex = 13;
             dtpDate.KeyDown += DataField_KeyDown;
             dtpDate.Validating += dtpDate_Validating;
@@ -184,10 +184,11 @@
             // cboTimeslot
             // 
             cboTimeslot.FormattingEnabled = true;
-            cboTimeslot.Location = new Point(200, 422);
+            cboTimeslot.Location = new Point(180, 422);
             cboTimeslot.Name = "cboTimeslot";
-            cboTimeslot.Size = new Size(250, 29);
+            cboTimeslot.Size = new Size(270, 29);
             cboTimeslot.TabIndex = 15;
+            cboTimeslot.SelectedValueChanged += cboTimeslot_SelectedValueChanged;
             cboTimeslot.KeyDown += DataField_KeyDown;
             // 
             // lbDescription
@@ -201,16 +202,16 @@
             // 
             // rtbDescription
             // 
-            rtbDescription.Location = new Point(200, 477);
+            rtbDescription.Location = new Point(180, 477);
             rtbDescription.Name = "rtbDescription";
-            rtbDescription.Size = new Size(250, 96);
+            rtbDescription.Size = new Size(270, 96);
             rtbDescription.TabIndex = 17;
             rtbDescription.Text = "";
             rtbDescription.KeyDown += DataField_KeyDown;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(72, 600);
+            btnSave.Location = new Point(70, 600);
             btnSave.Margin = new Padding(4);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(110, 45);
@@ -221,7 +222,7 @@
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(300, 600);
+            btnCancel.Location = new Point(320, 600);
             btnCancel.Margin = new Padding(4);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(110, 45);

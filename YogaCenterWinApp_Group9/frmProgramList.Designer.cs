@@ -358,7 +358,7 @@
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
             Name = "frmProgramList";
-            Text = "ListProgram";
+            Text = "Program List";
             Load += frmProgramList_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPrograms).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();

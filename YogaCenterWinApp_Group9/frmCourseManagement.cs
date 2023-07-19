@@ -101,8 +101,7 @@ public partial class frmCourseManagement : Form
                 try
                 {
                     // Mark the course as inactive and update it
-                    selectedCourse.Inactive = true;
-                    courseRepository.Update(selectedCourse);
+                    courseRepository.Delete(selectedCourse);
                     LoadCourseList();
                 }
                 catch (Exception ex)
@@ -122,17 +121,19 @@ public partial class frmCourseManagement : Form
     {
         frmCourseManagementEdit frmCourseManagementDetail = new frmCourseManagementEdit()
         {
-            Text = "New Course",
-            UpdateMode = false,
-            Course = new Course(),
             courseRepository = courseRepository,
+            UpdateMode = false,
+            Course = new()
+            {
+                CourseNumber = 1,
+                //Program = _pom,
+            },
         };
 
         if (frmCourseManagementDetail.ShowDialog() == DialogResult.OK)
         {
             LoadCourseList();
         }
-
     }
 
     //UPDATE COURSE -----------------------------------------------------------------------------------
@@ -140,10 +141,9 @@ public partial class frmCourseManagement : Form
     {
         frmCourseManagementEdit frmCourseManagementDetail = new frmCourseManagementEdit()
         {
-            Text = "Update Course",
+            courseRepository = courseRepository,
             UpdateMode = true,
             Course = GetCourse(),
-            courseRepository = courseRepository,
         };
         if (frmCourseManagementDetail.ShowDialog() == DialogResult.OK)
         {

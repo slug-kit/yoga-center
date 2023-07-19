@@ -1,16 +1,16 @@
 ﻿using YogaCenter.Repository.Models;
-using static YogaCenterWinApp_Group9.DisplayModels.CourseStatus;
+using static YogaCenter.Repository.ModelExtensions.CourseStatus;
 
-namespace YogaCenterWinApp_Group9.DisplayModels;
+namespace YogaCenter.Repository.ModelExtensions;
 
 public static class CourseExtensions
 {
     public static string GetCourseCode(this Course course)
     {
-        var program = course.Program
-            ?? throw new ArgumentException("Course is not linked to a Program.", nameof(course));
-        return program.Code
-            + course.CourseNumber.ToString();
+        var program = course.Program;
+        if (program == null) return "???";
+        else return program.Code
+             + course.CourseNumber.ToString("D3");
     }
 
     public static string GetStatusName(this Course course, bool? admin = false)

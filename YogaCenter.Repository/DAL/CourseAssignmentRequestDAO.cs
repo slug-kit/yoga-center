@@ -51,8 +51,8 @@ public class CourseAssignmentRequestDAO
 
     public void Update(CourseAssignmentRequest courseAssignmentRequest)
     {
-        var a = Get(courseAssignmentRequest.CourseId, courseAssignmentRequest.InstructorId);
-        if (a != null)
+        var r = Get(courseAssignmentRequest.CourseId, courseAssignmentRequest.InstructorId);
+        if (r != null)
         {
             using var db = new YogaCenterContext();
             db.Entry(courseAssignmentRequest).State = EntityState.Modified;

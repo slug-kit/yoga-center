@@ -194,7 +194,7 @@ public partial class frmProgramList : Form
         }
         catch (InvalidCastException ex)
         {
-            MessageBox.Show($"{ex.Message} /n***It would seem a Programmer had used the wrong UI component.***");
+            MessageBox.Show($"{ex.Message} /n*** It would seem a Programmer had set up the UI incorrectly. ***");
         }
     }
 
@@ -211,7 +211,7 @@ public partial class frmProgramList : Form
         }
         catch (InvalidCastException ex)
         {
-            MessageBox.Show($"{ex.Message} /n***It would seem a Programmer had used the wrong UI component.***");
+            MessageBox.Show($"{ex.Message} /n*** It would seem a Programmer had set up the UI incorrectly. ***");
         }
     }
 
@@ -231,10 +231,6 @@ public partial class frmProgramList : Form
         }
     }
 
-    // ***WARNING***
-    //
-    // NEEDS TESTING!!!
-    //
     private void PerformFilter()
     {
         if (!ValidateCriteria()) return;
@@ -247,13 +243,16 @@ public partial class frmProgramList : Form
             bool byInstructor = !string.IsNullOrWhiteSpace(txtFilterInstructor.Text);
 
             var name = txtFilterName.Text.Trim();
-            var instructorNames = txtFilterInstructor.Text.Trim().Split(',').ToHashSet();
+            var instructorNames = txtFilterInstructor.Text.Split(',').Select(str => str.Trim()).ToHashSet();
 
+            // HACK: Intersect() is implemented by looping _secondSet.Remove(_firstSetElement).
+            // Thus we need to invert string.Contains()'s caller and argument.
+            var instructorNameComparer = new LambdaComparer<string>((s1, s2) => s2.Contains(s1, StringComparison.InvariantCultureIgnoreCase));
             var searchResults = programRepository.GetPrograms()
                 .Where(p => (!byName || (p.Name != null && p.Name.Contains(name, StringComparison.InvariantCultureIgnoreCase)))
                     && (!byLowerFee || p.Fee >= lowerFee)
                     && (!byUpperFee || p.Fee <= upperFee)
-                    && (!byInstructor || p.Instructors.Select(i => i.Fullname).Intersect(instructorNames).Any())
+                    && (!byInstructor || p.Instructors.Select(i => i.Fullname).Intersect(instructorNames, instructorNameComparer).Any())
                 )
                 .ToList();
             bindingSource.DataSource = searchResults;
@@ -292,6 +291,7 @@ public partial class frmProgramList : Form
             else if (control is DateTimePicker dtp) { dtp.Value = DateTime.Now; }
             else if (control is ListControl lsc) { lsc.SelectedIndex = -1; }
         };
+        PerformFilter();
     }
 
     #endregion

@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel;
 using YogaCenter.Repository.Repos;
 using YogaCenter.Repository.Models;
-using YogaCenterWinApp_Group9.DisplayModels;
+using YogaCenter.Repository.ModelExtensions;
 using Utils;
+using CourseModel = YogaCenter.Repository.Models.Course;
 using LessonModel = YogaCenter.Repository.Models.Lesson;
 
 namespace YogaCenterWinApp_Group9;
@@ -16,26 +17,6 @@ public partial class frmLessonManagementEdit : Form
     {
         get => _lessonRepository;
         init => _lessonRepository = value;
-    }
-
-    private class LessonDisplayModel : LessonModel
-    {
-        public new byte LessonNumber
-        {
-            get => base.LessonNumber;
-            set
-            {
-                if (LessonNumber != value)
-                {
-                    base.LessonNumber = value;
-                    LessonCode = this.GetLessonCode();
-                }
-            }
-        }
-
-        public string ProgramCode { get; set; } = string.Empty;
-
-        public string LessonCode { get; private set; } = string.Empty;
     }
 
     private LessonDisplayModel _pom = new();
@@ -62,7 +43,7 @@ public partial class frmLessonManagementEdit : Form
         };
     }
 
-    public Course Course { get; set; } = new();
+    public CourseModel Course { get; init; } = new();
 
     private readonly BindingSource bindingSource = new();
 
@@ -74,6 +55,8 @@ public partial class frmLessonManagementEdit : Form
         init => _update = value;
     }
 
+    private byte oldLessonNumber;
+
     public frmLessonManagementEdit()
     {
         InitializeComponent();
@@ -83,23 +66,45 @@ public partial class frmLessonManagementEdit : Form
 
     private void frmLessonManagementEdit_Load(object sender, EventArgs e)
     {
-        // 1. Change dialog title according to UpdateMode
+        // 1. If updating, store original lesson number
+        oldLessonNumber = _pom.LessonNumber;
+
+        // 2. Change dialog title according to UpdateMode
         Text = _update ? "Lesson Details" : "New Lesson";
 
-        // 2. Init combo boxes and bind input controls
+        // 3. Init combo boxes and bind input controls
         InitComboBoxes();
         BindPrimaryModel();
+
+        // 4. If adding, init DateTimePickers
+        if (!_update)
+        {
+            dtpDate.Value = DateTime.Now.Date;
+        }
     }
 
     private void InitComboBoxes()
     {
         cboTimeslot.Items.Clear();
         var timeslots = LessonRepository.GetTimeslots().ToList();
-        cboTimeslot.DataSource = timeslots;
         cboTimeslot.ValueMember = nameof(Timeslot.Id);
         cboTimeslot.DisplayMember = nameof(Timeslot.Name);
+        cboTimeslot.DataSource = timeslots;
     }
 
+    private void cboTimeslot_SelectedValueChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            ComboBox cbo = (ComboBox)sender;
+            var timeslot = _lessonRepository.GetTimeslots().FirstOrDefault(slot => slot.Id == Convert.ToInt16(cbo.SelectedValue));
+            _pom.TimeslotNavigation = timeslot!;
+        }
+        catch (InvalidCastException ex)
+        {
+            MessageBox.Show($"{ex.Message} /n*** It would seem a Programmer had set up the UI incorrectly. ***");
+        }
+    }
 
     private void BindPrimaryModel()
     {
@@ -110,27 +115,33 @@ public partial class frmLessonManagementEdit : Form
 
         // 2. Bind properties to input boxes
         bindingSource.DataSource = _pom;
-        txtId.DataBindings.Add(nameof(TextBox.Text), bindingSource, nameof(LessonDisplayModel.Id),
-            true, DataSourceUpdateMode.OnValidation)
-            .Format += DefaultIdToDefaultString;
+
+        var idBinding = new Binding(nameof(TextBox.Text), bindingSource, nameof(LessonDisplayModel.Id),
+            true, DataSourceUpdateMode.Never);
+        idBinding.Format += DefaultIdToDefaultString;
+        txtId.DataBindings.Add(idBinding);
+
         txtProgramCode.DataBindings.Add(nameof(TextBox.Text), bindingSource, nameof(LessonDisplayModel.ProgramCode),
-            true, DataSourceUpdateMode.OnValidation);
-        txtCourseNumber.DataBindings.Add(nameof(TextBox.Text), bindingSource, nameof(LessonDisplayModel.CourseNumber),
-            true, DataSourceUpdateMode.OnValidation)
-            .Format += DefaultIdToEmptyString;
-        txtLessonNumber.DataBindings.Add(nameof(TextBox.Text), bindingSource, nameof(LessonDisplayModel.LessonNumber),
-            true, DataSourceUpdateMode.OnValidation)
-            .Format += DefaultIdToEmptyString;
+            true, DataSourceUpdateMode.Never);
+
+        var courseNumberBinding = new Binding(nameof(TextBox.Text), bindingSource, nameof(LessonDisplayModel.CourseNumber),
+            true, DataSourceUpdateMode.Never);
+        courseNumberBinding.Format += DefaultIdToEmptyString;
+        txtCourseNumber.DataBindings.Add(courseNumberBinding);
+
+        var lessonNumberBinding = new Binding(nameof(TextBox.Text), bindingSource, nameof(LessonDisplayModel.LessonNumber),
+            true, DataSourceUpdateMode.OnPropertyChanged);
+        lessonNumberBinding.Format += DefaultIdToEmptyString;
+        txtLessonNumber.DataBindings.Add(lessonNumberBinding);
+
         txtLessonCode.DataBindings.Add(nameof(TextBox.Text), bindingSource, nameof(LessonDisplayModel.LessonCode),
-            true, DataSourceUpdateMode.OnValidation);
+            true, DataSourceUpdateMode.Never);
         txtLocation.DataBindings.Add(nameof(TextBox.Text), bindingSource, nameof(LessonDisplayModel.Location),
             true, DataSourceUpdateMode.OnValidation)
             .Parse += StringToTrimmedString;
-        // Date
         dtpDate.DataBindings.Add(nameof(DateTimePicker.Value), bindingSource, nameof(LessonDisplayModel.Date),
             true, DataSourceUpdateMode.OnValidation)
             .Parse += DateTimeToSqlDateTimeLegalValue;
-        // ***
         cboTimeslot.DataBindings.Add(nameof(ComboBox.SelectedValue), bindingSource, nameof(LessonDisplayModel.Timeslot),
             true, DataSourceUpdateMode.OnValidation);
         rtbDescription.DataBindings.Add(nameof(RichTextBox.Text), bindingSource, nameof(LessonDisplayModel.Description),
@@ -216,12 +227,12 @@ public partial class frmLessonManagementEdit : Form
         if (dtp?.Value == null) { return; }
 
         var date = dtp.Value.Date;
-        var courseStartDate = _pom.Course.StartDate?.Date;
-        var courseEndDate = _pom.Course.EndDate?.Date;
+        var courseStartDate = Course.StartDate?.Date;
+        var courseEndDate = Course.EndDate?.Date;
         if (date < courseStartDate || date > courseEndDate)
         {
             string errorMsg = $"Invalid Date. Lesson Date must be within its Course's date range" +
-                $" -- [{(courseStartDate == null ? "<UNSET>" : courseStartDate.Value.ToString("dd/MM/yyyy"))}]" +
+                $" : [{(courseStartDate == null ? "<UNSET>" : courseStartDate.Value.ToString("dd/MM/yyyy"))}]" +
                 $" to [{(courseEndDate == null ? "<UNSET>" : courseEndDate.Value.ToString("dd/MM/yyyy"))}].";
             string errorCaption = "Invalid Value";
             MessageBox.Show(errorMsg, errorCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -229,52 +240,25 @@ public partial class frmLessonManagementEdit : Form
         }
     }
 
-    #endregion
-
-    #region CRUD
-
-    private void DataField_KeyDown(object sender, KeyEventArgs e)
-    {
-        if (e.KeyCode == Keys.Enter && Validate())
-            PerformSave();
-    }
-
-    private void btnSave_Click(object sender, EventArgs e) => PerformSave();
-
-    private void PerformSave()
-    {
-        if (!ValidateData()) return;
-
-        try
-        {
-            if (_update)
-            {
-                var lessonToUpdate = Course.Lessons.FirstOrDefault(l => l.Id == _pom.Id)
-                    ?? throw new Exception("Could not find Lesson-to-update in the in-memory Course.");
-                if (Course.Lessons.Remove(lessonToUpdate))
-                {
-                    Course.Lessons.Add(_pom);
-                }
-                else throw new Exception("Failed to update Lesson in the in-memory Course.");
-            }
-            else
-            {
-                Course.Lessons.Add(_pom);
-            }
-
-            Close();
-            DialogResult = DialogResult.OK;
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.InnerException is null ? ex.Message : ex.InnerException.Message,
-                _update ? "ERROR -- Commit Update Lesson" : "ERROR -- Commit Add Lesson");
-        }
-    }
-
     private bool ValidateData()
     {
         if (!ValidateChildren()) { return false; }
+
+        var siblingLessons = Course.Lessons.ToHashSet();
+        var lessonComparer = new LambdaComparer<LessonModel>((l1, l2) =>
+            l1.ProgramId == l2.ProgramId
+            && l1.CourseNumber == l2.CourseNumber
+            && l1.LessonNumber == l2.LessonNumber
+        );
+        if (siblingLessons.Contains(_pom, lessonComparer))
+        {
+            if (!_update || _pom.LessonNumber != oldLessonNumber)
+            {
+                MessageBox.Show("Course already contains a Lesson with the same Lesson Number.", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtLessonNumber.Focus();
+                return false;
+            }
+        }
 
         if (string.IsNullOrWhiteSpace(_pom.Location))
         {
@@ -289,6 +273,12 @@ public partial class frmLessonManagementEdit : Form
             MessageBox.Show($"Location must have at most {locationMaxLength} characters.",
                 "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
             txtLocation.Focus();
+            return false;
+        }
+        if (_pom.Date == null)
+        {
+            MessageBox.Show("Date is required.", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            dtpDate.Focus();
             return false;
         }
         if (_pom.Timeslot == null)
@@ -314,6 +304,62 @@ public partial class frmLessonManagementEdit : Form
             return false;
         }
         return true;
+    }
+
+    #endregion
+
+    #region CRUD
+
+    private void DataField_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.KeyCode == Keys.Enter && Validate())
+            PerformSave();
+    }
+
+    private void btnSave_Click(object sender, EventArgs e) => PerformSave();
+
+    private void PerformSave()
+    {
+        if (!ValidateData()) return;
+
+        try
+        {
+            if (_update)
+            {
+                var lessonToUpdate = Course.Lessons.FirstOrDefault(l =>
+                    l.ProgramId == _pom.ProgramId
+                    && l.CourseNumber == _pom.CourseNumber
+                    && l.LessonNumber == _pom.LessonNumber
+                )
+                    ?? throw new Exception("Could not find Lesson-to-update in the in-memory Course.");
+                if (Course.Lessons.Remove(lessonToUpdate))
+                {
+                    AddLessonToCourse();
+                }
+                else throw new Exception("Failed to update Lesson in the in-memory Course.");
+            }
+            else
+            {
+                AddLessonToCourse();
+            }
+
+            Close();
+            DialogResult = DialogResult.OK;
+
+            void AddLessonToCourse()
+            {
+                Course.Lessons.Add(_pom);
+                var sortedLessons = Course.Lessons.ToList();
+                sortedLessons.Sort((l1, l2) => l1.LessonNumber.CompareTo(l2.LessonNumber));
+                Course.Lessons.Clear();
+                Course.Lessons.AddRange(sortedLessons);
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.InnerException is null ? ex.Message : ex.InnerException.Message,
+                _update ? "ERROR -- Commit Update Lesson" : "ERROR -- Commit Add Lesson");
+        }
     }
 
     #endregion

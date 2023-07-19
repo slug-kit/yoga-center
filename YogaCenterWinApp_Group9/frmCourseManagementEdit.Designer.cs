@@ -41,17 +41,21 @@
             dtpStartDate = new DateTimePicker();
             btnSave = new Button();
             btnCancel = new Button();
-            lbCourseId = new Label();
+            lbCourseCode = new Label();
             lbProgramCode = new Label();
-            txtCourseId = new TextBox();
+            txtCourseCode = new TextBox();
             txtProgramName = new TextBox();
             txtProgramCode = new TextBox();
             rtbSchedule = new RichTextBox();
             grbDetails = new GroupBox();
+            txtStatus = new TextBox();
+            lbStatus = new Label();
             picbInstructorImg = new PictureBox();
             dtpRegistrationCloseDate = new DateTimePicker();
             dtpRegistrationOpenDate = new DateTimePicker();
             dtpEndDate = new DateTimePicker();
+            cboProgramName = new ComboBox();
+            cboProgramCode = new ComboBox();
             splitContainer = new SplitContainer();
             grbFormActions = new GroupBox();
             grbLessonDetails = new GroupBox();
@@ -64,11 +68,11 @@
             lbLessonNumber = new Label();
             txtLessonId = new TextBox();
             lbLessonId = new Label();
+            txtLessonTimeslot = new TextBox();
             grbLessonListActions = new GroupBox();
             btnDeleteLesson = new Button();
             btnAddLesson = new Button();
             dgvLessons = new DataGridView();
-            txtLessonTimeslot = new TextBox();
             grbDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picbInstructorImg).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainer).BeginInit();
@@ -129,7 +133,7 @@
             // 
             lbEndDate.AutoSize = true;
             lbEndDate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbEndDate.Location = new Point(380, 290);
+            lbEndDate.Location = new Point(365, 290);
             lbEndDate.Margin = new Padding(4, 0, 4, 0);
             lbEndDate.Name = "lbEndDate";
             lbEndDate.Size = new Size(36, 21);
@@ -151,7 +155,7 @@
             // 
             lbRegistrationCloseDate.AutoSize = true;
             lbRegistrationCloseDate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbRegistrationCloseDate.Location = new Point(380, 445);
+            lbRegistrationCloseDate.Location = new Point(365, 445);
             lbRegistrationCloseDate.Margin = new Padding(4, 0, 4, 0);
             lbRegistrationCloseDate.Name = "lbRegistrationCloseDate";
             lbRegistrationCloseDate.Size = new Size(55, 21);
@@ -177,6 +181,8 @@
             txtCourseNumber.Name = "txtCourseNumber";
             txtCourseNumber.Size = new Size(100, 29);
             txtCourseNumber.TabIndex = 11;
+            txtCourseNumber.KeyPress += txtCourseNumber_KeyPress;
+            txtCourseNumber.Validating += txtCourseNumber_Validating;
             // 
             // cboInstructor
             // 
@@ -185,7 +191,7 @@
             cboInstructor.Location = new Point(182, 222);
             cboInstructor.Margin = new Padding(4);
             cboInstructor.Name = "cboInstructor";
-            cboInstructor.Size = new Size(200, 29);
+            cboInstructor.Size = new Size(170, 29);
             cboInstructor.TabIndex = 13;
             // 
             // dtpStartDate
@@ -195,7 +201,7 @@
             dtpStartDate.Location = new Point(182, 287);
             dtpStartDate.Margin = new Padding(4);
             dtpStartDate.Name = "dtpStartDate";
-            dtpStartDate.Size = new Size(150, 29);
+            dtpStartDate.Size = new Size(170, 29);
             dtpStartDate.TabIndex = 14;
             // 
             // btnSave
@@ -207,7 +213,7 @@
             btnSave.TabIndex = 18;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += btnsave_Click;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
@@ -218,38 +224,39 @@
             btnCancel.TabIndex = 19;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnexit_Click;
+            btnCancel.Click += btnExit_Click;
             // 
-            // lbCourseId
+            // lbCourseCode
             // 
-            lbCourseId.AutoSize = true;
-            lbCourseId.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbCourseId.Location = new Point(25, 45);
-            lbCourseId.Margin = new Padding(4, 0, 4, 0);
-            lbCourseId.Name = "lbCourseId";
-            lbCourseId.Size = new Size(78, 21);
-            lbCourseId.TabIndex = 20;
-            lbCourseId.Text = "Course ID";
+            lbCourseCode.AutoSize = true;
+            lbCourseCode.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbCourseCode.Location = new Point(25, 45);
+            lbCourseCode.Margin = new Padding(4, 0, 4, 0);
+            lbCourseCode.Name = "lbCourseCode";
+            lbCourseCode.Size = new Size(99, 21);
+            lbCourseCode.TabIndex = 20;
+            lbCourseCode.Text = "Course Code";
             // 
             // lbProgramCode
             // 
             lbProgramCode.AutoSize = true;
             lbProgramCode.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbProgramCode.Location = new Point(400, 105);
+            lbProgramCode.Location = new Point(365, 105);
             lbProgramCode.Margin = new Padding(4, 0, 4, 0);
             lbProgramCode.Name = "lbProgramCode";
             lbProgramCode.Size = new Size(46, 21);
             lbProgramCode.TabIndex = 21;
             lbProgramCode.Text = "Code";
             // 
-            // txtCourseId
+            // txtCourseCode
             // 
-            txtCourseId.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCourseId.Location = new Point(182, 42);
-            txtCourseId.Margin = new Padding(4);
-            txtCourseId.Name = "txtCourseId";
-            txtCourseId.Size = new Size(100, 29);
-            txtCourseId.TabIndex = 22;
+            txtCourseCode.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCourseCode.Location = new Point(182, 42);
+            txtCourseCode.Margin = new Padding(4);
+            txtCourseCode.Name = "txtCourseCode";
+            txtCourseCode.ReadOnly = true;
+            txtCourseCode.Size = new Size(100, 29);
+            txtCourseCode.TabIndex = 22;
             // 
             // txtProgramName
             // 
@@ -257,7 +264,8 @@
             txtProgramName.Location = new Point(182, 102);
             txtProgramName.Margin = new Padding(4);
             txtProgramName.Name = "txtProgramName";
-            txtProgramName.Size = new Size(200, 29);
+            txtProgramName.ReadOnly = true;
+            txtProgramName.Size = new Size(170, 29);
             txtProgramName.TabIndex = 23;
             // 
             // txtProgramCode
@@ -266,6 +274,7 @@
             txtProgramCode.Location = new Point(475, 102);
             txtProgramCode.Margin = new Padding(4);
             txtProgramCode.Name = "txtProgramCode";
+            txtProgramCode.ReadOnly = true;
             txtProgramCode.Size = new Size(127, 29);
             txtProgramCode.TabIndex = 24;
             // 
@@ -280,16 +289,16 @@
             // 
             // grbDetails
             // 
+            grbDetails.Controls.Add(txtStatus);
+            grbDetails.Controls.Add(lbStatus);
             grbDetails.Controls.Add(picbInstructorImg);
             grbDetails.Controls.Add(dtpRegistrationCloseDate);
             grbDetails.Controls.Add(dtpRegistrationOpenDate);
             grbDetails.Controls.Add(dtpEndDate);
             grbDetails.Controls.Add(lbProgramCode);
-            grbDetails.Controls.Add(txtProgramCode);
             grbDetails.Controls.Add(rtbSchedule);
-            grbDetails.Controls.Add(txtCourseId);
-            grbDetails.Controls.Add(txtProgramName);
-            grbDetails.Controls.Add(lbCourseId);
+            grbDetails.Controls.Add(txtCourseCode);
+            grbDetails.Controls.Add(lbCourseCode);
             grbDetails.Controls.Add(lbProgramName);
             grbDetails.Controls.Add(lbCourseNumber);
             grbDetails.Controls.Add(lbInstructor);
@@ -301,6 +310,10 @@
             grbDetails.Controls.Add(lbSchedule);
             grbDetails.Controls.Add(lbRegistrationOpenDate);
             grbDetails.Controls.Add(lbRegistrationCloseDate);
+            grbDetails.Controls.Add(cboProgramName);
+            grbDetails.Controls.Add(cboProgramCode);
+            grbDetails.Controls.Add(txtProgramName);
+            grbDetails.Controls.Add(txtProgramCode);
             grbDetails.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             grbDetails.Location = new Point(15, 3);
             grbDetails.Name = "grbDetails";
@@ -308,6 +321,27 @@
             grbDetails.TabIndex = 26;
             grbDetails.TabStop = false;
             grbDetails.Text = "Course Info";
+            // 
+            // txtStatus
+            // 
+            txtStatus.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStatus.Location = new Point(365, 42);
+            txtStatus.Margin = new Padding(4);
+            txtStatus.Name = "txtStatus";
+            txtStatus.ReadOnly = true;
+            txtStatus.Size = new Size(237, 29);
+            txtStatus.TabIndex = 33;
+            // 
+            // lbStatus
+            // 
+            lbStatus.AutoSize = true;
+            lbStatus.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbStatus.Location = new Point(300, 45);
+            lbStatus.Margin = new Padding(4, 0, 4, 0);
+            lbStatus.Name = "lbStatus";
+            lbStatus.Size = new Size(52, 21);
+            lbStatus.TabIndex = 32;
+            lbStatus.Text = "Status";
             // 
             // picbInstructorImg
             // 
@@ -321,10 +355,10 @@
             // 
             dtpRegistrationCloseDate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dtpRegistrationCloseDate.Format = DateTimePickerFormat.Short;
-            dtpRegistrationCloseDate.Location = new Point(452, 442);
+            dtpRegistrationCloseDate.Location = new Point(432, 442);
             dtpRegistrationCloseDate.Margin = new Padding(4);
             dtpRegistrationCloseDate.Name = "dtpRegistrationCloseDate";
-            dtpRegistrationCloseDate.Size = new Size(150, 29);
+            dtpRegistrationCloseDate.Size = new Size(170, 29);
             dtpRegistrationCloseDate.TabIndex = 28;
             // 
             // dtpRegistrationOpenDate
@@ -334,18 +368,37 @@
             dtpRegistrationOpenDate.Location = new Point(182, 442);
             dtpRegistrationOpenDate.Margin = new Padding(4);
             dtpRegistrationOpenDate.Name = "dtpRegistrationOpenDate";
-            dtpRegistrationOpenDate.Size = new Size(150, 29);
+            dtpRegistrationOpenDate.Size = new Size(170, 29);
             dtpRegistrationOpenDate.TabIndex = 27;
             // 
             // dtpEndDate
             // 
             dtpEndDate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dtpEndDate.Format = DateTimePickerFormat.Short;
-            dtpEndDate.Location = new Point(452, 287);
+            dtpEndDate.Location = new Point(432, 287);
             dtpEndDate.Margin = new Padding(4);
             dtpEndDate.Name = "dtpEndDate";
-            dtpEndDate.Size = new Size(150, 29);
+            dtpEndDate.Size = new Size(170, 29);
             dtpEndDate.TabIndex = 26;
+            // 
+            // cboProgramName
+            // 
+            cboProgramName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cboProgramName.FormattingEnabled = true;
+            cboProgramName.Location = new Point(182, 102);
+            cboProgramName.Name = "cboProgramName";
+            cboProgramName.Size = new Size(170, 29);
+            cboProgramName.TabIndex = 30;
+            cboProgramName.SelectedValueChanged += cboProgramName_SelectedValueChanged;
+            // 
+            // cboProgramCode
+            // 
+            cboProgramCode.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cboProgramCode.FormattingEnabled = true;
+            cboProgramCode.Location = new Point(432, 102);
+            cboProgramCode.Name = "cboProgramCode";
+            cboProgramCode.Size = new Size(170, 29);
+            cboProgramCode.TabIndex = 31;
             // 
             // splitContainer
             // 
@@ -491,6 +544,16 @@
             lbLessonId.TabIndex = 21;
             lbLessonId.Text = "Lesson ID";
             // 
+            // txtLessonTimeslot
+            // 
+            txtLessonTimeslot.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtLessonTimeslot.Location = new Point(355, 162);
+            txtLessonTimeslot.Margin = new Padding(4);
+            txtLessonTimeslot.Name = "txtLessonTimeslot";
+            txtLessonTimeslot.ReadOnly = true;
+            txtLessonTimeslot.Size = new Size(160, 29);
+            txtLessonTimeslot.TabIndex = 32;
+            // 
             // grbLessonListActions
             // 
             grbLessonListActions.Controls.Add(btnDeleteLesson);
@@ -539,16 +602,6 @@
             dgvLessons.CellDoubleClick += dgvLessons_CellDoubleClick;
             dgvLessons.CellFormatting += dgvLessons_CellFormatting;
             // 
-            // txtLessonTimeslot
-            // 
-            txtLessonTimeslot.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtLessonTimeslot.Location = new Point(355, 162);
-            txtLessonTimeslot.Margin = new Padding(4);
-            txtLessonTimeslot.Name = "txtLessonTimeslot";
-            txtLessonTimeslot.ReadOnly = true;
-            txtLessonTimeslot.Size = new Size(160, 29);
-            txtLessonTimeslot.TabIndex = 32;
-            // 
             // frmCourseManagementEdit
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
@@ -593,9 +646,9 @@
         private DateTimePicker dtpStartDate;
         private Button btnSave;
         private Button btnCancel;
-        private Label lbCourseId;
+        private Label lbCourseCode;
         private Label lbProgramCode;
-        private TextBox txtCourseId;
+        private TextBox txtCourseCode;
         private TextBox txtProgramName;
         private TextBox txtProgramCode;
         private RichTextBox rtbSchedule;
@@ -621,5 +674,9 @@
         private Button btnAddLesson;
         private Button btnDeleteLesson;
         private TextBox txtLessonTimeslot;
+        private ComboBox cboProgramCode;
+        private ComboBox cboProgramName;
+        private Label lbStatus;
+        private TextBox txtStatus;
     }
 }

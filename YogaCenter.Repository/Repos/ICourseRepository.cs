@@ -13,5 +13,6 @@ public interface ICourseRepository
     public void Restore(int programId, int courseNumber);
     IEnumerable<Course> SearchCourses(string courseCode, string schedule, string instructorName, DateTime? startDate, DateTime? endDate, DateTime? registrationOpenDate, DateTime? registrationCloseDate);
 
+    IEnumerable<Program> GetPrograms();
     IEnumerable<User> GetInstructors();
 }

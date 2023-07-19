@@ -17,6 +17,7 @@ public class CourseRepository : ICourseRepository
         return CourseDAO.Instance.Search(courseCode, schedule, instructorName, startDate, endDate, registrationOpenDate, registrationCloseDate);
     }
 
+    public IEnumerable<Program> GetPrograms() => ProgramDAO.Instance.GetAll();
     // The role ID ought to be injected or read from some shared resource
     public IEnumerable<User> GetInstructors() => UserDAO.Instance.GetAll(u => u.RoleId == 3);
 }

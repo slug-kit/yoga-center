@@ -41,7 +41,7 @@
             dateTimePickerAvailableTo = new DateTimePicker();
             dateTimePickerCourseEnd = new DateTimePicker();
             dateTimePickerCourseStart = new DateTimePicker();
-            btEnroll = new Button();
+            btnEnrol = new Button();
             pictureBox1 = new PictureBox();
             rtbschedule = new RichTextBox();
             lbSchedule = new Label();
@@ -53,6 +53,9 @@
             dateTimePickerStartDate = new DateTimePicker();
             dateTimePickerEndDate = new DateTimePicker();
             btnSearch = new Button();
+            txtStatusfilter = new TextBox();
+            label2 = new Label();
+            btnRequestAssignment = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -191,15 +194,16 @@
             dateTimePickerCourseStart.Size = new Size(251, 29);
             dateTimePickerCourseStart.TabIndex = 22;
             // 
-            // btEnroll
+            // btnEnrol
             // 
-            btEnroll.Location = new Point(677, 332);
-            btEnroll.Margin = new Padding(4);
-            btEnroll.Name = "btEnroll";
-            btEnroll.Size = new Size(278, 70);
-            btEnroll.TabIndex = 23;
-            btEnroll.Text = "Enroll This Course";
-            btEnroll.UseVisualStyleBackColor = true;
+            btnEnrol.Location = new Point(677, 332);
+            btnEnrol.Margin = new Padding(4);
+            btnEnrol.Name = "btnEnrol";
+            btnEnrol.Size = new Size(278, 70);
+            btnEnrol.TabIndex = 23;
+            btnEnrol.Text = "Enrol in this Course";
+            btnEnrol.UseVisualStyleBackColor = true;
+            btnEnrol.Click += btnEnrol_Click;
             // 
             // pictureBox1
             // 
@@ -303,6 +307,34 @@
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
             // 
+            // txtStatusfilter
+            // 
+            txtStatusfilter.Location = new Point(908, 53);
+            txtStatusfilter.Name = "txtStatusfilter";
+            txtStatusfilter.ReadOnly = true;
+            txtStatusfilter.Size = new Size(100, 29);
+            txtStatusfilter.TabIndex = 34;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(931, 25);
+            label2.Name = "label2";
+            label2.Size = new Size(52, 21);
+            label2.TabIndex = 35;
+            label2.Text = "Status";
+            // 
+            // btnRequestAssignment
+            // 
+            btnRequestAssignment.Location = new Point(677, 332);
+            btnRequestAssignment.Margin = new Padding(4);
+            btnRequestAssignment.Name = "btnRequestAssignment";
+            btnRequestAssignment.Size = new Size(278, 70);
+            btnRequestAssignment.TabIndex = 36;
+            btnRequestAssignment.Text = "Request to be assigned to this Course";
+            btnRequestAssignment.UseVisualStyleBackColor = true;
+            btnRequestAssignment.Click += btnRequestAssignment_Click;
+            // 
             // frmCourseList
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
@@ -319,7 +351,6 @@
             Controls.Add(lbSchedule);
             Controls.Add(rtbschedule);
             Controls.Add(pictureBox1);
-            Controls.Add(btEnroll);
             Controls.Add(dateTimePickerCourseStart);
             Controls.Add(dateTimePickerCourseEnd);
             Controls.Add(dateTimePickerAvailableTo);
@@ -333,6 +364,8 @@
             Controls.Add(lbProgram);
             Controls.Add(lbInstructor);
             Controls.Add(lbCourseNum);
+            Controls.Add(btnEnrol);
+            Controls.Add(btnRequestAssignment);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
             Name = "frmCourseList";
@@ -360,7 +393,7 @@
         private DateTimePicker dateTimePickerAvailableTo;
         private DateTimePicker dateTimePickerCourseEnd;
         private DateTimePicker dateTimePickerCourseStart;
-        private Button btEnroll;
+        private Button btnEnrol;
         private PictureBox pictureBox1;
         private RichTextBox rtbschedule;
         private Label lbSchedule;
@@ -372,5 +405,8 @@
         private DateTimePicker dateTimePickerStartDate;
         private DateTimePicker dateTimePickerEndDate;
         private Button btnSearch;
+        private TextBox txtStatusfilter;
+        private Label label2;
+        private Button btnRequestAssignment;
     }
 }
