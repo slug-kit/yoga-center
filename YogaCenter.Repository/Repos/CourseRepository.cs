@@ -12,7 +12,10 @@ public class CourseRepository : ICourseRepository
     public void Update(Course course) => CourseDAO.Instance.Update(course);
     public void Delete(Course course) => CourseDAO.Instance.Remove(course);
     public void Restore(int programId, int courseNumber) => CourseDAO.Instance.Restore(programId, courseNumber);
-    public IEnumerable<Course> SearchCourses(string courseCode, string schedule) => CourseDAO.Instance.SearchCourses(courseCode, schedule);
+    public IEnumerable<Course> SearchCourses(string courseCode, string schedule, string instructorName, DateTime? startDate, DateTime? endDate, DateTime? registrationOpenDate, DateTime? registrationCloseDate)
+    {
+        return CourseDAO.Instance.Search(courseCode, schedule, instructorName, startDate, endDate, registrationOpenDate, registrationCloseDate);
+    }
 
     // The role ID ought to be injected or read from some shared resource
     public IEnumerable<User> GetInstructors() => UserDAO.Instance.GetAll(u => u.RoleId == 3);

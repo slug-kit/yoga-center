@@ -8,6 +8,5 @@ public interface IUserRepository
     void AddUser(User user);
     void UpdateUser(User user);
     void DeleteUser(User user);
-    IEnumerable<User> SearchUsers(string keyword);
     IEnumerable<Course> GetEnrolledCourses(long userId);
 }

@@ -18,13 +18,29 @@ public partial class frmProfile : Form
 
     private readonly User _pom = new()
     {
-        Id = Program.CurrentUser!.Id,
+        Password = Program.CurrentUser.Password,
         Username = Program.CurrentUser.Username,
         Fullname = Program.CurrentUser.Fullname,
         Dob = Program.CurrentUser.Dob,
         Gender = Program.CurrentUser.Gender,
         Email = Program.CurrentUser.Email,
         Phone = Program.CurrentUser.Phone,
+        Role = Program.CurrentUser.Role,
+        RoleId = Program.CurrentUser.RoleId,
+        JoinDate = Program.CurrentUser.JoinDate,
+        Experience = Program.CurrentUser.Experience,
+        Specializations = Program.CurrentUser.Specializations,
+        Attendances = Program.CurrentUser.Attendances,
+        Code = Program.CurrentUser.Code,
+        LastLogin = Program.CurrentUser.LastLogin,
+        CourseAssignmentRequests = Program.CurrentUser.CourseAssignmentRequests,
+        CourseRegisters = Program.CurrentUser.CourseRegisters,
+        Img = Program.CurrentUser.Img,
+        Inactive = Program.CurrentUser.Inactive,
+        Programs = Program.CurrentUser.Programs,
+        Reviews = Program.CurrentUser.Reviews,
+        CoursesAssigned = Program.CurrentUser.CoursesAssigned,
+        StudyGoals = Program.CurrentUser.StudyGoals,
     };
 
     public User User => _pom;
@@ -37,6 +53,7 @@ public partial class frmProfile : Form
             txtEmail,
             txtFullname,
             txtUsername,
+            txtpassword,
             dob,
             mtbphonenumber,
             txtgender
@@ -49,7 +66,36 @@ public partial class frmProfile : Form
     {
         LoadUserprofile();
         LoadCourseOfUser();
+
+        // Kiểm tra giá trị của Role và ẩn/hiện label và textbox tương ứng
+        if (Program.CurrentUser.RoleId == 2)
+        {
+            lbStudyGoal.Visible = true;
+            lbExperience.Visible = false;
+            lbSpecialization.Visible = false;
+            txtSpecialization.Visible = false;
+            txtGoalOrExper.Text = Program.CurrentUser.StudyGoals;
+        }
+        else if (Program.CurrentUser.RoleId == 3)
+        {
+            lbStudyGoal.Visible = false;
+            lbExperience.Visible = true;
+            lbSpecialization.Visible = true;
+            txtSpecialization.Visible = true;
+            txtGoalOrExper.Text = Program.CurrentUser.Experience;
+            txtSpecialization.Text = Program.CurrentUser.Specializations;
+        }
+        else
+        {
+            // Nếu Role không phải 2 hoặc 3, ẩn cả hai label
+            lbStudyGoal.Visible = false;
+            lbExperience.Visible = false;
+            lbSpecialization.Visible = false;
+            txtSpecialization.Visible = false;
+            txtGoalOrExper.Text = "";
+        }
     }
+
 
     private void LoadCourseOfUser()
     {
@@ -75,6 +121,8 @@ public partial class frmProfile : Form
         bindingSource.DataSource = _pom;
 
         txtEmail.DataBindings.Add("Text", bindingSource, "Email", true)
+            .Parse += DataField_DetectChange!;
+        txtpassword.DataBindings.Add("Text", bindingSource, "Password", true)
             .Parse += DataField_DetectChange!;
         txtFullname.DataBindings.Add("Text", bindingSource, "Fullname", true)
             .Parse += DataField_DetectChange!;

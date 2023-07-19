@@ -48,13 +48,11 @@
             dataGridView1 = new DataGridView();
             txtCoursenumber = new TextBox();
             txtInstructor = new TextBox();
-            txtTimeslot = new TextBox();
+            txtCourseStatus = new TextBox();
             label1 = new Label();
             dateTimePickerStartDate = new DateTimePicker();
             dateTimePickerEndDate = new DateTimePicker();
             btnSearch = new Button();
-            txtStatusfilter = new TextBox();
-            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -88,9 +86,9 @@
             lbProgram.Location = new Point(201, 32);
             lbProgram.Margin = new Padding(4, 0, 4, 0);
             lbProgram.Name = "lbProgram";
-            lbProgram.Size = new Size(147, 32);
+            lbProgram.Size = new Size(139, 32);
             lbProgram.TabIndex = 5;
-            lbProgram.Text = "Program ID";
+            lbProgram.Text = "Course List";
             // 
             // txtProgramId
             // 
@@ -109,9 +107,9 @@
             lbTimeSlot.Location = new Point(20, 430);
             lbTimeSlot.Margin = new Padding(4, 0, 4, 0);
             lbTimeSlot.Name = "lbTimeSlot";
-            lbTimeSlot.Size = new Size(75, 21);
+            lbTimeSlot.Size = new Size(105, 21);
             lbTimeSlot.TabIndex = 9;
-            lbTimeSlot.Text = "Time Slot";
+            lbTimeSlot.Text = "Course Status";
             // 
             // lbCourseStart
             // 
@@ -245,6 +243,7 @@
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(835, 181);
             dataGridView1.TabIndex = 28;
+            dataGridView1.CellFormatting += dataGridView1_CellFormatting;
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
             // txtCoursenumber
@@ -263,13 +262,13 @@
             txtInstructor.Size = new Size(187, 29);
             txtInstructor.TabIndex = 30;
             // 
-            // txtTimeslot
+            // txtCourseStatus
             // 
-            txtTimeslot.Location = new Point(148, 427);
-            txtTimeslot.Name = "txtTimeslot";
-            txtTimeslot.ReadOnly = true;
-            txtTimeslot.Size = new Size(187, 29);
-            txtTimeslot.TabIndex = 31;
+            txtCourseStatus.Location = new Point(148, 427);
+            txtCourseStatus.Name = "txtCourseStatus";
+            txtCourseStatus.ReadOnly = true;
+            txtCourseStatus.Size = new Size(187, 29);
+            txtCourseStatus.TabIndex = 31;
             // 
             // label1
             // 
@@ -304,34 +303,15 @@
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
             // 
-            // txtStatusfilter
-            // 
-            txtStatusfilter.Location = new Point(908, 53);
-            txtStatusfilter.Name = "txtStatusfilter";
-            txtStatusfilter.ReadOnly = true;
-            txtStatusfilter.Size = new Size(100, 29);
-            txtStatusfilter.TabIndex = 34;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(931, 25);
-            label2.Name = "label2";
-            label2.Size = new Size(52, 21);
-            label2.TabIndex = 35;
-            label2.Text = "Status";
-            // 
             // frmCourseList
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1077, 630);
-            Controls.Add(label2);
-            Controls.Add(txtStatusfilter);
             Controls.Add(btnSearch);
             Controls.Add(label1);
             Controls.Add(dateTimePickerEndDate);
-            Controls.Add(txtTimeslot);
+            Controls.Add(txtCourseStatus);
             Controls.Add(dateTimePickerStartDate);
             Controls.Add(txtInstructor);
             Controls.Add(txtCoursenumber);
@@ -387,12 +367,10 @@
         private DataGridView dataGridView1;
         private TextBox txtCoursenumber;
         private TextBox txtInstructor;
-        private TextBox txtTimeslot;
+        private TextBox txtCourseStatus;
         private Label label1;
         private DateTimePicker dateTimePickerStartDate;
         private DateTimePicker dateTimePickerEndDate;
         private Button btnSearch;
-        private TextBox txtStatusfilter;
-        private Label label2;
     }
 }

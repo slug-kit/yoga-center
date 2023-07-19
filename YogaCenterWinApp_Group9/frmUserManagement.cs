@@ -21,6 +21,7 @@ public partial class frmUserManagement : Form
     public frmUserManagement()
     {
         InitializeComponent();
+        source.CurrentChanged += source_CurrentChanged;
     }
 
     //LOAD--------------------------------------------------------------------
@@ -41,6 +42,7 @@ public partial class frmUserManagement : Form
             datejoin.DataBindings.Clear();
             lastlogin.DataBindings.Clear();
             dob.DataBindings.Clear();
+            rtbSpecialization.DataBindings.Clear();
 
             txtusername.DataBindings.Add("Text", source, "Username");
             txtemail.DataBindings.Add("Text", source, "Email");
@@ -52,6 +54,7 @@ public partial class frmUserManagement : Form
             datejoin.DataBindings.Add("Text", source, "JoinDate");
             lastlogin.DataBindings.Add("Text", source, "LastLogin");
             dob.DataBindings.Add("Text", source, "Dob");
+            rtbSpecialization.DataBindings.Add("Text", source, "Specializations");
 
             dgvuser.DataSource = null;
             dgvuser.DataSource = source;
@@ -63,11 +66,49 @@ public partial class frmUserManagement : Form
             throw;
         }
     }
+    private void source_CurrentChanged(object sender, EventArgs e)
+    {
+        // Update the visibility of the labels whenever the selected user changes
+        User? selectedUser = source.Current as User;
+        if (selectedUser != null)
+        {
+            // Assuming Role "2" corresponds to "role 2" and Role "3" corresponds to "role 3"
+            if (selectedUser.RoleId == 2)
+            {
+                lbgoal.Visible = true;
+                lbexperience.Visible = false;
+                ShowGoalOrExperience(selectedUser.StudyGoals);
+            }
+            else if (selectedUser.RoleId == 3)
+            {
+                lbgoal.Visible = false;
+                lbexperience.Visible = true;
+                ShowGoalOrExperience(selectedUser.Specializations);
+            }
+            else
+            {
+                lbgoal.Visible = false;
+                lbexperience.Visible = false;
+                rtbGoalOrExperience.Text = ""; // If neither role 2 nor role 3, clear the text box
+            }
+        }
+        else
+        {
+            lbgoal.Visible = false;
+            lbexperience.Visible = false;
+            rtbGoalOrExperience.Text = ""; // If no user selected, clear the text box
+        }
+    }
+    private void ShowGoalOrExperience(string textToShow)
+    {
+        rtbGoalOrExperience.Text = textToShow ?? ""; // Show the provided text or an empty string if null
+    }
 
     private void frmUserManagement_Load(object sender, EventArgs e)
     {
         LoadUserList();
     }
+
 
     //GET ROLE VALUE ----------------------------------------------------------------------
     private void dgvuser_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -77,7 +118,7 @@ public partial class frmUserManagement : Form
             var user = dgvuser.Rows[e.RowIndex].DataBoundItem as User;
             if (user?.Role != null)
             {
-                if (user.Role.Id != null)
+                if (user?.Role.Id != null)
                 {
                     e.Value = user.Role.Id.ToString(); // Chuyển đổi Id thành chuỗi
                 }
@@ -89,6 +130,15 @@ public partial class frmUserManagement : Form
             else
             {
                 e.Value = string.Empty; // Gán giá trị rỗng nếu không có giá trị Role
+            }
+        }
+        if (e.ColumnIndex == dgvuser.Columns["JoinDate"].Index || e.ColumnIndex == dgvuser.Columns["LastLogin"].Index || e.ColumnIndex == dgvuser.Columns["Dob"].Index)
+        {
+            if (e.Value is DateTime)
+            {
+                DateTime dateValue = (DateTime)e.Value;
+                e.Value = dateValue.ToString("dd/MM/yyyy");
+                e.FormattingApplied = true;
             }
         }
     }
@@ -168,27 +218,51 @@ public partial class frmUserManagement : Form
     //SEARCH -----------------------------------------------------------------------------------------------------------------------------
     private void btnsearch_Click(object sender, EventArgs e)
     {
-        string username = txtusernameSearch.Text;
-        string phone = txtphonenumberSearch.Text;
-        string code = txtmembercodeSearch.Text;
-        string email = txtemailSearch.Text;
-        string fullName = txtfullnameSearch.Text;
+        string usernameSearch = txtusernameSearch.Text.Trim();
+        string phoneNumberSearch = txtphonenumberSearch.Text.Trim();
+        string memberCodeSearch = txtmembercodeSearch.Text.Trim();
+        string emailSearch = txtemailSearch.Text.Trim();
+        string fullnameSearch = txtfullnameSearch.Text.Trim();
+        string roleIdSearch = txtRoleSearch.Text.Trim();
+        string genderSearch = txtGenderSearch.Text.Trim();
+        DateTime joinDateFrom = dtpJoinDateFrom.Value;
+        DateTime joinDateTo = dtpJoinDateTo.Value;
 
-        // Gọi phương thức tìm kiếm từ UserRepository với từng giá trị tương ứng
-        IEnumerable<User> searchResults = userRepository.GetUsersByCriteria(user =>
-            (string.IsNullOrEmpty(username) || user.Username.Contains(username)) &&
-            (string.IsNullOrEmpty(phone) || user.Phone.Contains(phone)) &&
-            (string.IsNullOrEmpty(code) || user.Code.Contains(code)) &&
-            (string.IsNullOrEmpty(email) || user.Email.Contains(email)) &&
-            (string.IsNullOrEmpty(fullName) || user.Fullname.Contains(fullName))
-        );
-        source.DataSource = searchResults;
+        // Kiểm tra xem người dùng đã nhập thông tin tìm kiếm hay chưa
+        bool isSearchEmpty = string.IsNullOrEmpty(usernameSearch) &&
+                             string.IsNullOrEmpty(phoneNumberSearch) &&
+                             string.IsNullOrEmpty(memberCodeSearch) &&
+                             string.IsNullOrEmpty(emailSearch) &&
+                             string.IsNullOrEmpty(fullnameSearch) &&
+                             string.IsNullOrEmpty(roleIdSearch) &&
+                             string.IsNullOrEmpty(genderSearch) &&
+                             joinDateFrom == dtpJoinDateFrom.MinDate &&
+                             joinDateTo == dtpJoinDateTo.MinDate;
+
+        if (isSearchEmpty)
+        {
+            MessageBox.Show("Vui lòng nhập thông tin tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
+        }
+
+        var userList = userRepository.GetAllUsers();
+        var filteredUsers = userList
+            .Where(user =>
+                (string.IsNullOrEmpty(usernameSearch) || user.Username.Contains(usernameSearch)) &&
+                (string.IsNullOrEmpty(phoneNumberSearch) || user.Phone.Contains(phoneNumberSearch)) &&
+                (string.IsNullOrEmpty(memberCodeSearch) || user.Code.Contains(memberCodeSearch)) &&
+                (string.IsNullOrEmpty(emailSearch) || user.Email.Contains(emailSearch)) &&
+                (string.IsNullOrEmpty(fullnameSearch) || user.Fullname.Contains(fullnameSearch)) &&
+                (string.IsNullOrEmpty(roleIdSearch) || (user.RoleId == byte.Parse(roleIdSearch))) && // Tìm kiếm theo RoleId
+                (string.IsNullOrEmpty(genderSearch) || (user.Gender == byte.Parse(genderSearch))) &&
+                (user.JoinDate >= joinDateFrom && user.JoinDate <= joinDateTo) // Tìm kiếm theo Gender
+            )
+            .ToList();
+
+        source.DataSource = filteredUsers;
         dgvuser.DataSource = null;
         dgvuser.DataSource = source;
-        if (!searchResults.Any())
-        {
-            MessageBox.Show("No matching users found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LoadUserList();
-        }
     }
+
+
 }

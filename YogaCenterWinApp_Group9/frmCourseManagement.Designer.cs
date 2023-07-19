@@ -30,21 +30,19 @@
         {
             splitContainer1 = new SplitContainer();
             groupBox2 = new GroupBox();
-            comboBox4 = new ComboBox();
+            txtInstructorSearch = new TextBox();
             label12 = new Label();
-            comboBox3 = new ComboBox();
-            dateTimePicker5 = new DateTimePicker();
+            dateTimePickerEndDate = new DateTimePicker();
             label18 = new Label();
-            dateTimePicker6 = new DateTimePicker();
-            dateTimePicker7 = new DateTimePicker();
+            dateTimePickerStartDate = new DateTimePicker();
+            dateTimePickerRegistrationCloseDate = new DateTimePicker();
             label10 = new Label();
-            dateTimePicker8 = new DateTimePicker();
+            dateTimePickerRegistrationOpenDate = new DateTimePicker();
             label17 = new Label();
             txtcoursecodesearch = new TextBox();
             label16 = new Label();
             button5 = new Button();
             label11 = new Label();
-            label13 = new Label();
             label14 = new Label();
             btnsearch = new Button();
             txtschedulesearch = new TextBox();
@@ -136,21 +134,19 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(comboBox4);
+            groupBox2.Controls.Add(txtInstructorSearch);
             groupBox2.Controls.Add(label12);
-            groupBox2.Controls.Add(comboBox3);
-            groupBox2.Controls.Add(dateTimePicker5);
+            groupBox2.Controls.Add(dateTimePickerEndDate);
             groupBox2.Controls.Add(label18);
-            groupBox2.Controls.Add(dateTimePicker6);
-            groupBox2.Controls.Add(dateTimePicker7);
+            groupBox2.Controls.Add(dateTimePickerStartDate);
+            groupBox2.Controls.Add(dateTimePickerRegistrationCloseDate);
             groupBox2.Controls.Add(label10);
-            groupBox2.Controls.Add(dateTimePicker8);
+            groupBox2.Controls.Add(dateTimePickerRegistrationOpenDate);
             groupBox2.Controls.Add(label17);
             groupBox2.Controls.Add(txtcoursecodesearch);
             groupBox2.Controls.Add(label16);
             groupBox2.Controls.Add(button5);
             groupBox2.Controls.Add(label11);
-            groupBox2.Controls.Add(label13);
             groupBox2.Controls.Add(label14);
             groupBox2.Controls.Add(btnsearch);
             groupBox2.Controls.Add(txtschedulesearch);
@@ -161,37 +157,28 @@
             groupBox2.TabIndex = 5;
             groupBox2.TabStop = false;
             // 
-            // comboBox4
+            // txtInstructorSearch
             // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(427, 122);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(189, 29);
-            comboBox4.TabIndex = 43;
+            txtInstructorSearch.Location = new Point(211, 128);
+            txtInstructorSearch.Name = "txtInstructorSearch";
+            txtInstructorSearch.Size = new Size(121, 29);
+            txtInstructorSearch.TabIndex = 43;
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(341, 125);
+            label12.Location = new Point(119, 131);
             label12.Name = "label12";
             label12.Size = new Size(80, 21);
             label12.TabIndex = 42;
             label12.Text = "Instructor:";
             // 
-            // comboBox3
+            // dateTimePickerEndDate
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(203, 122);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(132, 29);
-            comboBox3.TabIndex = 41;
-            // 
-            // dateTimePicker5
-            // 
-            dateTimePicker5.Location = new Point(451, 162);
-            dateTimePicker5.Name = "dateTimePicker5";
-            dateTimePicker5.Size = new Size(165, 29);
-            dateTimePicker5.TabIndex = 40;
+            dateTimePickerEndDate.Location = new Point(451, 162);
+            dateTimePickerEndDate.Name = "dateTimePickerEndDate";
+            dateTimePickerEndDate.Size = new Size(165, 29);
+            dateTimePickerEndDate.TabIndex = 40;
             // 
             // label18
             // 
@@ -202,19 +189,19 @@
             label18.TabIndex = 38;
             label18.Text = "to";
             // 
-            // dateTimePicker6
+            // dateTimePickerStartDate
             // 
-            dateTimePicker6.Location = new Point(203, 163);
-            dateTimePicker6.Name = "dateTimePicker6";
-            dateTimePicker6.Size = new Size(165, 29);
-            dateTimePicker6.TabIndex = 39;
+            dateTimePickerStartDate.Location = new Point(203, 163);
+            dateTimePickerStartDate.Name = "dateTimePickerStartDate";
+            dateTimePickerStartDate.Size = new Size(165, 29);
+            dateTimePickerStartDate.TabIndex = 39;
             // 
-            // dateTimePicker7
+            // dateTimePickerRegistrationCloseDate
             // 
-            dateTimePicker7.Location = new Point(451, 209);
-            dateTimePicker7.Name = "dateTimePicker7";
-            dateTimePicker7.Size = new Size(165, 29);
-            dateTimePicker7.TabIndex = 37;
+            dateTimePickerRegistrationCloseDate.Location = new Point(451, 209);
+            dateTimePickerRegistrationCloseDate.Name = "dateTimePickerRegistrationCloseDate";
+            dateTimePickerRegistrationCloseDate.Size = new Size(165, 29);
+            dateTimePickerRegistrationCloseDate.TabIndex = 37;
             // 
             // label10
             // 
@@ -225,12 +212,12 @@
             label10.TabIndex = 35;
             label10.Text = "to";
             // 
-            // dateTimePicker8
+            // dateTimePickerRegistrationOpenDate
             // 
-            dateTimePicker8.Location = new Point(203, 210);
-            dateTimePicker8.Name = "dateTimePicker8";
-            dateTimePicker8.Size = new Size(165, 29);
-            dateTimePicker8.TabIndex = 36;
+            dateTimePickerRegistrationOpenDate.Location = new Point(203, 210);
+            dateTimePickerRegistrationOpenDate.Name = "dateTimePickerRegistrationOpenDate";
+            dateTimePickerRegistrationOpenDate.Size = new Size(165, 29);
+            dateTimePickerRegistrationOpenDate.TabIndex = 36;
             // 
             // label17
             // 
@@ -274,15 +261,6 @@
             label11.Size = new Size(55, 21);
             label11.TabIndex = 9;
             label11.Text = "Active:";
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Location = new Point(100, 125);
-            label13.Name = "label13";
-            label13.Size = new Size(74, 21);
-            label13.TabIndex = 5;
-            label13.Text = "Program:";
             // 
             // label14
             // 
@@ -619,7 +597,6 @@
         private GroupBox groupBox2;
         private Button button5;
         private Label label11;
-        private Label label13;
         private Label label14;
         private Button btnsearch;
         private TextBox txtschedulesearch;
@@ -632,15 +609,13 @@
         private Label label16;
         private ComboBox cboprogram;
         private Label label17;
-        private DateTimePicker dateTimePicker5;
+        private DateTimePicker dateTimePickerEndDate;
         private Label label18;
-        private DateTimePicker dateTimePicker6;
-        private DateTimePicker dateTimePicker7;
+        private DateTimePicker dateTimePickerStartDate;
+        private DateTimePicker dateTimePickerRegistrationCloseDate;
         private Label label10;
-        private DateTimePicker dateTimePicker8;
-        private ComboBox comboBox4;
+        private DateTimePicker dateTimePickerRegistrationOpenDate;
         private Label label12;
-        private ComboBox comboBox3;
         private Label label20;
         private Label label21;
         private Label label19;
@@ -649,5 +624,6 @@
         private RichTextBox rtbspecialization;
         private NumericUpDown numericUpDown1;
         private TextBox txtstatus;
+        private TextBox txtInstructorSearch;
     }
 }

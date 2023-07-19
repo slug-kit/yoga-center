@@ -30,8 +30,7 @@
         {
             splitContainer = new SplitContainer();
             groupBox2 = new GroupBox();
-            dateTimePicker5 = new DateTimePicker();
-            comboBox2 = new ComboBox();
+            dtpJoinDateTo = new DateTimePicker();
             label23 = new Label();
             txtmembercodeSearch = new TextBox();
             label16 = new Label();
@@ -49,16 +48,15 @@
             btnsearch = new Button();
             txtusernameSearch = new TextBox();
             label19 = new Label();
-            comboBox4 = new ComboBox();
-            dateTimePicker4 = new DateTimePicker();
+            dtpJoinDateFrom = new DateTimePicker();
             groupBox1 = new GroupBox();
             btnsuspend = new Button();
             btnadd = new Button();
             dgvuser = new DataGridView();
             cborole = new ComboBox();
-            richTextBox3 = new RichTextBox();
+            rtbSpecialization = new RichTextBox();
             label13 = new Label();
-            richTextBox2 = new RichTextBox();
+            rtbGoalOrExperience = new RichTextBox();
             lbexperience = new Label();
             label10 = new Label();
             txtemail = new TextBox();
@@ -81,7 +79,8 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             lbgoal = new Label();
-            richTextBox1 = new RichTextBox();
+            txtRoleSearch = new TextBox();
+            txtGenderSearch = new TextBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer).BeginInit();
             splitContainer.Panel1.SuspendLayout();
             splitContainer.Panel2.SuspendLayout();
@@ -109,9 +108,9 @@
             // splitContainer.Panel2
             // 
             splitContainer.Panel2.Controls.Add(cborole);
-            splitContainer.Panel2.Controls.Add(richTextBox3);
+            splitContainer.Panel2.Controls.Add(rtbSpecialization);
             splitContainer.Panel2.Controls.Add(label13);
-            splitContainer.Panel2.Controls.Add(richTextBox2);
+            splitContainer.Panel2.Controls.Add(rtbGoalOrExperience);
             splitContainer.Panel2.Controls.Add(lbexperience);
             splitContainer.Panel2.Controls.Add(label10);
             splitContainer.Panel2.Controls.Add(txtemail);
@@ -134,7 +133,6 @@
             splitContainer.Panel2.Controls.Add(label1);
             splitContainer.Panel2.Controls.Add(pictureBox1);
             splitContainer.Panel2.Controls.Add(lbgoal);
-            splitContainer.Panel2.Controls.Add(richTextBox1);
             splitContainer.Size = new Size(1029, 630);
             splitContainer.SplitterDistance = 584;
             splitContainer.SplitterWidth = 5;
@@ -142,8 +140,9 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(dateTimePicker5);
-            groupBox2.Controls.Add(comboBox2);
+            groupBox2.Controls.Add(txtGenderSearch);
+            groupBox2.Controls.Add(txtRoleSearch);
+            groupBox2.Controls.Add(dtpJoinDateTo);
             groupBox2.Controls.Add(label23);
             groupBox2.Controls.Add(txtmembercodeSearch);
             groupBox2.Controls.Add(label16);
@@ -161,28 +160,19 @@
             groupBox2.Controls.Add(btnsearch);
             groupBox2.Controls.Add(txtusernameSearch);
             groupBox2.Controls.Add(label19);
-            groupBox2.Controls.Add(comboBox4);
-            groupBox2.Controls.Add(dateTimePicker4);
+            groupBox2.Controls.Add(dtpJoinDateFrom);
             groupBox2.Location = new Point(11, 6);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(563, 265);
             groupBox2.TabIndex = 5;
             groupBox2.TabStop = false;
             // 
-            // dateTimePicker5
+            // dtpJoinDateTo
             // 
-            dateTimePicker5.Location = new Point(393, 217);
-            dateTimePicker5.Name = "dateTimePicker5";
-            dateTimePicker5.Size = new Size(164, 29);
-            dateTimePicker5.TabIndex = 31;
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(425, 182);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(81, 29);
-            comboBox2.TabIndex = 29;
+            dtpJoinDateTo.Location = new Point(393, 217);
+            dtpJoinDateTo.Name = "dtpJoinDateTo";
+            dtpJoinDateTo.Size = new Size(164, 29);
+            dtpJoinDateTo.TabIndex = 31;
             // 
             // label23
             // 
@@ -280,9 +270,9 @@
             label15.AutoSize = true;
             label15.Location = new Point(100, 220);
             label15.Name = "label15";
-            label15.Size = new Size(37, 21);
+            label15.Size = new Size(70, 21);
             label15.TabIndex = 9;
-            label15.Text = "Fee:";
+            label15.Text = "JoinDate";
             // 
             // label17
             // 
@@ -329,20 +319,12 @@
             label19.TabIndex = 0;
             label19.Text = "Username";
             // 
-            // comboBox4
+            // dtpJoinDateFrom
             // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(180, 182);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(100, 29);
-            comboBox4.TabIndex = 28;
-            // 
-            // dateTimePicker4
-            // 
-            dateTimePicker4.Location = new Point(180, 217);
-            dateTimePicker4.Name = "dateTimePicker4";
-            dateTimePicker4.Size = new Size(164, 29);
-            dateTimePicker4.TabIndex = 30;
+            dtpJoinDateFrom.Location = new Point(180, 217);
+            dtpJoinDateFrom.Name = "dtpJoinDateFrom";
+            dtpJoinDateFrom.Size = new Size(164, 29);
+            dtpJoinDateFrom.TabIndex = 30;
             // 
             // groupBox1
             // 
@@ -395,13 +377,13 @@
             cborole.Size = new Size(100, 29);
             cborole.TabIndex = 27;
             // 
-            // richTextBox3
+            // rtbSpecialization
             // 
-            richTextBox3.Location = new Point(27, 496);
-            richTextBox3.Name = "richTextBox3";
-            richTextBox3.Size = new Size(401, 40);
-            richTextBox3.TabIndex = 26;
-            richTextBox3.Text = "";
+            rtbSpecialization.Location = new Point(27, 496);
+            rtbSpecialization.Name = "rtbSpecialization";
+            rtbSpecialization.Size = new Size(401, 40);
+            rtbSpecialization.TabIndex = 26;
+            rtbSpecialization.Text = "";
             // 
             // label13
             // 
@@ -412,13 +394,13 @@
             label13.TabIndex = 26;
             label13.Text = "Specializations";
             // 
-            // richTextBox2
+            // rtbGoalOrExperience
             // 
-            richTextBox2.Location = new Point(27, 409);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(401, 47);
-            richTextBox2.TabIndex = 25;
-            richTextBox2.Text = "";
+            rtbGoalOrExperience.Location = new Point(27, 409);
+            rtbGoalOrExperience.Name = "rtbGoalOrExperience";
+            rtbGoalOrExperience.Size = new Size(401, 47);
+            rtbGoalOrExperience.TabIndex = 25;
+            rtbGoalOrExperience.Text = "";
             // 
             // lbexperience
             // 
@@ -594,19 +576,25 @@
             // lbgoal
             // 
             lbgoal.AutoSize = true;
-            lbgoal.Location = new Point(70, 385);
+            lbgoal.Location = new Point(27, 385);
             lbgoal.Name = "lbgoal";
             lbgoal.Size = new Size(169, 21);
             lbgoal.TabIndex = 23;
             lbgoal.Text = "Goals in Learning Yoga";
             // 
-            // richTextBox1
+            // txtRoleSearch
             // 
-            richTextBox1.Location = new Point(27, 409);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(401, 127);
-            richTextBox1.TabIndex = 22;
-            richTextBox1.Text = "";
+            txtRoleSearch.Location = new Point(180, 177);
+            txtRoleSearch.Name = "txtRoleSearch";
+            txtRoleSearch.Size = new Size(100, 29);
+            txtRoleSearch.TabIndex = 32;
+            // 
+            // txtGenderSearch
+            // 
+            txtGenderSearch.Location = new Point(396, 182);
+            txtGenderSearch.Name = "txtGenderSearch";
+            txtGenderSearch.Size = new Size(100, 29);
+            txtGenderSearch.TabIndex = 33;
             // 
             // frmUserManagement
             // 
@@ -656,11 +644,10 @@
         private Label label9;
         private ComboBox cbogender;
         private Label lbgoal;
-        private RichTextBox richTextBox3;
+        private RichTextBox rtbSpecialization;
         private Label label13;
-        private RichTextBox richTextBox2;
+        private RichTextBox rtbGoalOrExperience;
         private Label lbexperience;
-        private RichTextBox richTextBox1;
         private GroupBox groupBox2;
         private TextBox txtfullnameSearch;
         private Label label20;
@@ -684,9 +671,9 @@
         private TextBox txtmembercodeSearch;
         private Label label16;
         private ComboBox cborole;
-        private ComboBox comboBox4;
-        private ComboBox comboBox2;
-        private DateTimePicker dateTimePicker4;
-        private DateTimePicker dateTimePicker5;
+        private DateTimePicker dtpJoinDateFrom;
+        private DateTimePicker dtpJoinDateTo;
+        private TextBox txtGenderSearch;
+        private TextBox txtRoleSearch;
     }
 }

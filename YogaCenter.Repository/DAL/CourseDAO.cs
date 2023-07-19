@@ -96,25 +96,49 @@ public class CourseDAO
         }
     }
 
-    public IEnumerable<Course> SearchCourses(string courseCode, string schedule)
+    public IEnumerable<Course> Search(string courseCode, string schedule, string instructorName, DateTime? startDate, DateTime? endDate, DateTime? registrationOpenDate, DateTime? registrationCloseDate)
     {
         using var db = new YogaCenterContext();
-        var courses = db.Courses
+        var query = db.Courses
             .Include(c => c.Program)
             .Include(c => c.Instructor)
             .Where(c => !c.Inactive);
 
         if (!string.IsNullOrEmpty(courseCode))
         {
-            short courseCodeValue = Convert.ToInt16(courseCode);
-            courses = courses.Where(c => c.CourseNumber == courseCodeValue);
+            query = query.Where(c => c.CourseNumber.ToString().Contains(courseCode));
         }
 
         if (!string.IsNullOrEmpty(schedule))
         {
-            courses = courses.Where(c => c.Schedule.Contains(schedule));
+            query = query.Where(c => c.Schedule.Contains(schedule));
         }
 
-        return courses.ToList();
+        if (!string.IsNullOrEmpty(instructorName))
+        {
+            query = query.Where(c => c.Instructor.Fullname.Contains(instructorName));
+        }
+
+        if (startDate.HasValue)
+        {
+            query = query.Where(c => c.StartDate >= startDate.Value);
+        }
+
+        if (endDate.HasValue)
+        {
+            query = query.Where(c => c.EndDate <= endDate.Value);
+        }
+
+        if (registrationOpenDate.HasValue)
+        {
+            query = query.Where(c => c.RegistrationOpenDate >= registrationOpenDate.Value);
+        }
+
+        if (registrationCloseDate.HasValue)
+        {
+            query = query.Where(c => c.RegistrationCloseDate <= registrationCloseDate.Value);
+        }
+
+        return query.ToList();
     }
 }

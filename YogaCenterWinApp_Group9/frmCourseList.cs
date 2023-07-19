@@ -36,17 +36,11 @@ namespace YogaCenterWinApp_Group9
             dataGridView1.Columns.Remove("Instructor");
             dataGridView1.Columns.Remove("InstructorId");
 
+
             dataGridView1.Columns.Add(new DataGridViewColumn()
             {
-                Name = "Lessons",
-                HeaderText = "Lessons",
-                DataPropertyName = "Lesson.LessonNumber",
-                CellTemplate = new DataGridViewTextBoxCell()
-            });
-            dataGridView1.Columns.Add(new DataGridViewColumn()
-            {
-                Name = "Instructor",
-                HeaderText = "Instructor",
+                Name = "InstructorName",
+                HeaderText = "InstructorName",
                 DataPropertyName = "Instructor.Fullname",
                 CellTemplate = new DataGridViewTextBoxCell()
             });
@@ -54,20 +48,29 @@ namespace YogaCenterWinApp_Group9
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            try
             {
-                var selectedRow = dataGridView1.SelectedRows[0];
-                var course = (Course)selectedRow.DataBoundItem;
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    var selectedRow = dataGridView1.SelectedRows[0];
+                    var course = (Course)selectedRow.DataBoundItem;
 
-                // Hiển thị dữ liệu lên các ô textbox
-                txtProgramId.Text = course.Id.ToString();
-                txtCoursenumber.Text = course.CourseNumber.ToString();
-                txtInstructor.Text = course.InstructorId.ToString();
-                rtbschedule.Text = course.Schedule;
-                dateTimePickerCourseStart.Text = course.StartDate.ToString();
-                dateTimePickerCourseEnd.Text = course.EndDate.ToString();
-                dateTimePickerAvailableTo.Text = course.RegistrationCloseDate.ToString();
-                dateTimePickerAvailableFrom.Text = course.RegistrationOpenDate.ToString();
+                    // Hiển thị dữ liệu lên các ô textbox
+                    txtProgramId.Text = course.GetCourseCode();
+                    txtCoursenumber.Text = course.CourseNumber.ToString();
+                    txtInstructor.Text = course.Instructor?.Fullname;
+                    rtbschedule.Text = course.Schedule;
+                    dateTimePickerCourseStart.Text = course.StartDate.ToString();
+                    dateTimePickerCourseEnd.Text = course.EndDate.ToString();
+                    dateTimePickerAvailableTo.Text = course.RegistrationCloseDate.ToString();
+                    dateTimePickerAvailableFrom.Text = course.RegistrationOpenDate.ToString();
+                    txtCourseStatus.Text = course.GetStatusName();
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show(Text, "Error");
             }
         }
         private void btnSearch_Click(object sender, EventArgs e)
@@ -91,7 +94,29 @@ namespace YogaCenterWinApp_Group9
             dateTimePickerAvailableTo.Text = string.Empty;
             dateTimePickerAvailableFrom.Text = string.Empty;
 
-            txtStatusfilter.Text = courses.Any() ? "1" : "0";
         }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "StartDate" || dataGridView1.Columns[e.ColumnIndex].Name == "EndDate" || dataGridView1.Columns[e.ColumnIndex].Name == "RegistrationOpenDate" || dataGridView1.Columns[e.ColumnIndex].Name == "RegistrationCloseDate")
+            {
+                if (e.Value != null && e.Value is DateTime)
+                {
+                    DateTime dateValue = (DateTime)e.Value;
+                    e.Value = dateValue.ToString("dd/MM/yyyy");
+                    e.FormattingApplied = true;
+                }
+            }
+            DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
+            if (column.DataPropertyName.Contains('.'))
+            {
+                object data = dataGridView1.Rows[e.RowIndex].DataBoundItem;
+                string[] properties = column.DataPropertyName.Split('.');
+                for (int i = 0; i < properties.Length && data != null; i++)
+                    data = data.GetType().GetProperty(properties[i])?.GetValue(data)!;
+                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = data;
+            }
+        }
+
     }
 }
