@@ -12,16 +12,13 @@ public class AttendanceRepository : IAttendanceRepository
 
     public void AddLessonAttendances(int lessonId, IEnumerable<User> learners)
     {
-        var lesson = LessonDAO.Instance.Get(lessonId)
-            ?? throw new ArgumentException("Lesson does not exist.");
-
         var learnerRole = RoleDAO.Instance.Get("learner")
             ?? throw new InvalidOperationException("The 'Learner' role was not found.");
 
         var users = UserDAO.Instance.GetAll(u => true);
         var userIdComparer = new LambdaComparer<User>((u1, u2) => u1.Id == u2.Id);
         var except = learners.Except(users, userIdComparer);
-        if (except.Any()) { throw new ArgumentException("Learner list contains a User that doesn't exist."); }
+        if (except.Any()) { throw new ArgumentException("Learner list contains a non-existent User."); }
         foreach (var learner in learners)
         {
             if (learner.Role?.Id != learnerRole.Id)
@@ -30,16 +27,16 @@ public class AttendanceRepository : IAttendanceRepository
             }
         }
 
+        var lesson = LessonDAO.Instance.Get(lessonId)
+            ?? throw new ArgumentException("Lesson does not exist.");
+
         var course = lesson.Course;
         foreach (var learner in learners)
         {
             var u = users.FirstOrDefault(u => u.Id == learner.Id)!;
-            var courseIdComparer = new LambdaComparer<Course>((c1, c2) => c1.Id == c2.Id);
-            if (!u.CoursesEnrolled.Contains(course, courseIdComparer))
-            {
-                throw new ArgumentException($"Learner [{u.Id}:{u.Username}] is not enrolled" +
-                    $" in target Course #{course.Program.Code}_{course.CourseNumber}.");
-            }
+            _ = CourseRegisterDAO.Instance.Get(course.Id, u.Id)
+                ?? throw new ArgumentException($"Learner [{u.Id}:{u.Username}] is not enrolled" +
+                $" in target Course #{course.Program.Code}_{course.CourseNumber}.");
         }
 
         foreach (var learner in learners)

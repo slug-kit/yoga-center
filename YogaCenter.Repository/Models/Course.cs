@@ -8,8 +8,8 @@ namespace YogaCenter.Repository.Models
         public Course()
         {
             CourseAssignmentRequests = new HashSet<CourseAssignmentRequest>();
+            CourseRegisters = new HashSet<CourseRegister>();
             Lessons = new HashSet<Lesson>();
-            Learners = new HashSet<User>();
         }
 
         public int Id { get; set; }
@@ -27,8 +27,7 @@ namespace YogaCenter.Repository.Models
         public virtual User? Instructor { get; set; }
         public virtual Program Program { get; set; } = null!;
         public virtual ICollection<CourseAssignmentRequest> CourseAssignmentRequests { get; set; }
+        public virtual ICollection<CourseRegister> CourseRegisters { get; set; }
         public virtual ICollection<Lesson> Lessons { get; set; }
-
-        public virtual ICollection<User> Learners { get; set; }
     }
 }

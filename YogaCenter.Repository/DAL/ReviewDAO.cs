@@ -27,7 +27,7 @@ public class ReviewDAO
         return db.Reviews.ToList();
     }
 
-    public IEnumerable<Review> GetByProgramId(int programId)
+    public IEnumerable<Review> GetByProgram(int programId)
     {
         using var db = new YogaCenterContext();
         return db.Reviews

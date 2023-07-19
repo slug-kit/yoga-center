@@ -57,7 +57,7 @@
             lbUsername.Location = new Point(37, 94);
             lbUsername.Name = "lbUsername";
             lbUsername.Size = new Size(81, 21);
-            lbUsername.TabIndex = 0;
+            lbUsername.TabIndex = 1;
             lbUsername.Text = "Username";
             // 
             // lbPassword
@@ -66,7 +66,7 @@
             lbPassword.Location = new Point(37, 130);
             lbPassword.Name = "lbPassword";
             lbPassword.Size = new Size(76, 21);
-            lbPassword.TabIndex = 1;
+            lbPassword.TabIndex = 3;
             lbPassword.Text = "Password";
             // 
             // lbRegister
@@ -76,7 +76,7 @@
             lbRegister.Location = new Point(260, 22);
             lbRegister.Name = "lbRegister";
             lbRegister.Size = new Size(113, 40);
-            lbRegister.TabIndex = 2;
+            lbRegister.TabIndex = 0;
             lbRegister.Text = "Signup";
             // 
             // lbConfirm
@@ -85,7 +85,7 @@
             lbConfirm.Location = new Point(37, 169);
             lbConfirm.Name = "lbConfirm";
             lbConfirm.Size = new Size(137, 21);
-            lbConfirm.TabIndex = 3;
+            lbConfirm.TabIndex = 5;
             lbConfirm.Text = "Confirm Password";
             // 
             // lbFullname
@@ -94,16 +94,16 @@
             lbFullname.Location = new Point(37, 207);
             lbFullname.Name = "lbFullname";
             lbFullname.Size = new Size(81, 21);
-            lbFullname.TabIndex = 4;
+            lbFullname.TabIndex = 7;
             lbFullname.Text = "Full Name";
             // 
             // lbGender
             // 
             lbGender.AutoSize = true;
-            lbGender.Location = new Point(37, 283);
+            lbGender.Location = new Point(37, 278);
             lbGender.Name = "lbGender";
             lbGender.Size = new Size(61, 21);
-            lbGender.TabIndex = 5;
+            lbGender.TabIndex = 11;
             lbGender.Text = "Gender";
             // 
             // lbDateBirth
@@ -112,7 +112,7 @@
             lbDateBirth.Location = new Point(37, 245);
             lbDateBirth.Name = "lbDateBirth";
             lbDateBirth.Size = new Size(97, 21);
-            lbDateBirth.TabIndex = 6;
+            lbDateBirth.TabIndex = 9;
             lbDateBirth.Text = "Date of Birth";
             // 
             // lbMail
@@ -121,7 +121,7 @@
             lbMail.Location = new Point(37, 312);
             lbMail.Name = "lbMail";
             lbMail.Size = new Size(48, 21);
-            lbMail.TabIndex = 7;
+            lbMail.TabIndex = 14;
             lbMail.Text = "Email";
             // 
             // lbPhone
@@ -130,7 +130,7 @@
             lbPhone.Location = new Point(37, 349);
             lbPhone.Name = "lbPhone";
             lbPhone.Size = new Size(116, 21);
-            lbPhone.TabIndex = 8;
+            lbPhone.TabIndex = 16;
             lbPhone.Text = "Phone Number";
             // 
             // txtUsername
@@ -138,37 +138,38 @@
             txtUsername.Location = new Point(184, 91);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(264, 29);
-            txtUsername.TabIndex = 9;
+            txtUsername.TabIndex = 2;
             // 
             // txtFullname
             // 
             txtFullname.Location = new Point(184, 204);
             txtFullname.Name = "txtFullname";
             txtFullname.Size = new Size(264, 29);
-            txtFullname.TabIndex = 10;
+            txtFullname.TabIndex = 8;
             // 
             // txtConfirm
             // 
             txtConfirm.Location = new Point(184, 167);
             txtConfirm.Name = "txtConfirm";
             txtConfirm.Size = new Size(264, 29);
-            txtConfirm.TabIndex = 11;
+            txtConfirm.TabIndex = 6;
+            txtConfirm.UseSystemPasswordChar = true;
             // 
             // txtPassword
             // 
             txtPassword.Location = new Point(184, 129);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(264, 29);
-            txtPassword.TabIndex = 12;
+            txtPassword.TabIndex = 4;
             txtPassword.UseSystemPasswordChar = true;
             // 
             // lbMale
             // 
             lbMale.AutoSize = true;
-            lbMale.Location = new Point(228, 280);
+            lbMale.Location = new Point(228, 278);
             lbMale.Name = "lbMale";
             lbMale.Size = new Size(62, 25);
-            lbMale.TabIndex = 14;
+            lbMale.TabIndex = 12;
             lbMale.TabStop = true;
             lbMale.Text = "Male";
             lbMale.UseVisualStyleBackColor = true;
@@ -176,10 +177,10 @@
             // lbFemale
             // 
             lbFemale.AutoSize = true;
-            lbFemale.Location = new Point(319, 280);
+            lbFemale.Location = new Point(319, 278);
             lbFemale.Name = "lbFemale";
             lbFemale.Size = new Size(78, 25);
-            lbFemale.TabIndex = 15;
+            lbFemale.TabIndex = 13;
             lbFemale.TabStop = true;
             lbFemale.Text = "Female";
             lbFemale.UseVisualStyleBackColor = true;
@@ -221,7 +222,7 @@
             txtEmail.Location = new Point(184, 309);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(264, 29);
-            txtEmail.TabIndex = 21;
+            txtEmail.TabIndex = 15;
             txtEmail.Enter += txtEmail_Enter;
             txtEmail.Leave += txtEmail_Leave;
             // 
@@ -230,7 +231,7 @@
             dtpDob.Location = new Point(184, 241);
             dtpDob.Name = "dtpDob";
             dtpDob.Size = new Size(264, 29);
-            dtpDob.TabIndex = 22;
+            dtpDob.TabIndex = 10;
             // 
             // txtPhone
             // 
@@ -238,7 +239,7 @@
             txtPhone.Location = new Point(184, 346);
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(264, 29);
-            txtPhone.TabIndex = 23;
+            txtPhone.TabIndex = 17;
             // 
             // frmRegister
             // 

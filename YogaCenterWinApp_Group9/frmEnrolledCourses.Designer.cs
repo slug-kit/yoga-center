@@ -73,6 +73,7 @@
             // mainSplitContainer
             // 
             mainSplitContainer.Dock = DockStyle.Fill;
+            mainSplitContainer.IsSplitterFixed = true;
             mainSplitContainer.Location = new Point(0, 0);
             mainSplitContainer.Margin = new Padding(4);
             mainSplitContainer.Name = "mainSplitContainer";
@@ -182,7 +183,7 @@
             label19.AutoSize = true;
             label19.Location = new Point(25, 502);
             label19.Name = "label19";
-            label19.Size = new Size(105, 28);
+            label19.Size = new Size(84, 21);
             label19.TabIndex = 49;
             label19.Text = "Experience";
             // 
@@ -199,7 +200,7 @@
             label6.AutoSize = true;
             label6.Location = new Point(24, 433);
             label6.Name = "label6";
-            label6.Size = new Size(141, 28);
+            label6.Size = new Size(112, 21);
             label6.TabIndex = 47;
             label6.Text = "Specializations";
             // 
@@ -216,7 +217,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(24, 365);
             label5.Name = "label5";
-            label5.Size = new Size(96, 28);
+            label5.Size = new Size(77, 21);
             label5.TabIndex = 44;
             label5.Text = "Instructor";
             // 
@@ -225,7 +226,7 @@
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(24, 389);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(160, 36);
+            comboBox1.Size = new Size(160, 29);
             comboBox1.TabIndex = 46;
             // 
             // richTextBox4
@@ -241,7 +242,7 @@
             lbDescription.AutoSize = true;
             lbDescription.Location = new Point(24, 110);
             lbDescription.Name = "lbDescription";
-            lbDescription.Size = new Size(112, 28);
+            lbDescription.Size = new Size(89, 21);
             lbDescription.TabIndex = 43;
             lbDescription.Text = "Description";
             // 
@@ -258,7 +259,7 @@
             // 
             textBox1.Location = new Point(24, 39);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(160, 34);
+            textBox1.Size = new Size(160, 29);
             textBox1.TabIndex = 41;
             // 
             // label9
@@ -266,7 +267,7 @@
             label9.AutoSize = true;
             label9.Location = new Point(24, 80);
             label9.Name = "label9";
-            label9.Size = new Size(69, 28);
+            label9.Size = new Size(55, 21);
             label9.TabIndex = 39;
             label9.Text = "Rating";
             // 
@@ -303,7 +304,7 @@
             label7.AutoSize = true;
             label7.Location = new Point(24, 295);
             label7.Name = "label7";
-            label7.Size = new Size(91, 28);
+            label7.Size = new Size(73, 21);
             label7.TabIndex = 34;
             label7.Text = "Schedule";
             // 
@@ -311,7 +312,7 @@
             // 
             dateTimePicker2.Location = new Point(208, 249);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(160, 34);
+            dateTimePicker2.Size = new Size(160, 29);
             dateTimePicker2.TabIndex = 28;
             // 
             // label4
@@ -319,7 +320,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(208, 225);
             label4.Name = "label4";
-            label4.Size = new Size(81, 28);
+            label4.Size = new Size(65, 21);
             label4.TabIndex = 27;
             label4.Text = "Ends on";
             // 
@@ -327,7 +328,7 @@
             // 
             dateTimePicker1.Location = new Point(24, 249);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(160, 34);
+            dateTimePicker1.Size = new Size(160, 29);
             dateTimePicker1.TabIndex = 26;
             // 
             // label3
@@ -335,7 +336,7 @@
             label3.AutoSize = true;
             label3.Location = new Point(30, 225);
             label3.Name = "label3";
-            label3.Size = new Size(89, 28);
+            label3.Size = new Size(71, 21);
             label3.TabIndex = 25;
             label3.Text = "Starts on";
             // 
@@ -343,7 +344,7 @@
             // 
             textBox2.Location = new Point(208, 39);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(160, 34);
+            textBox2.Size = new Size(160, 29);
             textBox2.TabIndex = 24;
             // 
             // label2
@@ -351,7 +352,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(208, 15);
             label2.Name = "label2";
-            label2.Size = new Size(120, 28);
+            label2.Size = new Size(96, 21);
             label2.TabIndex = 23;
             label2.Text = "Course code";
             // 
@@ -360,7 +361,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(24, 15);
             label1.Name = "label1";
-            label1.Size = new Size(88, 28);
+            label1.Size = new Size(71, 21);
             label1.TabIndex = 22;
             label1.Text = "Program";
             // 
@@ -373,16 +374,16 @@
             imageListGroups.Images.SetKeyName(1, "Couse_Completed.png");
             imageListGroups.Images.SetKeyName(2, "Course_NotCompleted.png");
             // 
-            // frmRegistrationManagement
+            // frmEnrolledCourses
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1029, 630);
             Controls.Add(mainSplitContainer);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
-            Name = "frmRegistrationManagement";
-            Text = "Registered Courses";
+            Name = "frmEnrolledCourses";
+            Text = "Enrolled Courses";
             mainSplitContainer.Panel1.ResumeLayout(false);
             mainSplitContainer.Panel2.ResumeLayout(false);
             mainSplitContainer.Panel2.PerformLayout();

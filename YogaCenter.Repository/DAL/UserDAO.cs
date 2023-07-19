@@ -39,7 +39,7 @@ public class UserDAO
             .Include(u => u.Attendances)
             .Include(u => u.CourseAssignmentRequests)
             .Include(u => u.CoursesAssigned)
-            .Include(u => u.CoursesEnrolled)
+            .Include(u => u.CourseRegisters)
             .Include(u => u.Programs)
             .Where(selector)
             .ToList();
@@ -63,7 +63,7 @@ public class UserDAO
             .Include(u => u.Attendances)
             .Include (u => u.CourseAssignmentRequests)
             .Include(u => u.CoursesAssigned)
-            .Include(u => u.CoursesEnrolled)
+            .Include(u => u.CourseRegisters)
             .Include(u => u.Programs)
             .Where(selector)
             .FirstOrDefault(u => u.Id == id);
@@ -87,43 +87,43 @@ public class UserDAO
         }
     }
 
-    public void EnrolInCourse(long userId, int courseId)
-    {
-        using var db = new YogaCenterContext();
-        var user = db.Users
-            .Include(u => u.CoursesEnrolled)
-            .FirstOrDefault(u => u.Id == userId);
-        if (user != null)
-        {
-            var course = db.Courses.SingleOrDefault(c => c.Id == courseId);
-            if (course != null)
-            {
-                user.CoursesEnrolled.Add(course);
-                db.Users.Update(user);
-                db.SaveChanges();
-            }
-        }
-    }
+    //public void EnrolInCourse(long userId, int courseId)
+    //{
+    //    using var db = new YogaCenterContext();
+    //    var user = db.Users
+    //        .Include(u => u.CourseRegisters)
+    //        .FirstOrDefault(u => u.Id == userId);
+    //    if (user != null)
+    //    {
+    //        var course = db.Courses.SingleOrDefault(c => c.Id == courseId);
+    //        if (course != null)
+    //        {
+    //            user.CourseRegisters.Add(course);
+    //            db.Users.Update(user);
+    //            db.SaveChanges();
+    //        }
+    //    }
+    //}
 
-    public void UnenrolFromCourse(long userId, int courseId)
-    {
-        using var db = new YogaCenterContext();
-        var user = db.Users
-            .Include(u => u.CoursesEnrolled)
-            .FirstOrDefault(u => u.Id == userId);
-        if (user != null)
-        {
-            var course = user.CoursesEnrolled.SingleOrDefault(c => c.Id == courseId);
-            if (course != null)
-            {
-                if (user.CoursesEnrolled.Remove(course))
-                {
-                    db.Users.Update(user);
-                    db.SaveChanges();
-                }
-            }
-        }
-    }
+    //public void UnenrolFromCourse(long userId, int courseId)
+    //{
+    //    using var db = new YogaCenterContext();
+    //    var user = db.Users
+    //        .Include(u => u.CourseRegisters)
+    //        .FirstOrDefault(u => u.Id == userId);
+    //    if (user != null)
+    //    {
+    //        var course = user.CourseRegisters.SingleOrDefault(c => c.Id == courseId);
+    //        if (course != null)
+    //        {
+    //            if (user.CourseRegisters.Remove(course))
+    //            {
+    //                db.Users.Update(user);
+    //                db.SaveChanges();
+    //            }
+    //        }
+    //    }
+    //}
 
     public void AssignToProgram(long userId, int programId)
     {
@@ -185,5 +185,4 @@ public class UserDAO
                  u.Fullname.Contains(keyword)))
             .ToList();
     }
-
 }

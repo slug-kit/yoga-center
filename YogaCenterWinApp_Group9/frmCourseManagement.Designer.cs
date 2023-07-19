@@ -352,9 +352,13 @@
             // 
             // dgvcourse
             // 
+            dgvcourse.AllowUserToAddRows = false;
+            dgvcourse.AllowUserToDeleteRows = false;
+            dgvcourse.AllowUserToResizeRows = false;
             dgvcourse.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvcourse.Location = new Point(12, 267);
             dgvcourse.Name = "dgvcourse";
+            dgvcourse.ReadOnly = true;
             dgvcourse.RowHeadersWidth = 51;
             dgvcourse.RowTemplate.Height = 25;
             dgvcourse.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

@@ -1,22 +1,17 @@
-﻿namespace YogaCenterWinApp_Group9;
+﻿using YogaCenter.Repository.Repos;
 
-using System.Security.Cryptography.X509Certificates;
-using YogaCenter.Repository;
-using YogaCenter.Repository.DAL;
-using YogaCenter.Repository.Models;
-using YogaCenter.Repository.Repos;
+namespace YogaCenterWinApp_Group9;
 
 public partial class frmProgramManagement : Form
 {
+    IProgramRepository programRepository = new ProgramRepository();
+
     public frmProgramManagement()
     {
         InitializeComponent();
     }
-    IProgramRepository programRepository = new ProgramRepository();
-
 
     //LOAD PROGRAMLIST------------------------------------------------------------------------------------------------------------------
-
     public void LoadProgramList()
     {
         var programList = programRepository.GetPrograms();
@@ -31,21 +26,19 @@ public partial class frmProgramManagement : Form
         txtboxdescription.DataBindings.Add("Text", source, "Description");
         starRatingControl.DataBindings.Add("SelectedStar", source, "Rating");
 
-        dgvprogram.DataSource = null;
-        dgvprogram.DataSource = source;
+        dgvPrograms.DataSource = null;
+        dgvPrograms.DataSource = source;
     }
-
 
     private void frmProgramManagement_Load(object sender, EventArgs e)
     {
         LoadProgramList();
-
-
     }
+
     //UPDATE PROGRAM------------------------------------------------------------------------------------------------------------------
     private void dgvprogram_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
-        frmProgramManagementDetail frmProgramManagementDetail = new frmProgramManagementDetail()
+        frmProgramManagementEdit frmProgramManagementDetail = new frmProgramManagementEdit()
         {
             Text = "Update Program",
             InsertOrUpdate = true,
@@ -57,16 +50,17 @@ public partial class frmProgramManagement : Form
             LoadProgramList();
         }
     }
+
     //GET PROGRAM FROM DATAGRIDVIEW------------------------------------------------------------------------------------------------------
     private YogaCenter.Repository.Models.Program GetProgram()
     {
         YogaCenter.Repository.Models.Program programs = null;
         try
         {
-            if (dgvprogram.SelectedCells.Count > 0)
+            if (dgvPrograms.SelectedCells.Count > 0)
             {
-                int selectedRowIndex = dgvprogram.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = dgvprogram.Rows[selectedRowIndex];
+                int selectedRowIndex = dgvPrograms.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dgvPrograms.Rows[selectedRowIndex];
 
                 programs = new YogaCenter.Repository.Models.Program
                 {
@@ -88,7 +82,7 @@ public partial class frmProgramManagement : Form
     private void btnnew_Click(object sender, EventArgs e)
     {
         ClearText();
-        frmProgramManagementDetail frmProgramManagementDetail = new frmProgramManagementDetail()
+        frmProgramManagementEdit frmProgramManagementDetail = new frmProgramManagementEdit()
         {
             Text = "Add Program",
             InsertOrUpdate = false,
@@ -101,13 +95,13 @@ public partial class frmProgramManagement : Form
         }
     }
 
-
     //CLEAR TEXT------------------------------------------------------------------------------------------------------------------------   
     public void ClearText()
     {
         txtboxdescription.Text = string.Empty;
         txtFee.Text = string.Empty;
     }
+
     //REMOVE -------------------------------------------------------------
     private void btndelete_Click(object sender, EventArgs e)
     {
@@ -118,8 +112,8 @@ public partial class frmProgramManagement : Form
 
         if (d == DialogResult.OK)
         {
-            int selectedRowIndex = dgvprogram.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = dgvprogram.Rows[selectedRowIndex];
+            int selectedRowIndex = dgvPrograms.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = dgvPrograms.Rows[selectedRowIndex];
             var p = new YogaCenter.Repository.Models.Program
             {
                 Id = Convert.ToInt32(selectedRow.Cells["Id"].Value),
@@ -130,6 +124,7 @@ public partial class frmProgramManagement : Form
 
         }
     }
+
     //SEARCH-------------------------------------------------------------------------------------------------
     private void btnsearch_Click(object sender, EventArgs e)
     {
@@ -150,8 +145,8 @@ public partial class frmProgramManagement : Form
                 txtFee.DataBindings.Add("Text", source, "Fee");
                 txtboxdescription.DataBindings.Add("Text", source, "Description");
 
-                dgvprogram.DataSource = null;
-                dgvprogram.DataSource = source;
+                dgvPrograms.DataSource = null;
+                dgvPrograms.DataSource = source;
             }
             else
             {

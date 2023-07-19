@@ -1,4 +1,7 @@
-﻿namespace YogaCenterWinApp_Group9;
+﻿using Microsoft.VisualBasic;
+using YogaCenter.Repository.Repos;
+
+namespace YogaCenterWinApp_Group9;
 
 public partial class frmTimetable : Form
 {

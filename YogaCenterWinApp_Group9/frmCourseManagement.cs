@@ -1,33 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using YogaCenter.Repository.Repos;
+﻿using System.Data;
 using YogaCenter.Repository.Models;
+using YogaCenter.Repository.Repos;
 
 namespace YogaCenterWinApp_Group9;
 
 public partial class frmCourseManagement : Form
 {
-    public frmCourseManagement()
-    {
-        InitializeComponent();
-    }
     ICourseRepository courseRepository = new CourseRepository();
     IProgramRepository programRepository = new ProgramRepository();
     IUserRepository userRepository = new UserRepository();
     BindingSource source = new BindingSource();
+
+    public frmCourseManagement()
+    {
+        InitializeComponent();
+    }
+
     //LOAD COURSE LIST ----------------------------------------------------------------------------
     public void LoadCourseList()
     {
         try
         {
-            var courseList = courseRepository.GetCourses().Where(c => !c.Inactive); // Filter out inactive courses
+            var courseList = courseRepository.GetAllCourses();
             source.DataSource = courseList;
 
             cboprogram.DataBindings.Clear();
@@ -67,22 +61,22 @@ public partial class frmCourseManagement : Form
     {
         LoadCourseList();
     }
+
     //CELL FORMATING FOR ROW PROGRAM AND INSTRUCTOR--------------------------------------------------------------------------------
     private void dgvcourse_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
         if (e.ColumnIndex == dgvcourse.Columns["Program"].Index && e.RowIndex >= 0)
         {
             var course = (Course)dgvcourse.Rows[e.RowIndex].DataBoundItem;
-            var program = programRepository.GetProgramById(course.Program.Id);
-            e.Value = program.Id;
+            e.Value = course?.Program?.Id;
         }
         if (e.ColumnIndex == dgvcourse.Columns["Instructor"].Index && e.RowIndex >= 0)
         {
             var course = (Course)dgvcourse.Rows[e.RowIndex].DataBoundItem;
-            var instructor = userRepository.GetUserById(course.Instructor.Id);
-            e.Value = instructor.Fullname;
+            e.Value = course?.Instructor?.Fullname;
         }
     }
+
     //DELETE(BUG NOT FIX --SQL BUG) ----------------------------------------------------------------------------------
     private void btndelete_Click(object sender, EventArgs e)
     {
@@ -114,16 +108,14 @@ public partial class frmCourseManagement : Form
         }
     }
 
-
-
     //NEW COURSE----------------------------------------------------------------------------------------
     private void btnadd_Click(object sender, EventArgs e)
     {
-        frmCourseManagementDetail frmCourseManagementDetail = new frmCourseManagementDetail()
+        frmCourseManagementEdit frmCourseManagementDetail = new frmCourseManagementEdit()
         {
             Text = "New Course",
-            InsertOrUpdate = false,
-            CourseDetail = new Course(),
+            UpdateMode = false,
+            Course = new Course(),
             courseRepository = courseRepository,
         };
 
@@ -133,14 +125,15 @@ public partial class frmCourseManagement : Form
         }
 
     }
+
     //UPDATE COURSE -----------------------------------------------------------------------------------
     private void dgvcourse_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
-        frmCourseManagementDetail frmCourseManagementDetail = new frmCourseManagementDetail()
+        frmCourseManagementEdit frmCourseManagementDetail = new frmCourseManagementEdit()
         {
             Text = "Update Course",
-            InsertOrUpdate = true,
-            CourseDetail = GetCourse(),
+            UpdateMode = true,
+            Course = GetCourse(),
             courseRepository = courseRepository,
         };
         if (frmCourseManagementDetail.ShowDialog() == DialogResult.OK)
@@ -148,12 +141,14 @@ public partial class frmCourseManagement : Form
             LoadCourseList();
         }
     }
+
     //GET COURSE FOR UPDATE---------------------------------------------------------------------------------------
     private Course GetCourse()
     {
         return source.List[dgvcourse.SelectedRows[0].Index] as Course
             ?? throw new Exception("Could not get object model.");
     }
+
     //SEARCH ---------------------------------------------------------------------------------------
     private void btnsearch_Click(object sender, EventArgs e)
     {

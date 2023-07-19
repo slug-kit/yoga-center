@@ -15,12 +15,14 @@ namespace YogaCenterWinApp_Group9;
 
 public partial class frmUserManagement : Form
 {
+    IUserRepository userRepository = new UserRepository();
+    BindingSource source = new BindingSource();
+
     public frmUserManagement()
     {
         InitializeComponent();
     }
-    IUserRepository userRepository = new UserRepository();
-    BindingSource source = new BindingSource();
+
     //LOAD--------------------------------------------------------------------
     public void LoadUserList()
     {
@@ -66,6 +68,7 @@ public partial class frmUserManagement : Form
     {
         LoadUserList();
     }
+
     //GET ROLE VALUE ----------------------------------------------------------------------
     private void dgvuser_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
@@ -88,16 +91,16 @@ public partial class frmUserManagement : Form
                 e.Value = string.Empty; // Gán giá trị rỗng nếu không có giá trị Role
             }
         }
-
     }
+
     //ADD USER --------------------------------------------------------------------------------------------------------
     private void btnadd_Click(object sender, EventArgs e)
     {
-        frmUserManagementDetail frmUserManagementDetail = new frmUserManagementDetail()
+        frmUserManagementEdit frmUserManagementDetail = new frmUserManagementEdit()
         {
             Text = "New User",
             InsertOrUpdate = false,
-            userRepository = userRepository,
+            UserRepository = userRepository,
         };
 
         if (frmUserManagementDetail.ShowDialog() == DialogResult.OK)
@@ -105,15 +108,16 @@ public partial class frmUserManagement : Form
             LoadUserList();
         }
     }
+
     //UPDATE USER --------------------------------------------------------------------------------------------------
     private void dgvuser_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
-        frmUserManagementDetail frmUserManagementDetail = new frmUserManagementDetail()
+        frmUserManagementEdit frmUserManagementDetail = new frmUserManagementEdit()
         {
             Text = "Update User",
             InsertOrUpdate = true,
-            userDetail = GetUser(),
-            userRepository = userRepository,
+            UserDetail = GetUser(),
+            UserRepository = userRepository,
         };
 
         if (frmUserManagementDetail.ShowDialog() == DialogResult.OK)
@@ -121,12 +125,14 @@ public partial class frmUserManagement : Form
             LoadUserList();
         }
     }
+
     //GET USER FOR UPDATE-------------------------------------------------------------------------------------------
     private User GetUser()
     {
         return source.List[dgvuser.SelectedRows[0].Index] as User
             ?? throw new Exception("Could not get object model.");
     }
+
     //SUSPEND USER(REMOVE)-------------------------------------------------------------------------------------------------------------------------
     private void btnsuspend_Click(object sender, EventArgs e)
     {
@@ -158,6 +164,7 @@ public partial class frmUserManagement : Form
             MessageBox.Show("Please select a course to delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
+
     //SEARCH -----------------------------------------------------------------------------------------------------------------------------
     private void btnsearch_Click(object sender, EventArgs e)
     {
@@ -184,5 +191,4 @@ public partial class frmUserManagement : Form
             LoadUserList();
         }
     }
-
 }

@@ -10,4 +10,19 @@ public class UserRepository : IUserRepository
     public void UpdateUser(User user) => UserDAO.Instance.Update(user);
     public void DeleteUser(User user) => UserDAO.Instance.Remove(user);
     public IEnumerable<User> SearchUsers(string keyword) => UserDAO.Instance.Search(keyword);
+
+    public IEnumerable<Course> GetEnrolledCourses(long userId)
+    {
+        var courses = new List<Course>();
+        var courseRegisterEntries = CourseRegisterDAO.Instance.GetByLearner(userId);
+        foreach (var courseRegisterEntry in courseRegisterEntries)
+        {
+            var course = CourseDAO.Instance.Get(courseRegisterEntry.CourseId);
+            if (course != null)
+            {
+                courses.Add(course);
+            }
+        }
+        return courses;
+    }
 }

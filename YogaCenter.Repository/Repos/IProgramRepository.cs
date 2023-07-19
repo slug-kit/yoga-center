@@ -10,4 +10,5 @@ public interface IProgramRepository
     public void Add(Program program);
     public void Update(Program program);
     public void Delete(Program program);
+    public void Restore(int programId);
 }
