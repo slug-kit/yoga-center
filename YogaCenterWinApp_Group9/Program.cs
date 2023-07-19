@@ -24,6 +24,6 @@ internal static class Program
         CultureInfo.DefaultThreadCurrentUICulture = culture;
 
         ApplicationConfiguration.Initialize();
-        Application.Run(new frmMain());
+        Application.Run(new frmTimetable());
     }
 }
