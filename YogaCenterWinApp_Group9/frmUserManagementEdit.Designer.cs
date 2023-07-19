@@ -295,6 +295,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Name = "frmUserManagementEdit";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "frmUserManagementDetail";
             Load += frmUserManagementDetail_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

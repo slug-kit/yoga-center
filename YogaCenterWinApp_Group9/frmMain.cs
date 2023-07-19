@@ -58,8 +58,8 @@ public partial class frmMain : Form
         {
             authenticated = true;
             adminMode = e.FullPrivilege;
-            if (!adminMode) Program.CurrentUser = new UserRepository().GetUserById(e.Id)
-                    ?? throw new ArgumentException("A error has occurred during the login process.");
+            Program.CurrentUser = new UserRepository().GetUserById(e.Id)
+                   ?? throw new ArgumentException("A error has occurred during the login process.");
 
             Form frmLogin = (Form)sender;
             frmLogin.Close();

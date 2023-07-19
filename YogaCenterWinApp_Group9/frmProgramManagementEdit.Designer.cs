@@ -191,6 +191,7 @@
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4, 3, 4, 3);
             Name = "frmProgramManagementEdit";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Program Details";
             Load += frmProgramManagementDetail_Load;
             ResumeLayout(false);

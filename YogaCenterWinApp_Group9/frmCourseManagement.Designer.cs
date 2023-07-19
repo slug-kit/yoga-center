@@ -571,6 +571,7 @@
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
             Name = "frmCourseManagement";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "frmCourseManagement";
             Load += frmCourseManagement_Load;
             splitContainer1.Panel1.ResumeLayout(false);

@@ -53,6 +53,7 @@
             // 
             // lbUsername
             // 
+            lbUsername.Anchor = AnchorStyles.None;
             lbUsername.AutoSize = true;
             lbUsername.Location = new Point(37, 94);
             lbUsername.Name = "lbUsername";
@@ -62,6 +63,7 @@
             // 
             // lbPassword
             // 
+            lbPassword.Anchor = AnchorStyles.None;
             lbPassword.AutoSize = true;
             lbPassword.Location = new Point(37, 130);
             lbPassword.Name = "lbPassword";
@@ -71,6 +73,7 @@
             // 
             // lbRegister
             // 
+            lbRegister.Anchor = AnchorStyles.None;
             lbRegister.AutoSize = true;
             lbRegister.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
             lbRegister.Location = new Point(260, 22);
@@ -81,6 +84,7 @@
             // 
             // lbConfirm
             // 
+            lbConfirm.Anchor = AnchorStyles.None;
             lbConfirm.AutoSize = true;
             lbConfirm.Location = new Point(37, 169);
             lbConfirm.Name = "lbConfirm";
@@ -90,6 +94,7 @@
             // 
             // lbFullname
             // 
+            lbFullname.Anchor = AnchorStyles.None;
             lbFullname.AutoSize = true;
             lbFullname.Location = new Point(37, 207);
             lbFullname.Name = "lbFullname";
@@ -99,6 +104,7 @@
             // 
             // lbGender
             // 
+            lbGender.Anchor = AnchorStyles.None;
             lbGender.AutoSize = true;
             lbGender.Location = new Point(37, 278);
             lbGender.Name = "lbGender";
@@ -108,6 +114,7 @@
             // 
             // lbDateBirth
             // 
+            lbDateBirth.Anchor = AnchorStyles.None;
             lbDateBirth.AutoSize = true;
             lbDateBirth.Location = new Point(37, 245);
             lbDateBirth.Name = "lbDateBirth";
@@ -117,6 +124,7 @@
             // 
             // lbMail
             // 
+            lbMail.Anchor = AnchorStyles.None;
             lbMail.AutoSize = true;
             lbMail.Location = new Point(37, 312);
             lbMail.Name = "lbMail";
@@ -126,6 +134,7 @@
             // 
             // lbPhone
             // 
+            lbPhone.Anchor = AnchorStyles.None;
             lbPhone.AutoSize = true;
             lbPhone.Location = new Point(37, 349);
             lbPhone.Name = "lbPhone";
@@ -135,6 +144,7 @@
             // 
             // txtUsername
             // 
+            txtUsername.Anchor = AnchorStyles.None;
             txtUsername.Location = new Point(184, 91);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(264, 29);
@@ -142,6 +152,7 @@
             // 
             // txtFullname
             // 
+            txtFullname.Anchor = AnchorStyles.None;
             txtFullname.Location = new Point(184, 204);
             txtFullname.Name = "txtFullname";
             txtFullname.Size = new Size(264, 29);
@@ -149,6 +160,7 @@
             // 
             // txtConfirm
             // 
+            txtConfirm.Anchor = AnchorStyles.None;
             txtConfirm.Location = new Point(184, 167);
             txtConfirm.Name = "txtConfirm";
             txtConfirm.Size = new Size(264, 29);
@@ -157,6 +169,7 @@
             // 
             // txtPassword
             // 
+            txtPassword.Anchor = AnchorStyles.None;
             txtPassword.Location = new Point(184, 129);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(264, 29);
@@ -165,6 +178,7 @@
             // 
             // lbMale
             // 
+            lbMale.Anchor = AnchorStyles.None;
             lbMale.AutoSize = true;
             lbMale.Location = new Point(228, 278);
             lbMale.Name = "lbMale";
@@ -176,6 +190,7 @@
             // 
             // lbFemale
             // 
+            lbFemale.Anchor = AnchorStyles.None;
             lbFemale.AutoSize = true;
             lbFemale.Location = new Point(319, 278);
             lbFemale.Name = "lbFemale";
@@ -187,6 +202,7 @@
             // 
             // chkInstructor
             // 
+            chkInstructor.Anchor = AnchorStyles.None;
             chkInstructor.AutoSize = true;
             chkInstructor.Location = new Point(184, 391);
             chkInstructor.Name = "chkInstructor";
@@ -197,6 +213,7 @@
             // 
             // chkAccept
             // 
+            chkAccept.Anchor = AnchorStyles.None;
             chkAccept.AutoSize = true;
             chkAccept.Location = new Point(184, 420);
             chkAccept.Name = "chkAccept";
@@ -208,6 +225,7 @@
             // 
             // btRegister
             // 
+            btRegister.Anchor = AnchorStyles.None;
             btRegister.Location = new Point(184, 472);
             btRegister.Name = "btRegister";
             btRegister.Size = new Size(264, 38);
@@ -218,6 +236,7 @@
             // 
             // txtEmail
             // 
+            txtEmail.Anchor = AnchorStyles.None;
             txtEmail.ForeColor = SystemColors.InactiveCaption;
             txtEmail.Location = new Point(184, 309);
             txtEmail.Name = "txtEmail";
@@ -228,6 +247,7 @@
             // 
             // dtpDob
             // 
+            dtpDob.Anchor = AnchorStyles.None;
             dtpDob.Location = new Point(184, 241);
             dtpDob.Name = "dtpDob";
             dtpDob.Size = new Size(264, 29);
@@ -235,6 +255,7 @@
             // 
             // txtPhone
             // 
+            txtPhone.Anchor = AnchorStyles.None;
             txtPhone.ForeColor = SystemColors.InactiveCaption;
             txtPhone.Location = new Point(184, 346);
             txtPhone.Name = "txtPhone";

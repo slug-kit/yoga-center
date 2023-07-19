@@ -626,11 +626,6 @@ public partial class frmCourseManagementEdit : Form
         return pom ?? throw new Exception("Could not create Lesson object.");
     }
 
-    private void LessonListActionButton_Click(object sender, EventArgs e)
-    {
-
-    }
-
     private void btnAddLesson_Click(object sender, EventArgs e)
     {
         if (_pom.Program == null)
