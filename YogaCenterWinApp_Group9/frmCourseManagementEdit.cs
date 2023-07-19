@@ -10,6 +10,8 @@ namespace YogaCenterWinApp_Group9;
 
 public partial class frmCourseManagementEdit : Form
 {
+    private const int COURSE_HAS_STARTED_STATUS_CODE = 52;
+    private const int COURSE_HAS_FINISHED_STATUS_CODE = 70;
     private const string DEFAULT_COURSE_NUMBER = "[AUTO]";
 
     private readonly TimeSpan MIN_COURSE_DATE_RANGE = TimeSpan.FromDays(7);
@@ -62,6 +64,9 @@ public partial class frmCourseManagementEdit : Form
 
     private short oldCourseNumber;
 
+    private bool courseHasStartedOrFinished;
+    private bool courseHasFinished;
+
     public frmCourseManagementEdit()
     {
         InitializeComponent();
@@ -71,13 +76,45 @@ public partial class frmCourseManagementEdit : Form
 
     private void frmCourseManagementDetail_Load(object sender, EventArgs e)
     {
-        // 1. If updating, store original Course Number
-        oldCourseNumber = _pom.CourseNumber;
-
-        // 2. Change dialog title according to UpdateMode
+        // 1. Change dialog title according to UpdateMode
         Text = _update ? "Course Details" : "New Course";
 
-        // 3. Init combo boxes and bind controls
+        // 2. If updating, store original Course Number
+        oldCourseNumber = _pom.CourseNumber;
+
+        // 3. Set whether course has started and whether it has fully finished,
+        // which will lock a few functionalities
+        if (_update)
+        {
+            var courseStatus = _pom.GetStatusCode(true);
+            courseHasFinished = courseStatus == COURSE_HAS_FINISHED_STATUS_CODE;
+            courseHasStartedOrFinished = courseStatus == COURSE_HAS_STARTED_STATUS_CODE || courseHasFinished;
+        }
+
+        // 4. If Course has already started, disallow Instructor and Date update
+        // If it has fully finished, also disable adding Lessons
+        if (courseHasStartedOrFinished)
+        {
+            dtpStartDate.Enabled = false;
+            dtpEndDate.Enabled = false;
+            dtpRegistrationOpenDate.Enabled = false;
+            dtpRegistrationCloseDate.Enabled = false;
+        }
+        if (courseHasFinished)
+        {
+            btnAddLesson.Enabled = false;
+        }
+
+        // 5. If adding, set min value on DateTimePickers to Now
+        if (!_update)
+        {
+            dtpStartDate.MinDate = DateTime.Now.Date;
+            dtpEndDate.MinDate = DateTime.Now.Date;
+            dtpRegistrationOpenDate.MinDate = DateTime.Now.Date;
+            dtpRegistrationCloseDate.MinDate = DateTime.Now.Date;
+        }
+
+        // 6. Init combo boxes and bind controls
         InitComboBoxes();
         BindPrimaryModel();
         BindSecondaryModel();
@@ -249,17 +286,17 @@ public partial class frmCourseManagementEdit : Form
     private void UpdateInputControls()
     {
         var enable = dgvLessons.RowCount > 0;
-        txtProgramName.Enabled = enable;
-        txtProgramName.Visible = enable;
-        txtProgramCode.Enabled = enable;
-        txtProgramCode.Visible = enable;
+        btnDeleteLesson.Enabled = !courseHasFinished && enable;
 
-        cboProgramName.Enabled = !enable;
-        cboProgramName.Visible = !enable;
-        cboProgramCode.Enabled = !enable;
-        cboProgramCode.Visible = !enable;
+        txtProgramName.Enabled = courseHasStartedOrFinished || enable;
+        txtProgramName.Visible = courseHasStartedOrFinished || enable;
+        txtProgramCode.Enabled = courseHasStartedOrFinished || enable;
+        txtProgramCode.Visible = courseHasStartedOrFinished || enable;
 
-        btnDeleteLesson.Enabled = enable;
+        cboProgramName.Enabled = !courseHasStartedOrFinished && !enable;
+        cboProgramName.Visible = !courseHasStartedOrFinished && !enable;
+        cboProgramCode.Enabled = !courseHasStartedOrFinished && !enable;
+        cboProgramCode.Visible = !courseHasStartedOrFinished && !enable;
     }
 
     #endregion
@@ -375,6 +412,7 @@ public partial class frmCourseManagementEdit : Form
         var endDate = _pom.EndDate?.Date;
         var regOpenDate = _pom.RegistrationOpenDate?.Date;
         var regCloseDate = _pom.RegistrationCloseDate?.Date;
+        var now = DateTime.Now.Date;
         if (startDate == null || endDate == null)
         {
             MessageBox.Show("Course Start and End Dates are required.",
@@ -389,6 +427,71 @@ public partial class frmCourseManagementEdit : Form
             dtpRegistrationCloseDate.Focus();
             return false;
         }
+
+        if (!_update)
+        {
+            if (regOpenDate < now)
+            {
+                MessageBox.Show("New Course's Registration Open must not be in the past.",
+                    "Invalid Course Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpRegistrationOpenDate.Focus();
+                return false;
+            }
+            if (regCloseDate < now)
+            {
+                MessageBox.Show("New Course's Registration Close must not be in the past.",
+                    "Invalid Course Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpRegistrationCloseDate.Focus();
+                return false;
+            }
+            if (startDate < now)
+            {
+                MessageBox.Show("New Course's Start Date must not be in the past.",
+                    "Invalid Course Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpStartDate.Focus();
+                return false;
+            }
+            if (endDate < now)
+            {
+                MessageBox.Show("New Course's End Date must not be in the past.",
+                    "Invalid Course Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpEndDate.Focus();
+                return false;
+            }
+        }
+
+        if (_update && !courseHasStartedOrFinished)
+        {
+            if (regOpenDate < now)
+            {
+                MessageBox.Show("Pending Course's Registration Open must not be in the past.",
+                    "Invalid Course Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpRegistrationOpenDate.Focus();
+                return false;
+            }
+            if (regCloseDate < now)
+            {
+                MessageBox.Show("Pending Course's Registration Close must not be in the past.",
+                    "Invalid Course Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpRegistrationCloseDate.Focus();
+                return false;
+            }
+            if (startDate < now)
+            {
+                MessageBox.Show("Pending Course's Start Date must not be in the past.",
+                    "Invalid Course Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpStartDate.Focus();
+                return false;
+            }
+            if (endDate < now)
+            {
+                MessageBox.Show("Pending Course's End Date must not be in the past.",
+                    "Invalid Course Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpEndDate.Focus();
+                return false;
+            }
+        }
+
         if (regOpenDate > regCloseDate)
         {
             MessageBox.Show("Registration Close Date must not be earlier than Registration Open Date.",
@@ -523,16 +626,23 @@ public partial class frmCourseManagementEdit : Form
         return pom ?? throw new Exception("Could not create Lesson object.");
     }
 
+    private void LessonListActionButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
     private void btnAddLesson_Click(object sender, EventArgs e)
     {
         if (_pom.Program == null)
         {
-            MessageBox.Show("To add new Lessons, you must first select a Program.", "Invalid Course State", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("To add new Lessons, you must first select a Program.",
+                "Invalid Course State", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
         }
         if (_pom.StartDate == null || _pom.EndDate == null)
         {
-            MessageBox.Show("To add new Lessons, you must have set the Course's Start and End Dates.", "Invalid Course State", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("To add new Lessons, you must have set the Course's Start and End Dates.",
+                "Invalid Course State", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
         }
 
@@ -559,7 +669,8 @@ public partial class frmCourseManagementEdit : Form
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message, "ERROR -- Add Lesson");
+            MessageBox.Show(ex.InnerException is null ? ex.Message : ex.InnerException.Message
+                , "ERROR -- Add Lesson");
         }
     }
 
@@ -573,6 +684,8 @@ public partial class frmCourseManagementEdit : Form
                 UpdateMode = true,
                 Lesson = GetLessonObject(),
                 Course = _pom,
+
+                CourseHasStartedOrFinished = courseHasStartedOrFinished,
             };
             if (frmLessonManagementEdit.ShowDialog() == DialogResult.OK)
             {
@@ -582,12 +695,24 @@ public partial class frmCourseManagementEdit : Form
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message, "ERROR -- Update Lesson");
+            MessageBox.Show(ex.InnerException is null ? ex.Message : ex.InnerException.Message
+                , "ERROR -- Update Lesson");
         }
     }
 
     private void btnDeleteLesson_Click(object sender, EventArgs e)
     {
+        if (courseHasStartedOrFinished)
+        {
+            var lessonToUpdate = GetLessonObject();
+            if (lessonToUpdate.Date?.Date <= DateTime.Now.Date)
+            {
+                MessageBox.Show("Lessons that has completed or take place today may not be deleted.",
+                    "Invalid Lesson State", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+        }
+
         var confirmResult = MessageBox.Show("Are you sure you wish to delete this item?", "Confirm Deletion", MessageBoxButtons.YesNo);
         if (confirmResult == DialogResult.Yes)
         {
@@ -601,7 +726,8 @@ public partial class frmCourseManagementEdit : Form
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "ERROR -- Delete Lesson");
+                MessageBox.Show(ex.InnerException is null ? ex.Message : ex.InnerException.Message
+                    , "ERROR -- Delete Lesson");
             }
         }
     }

@@ -24,7 +24,11 @@ public class CourseAssignmentRequestDAO
     public IEnumerable<CourseAssignmentRequest> GetAll()
     {
         using var db = new YogaCenterContext();
-        return db.CourseAssignmentRequests.ToList();
+        return db.CourseAssignmentRequests
+            .Include(r => r.Course)
+                .ThenInclude(r => r.Program)
+            .Include(r => r.Instructor)
+            .ToList();
     }
 
     public IEnumerable<CourseAssignmentRequest> GetByCourse(int courseId)
@@ -32,14 +36,22 @@ public class CourseAssignmentRequestDAO
         using var db = new YogaCenterContext();
         return db.CourseAssignmentRequests
             .Where(r => r.CourseId == courseId)
+            .Where(r => r.New == true)
+            .Include(r => r.Course)
+                .ThenInclude(r => r.Program)
+            .Include(r => r.Instructor)
             .ToList();
     }
 
     public CourseAssignmentRequest? Get(int courseId, long instructorId)
     {
         using var db = new YogaCenterContext();
-        return db.CourseAssignmentRequests.FirstOrDefault(r => r.CourseId == courseId
-            && r.InstructorId == instructorId);
+        return db.CourseAssignmentRequests
+            .Include(r => r.Course)
+                .ThenInclude(r => r.Program)
+            .Include(r => r.Instructor)
+            .FirstOrDefault(r => r.CourseId == courseId
+                && r.InstructorId == instructorId);
     }
 
     public void Add(CourseAssignmentRequest courseAssignmentRequest)

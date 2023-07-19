@@ -28,236 +28,282 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label19 = new Label();
-            richTextBox3 = new RichTextBox();
-            label6 = new Label();
-            pictureBox1 = new PictureBox();
-            label5 = new Label();
-            comboBox1 = new ComboBox();
-            richTextBox4 = new RichTextBox();
-            richTextBox1 = new RichTextBox();
-            label7 = new Label();
-            dateTimePicker2 = new DateTimePicker();
-            label4 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            label3 = new Label();
+            lbExperience = new Label();
+            rtbInstructorExperience = new RichTextBox();
+            lbSpecializations = new Label();
+            pictureBox = new PictureBox();
+            lbInstructorName = new Label();
+            rtbInstructorSpecializations = new RichTextBox();
+            rtbSchedule = new RichTextBox();
+            lbSchedule = new Label();
+            dtpEndDate = new DateTimePicker();
+            lbEndDate = new Label();
+            dtpStartDate = new DateTimePicker();
+            lbStartDate = new Label();
+            grbPreview = new GroupBox();
+            txtInstructorName = new TextBox();
+            grbChangeCourse = new GroupBox();
+            lbCourse = new Label();
+            cboCourse = new ComboBox();
             groupBox1 = new GroupBox();
-            groupBox2 = new GroupBox();
-            label1 = new Label();
-            comboBox2 = new ComboBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            btnCancel = new Button();
+            btnConfirm = new Button();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
+            grbPreview.SuspendLayout();
+            grbChangeCourse.SuspendLayout();
             groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
-            // label19
+            // lbExperience
             // 
-            label19.AutoSize = true;
-            label19.Location = new Point(8, 420);
-            label19.Margin = new Padding(4, 0, 4, 0);
-            label19.Name = "label19";
-            label19.Size = new Size(84, 21);
-            label19.TabIndex = 62;
-            label19.Text = "Experience";
+            lbExperience.AutoSize = true;
+            lbExperience.Location = new Point(8, 420);
+            lbExperience.Margin = new Padding(4, 0, 4, 0);
+            lbExperience.Name = "lbExperience";
+            lbExperience.Size = new Size(84, 21);
+            lbExperience.TabIndex = 62;
+            lbExperience.Text = "Experience";
             // 
-            // richTextBox3
+            // rtbInstructorExperience
             // 
-            richTextBox3.Location = new Point(8, 453);
-            richTextBox3.Margin = new Padding(4);
-            richTextBox3.Name = "richTextBox3";
-            richTextBox3.Size = new Size(440, 39);
-            richTextBox3.TabIndex = 63;
-            richTextBox3.Text = "";
+            rtbInstructorExperience.Location = new Point(8, 453);
+            rtbInstructorExperience.Margin = new Padding(4);
+            rtbInstructorExperience.Name = "rtbInstructorExperience";
+            rtbInstructorExperience.ReadOnly = true;
+            rtbInstructorExperience.Size = new Size(440, 39);
+            rtbInstructorExperience.TabIndex = 63;
+            rtbInstructorExperience.Text = "";
             // 
-            // label6
+            // lbSpecializations
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(7, 329);
-            label6.Margin = new Padding(4, 0, 4, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(112, 21);
-            label6.TabIndex = 60;
-            label6.Text = "Specializations";
+            lbSpecializations.AutoSize = true;
+            lbSpecializations.Location = new Point(7, 329);
+            lbSpecializations.Margin = new Padding(4, 0, 4, 0);
+            lbSpecializations.Name = "lbSpecializations";
+            lbSpecializations.Size = new Size(112, 21);
+            lbSpecializations.TabIndex = 60;
+            lbSpecializations.Text = "Specializations";
             // 
-            // pictureBox1
+            // pictureBox
             // 
-            pictureBox1.Location = new Point(298, 214);
-            pictureBox1.Margin = new Padding(4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(96, 140);
-            pictureBox1.TabIndex = 58;
-            pictureBox1.TabStop = false;
+            pictureBox.Location = new Point(298, 214);
+            pictureBox.Margin = new Padding(4);
+            pictureBox.Name = "pictureBox";
+            pictureBox.Size = new Size(96, 140);
+            pictureBox.TabIndex = 58;
+            pictureBox.TabStop = false;
             // 
-            // label5
+            // lbInstructorName
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(7, 235);
-            label5.Margin = new Padding(4, 0, 4, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(77, 21);
-            label5.TabIndex = 57;
-            label5.Text = "Instructor";
+            lbInstructorName.AutoSize = true;
+            lbInstructorName.Location = new Point(7, 235);
+            lbInstructorName.Margin = new Padding(4, 0, 4, 0);
+            lbInstructorName.Name = "lbInstructorName";
+            lbInstructorName.Size = new Size(77, 21);
+            lbInstructorName.TabIndex = 57;
+            lbInstructorName.Text = "Instructor";
             // 
-            // comboBox1
+            // rtbInstructorSpecializations
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(7, 269);
-            comboBox1.Margin = new Padding(4);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(205, 29);
-            comboBox1.TabIndex = 59;
+            rtbInstructorSpecializations.Location = new Point(7, 362);
+            rtbInstructorSpecializations.Margin = new Padding(4);
+            rtbInstructorSpecializations.Name = "rtbInstructorSpecializations";
+            rtbInstructorSpecializations.ReadOnly = true;
+            rtbInstructorSpecializations.Size = new Size(441, 39);
+            rtbInstructorSpecializations.TabIndex = 61;
+            rtbInstructorSpecializations.Text = "";
             // 
-            // richTextBox4
+            // rtbSchedule
             // 
-            richTextBox4.Location = new Point(7, 362);
-            richTextBox4.Margin = new Padding(4);
-            richTextBox4.Name = "richTextBox4";
-            richTextBox4.Size = new Size(441, 39);
-            richTextBox4.TabIndex = 61;
-            richTextBox4.Text = "";
+            rtbSchedule.Location = new Point(7, 164);
+            rtbSchedule.Margin = new Padding(4);
+            rtbSchedule.Name = "rtbSchedule";
+            rtbSchedule.ReadOnly = true;
+            rtbSchedule.Size = new Size(441, 39);
+            rtbSchedule.TabIndex = 56;
+            rtbSchedule.Text = "";
             // 
-            // richTextBox1
+            // lbSchedule
             // 
-            richTextBox1.Location = new Point(7, 164);
-            richTextBox1.Margin = new Padding(4);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(441, 39);
-            richTextBox1.TabIndex = 56;
-            richTextBox1.Text = "";
+            lbSchedule.AutoSize = true;
+            lbSchedule.Location = new Point(7, 129);
+            lbSchedule.Margin = new Padding(4, 0, 4, 0);
+            lbSchedule.Name = "lbSchedule";
+            lbSchedule.Size = new Size(73, 21);
+            lbSchedule.TabIndex = 55;
+            lbSchedule.Text = "Schedule";
             // 
-            // label7
+            // dtpEndDate
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(7, 129);
-            label7.Margin = new Padding(4, 0, 4, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(73, 21);
-            label7.TabIndex = 55;
-            label7.Text = "Schedule";
+            dtpEndDate.Location = new Point(244, 66);
+            dtpEndDate.Margin = new Padding(4);
+            dtpEndDate.Name = "dtpEndDate";
+            dtpEndDate.Size = new Size(205, 29);
+            dtpEndDate.TabIndex = 54;
             // 
-            // dateTimePicker2
+            // lbEndDate
             // 
-            dateTimePicker2.Location = new Point(244, 66);
-            dateTimePicker2.Margin = new Padding(4);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(205, 29);
-            dateTimePicker2.TabIndex = 54;
+            lbEndDate.AutoSize = true;
+            lbEndDate.Location = new Point(244, 32);
+            lbEndDate.Margin = new Padding(4, 0, 4, 0);
+            lbEndDate.Name = "lbEndDate";
+            lbEndDate.Size = new Size(65, 21);
+            lbEndDate.TabIndex = 53;
+            lbEndDate.Text = "Ends on";
             // 
-            // label4
+            // dtpStartDate
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(244, 32);
-            label4.Margin = new Padding(4, 0, 4, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(65, 21);
-            label4.TabIndex = 53;
-            label4.Text = "Ends on";
+            dtpStartDate.Location = new Point(7, 66);
+            dtpStartDate.Margin = new Padding(4);
+            dtpStartDate.Name = "dtpStartDate";
+            dtpStartDate.Size = new Size(205, 29);
+            dtpStartDate.TabIndex = 52;
             // 
-            // dateTimePicker1
+            // lbStartDate
             // 
-            dateTimePicker1.Location = new Point(7, 66);
-            dateTimePicker1.Margin = new Padding(4);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(205, 29);
-            dateTimePicker1.TabIndex = 52;
+            lbStartDate.AutoSize = true;
+            lbStartDate.Location = new Point(7, 32);
+            lbStartDate.Margin = new Padding(4, 0, 4, 0);
+            lbStartDate.Name = "lbStartDate";
+            lbStartDate.Size = new Size(71, 21);
+            lbStartDate.TabIndex = 51;
+            lbStartDate.Text = "Starts on";
             // 
-            // label3
+            // grbPreview
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(7, 32);
-            label3.Margin = new Padding(4, 0, 4, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(71, 21);
-            label3.TabIndex = 51;
-            label3.Text = "Starts on";
+            grbPreview.Controls.Add(dtpStartDate);
+            grbPreview.Controls.Add(lbExperience);
+            grbPreview.Controls.Add(lbStartDate);
+            grbPreview.Controls.Add(rtbInstructorExperience);
+            grbPreview.Controls.Add(lbEndDate);
+            grbPreview.Controls.Add(lbSpecializations);
+            grbPreview.Controls.Add(dtpEndDate);
+            grbPreview.Controls.Add(pictureBox);
+            grbPreview.Controls.Add(lbSchedule);
+            grbPreview.Controls.Add(lbInstructorName);
+            grbPreview.Controls.Add(rtbSchedule);
+            grbPreview.Controls.Add(rtbInstructorSpecializations);
+            grbPreview.Controls.Add(txtInstructorName);
+            grbPreview.Location = new Point(12, 92);
+            grbPreview.Name = "grbPreview";
+            grbPreview.Size = new Size(456, 520);
+            grbPreview.TabIndex = 64;
+            grbPreview.TabStop = false;
+            grbPreview.Text = "Preview";
+            // 
+            // txtInstructorName
+            // 
+            txtInstructorName.Location = new Point(6, 269);
+            txtInstructorName.Name = "txtInstructorName";
+            txtInstructorName.ReadOnly = true;
+            txtInstructorName.Size = new Size(206, 29);
+            txtInstructorName.TabIndex = 64;
+            // 
+            // grbChangeCourse
+            // 
+            grbChangeCourse.Controls.Add(lbCourse);
+            grbChangeCourse.Controls.Add(cboCourse);
+            grbChangeCourse.Location = new Point(12, 12);
+            grbChangeCourse.Name = "grbChangeCourse";
+            grbChangeCourse.Size = new Size(456, 74);
+            grbChangeCourse.TabIndex = 65;
+            grbChangeCourse.TabStop = false;
+            // 
+            // lbCourse
+            // 
+            lbCourse.AutoSize = true;
+            lbCourse.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lbCourse.Location = new Point(16, 30);
+            lbCourse.Name = "lbCourse";
+            lbCourse.Size = new Size(103, 25);
+            lbCourse.TabIndex = 0;
+            lbCourse.Text = "Change to";
+            // 
+            // cboCourse
+            // 
+            cboCourse.FormattingEnabled = true;
+            cboCourse.Location = new Point(156, 30);
+            cboCourse.Name = "cboCourse";
+            cboCourse.Size = new Size(292, 29);
+            cboCourse.TabIndex = 26;
+            cboCourse.SelectedValueChanged += cboCourse_SelectedValueChanged;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(dateTimePicker1);
-            groupBox1.Controls.Add(label19);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(richTextBox3);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(dateTimePicker2);
-            groupBox1.Controls.Add(pictureBox1);
-            groupBox1.Controls.Add(label7);
-            groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(richTextBox1);
-            groupBox1.Controls.Add(comboBox1);
-            groupBox1.Controls.Add(richTextBox4);
-            groupBox1.Location = new Point(12, 92);
+            groupBox1.Controls.Add(btnCancel);
+            groupBox1.Controls.Add(btnConfirm);
+            groupBox1.Location = new Point(12, 618);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(456, 520);
-            groupBox1.TabIndex = 64;
+            groupBox1.Size = new Size(456, 86);
+            groupBox1.TabIndex = 66;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Preview";
             // 
-            // groupBox2
+            // btnCancel
             // 
-            groupBox2.Controls.Add(label1);
-            groupBox2.Controls.Add(comboBox2);
-            groupBox2.Location = new Point(12, 12);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(456, 74);
-            groupBox2.TabIndex = 65;
-            groupBox2.TabStop = false;
+            btnCancel.Location = new Point(290, 29);
+            btnCancel.Margin = new Padding(4);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(110, 45);
+            btnCancel.TabIndex = 22;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
-            // label1
+            // btnConfirm
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(36, 30);
-            label1.Name = "label1";
-            label1.Size = new Size(74, 25);
-            label1.TabIndex = 0;
-            label1.Text = "Course";
+            btnConfirm.Location = new Point(60, 29);
+            btnConfirm.Margin = new Padding(4);
+            btnConfirm.Name = "btnConfirm";
+            btnConfirm.Size = new Size(110, 45);
+            btnConfirm.TabIndex = 21;
+            btnConfirm.Text = "Confirm";
+            btnConfirm.UseVisualStyleBackColor = true;
+            btnConfirm.Click += btnConfirm_Click;
             // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(156, 30);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(292, 29);
-            comboBox2.TabIndex = 26;
-            // 
-            // frmChangeCourse
+            // frmEnrolledCourseChange
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(484, 631);
-            Controls.Add(groupBox2);
+            ClientSize = new Size(484, 716);
             Controls.Add(groupBox1);
+            Controls.Add(grbChangeCourse);
+            Controls.Add(grbPreview);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
-            Name = "frmChangeCourse";
+            Name = "frmEnrolledCourseChange";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Change Course";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Load += frmEnrolledCourseChange_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
+            grbPreview.ResumeLayout(false);
+            grbPreview.PerformLayout();
+            grbChangeCourse.ResumeLayout(false);
+            grbChangeCourse.PerformLayout();
             groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Label label19;
-        private RichTextBox richTextBox3;
-        private Label label6;
-        private PictureBox pictureBox1;
-        private Label label5;
-        private ComboBox comboBox1;
-        private RichTextBox richTextBox4;
-        private RichTextBox richTextBox1;
-        private Label label7;
-        private DateTimePicker dateTimePicker2;
-        private Label label4;
-        private DateTimePicker dateTimePicker1;
-        private Label label3;
+        private Label lbExperience;
+        private RichTextBox rtbInstructorExperience;
+        private Label lbSpecializations;
+        private PictureBox pictureBox;
+        private Label lbInstructorName;
+        private RichTextBox rtbInstructorSpecializations;
+        private RichTextBox rtbSchedule;
+        private Label lbSchedule;
+        private DateTimePicker dtpEndDate;
+        private Label lbEndDate;
+        private DateTimePicker dtpStartDate;
+        private Label lbStartDate;
+        private GroupBox grbPreview;
+        private GroupBox grbChangeCourse;
+        private Label lbCourse;
+        private ComboBox cboCourse;
         private GroupBox groupBox1;
-        private GroupBox groupBox2;
-        private Label label1;
-        private ComboBox comboBox2;
+        private Button btnCancel;
+        private Button btnConfirm;
+        private TextBox txtInstructorName;
     }
 }

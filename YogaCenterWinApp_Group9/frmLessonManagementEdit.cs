@@ -57,6 +57,13 @@ public partial class frmLessonManagementEdit : Form
 
     private byte oldLessonNumber;
 
+    private bool courseHasStartedOrFinished;
+    public bool CourseHasStartedOrFinished
+    {
+        get => courseHasStartedOrFinished;
+        init => courseHasStartedOrFinished = value;
+    }
+
     public frmLessonManagementEdit()
     {
         InitializeComponent();
@@ -76,10 +83,31 @@ public partial class frmLessonManagementEdit : Form
         InitComboBoxes();
         BindPrimaryModel();
 
-        // 4. If adding, init DateTimePickers
+        // 4.If course has started or finished, disable update unless
+        // Lesson is in the future
+        var now = DateTime.Now.Date;
+        if (courseHasStartedOrFinished && _pom.Date?.Date <= now)
+        {
+            MessageBox.Show("Lessons that has completed or take place today are read-only.",
+                "Read Only", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            txtLessonNumber.ReadOnly = true;
+            txtLocation.ReadOnly = true;
+            txtTimeslot.ReadOnly = true;
+            rtbDescription.ReadOnly = true;
+
+            dtpDate.Enabled = false;
+
+            cboTimeslot.Enabled = false;
+            cboTimeslot.Visible = false;
+            txtTimeslot.Enabled = true;
+            txtTimeslot.Visible = true;
+        }
+
+        // 4. If adding, init DateTimePickers and set min value to Now
         if (!_update)
         {
-            dtpDate.Value = DateTime.Now.Date;
+            dtpDate.MinDate = now;
+            dtpDate.Value = now;
         }
     }
 
@@ -147,6 +175,12 @@ public partial class frmLessonManagementEdit : Form
         rtbDescription.DataBindings.Add(nameof(RichTextBox.Text), bindingSource, nameof(LessonDisplayModel.Description),
             true, DataSourceUpdateMode.OnValidation)
             .Parse += StringToTrimmedString;
+
+        if (CourseHasStartedOrFinished && _pom.Date?.Date <= DateTime.Now.Date)
+        {
+            txtTimeslot.DataBindings.Add(nameof(TextBox.Text), bindingSource, $"{nameof(LessonDisplayModel.TimeslotNavigation)}.{nameof(Timeslot.Name)}",
+                true, DataSourceUpdateMode.Never);
+        }
     }
 
     #endregion
@@ -278,6 +312,12 @@ public partial class frmLessonManagementEdit : Form
         if (_pom.Date == null)
         {
             MessageBox.Show("Date is required.", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            dtpDate.Focus();
+            return false;
+        }
+        if (!_update && _pom.Date?.Date < DateTime.Now.Date)
+        {
+            MessageBox.Show("New Lesson's Date must not be in the past.", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
             dtpDate.Focus();
             return false;
         }

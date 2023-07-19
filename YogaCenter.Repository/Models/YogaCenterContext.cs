@@ -158,6 +158,10 @@ namespace YogaCenter.Repository.Models
                     .HasColumnType("datetime")
                     .HasColumnName("enrol_datetime");
 
+                entity.Property(e => e.TuitionFee)
+                    .HasColumnType("money")
+                    .HasColumnName("tuition_fee");
+
                 entity.HasOne(d => d.Course)
                     .WithMany(p => p.CourseRegisters)
                     .HasForeignKey(d => d.CourseId);

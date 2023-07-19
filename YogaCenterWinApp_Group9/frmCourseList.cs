@@ -1,4 +1,5 @@
 ﻿using YogaCenter.Repository.DAL;
+using YogaCenter.Repository.ModelExtensions;
 using YogaCenter.Repository.Models;
 using YogaCenter.Repository.Repos;
 using YogaCenter.Repository.ModelExtensions;
@@ -141,7 +142,16 @@ namespace YogaCenterWinApp_Group9
         {
             try
             {
-                courseRegisterRepository.Add(_user.Id, GetCourseObject().Id);
+                var confirmResult = MessageBox.Show("Are you sure you wish to enrol in this course?", "Confirm Enrollment", MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    var course = GetCourseObject();
+                    var fee = course.Program.Fee.HasValue ? course.Program.Fee.Value : 0;
+                    courseRegisterRepository.Add(course.Id, _user.Id, fee);
+
+                    MessageBox.Show($"You have successfully enrolled in Course {course.GetCourseCode()}",
+                        "Enrollment Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {
@@ -154,11 +164,18 @@ namespace YogaCenterWinApp_Group9
         {
             try
             {
-                courseAssignmentRequestRepository.Add(new()
+                var confirmResult = MessageBox.Show("Are you sure you wish to request to be assigned to this course?", "Confirm Request Submission", MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
                 {
-                    InstructorId = _user.Id,
-                    CourseId = GetCourseObject().Id,
-                });
+                    var course = GetCourseObject();
+                    courseAssignmentRequestRepository.Add(new()
+                    {
+                        InstructorId = _user.Id,
+                        CourseId = course.Id,
+                    });
+                    MessageBox.Show($"You have successfully submitted an assignment request for Course {course.GetCourseCode()}",
+                        "Request Submission Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {

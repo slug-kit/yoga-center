@@ -10,4 +10,8 @@ public interface ICourseAssignmentRequestRepository
     public void Add(CourseAssignmentRequest courseAssignmentRequest);
     public void Update(CourseAssignmentRequest courseAssignmentRequest);
     public void Delete(int courseId, long instructorId);
+
+    public void AcceptRequest(CourseAssignmentRequest courseAssignmentRequest);
+
+    public IEnumerable<Course> GetCoursesByProgram(int programId);
 }

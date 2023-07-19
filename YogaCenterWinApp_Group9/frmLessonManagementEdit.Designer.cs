@@ -48,6 +48,7 @@
             rtbDescription = new RichTextBox();
             btnSave = new Button();
             btnCancel = new Button();
+            txtTimeslot = new TextBox();
             SuspendLayout();
             // 
             // txtId
@@ -231,6 +232,15 @@
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
+            // txtTimeslot
+            // 
+            txtTimeslot.Enabled = false;
+            txtTimeslot.Location = new Point(180, 422);
+            txtTimeslot.Name = "txtTimeslot";
+            txtTimeslot.Size = new Size(270, 29);
+            txtTimeslot.TabIndex = 21;
+            txtTimeslot.Visible = false;
+            // 
             // frmLessonManagementEdit
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
@@ -241,7 +251,6 @@
             Controls.Add(btnSave);
             Controls.Add(rtbDescription);
             Controls.Add(lbDescription);
-            Controls.Add(cboTimeslot);
             Controls.Add(lbTimeslot);
             Controls.Add(dtpDate);
             Controls.Add(lbDate);
@@ -257,6 +266,8 @@
             Controls.Add(lbProgramCode);
             Controls.Add(lbId);
             Controls.Add(txtId);
+            Controls.Add(cboTimeslot);
+            Controls.Add(txtTimeslot);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
             Name = "frmLessonManagementEdit";
@@ -289,5 +300,6 @@
         private RichTextBox rtbDescription;
         private Button btnSave;
         private Button btnCancel;
+        private TextBox txtTimeslot;
     }
 }

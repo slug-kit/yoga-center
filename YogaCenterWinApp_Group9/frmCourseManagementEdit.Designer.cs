@@ -283,6 +283,7 @@
             rtbSchedule.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             rtbSchedule.Location = new Point(182, 347);
             rtbSchedule.Name = "rtbSchedule";
+            rtbSchedule.ScrollBars = RichTextBoxScrollBars.ForcedVertical;
             rtbSchedule.Size = new Size(300, 70);
             rtbSchedule.TabIndex = 25;
             rtbSchedule.Text = "";

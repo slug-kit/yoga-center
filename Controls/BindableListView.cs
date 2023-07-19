@@ -322,7 +322,7 @@ public class BindableListView : System.Windows.Forms.ListView
             // the width after adding the column. (That's we we're not
             // simply passing -2 to Add. The value passed - 0 in this case
             // - is irrelevant here.)
-            Columns.Add(columnName, 0, HorizontalAlignment.Left);
+            Columns.Add(columnName, columnName, 0);
             Columns[column].Width = -2;
         }
         // For some reason we seem to need to go back and set the

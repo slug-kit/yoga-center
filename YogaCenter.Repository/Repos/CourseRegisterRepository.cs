@@ -11,7 +11,7 @@ public class CourseRegisterRepository : ICourseRegisterRepository
     public CourseRegister? GetCourseRegisterEntry(int courseId, long learnerId) => CourseRegisterDAO.Instance.Get(courseId, learnerId);
 
 
-    public void Add(long learnerId, int courseId)
+    public void Add(int courseId, long learnerId, decimal tuitionFee)
     {
         var learnerRole = RoleDAO.Instance.Get("learner")
             ?? throw new InvalidOperationException("The 'Learner' role was not found.");
@@ -29,11 +29,12 @@ public class CourseRegisterRepository : ICourseRegisterRepository
         {
             CourseId = courseId,
             LearnerId = learnerId,
-            EnrolDatetime = DateTime.Now
+            EnrolDatetime = DateTime.Now,
+            TuitionFee = tuitionFee,
         });
     }
 
-    public void Delete(long learnerId, int courseId)
+    public void Delete(int courseId, long learnerId)
     {
         var learnerRole = RoleDAO.Instance.Get("learner")
             ?? throw new InvalidOperationException("The 'Learner' role was not found.");
@@ -49,4 +50,31 @@ public class CourseRegisterRepository : ICourseRegisterRepository
 
         CourseRegisterDAO.Instance.Delete(courseId, learnerId);
     }
+
+    public void ChangeCourse(int oldCourseId, long learnerId, int newCourseId, decimal tuitionFee)
+    {
+        // DANGER ZONE: We really should be using a stored procedure here.
+        //
+        // ...but I kept getting the 'The project's target framework does not contain
+        // Entity Framework runtime assemblies." error.
+        try
+        {
+            Delete(oldCourseId, learnerId);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Could not remove Learner from the previous Course. Refer to the inner exception for more details.", ex);
+        }
+        try
+        {
+            Add(newCourseId, learnerId, tuitionFee);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Could not enrol Learner in the new Course. Refer to the inner exception for more details.", ex);
+        }
+    }
+
+    public IEnumerable<Course> GetCourses() => CourseDAO.Instance.GetAll();
+    public IEnumerable<Course> GetCoursesByProgram(int programId) => CourseDAO.Instance.GetByProgram(programId);
 }

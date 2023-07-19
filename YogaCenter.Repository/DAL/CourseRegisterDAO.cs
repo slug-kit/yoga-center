@@ -24,7 +24,12 @@ public class CourseRegisterDAO
     public IEnumerable<CourseRegister> GetAll()
     {
         using var db = new YogaCenterContext();
-        return db.CourseRegisters.ToList();
+        return db.CourseRegisters
+            .Include(cr => cr.Course)
+                .ThenInclude(c => c.Program)
+            .Include(cr => cr.Course)
+                .ThenInclude(c => c.Instructor)
+            .ToList();
     }
 
     public IEnumerable<CourseRegister> GetByCourse(int courseId)
@@ -32,6 +37,10 @@ public class CourseRegisterDAO
         using var db = new YogaCenterContext();
         return db.CourseRegisters
             .Where(cr => cr.CourseId == courseId)
+            .Include(cr => cr.Course)
+                .ThenInclude(c => c.Program)
+            .Include(cr => cr.Course)
+                .ThenInclude(c => c.Instructor)
             .ToList();
     }   
     
@@ -40,14 +49,23 @@ public class CourseRegisterDAO
         using var db = new YogaCenterContext();
         return db.CourseRegisters
             .Where(cr => cr.LearnerId == learnerId)
+            .Include(cr => cr.Course)
+                .ThenInclude(c => c.Program)
+            .Include(cr => cr.Course)
+                .ThenInclude(c => c.Instructor)
             .ToList();
     }
 
     public CourseRegister? Get(int courseId, long learnerId)
     {
         using var db = new YogaCenterContext();
-        return db.CourseRegisters.FirstOrDefault(cr => cr.CourseId == courseId
-            && cr.LearnerId == learnerId);
+        return db.CourseRegisters
+            .Include(cr => cr.Course)
+                .ThenInclude(c => c.Program)
+            .Include(cr => cr.Course)
+                .ThenInclude(c => c.Instructor)
+            .FirstOrDefault(cr => cr.CourseId == courseId
+                && cr.LearnerId == learnerId);
     }
 
     public void Add(CourseRegister courseRegisterEntry)

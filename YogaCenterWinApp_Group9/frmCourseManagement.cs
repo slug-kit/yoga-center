@@ -197,6 +197,14 @@ public partial class frmCourseManagement : Form
         dgvcourse.DataSource = source;
     }
 
+    private void btnRequests_Click(object sender, EventArgs e)
+    {
 
+        frmResolveAssignmentRequests frmResolveAssignmentRequests = new()
+        {
+            Course = GetCourse(),
+        };
+        frmResolveAssignmentRequests.ShowDialog();
+    }
 }
 

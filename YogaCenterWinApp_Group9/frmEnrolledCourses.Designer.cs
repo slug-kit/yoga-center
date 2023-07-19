@@ -1,4 +1,6 @@
-﻿namespace YogaCenterWinApp_Group9
+﻿using YogaCenterWinApp_Group9.Controls;
+
+namespace YogaCenterWinApp_Group9
 {
     partial class frmEnrolledCourses
     {
@@ -32,42 +34,44 @@
             ListViewItem listViewItem1 = new ListViewItem(new string[] { "Karma Yoga", "36", "14/06/2023" }, 4);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEnrolledCourses));
             mainSplitContainer = new SplitContainer();
-            listView1 = new ListView();
+            dgvEnrolledCourses = new DataGridView();
+            lsvEnrolledCourses = new BindableListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             imageListSmall = new ImageList(components);
-            groupBox1 = new GroupBox();
-            button2 = new Button();
-            button1 = new Button();
-            label19 = new Label();
-            richTextBox3 = new RichTextBox();
-            label6 = new Label();
-            pictureBox1 = new PictureBox();
-            label5 = new Label();
-            comboBox1 = new ComboBox();
-            richTextBox4 = new RichTextBox();
+            grpFormActions = new GroupBox();
+            btnUnenrol = new Button();
+            btnChangeCourse = new Button();
+            lbInstructorExperience = new Label();
+            rtblbInstructorExperience = new RichTextBox();
+            lbInstructorSpecializations = new Label();
+            pictureBox = new PictureBox();
+            lbInstructor = new Label();
+            rtbInstructorSpecializations = new RichTextBox();
             lbDescription = new Label();
-            richTextBox2 = new RichTextBox();
-            textBox1 = new TextBox();
-            label9 = new Label();
-            starRatingControl1 = new Controls.StarRatingControl();
-            richTextBox1 = new RichTextBox();
-            label7 = new Label();
-            dateTimePicker2 = new DateTimePicker();
-            label4 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            label3 = new Label();
-            textBox2 = new TextBox();
-            label2 = new Label();
-            label1 = new Label();
+            rtbDescription = new RichTextBox();
+            txtProgramName = new TextBox();
+            lbRating = new Label();
+            starRatingControl = new StarRatingControl();
+            rtbSchedule = new RichTextBox();
+            lbSchedule = new Label();
+            dtpEndDate = new DateTimePicker();
+            lbEndDate = new Label();
+            dtpStartDate = new DateTimePicker();
+            lbStartDate = new Label();
+            txtCourseCode = new TextBox();
+            lbCourseCode = new Label();
+            lbProgramName = new Label();
+            txtInstructorName = new TextBox();
             imageListGroups = new ImageList(components);
             ((System.ComponentModel.ISupportInitialize)mainSplitContainer).BeginInit();
             mainSplitContainer.Panel1.SuspendLayout();
             mainSplitContainer.Panel2.SuspendLayout();
             mainSplitContainer.SuspendLayout();
-            groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEnrolledCourses).BeginInit();
+            grpFormActions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             SuspendLayout();
             // 
             // mainSplitContainer
@@ -80,49 +84,67 @@
             // 
             // mainSplitContainer.Panel1
             // 
-            mainSplitContainer.Panel1.Controls.Add(listView1);
+            mainSplitContainer.Panel1.Controls.Add(dgvEnrolledCourses);
+            mainSplitContainer.Panel1.Controls.Add(lsvEnrolledCourses);
             // 
             // mainSplitContainer.Panel2
             // 
-            mainSplitContainer.Panel2.Controls.Add(groupBox1);
-            mainSplitContainer.Panel2.Controls.Add(label19);
-            mainSplitContainer.Panel2.Controls.Add(richTextBox3);
-            mainSplitContainer.Panel2.Controls.Add(label6);
-            mainSplitContainer.Panel2.Controls.Add(pictureBox1);
-            mainSplitContainer.Panel2.Controls.Add(label5);
-            mainSplitContainer.Panel2.Controls.Add(comboBox1);
-            mainSplitContainer.Panel2.Controls.Add(richTextBox4);
+            mainSplitContainer.Panel2.Controls.Add(grpFormActions);
+            mainSplitContainer.Panel2.Controls.Add(lbInstructorExperience);
+            mainSplitContainer.Panel2.Controls.Add(rtblbInstructorExperience);
+            mainSplitContainer.Panel2.Controls.Add(lbInstructorSpecializations);
+            mainSplitContainer.Panel2.Controls.Add(pictureBox);
+            mainSplitContainer.Panel2.Controls.Add(lbInstructor);
+            mainSplitContainer.Panel2.Controls.Add(rtbInstructorSpecializations);
             mainSplitContainer.Panel2.Controls.Add(lbDescription);
-            mainSplitContainer.Panel2.Controls.Add(richTextBox2);
-            mainSplitContainer.Panel2.Controls.Add(textBox1);
-            mainSplitContainer.Panel2.Controls.Add(label9);
-            mainSplitContainer.Panel2.Controls.Add(starRatingControl1);
-            mainSplitContainer.Panel2.Controls.Add(richTextBox1);
-            mainSplitContainer.Panel2.Controls.Add(label7);
-            mainSplitContainer.Panel2.Controls.Add(dateTimePicker2);
-            mainSplitContainer.Panel2.Controls.Add(label4);
-            mainSplitContainer.Panel2.Controls.Add(dateTimePicker1);
-            mainSplitContainer.Panel2.Controls.Add(label3);
-            mainSplitContainer.Panel2.Controls.Add(textBox2);
-            mainSplitContainer.Panel2.Controls.Add(label2);
-            mainSplitContainer.Panel2.Controls.Add(label1);
+            mainSplitContainer.Panel2.Controls.Add(rtbDescription);
+            mainSplitContainer.Panel2.Controls.Add(txtProgramName);
+            mainSplitContainer.Panel2.Controls.Add(lbRating);
+            mainSplitContainer.Panel2.Controls.Add(starRatingControl);
+            mainSplitContainer.Panel2.Controls.Add(rtbSchedule);
+            mainSplitContainer.Panel2.Controls.Add(lbSchedule);
+            mainSplitContainer.Panel2.Controls.Add(dtpEndDate);
+            mainSplitContainer.Panel2.Controls.Add(lbEndDate);
+            mainSplitContainer.Panel2.Controls.Add(dtpStartDate);
+            mainSplitContainer.Panel2.Controls.Add(lbStartDate);
+            mainSplitContainer.Panel2.Controls.Add(txtCourseCode);
+            mainSplitContainer.Panel2.Controls.Add(lbCourseCode);
+            mainSplitContainer.Panel2.Controls.Add(lbProgramName);
+            mainSplitContainer.Panel2.Controls.Add(txtInstructorName);
             mainSplitContainer.Size = new Size(1029, 630);
             mainSplitContainer.SplitterDistance = 625;
             mainSplitContainer.SplitterWidth = 5;
             mainSplitContainer.TabIndex = 0;
             // 
-            // listView1
+            // dgvEnrolledCourses
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
-            listView1.Dock = DockStyle.Fill;
-            listView1.Items.AddRange(new ListViewItem[] { listViewItem1 });
-            listView1.Location = new Point(0, 0);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(625, 630);
-            listView1.SmallImageList = imageListSmall;
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            dgvEnrolledCourses.AllowUserToAddRows = false;
+            dgvEnrolledCourses.AllowUserToDeleteRows = false;
+            dgvEnrolledCourses.AllowUserToResizeColumns = false;
+            dgvEnrolledCourses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEnrolledCourses.Dock = DockStyle.Fill;
+            dgvEnrolledCourses.Location = new Point(0, 0);
+            dgvEnrolledCourses.Name = "dgvEnrolledCourses";
+            dgvEnrolledCourses.ReadOnly = true;
+            dgvEnrolledCourses.RowTemplate.Height = 25;
+            dgvEnrolledCourses.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvEnrolledCourses.Size = new Size(625, 630);
+            dgvEnrolledCourses.TabIndex = 53;
+            // 
+            // lsvEnrolledCourses
+            // 
+            lsvEnrolledCourses.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
+            lsvEnrolledCourses.DataMember = null;
+            lsvEnrolledCourses.DataSource = null;
+            lsvEnrolledCourses.Dock = DockStyle.Fill;
+            lsvEnrolledCourses.Items.AddRange(new ListViewItem[] { listViewItem1 });
+            lsvEnrolledCourses.Location = new Point(0, 0);
+            lsvEnrolledCourses.Name = "lsvEnrolledCourses";
+            lsvEnrolledCourses.Size = new Size(625, 630);
+            lsvEnrolledCourses.SmallImageList = imageListSmall;
+            lsvEnrolledCourses.TabIndex = 0;
+            lsvEnrolledCourses.UseCompatibleStateImageBehavior = false;
+            lsvEnrolledCourses.View = View.Details;
             // 
             // columnHeader1
             // 
@@ -150,92 +172,88 @@
             imageListSmall.Images.SetKeyName(3, "Vinyasa-Yoga.jpg");
             imageListSmall.Images.SetKeyName(4, "Karma-Yoga.jpg");
             // 
-            // groupBox1
+            // grpFormActions
             // 
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(button1);
-            groupBox1.Location = new Point(25, 561);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(343, 57);
-            groupBox1.TabIndex = 51;
-            groupBox1.TabStop = false;
+            grpFormActions.Controls.Add(btnUnenrol);
+            grpFormActions.Controls.Add(btnChangeCourse);
+            grpFormActions.Location = new Point(25, 561);
+            grpFormActions.Name = "grpFormActions";
+            grpFormActions.Size = new Size(343, 57);
+            grpFormActions.TabIndex = 51;
+            grpFormActions.TabStop = false;
             // 
-            // button2
+            // btnUnenrol
             // 
-            button2.Location = new Point(185, 18);
-            button2.Name = "button2";
-            button2.Size = new Size(135, 33);
-            button2.TabIndex = 1;
-            button2.Text = "Unenroll";
-            button2.UseVisualStyleBackColor = true;
+            btnUnenrol.Location = new Point(185, 18);
+            btnUnenrol.Name = "btnUnenrol";
+            btnUnenrol.Size = new Size(135, 33);
+            btnUnenrol.TabIndex = 1;
+            btnUnenrol.Text = "Unenrol";
+            btnUnenrol.UseVisualStyleBackColor = true;
+            btnUnenrol.Click += btnUnenrol_Click;
             // 
-            // button1
+            // btnChangeCourse
             // 
-            button1.Location = new Point(24, 18);
-            button1.Name = "button1";
-            button1.Size = new Size(135, 33);
-            button1.TabIndex = 0;
-            button1.Text = "Change course";
-            button1.UseVisualStyleBackColor = true;
+            btnChangeCourse.Location = new Point(24, 18);
+            btnChangeCourse.Name = "btnChangeCourse";
+            btnChangeCourse.Size = new Size(135, 33);
+            btnChangeCourse.TabIndex = 0;
+            btnChangeCourse.Text = "Change course";
+            btnChangeCourse.UseVisualStyleBackColor = true;
+            btnChangeCourse.Click += btnChangeCourse_Click;
             // 
-            // label19
+            // lbInstructorExperience
             // 
-            label19.AutoSize = true;
-            label19.Location = new Point(25, 502);
-            label19.Name = "label19";
-            label19.Size = new Size(84, 21);
-            label19.TabIndex = 49;
-            label19.Text = "Experience";
+            lbInstructorExperience.AutoSize = true;
+            lbInstructorExperience.Location = new Point(25, 502);
+            lbInstructorExperience.Name = "lbInstructorExperience";
+            lbInstructorExperience.Size = new Size(84, 21);
+            lbInstructorExperience.TabIndex = 49;
+            lbInstructorExperience.Text = "Experience";
             // 
-            // richTextBox3
+            // rtblbInstructorExperience
             // 
-            richTextBox3.Location = new Point(25, 526);
-            richTextBox3.Name = "richTextBox3";
-            richTextBox3.Size = new Size(343, 29);
-            richTextBox3.TabIndex = 50;
-            richTextBox3.Text = "";
+            rtblbInstructorExperience.Location = new Point(25, 526);
+            rtblbInstructorExperience.Name = "rtblbInstructorExperience";
+            rtblbInstructorExperience.ReadOnly = true;
+            rtblbInstructorExperience.Size = new Size(343, 29);
+            rtblbInstructorExperience.TabIndex = 50;
+            rtblbInstructorExperience.Text = "";
             // 
-            // label6
+            // lbInstructorSpecializations
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(24, 433);
-            label6.Name = "label6";
-            label6.Size = new Size(112, 21);
-            label6.TabIndex = 47;
-            label6.Text = "Specializations";
+            lbInstructorSpecializations.AutoSize = true;
+            lbInstructorSpecializations.Location = new Point(24, 433);
+            lbInstructorSpecializations.Name = "lbInstructorSpecializations";
+            lbInstructorSpecializations.Size = new Size(112, 21);
+            lbInstructorSpecializations.TabIndex = 47;
+            lbInstructorSpecializations.Text = "Specializations";
             // 
-            // pictureBox1
+            // pictureBox
             // 
-            pictureBox1.Location = new Point(250, 355);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(75, 100);
-            pictureBox1.TabIndex = 45;
-            pictureBox1.TabStop = false;
+            pictureBox.Location = new Point(250, 355);
+            pictureBox.Name = "pictureBox";
+            pictureBox.Size = new Size(75, 100);
+            pictureBox.TabIndex = 45;
+            pictureBox.TabStop = false;
             // 
-            // label5
+            // lbInstructor
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(24, 365);
-            label5.Name = "label5";
-            label5.Size = new Size(77, 21);
-            label5.TabIndex = 44;
-            label5.Text = "Instructor";
+            lbInstructor.AutoSize = true;
+            lbInstructor.Location = new Point(24, 365);
+            lbInstructor.Name = "lbInstructor";
+            lbInstructor.Size = new Size(77, 21);
+            lbInstructor.TabIndex = 44;
+            lbInstructor.Text = "Instructor";
             // 
-            // comboBox1
+            // rtbInstructorSpecializations
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(24, 389);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(160, 29);
-            comboBox1.TabIndex = 46;
-            // 
-            // richTextBox4
-            // 
-            richTextBox4.Location = new Point(24, 461);
-            richTextBox4.Name = "richTextBox4";
-            richTextBox4.Size = new Size(344, 29);
-            richTextBox4.TabIndex = 48;
-            richTextBox4.Text = "";
+            rtbInstructorSpecializations.Location = new Point(24, 461);
+            rtbInstructorSpecializations.Name = "rtbInstructorSpecializations";
+            rtbInstructorSpecializations.ReadOnly = true;
+            rtbInstructorSpecializations.Size = new Size(344, 29);
+            rtbInstructorSpecializations.TabIndex = 48;
+            rtbInstructorSpecializations.Text = "";
             // 
             // lbDescription
             // 
@@ -246,124 +264,138 @@
             lbDescription.TabIndex = 43;
             lbDescription.Text = "Description";
             // 
-            // richTextBox2
+            // rtbDescription
             // 
-            richTextBox2.Location = new Point(24, 134);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.ScrollBars = RichTextBoxScrollBars.ForcedVertical;
-            richTextBox2.Size = new Size(344, 77);
-            richTextBox2.TabIndex = 42;
-            richTextBox2.Text = "";
+            rtbDescription.Location = new Point(24, 134);
+            rtbDescription.Name = "rtbDescription";
+            rtbDescription.ReadOnly = true;
+            rtbDescription.ScrollBars = RichTextBoxScrollBars.ForcedVertical;
+            rtbDescription.Size = new Size(344, 77);
+            rtbDescription.TabIndex = 42;
+            rtbDescription.Text = "";
             // 
-            // textBox1
+            // txtProgramName
             // 
-            textBox1.Location = new Point(24, 39);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(160, 29);
-            textBox1.TabIndex = 41;
+            txtProgramName.Location = new Point(24, 39);
+            txtProgramName.Name = "txtProgramName";
+            txtProgramName.ReadOnly = true;
+            txtProgramName.Size = new Size(160, 29);
+            txtProgramName.TabIndex = 41;
             // 
-            // label9
+            // lbRating
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(24, 80);
-            label9.Name = "label9";
-            label9.Size = new Size(55, 21);
-            label9.TabIndex = 39;
-            label9.Text = "Rating";
+            lbRating.AutoSize = true;
+            lbRating.Location = new Point(24, 80);
+            lbRating.Name = "lbRating";
+            lbRating.Size = new Size(55, 21);
+            lbRating.TabIndex = 39;
+            lbRating.Text = "Rating";
             // 
-            // starRatingControl1
+            // starRatingControl
             // 
-            starRatingControl1.BottomMargin = 2;
-            starRatingControl1.HoverColor = Color.Yellow;
-            starRatingControl1.LeftMargin = 2;
-            starRatingControl1.Location = new Point(105, 81);
-            starRatingControl1.Name = "starRatingControl1";
-            starRatingControl1.OutlineColor = Color.DimGray;
-            starRatingControl1.OutlineThickness = 2;
-            starRatingControl1.ReadOnly = true;
-            starRatingControl1.RightMargin = 2;
-            starRatingControl1.SelectedColor = Color.Gold;
-            starRatingControl1.SelectedStar = 4;
-            starRatingControl1.Size = new Size(120, 18);
-            starRatingControl1.StarCount = 5;
-            starRatingControl1.StarSpacing = 8;
-            starRatingControl1.TabIndex = 40;
-            starRatingControl1.Text = "starRatingControl1";
-            starRatingControl1.TopMargin = 2;
+            starRatingControl.BottomMargin = 2;
+            starRatingControl.HoverColor = Color.Yellow;
+            starRatingControl.LeftMargin = 2;
+            starRatingControl.Location = new Point(105, 81);
+            starRatingControl.Name = "starRatingControl";
+            starRatingControl.OutlineColor = Color.DimGray;
+            starRatingControl.OutlineThickness = 2;
+            starRatingControl.ReadOnly = true;
+            starRatingControl.RightMargin = 2;
+            starRatingControl.SelectedColor = Color.Gold;
+            starRatingControl.SelectedStar = 4;
+            starRatingControl.Size = new Size(120, 18);
+            starRatingControl.StarCount = 5;
+            starRatingControl.StarSpacing = 8;
+            starRatingControl.TabIndex = 40;
+            starRatingControl.Text = "starRatingControl1";
+            starRatingControl.TopMargin = 2;
             // 
-            // richTextBox1
+            // rtbSchedule
             // 
-            richTextBox1.Location = new Point(24, 319);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(344, 29);
-            richTextBox1.TabIndex = 35;
-            richTextBox1.Text = "";
+            rtbSchedule.Location = new Point(24, 319);
+            rtbSchedule.Name = "rtbSchedule";
+            rtbSchedule.ReadOnly = true;
+            rtbSchedule.Size = new Size(344, 29);
+            rtbSchedule.TabIndex = 35;
+            rtbSchedule.Text = "";
             // 
-            // label7
+            // lbSchedule
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(24, 295);
-            label7.Name = "label7";
-            label7.Size = new Size(73, 21);
-            label7.TabIndex = 34;
-            label7.Text = "Schedule";
+            lbSchedule.AutoSize = true;
+            lbSchedule.Location = new Point(24, 295);
+            lbSchedule.Name = "lbSchedule";
+            lbSchedule.Size = new Size(73, 21);
+            lbSchedule.TabIndex = 34;
+            lbSchedule.Text = "Schedule";
             // 
-            // dateTimePicker2
+            // dtpEndDate
             // 
-            dateTimePicker2.Location = new Point(208, 249);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(160, 29);
-            dateTimePicker2.TabIndex = 28;
+            dtpEndDate.Enabled = false;
+            dtpEndDate.Location = new Point(208, 249);
+            dtpEndDate.Name = "dtpEndDate";
+            dtpEndDate.Size = new Size(160, 29);
+            dtpEndDate.TabIndex = 28;
             // 
-            // label4
+            // lbEndDate
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(208, 225);
-            label4.Name = "label4";
-            label4.Size = new Size(65, 21);
-            label4.TabIndex = 27;
-            label4.Text = "Ends on";
+            lbEndDate.AutoSize = true;
+            lbEndDate.Location = new Point(208, 225);
+            lbEndDate.Name = "lbEndDate";
+            lbEndDate.Size = new Size(65, 21);
+            lbEndDate.TabIndex = 27;
+            lbEndDate.Text = "Ends on";
             // 
-            // dateTimePicker1
+            // dtpStartDate
             // 
-            dateTimePicker1.Location = new Point(24, 249);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(160, 29);
-            dateTimePicker1.TabIndex = 26;
+            dtpStartDate.Enabled = false;
+            dtpStartDate.Location = new Point(24, 249);
+            dtpStartDate.Name = "dtpStartDate";
+            dtpStartDate.Size = new Size(160, 29);
+            dtpStartDate.TabIndex = 26;
             // 
-            // label3
+            // lbStartDate
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(30, 225);
-            label3.Name = "label3";
-            label3.Size = new Size(71, 21);
-            label3.TabIndex = 25;
-            label3.Text = "Starts on";
+            lbStartDate.AutoSize = true;
+            lbStartDate.Location = new Point(30, 225);
+            lbStartDate.Name = "lbStartDate";
+            lbStartDate.Size = new Size(71, 21);
+            lbStartDate.TabIndex = 25;
+            lbStartDate.Text = "Starts on";
             // 
-            // textBox2
+            // txtCourseCode
             // 
-            textBox2.Location = new Point(208, 39);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(160, 29);
-            textBox2.TabIndex = 24;
+            txtCourseCode.Location = new Point(208, 39);
+            txtCourseCode.Name = "txtCourseCode";
+            txtCourseCode.ReadOnly = true;
+            txtCourseCode.Size = new Size(160, 29);
+            txtCourseCode.TabIndex = 24;
             // 
-            // label2
+            // lbCourseCode
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(208, 15);
-            label2.Name = "label2";
-            label2.Size = new Size(96, 21);
-            label2.TabIndex = 23;
-            label2.Text = "Course code";
+            lbCourseCode.AutoSize = true;
+            lbCourseCode.Location = new Point(208, 15);
+            lbCourseCode.Name = "lbCourseCode";
+            lbCourseCode.Size = new Size(96, 21);
+            lbCourseCode.TabIndex = 23;
+            lbCourseCode.Text = "Course code";
             // 
-            // label1
+            // lbProgramName
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(24, 15);
-            label1.Name = "label1";
-            label1.Size = new Size(71, 21);
-            label1.TabIndex = 22;
-            label1.Text = "Program";
+            lbProgramName.AutoSize = true;
+            lbProgramName.Location = new Point(24, 15);
+            lbProgramName.Name = "lbProgramName";
+            lbProgramName.Size = new Size(71, 21);
+            lbProgramName.TabIndex = 22;
+            lbProgramName.Text = "Program";
+            // 
+            // txtInstructorName
+            // 
+            txtInstructorName.Location = new Point(25, 389);
+            txtInstructorName.Name = "txtInstructorName";
+            txtInstructorName.ReadOnly = true;
+            txtInstructorName.Size = new Size(159, 29);
+            txtInstructorName.TabIndex = 52;
             // 
             // imageListGroups
             // 
@@ -384,13 +416,15 @@
             Margin = new Padding(4);
             Name = "frmEnrolledCourses";
             Text = "Enrolled Courses";
+            Load += frmEnrolledCourses_Load;
             mainSplitContainer.Panel1.ResumeLayout(false);
             mainSplitContainer.Panel2.ResumeLayout(false);
             mainSplitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)mainSplitContainer).EndInit();
             mainSplitContainer.ResumeLayout(false);
-            groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEnrolledCourses).EndInit();
+            grpFormActions.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             ResumeLayout(false);
         }
 
@@ -399,33 +433,34 @@
         private SplitContainer mainSplitContainer;
         private ImageList imageListGroups;
         private ImageList imageListSmall;
-        private RichTextBox richTextBox1;
-        private Label label7;
-        private DateTimePicker dateTimePicker2;
-        private Label label4;
-        private DateTimePicker dateTimePicker1;
-        private Label label3;
-        private TextBox textBox2;
-        private Label label2;
-        private Label label1;
-        private Label label9;
-        private Controls.StarRatingControl starRatingControl1;
-        private TextBox textBox1;
+        private RichTextBox rtbSchedule;
+        private Label lbSchedule;
+        private DateTimePicker dtpEndDate;
+        private Label lbEndDate;
+        private DateTimePicker dtpStartDate;
+        private Label lbStartDate;
+        private TextBox txtCourseCode;
+        private Label lbCourseCode;
+        private Label lbProgramName;
+        private Label lbRating;
+        private Controls.StarRatingControl starRatingControl;
+        private TextBox txtProgramName;
         private Label lbDescription;
-        private RichTextBox richTextBox2;
-        private Label label19;
-        private RichTextBox richTextBox3;
-        private Label label6;
-        private PictureBox pictureBox1;
-        private Label label5;
-        private ComboBox comboBox1;
-        private RichTextBox richTextBox4;
-        private ListView listView1;
+        private RichTextBox rtbDescription;
+        private Label lbInstructorExperience;
+        private RichTextBox rtblbInstructorExperience;
+        private Label lbInstructorSpecializations;
+        private PictureBox pictureBox;
+        private Label lbInstructor;
+        private RichTextBox rtbInstructorSpecializations;
+        private BindableListView lsvEnrolledCourses;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
-        private GroupBox groupBox1;
-        private Button button2;
-        private Button button1;
+        private GroupBox grpFormActions;
+        private Button btnUnenrol;
+        private Button btnChangeCourse;
+        private TextBox txtInstructorName;
+        private DataGridView dgvEnrolledCourses;
     }
 }

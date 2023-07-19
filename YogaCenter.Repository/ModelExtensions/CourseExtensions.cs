@@ -13,11 +13,12 @@ public static class CourseExtensions
              + course.CourseNumber.ToString("D3");
     }
 
-    public static string GetStatusName(this Course course, bool? admin = false)
+    public static int GetStatusCode(this Course course, bool? admin = false)
     {
         try
         {
             var subStatus = 0;
+            DateTime now = DateTime.Now.Date;
             if (admin == true)
             {
                 subStatus = course.InstructorId == null ? 1 : 2;
@@ -25,30 +26,33 @@ public static class CourseExtensions
 
             if (course.StartDate == null || course.EndDate == null)
             {
-                return StatusNames[0 + subStatus];
+                return 0 + subStatus;
             }
             if (course.RegistrationOpenDate == null || course.RegistrationCloseDate == null)
             {
-                return StatusNames[10 + subStatus];
+                if (now < course.StartDate?.Date)
+                    return 10 + subStatus;
+                else return 60 + subStatus;
             }
 
-            DateTime now = DateTime.Now;
-            if (now < course.RegistrationOpenDate) { return StatusNames[20 + subStatus]; }
-            else if (now <= course.RegistrationCloseDate) { return StatusNames[30 + subStatus]; }
-            else if (now < course.StartDate) { return StatusNames[40 + subStatus]; }
-            else if (now <= course.EndDate)
+            if (now < course.RegistrationOpenDate?.Date) { return 20 + subStatus; }
+            else if (now <= course.RegistrationCloseDate?.Date) { return 30 + subStatus; }
+            else if (now < course.StartDate?.Date) { return 40 + subStatus; }
+            else if (now <= course.EndDate?.Date)
             {
                 if (course.InstructorId != null)
                 {
-                    return StatusNames[50 + subStatus];
+                    return 50 + subStatus;
                 }
-                else { return StatusNames[60 + subStatus]; }
+                else { return 60 + subStatus; }
             }
-            else { return StatusNames[70 + subStatus]; }
+            else { return 70; }
         }
         catch (Exception)
         {
-            return StatusNames[-1];
+            return -1;
         }
     }
+
+    public static string GetStatusName(this Course course, bool? admin = false) => StatusNames[GetStatusCode(course, admin)];
 }

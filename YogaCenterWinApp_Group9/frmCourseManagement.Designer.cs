@@ -48,6 +48,7 @@
             txtschedulesearch = new TextBox();
             label15 = new Label();
             groupBox1 = new GroupBox();
+            btnRequests = new Button();
             btndelete = new Button();
             btnadd = new Button();
             dgvcourse = new DataGridView();
@@ -300,6 +301,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnRequests);
             groupBox1.Controls.Add(btndelete);
             groupBox1.Controls.Add(btnadd);
             groupBox1.Location = new Point(12, 524);
@@ -308,9 +310,19 @@
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             // 
+            // btnRequests
+            // 
+            btnRequests.Location = new Point(440, 40);
+            btnRequests.Name = "btnRequests";
+            btnRequests.Size = new Size(100, 40);
+            btnRequests.TabIndex = 3;
+            btnRequests.Text = "Requests";
+            btnRequests.UseVisualStyleBackColor = true;
+            btnRequests.Click += btnRequests_Click;
+            // 
             // btndelete
             // 
-            btndelete.Location = new Point(397, 41);
+            btndelete.Location = new Point(260, 40);
             btndelete.Name = "btndelete";
             btndelete.Size = new Size(100, 40);
             btndelete.TabIndex = 2;
@@ -320,7 +332,7 @@
             // 
             // btnadd
             // 
-            btnadd.Location = new Point(125, 41);
+            btnadd.Location = new Point(75, 40);
             btnadd.Name = "btnadd";
             btnadd.Size = new Size(100, 40);
             btnadd.TabIndex = 0;
@@ -625,5 +637,6 @@
         private NumericUpDown numericUpDown1;
         private TextBox txtstatus;
         private TextBox txtInstructorSearch;
+        private Button btnRequests;
     }
 }

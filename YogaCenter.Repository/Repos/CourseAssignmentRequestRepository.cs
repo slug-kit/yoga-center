@@ -1,4 +1,5 @@
-﻿using YogaCenter.Repository.DAL;
+﻿using System.Linq.Expressions;
+using YogaCenter.Repository.DAL;
 using YogaCenter.Repository.Models;
 
 namespace YogaCenter.Repository.Repos;
@@ -45,4 +46,33 @@ public class CourseAssignmentRequestRepository : ICourseAssignmentRequestReposit
 
     public void Update(CourseAssignmentRequest courseAssignmentRequest) => CourseAssignmentRequestDAO.Instance.Update(courseAssignmentRequest);
     public void Delete(int courseId, long instructorId) => CourseAssignmentRequestDAO.Instance.Delete(courseId, instructorId);
+
+    public IEnumerable<Course> GetCoursesByProgram(int programId) => CourseDAO.Instance.GetByProgram(programId);
+
+    public void AcceptRequest(CourseAssignmentRequest courseAssignmentRequest)
+    {
+        var instructorId = courseAssignmentRequest.InstructorId;
+        var courseId = courseAssignmentRequest.CourseId;
+
+        try
+        {
+            var course = CourseDAO.Instance.Get(courseId);
+            if (course != null)
+            {
+                course.InstructorId = instructorId;
+                CourseDAO.Instance.Update(course);
+
+                var requests = CourseAssignmentRequestDAO.Instance.GetByCourse(courseId);
+                foreach ( var request in requests )
+                {
+                    request.New = false;
+                    CourseAssignmentRequestDAO.Instance.Update(request);
+                }
+            }
+        }
+        catch
+        {
+            throw;
+        }
+    }
 }

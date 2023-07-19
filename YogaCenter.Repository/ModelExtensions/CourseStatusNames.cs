@@ -32,11 +32,13 @@ public static class CourseStatus
             { 41, "Registration Closed - Instructor Pending" },
             { 42, "Registration Closed - Instructor Assigned" },
 
-            { 50, "Course In Progress" },
+            { 50, "*** Course In Progress ***" },
+            { 51, "<YOU SHOULDN'T BE SEEING THIS>" },
+            { 52, "Course In Progress" },
             
             { 60, "Course On Hold" },
-            { 61, "Cannot Start - No Instructor" },
-            { 62, "<YOU SHOULD BE SEEING THIS>" },
+            { 61, "<CANNOT START> - No Instructor" },
+            { 62, "<CANCELLED> - Registration Issues" },
 
             { 70, "Course Finished" },
         };
