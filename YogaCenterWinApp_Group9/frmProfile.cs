@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Windows.Forms;
 using YogaCenter.Repository.DAL;
 using YogaCenter.Repository.Models;
 using YogaCenterWinApp_Group9.Utils;
@@ -134,6 +135,9 @@ public partial class frmProfile : Form
             .Parse += DataField_DetectChange!;
         mtbphonenumber.DataBindings.Add("Text", bindingSource, "Phone", true)
             .Parse += DataField_DetectChange!;
+        var imageBinding = new Binding(nameof(PictureBox.ImageLocation), bindingSource, nameof(Program.CurrentUser.Img),
+                true, DataSourceUpdateMode.Never);
+        pictureBox1.DataBindings.Add(imageBinding);
     }
 
     private void DataField_DetectChange(object sender, ConvertEventArgs e) => isModified = true;

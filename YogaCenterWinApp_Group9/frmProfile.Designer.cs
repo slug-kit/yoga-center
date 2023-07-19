@@ -42,7 +42,6 @@
             lbProfile = new Label();
             lbCourse = new Label();
             dgvCourse = new DataGridView();
-            chkInstructor = new CheckBox();
             dob = new DateTimePicker();
             txtgender = new TextBox();
             btnUpdate = new Button();
@@ -63,7 +62,7 @@
             // 
             pictureBox1.Location = new Point(10, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(125, 125);
+            pictureBox1.Size = new Size(157, 132);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -184,17 +183,6 @@
             dgvCourse.RowTemplate.Height = 33;
             dgvCourse.Size = new Size(351, 217);
             dgvCourse.TabIndex = 43;
-            // 
-            // chkInstructor
-            // 
-            chkInstructor.AutoSize = true;
-            chkInstructor.Location = new Point(442, 382);
-            chkInstructor.Name = "chkInstructor";
-            chkInstructor.Size = new Size(143, 25);
-            chkInstructor.TabIndex = 44;
-            chkInstructor.TabStop = false;
-            chkInstructor.Text = "I'm an instructor";
-            chkInstructor.UseVisualStyleBackColor = true;
             // 
             // dob
             // 
@@ -323,7 +311,6 @@
             Controls.Add(btnUpdate);
             Controls.Add(txtgender);
             Controls.Add(dob);
-            Controls.Add(chkInstructor);
             Controls.Add(dgvCourse);
             Controls.Add(lbCourse);
             Controls.Add(lbProfile);
@@ -366,7 +353,6 @@
         private Label lbProfile;
         private Label lbCourse;
         private DataGridView dgvCourse;
-        private CheckBox chkInstructor;
         private DateTimePicker dob;
         private TextBox txtgender;
         private Button btnUpdate;
