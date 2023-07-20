@@ -28,32 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lbDescription = new Label();
-            richTextBox2 = new RichTextBox();
             label9 = new Label();
             starRatingControl1 = new Controls.StarRatingControl();
+            richTextBox2 = new RichTextBox();
+            lbDescription = new Label();
             SuspendLayout();
-            // 
-            // lbDescription
-            // 
-            lbDescription.AutoSize = true;
-            lbDescription.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lbDescription.Location = new Point(25, 90);
-            lbDescription.Margin = new Padding(4, 0, 4, 0);
-            lbDescription.Name = "lbDescription";
-            lbDescription.Size = new Size(74, 25);
-            lbDescription.TabIndex = 47;
-            lbDescription.Text = "Review";
-            // 
-            // richTextBox2
-            // 
-            richTextBox2.Location = new Point(13, 126);
-            richTextBox2.Margin = new Padding(4, 4, 4, 4);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.ScrollBars = RichTextBoxScrollBars.ForcedVertical;
-            richTextBox2.Size = new Size(358, 189);
-            richTextBox2.TabIndex = 46;
-            richTextBox2.Text = "";
             // 
             // label9
             // 
@@ -72,7 +51,7 @@
             starRatingControl1.HoverColor = Color.Yellow;
             starRatingControl1.LeftMargin = 2;
             starRatingControl1.Location = new Point(168, 30);
-            starRatingControl1.Margin = new Padding(4, 4, 4, 4);
+            starRatingControl1.Margin = new Padding(4);
             starRatingControl1.Name = "starRatingControl1";
             starRatingControl1.OutlineColor = Color.DimGray;
             starRatingControl1.OutlineThickness = 2;
@@ -87,6 +66,27 @@
             starRatingControl1.Text = "starRatingControl1";
             starRatingControl1.TopMargin = 2;
             // 
+            // richTextBox2
+            // 
+            richTextBox2.Location = new Point(13, 126);
+            richTextBox2.Margin = new Padding(4);
+            richTextBox2.Name = "richTextBox2";
+            richTextBox2.ScrollBars = RichTextBoxScrollBars.ForcedVertical;
+            richTextBox2.Size = new Size(358, 189);
+            richTextBox2.TabIndex = 46;
+            richTextBox2.Text = "";
+            // 
+            // lbDescription
+            // 
+            lbDescription.AutoSize = true;
+            lbDescription.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lbDescription.Location = new Point(25, 90);
+            lbDescription.Margin = new Padding(4, 0, 4, 0);
+            lbDescription.Name = "lbDescription";
+            lbDescription.Size = new Size(74, 25);
+            lbDescription.TabIndex = 47;
+            lbDescription.Text = "Review";
+            // 
             // frmReviewProgram
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
@@ -97,7 +97,7 @@
             Controls.Add(label9);
             Controls.Add(starRatingControl1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "frmReviewProgram";
             Text = "frmReviewProgram";
             ResumeLayout(false);
@@ -105,10 +105,9 @@
         }
 
         #endregion
-
-        private Label lbDescription;
-        private RichTextBox richTextBox2;
         private Label label9;
         private Controls.StarRatingControl starRatingControl1;
+        private RichTextBox richTextBox2;
+        private Label lbDescription;
     }
 }

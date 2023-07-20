@@ -2,7 +2,6 @@
 using YogaCenter.Repository.ModelExtensions;
 using YogaCenter.Repository.Models;
 using YogaCenter.Repository.Repos;
-using YogaCenter.Repository.ModelExtensions;
 
 namespace YogaCenterWinApp_Group9
 {
@@ -14,7 +13,7 @@ namespace YogaCenterWinApp_Group9
         private const byte LEARNER_ROLE = 2;
         private const byte INSTRUCTOR_ROLE = 3;
 
-        private readonly ICourseRegisterRepository courseRegisterRepository = new CourseRegisterRepository();
+        private readonly ICourseRosterRepository courseRosterRepository = new CourseRosterRepository();
         private readonly ICourseAssignmentRequestRepository courseAssignmentRequestRepository = new CourseAssignmentRequestRepository();
 
         private User _user = new()
@@ -49,7 +48,7 @@ namespace YogaCenterWinApp_Group9
             dataGridView1.Columns.Remove("Inactive");
             dataGridView1.Columns.Remove("Program");
             dataGridView1.Columns.Remove("CourseAssignmentRequests");
-            dataGridView1.Columns.Remove("CourseRegisters");
+            dataGridView1.Columns.Remove("CourseRosters");
             dataGridView1.Columns.Remove("Lessons");
             dataGridView1.Columns.Remove("Instructor");
             dataGridView1.Columns.Remove("InstructorId");
@@ -147,9 +146,9 @@ namespace YogaCenterWinApp_Group9
                 {
                     var course = GetCourseObject();
                     var fee = course.Program.Fee.HasValue ? course.Program.Fee.Value : 0;
-                    courseRegisterRepository.Add(course.Id, _user.Id, fee);
+                    courseRosterRepository.Add(course.Id, _user.Id, fee);
 
-                    MessageBox.Show($"You have successfully enrolled in Course {course.GetCourseCode()}",
+                    MessageBox.Show($"You have successfully enrolled in Course {course.GetCourseCode()}.",
                         "Enrollment Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -173,7 +172,7 @@ namespace YogaCenterWinApp_Group9
                         InstructorId = _user.Id,
                         CourseId = course.Id,
                     });
-                    MessageBox.Show($"You have successfully submitted an assignment request for Course {course.GetCourseCode()}",
+                    MessageBox.Show($"You have successfully submitted an assignment request for Course {course.GetCourseCode()}.",
                         "Request Submission Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

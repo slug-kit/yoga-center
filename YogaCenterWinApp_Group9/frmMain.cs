@@ -1,5 +1,4 @@
-﻿using YogaCenter.Repository.Repos;
-using YogaCenterWinApp_Group9.Utils;
+﻿using YogaCenterWinApp_Group9.Utils;
 using YogaCenterWinApp_Group9.Utils.CustomEventArgs;
 using YogaCenterWinApp_Group9.Utils.CustomEventHandlers;
 using static YogaCenterWinApp_Group9.Utils.Extensions;
@@ -159,9 +158,6 @@ public partial class frmMain : Form
             frmProgramList frmProgramList = new() { AdminMode = adminMode };
             frmProgramList.ConfigureMdi(this);
             frmProgramList.Show();
-            //ICourseRepository courseRepo = new CourseRepository();
-            //frmCourseRegister frmCourseRegister = new() { Course = courseRepo.GetCourse(1)! };
-            //frmCourseRegister.ShowDialog();
         }
     }
 
@@ -213,7 +209,7 @@ public partial class frmMain : Form
     {
         if (authenticated)
         {
-            frmCalendar frmDailyScheduleManagement = new();
+            frmDailySchedule frmDailyScheduleManagement = new();
             frmDailyScheduleManagement.ConfigureMdi(this);
             frmDailyScheduleManagement.Show();
         }
@@ -230,4 +226,17 @@ public partial class frmMain : Form
     }
 
     #endregion
+
+    private void toolStripButtonCloseForm_Click(object sender, EventArgs e)
+    {
+        var activeForm = ActiveMdiChild;
+        if (activeForm != null)
+        {
+            if (activeForm is not frmLogin and not frmHome)
+            {
+                activeForm.Close();
+                activeForm.Dispose();
+            }
+        }
+    }
 }

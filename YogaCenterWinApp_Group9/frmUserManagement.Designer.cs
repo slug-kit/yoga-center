@@ -79,7 +79,7 @@
             label2 = new Label();
             txtusername = new TextBox();
             label1 = new Label();
-            pictureBox1 = new PictureBox();
+            pictureBox = new PictureBox();
             lbgoal = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer).BeginInit();
             splitContainer.Panel1.SuspendLayout();
@@ -88,7 +88,7 @@
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvuser).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             SuspendLayout();
             // 
             // splitContainer
@@ -131,7 +131,7 @@
             splitContainer.Panel2.Controls.Add(label2);
             splitContainer.Panel2.Controls.Add(txtusername);
             splitContainer.Panel2.Controls.Add(label1);
-            splitContainer.Panel2.Controls.Add(pictureBox1);
+            splitContainer.Panel2.Controls.Add(pictureBox);
             splitContainer.Panel2.Controls.Add(lbgoal);
             splitContainer.Size = new Size(1029, 630);
             splitContainer.SplitterDistance = 584;
@@ -372,9 +372,13 @@
             // 
             // dgvuser
             // 
+            dgvuser.AllowUserToAddRows = false;
+            dgvuser.AllowUserToDeleteRows = false;
+            dgvuser.AllowUserToResizeRows = false;
             dgvuser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvuser.Location = new Point(11, 289);
             dgvuser.Name = "dgvuser";
+            dgvuser.ReadOnly = true;
             dgvuser.RowHeadersWidth = 51;
             dgvuser.RowTemplate.Height = 25;
             dgvuser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -579,13 +583,14 @@
             label1.TabIndex = 1;
             label1.Text = "Username";
             // 
-            // pictureBox1
+            // pictureBox
             // 
-            pictureBox1.Location = new Point(34, 28);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(125, 144);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            pictureBox.Location = new Point(27, 26);
+            pictureBox.Name = "pictureBox";
+            pictureBox.Size = new Size(105, 140);
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.TabIndex = 0;
+            pictureBox.TabStop = false;
             // 
             // lbgoal
             // 
@@ -616,7 +621,7 @@
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvuser).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             ResumeLayout(false);
         }
 
@@ -627,7 +632,7 @@
         private Label label2;
         private TextBox txtusername;
         private Label label1;
-        private PictureBox pictureBox1;
+        private PictureBox pictureBox;
         private Label label8;
         private TextBox txtphonenumber;
         private Label label7;

@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome));
-            pictureBox1 = new PictureBox();
+            pictureBox = new PictureBox();
             lbWelcome = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
-            pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(72, 143);
-            pictureBox1.Margin = new Padding(4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(998, 596);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            pictureBox.Anchor = AnchorStyles.None;
+            pictureBox.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox.Location = new Point(72, 143);
+            pictureBox.Margin = new Padding(4);
+            pictureBox.Name = "pictureBox1";
+            pictureBox.Size = new Size(998, 596);
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.TabIndex = 0;
+            pictureBox.TabStop = false;
             // 
             // lbWelcome
             // 
@@ -64,19 +64,19 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1137, 785);
             Controls.Add(lbWelcome);
-            Controls.Add(pictureBox1);
+            Controls.Add(pictureBox);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
             Name = "frmHome";
             Text = "Welcome";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private PictureBox pictureBox1;
+        private PictureBox pictureBox;
         private Label lbWelcome;
     }
 }

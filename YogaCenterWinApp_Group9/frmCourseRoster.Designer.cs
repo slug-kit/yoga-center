@@ -2,7 +2,7 @@
 
 namespace YogaCenterWinApp_Group9
 {
-    partial class frmCourseRegister
+    partial class frmCourseRoster
     {
         /// <summary>
         /// Required designer variable.
@@ -37,7 +37,6 @@ namespace YogaCenterWinApp_Group9
             ListViewItem listViewItem10 = new ListViewItem(new string[] { "Bob Thing", "19/20" }, -1);
             lsvLearners = new BindableListView();
             columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
             btnSave = new Button();
             splitContainer = new SplitContainer();
             grbListActions = new GroupBox();
@@ -59,7 +58,7 @@ namespace YogaCenterWinApp_Group9
             lbCode = new Label();
             txtUsername = new TextBox();
             lbUsername = new Label();
-            picImg = new PictureBox();
+            pictureBox = new PictureBox();
             lbStudyGoals = new Label();
             rtbStudyGoals = new RichTextBox();
             grbFormActions = new GroupBox();
@@ -70,13 +69,13 @@ namespace YogaCenterWinApp_Group9
             splitContainer.Panel2.SuspendLayout();
             splitContainer.SuspendLayout();
             grbListActions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)picImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             grbFormActions.SuspendLayout();
             SuspendLayout();
             // 
             // lsvLearners
             // 
-            lsvLearners.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
+            lsvLearners.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
             lsvLearners.DataMember = null;
             lsvLearners.DataSource = null;
             lsvLearners.Items.AddRange(new ListViewItem[] { listViewItem6, listViewItem7, listViewItem8, listViewItem9, listViewItem10 });
@@ -92,11 +91,6 @@ namespace YogaCenterWinApp_Group9
             // 
             columnHeader1.Text = "Learner";
             columnHeader1.Width = 160;
-            // 
-            // columnHeader2
-            // 
-            columnHeader2.Text = "Attendance";
-            columnHeader2.Width = 90;
             // 
             // btnSave
             // 
@@ -136,7 +130,7 @@ namespace YogaCenterWinApp_Group9
             splitContainer.Panel2.Controls.Add(lbCode);
             splitContainer.Panel2.Controls.Add(txtUsername);
             splitContainer.Panel2.Controls.Add(lbUsername);
-            splitContainer.Panel2.Controls.Add(picImg);
+            splitContainer.Panel2.Controls.Add(pictureBox);
             splitContainer.Panel2.Controls.Add(lbStudyGoals);
             splitContainer.Panel2.Controls.Add(rtbStudyGoals);
             splitContainer.Size = new Size(941, 570);
@@ -308,13 +302,14 @@ namespace YogaCenterWinApp_Group9
             lbUsername.TabIndex = 29;
             lbUsername.Text = "Username";
             // 
-            // picImg
+            // pictureBox
             // 
-            picImg.Location = new Point(31, 14);
-            picImg.Name = "picImg";
-            picImg.Size = new Size(90, 120);
-            picImg.TabIndex = 28;
-            picImg.TabStop = false;
+            pictureBox.Location = new Point(31, 14);
+            pictureBox.Name = "pictureBox";
+            pictureBox.Size = new Size(90, 120);
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.TabIndex = 28;
+            pictureBox.TabStop = false;
             // 
             // lbStudyGoals
             // 
@@ -365,7 +360,7 @@ namespace YogaCenterWinApp_Group9
             btnReset.Text = "Reset";
             btnReset.UseVisualStyleBackColor = true;
             // 
-            // frmCourseRegister
+            // frmCourseRoster
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -374,16 +369,16 @@ namespace YogaCenterWinApp_Group9
             Controls.Add(splitContainer);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
-            Name = "frmCourseRegister";
-            Text = "Course Register";
-            Load += frmCourseRegister_Load;
+            Name = "frmCourseRoster";
+            Text = "Course Roster";
+            Load += frmCourseRoster_Load;
             splitContainer.Panel1.ResumeLayout(false);
             splitContainer.Panel2.ResumeLayout(false);
             splitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer).EndInit();
             splitContainer.ResumeLayout(false);
             grbListActions.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)picImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             grbFormActions.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -392,25 +387,22 @@ namespace YogaCenterWinApp_Group9
 
         private BindableListView lsvLearners;
         private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
         private Button btnSave;
         private SplitContainer splitContainer;
         private Label lbRole;
         private TextBox txtEmail;
         private Label lbEmail;
-        private ComboBox comboBox1;
         private Label lbGender;
         private TextBox txtPhone;
         private Label lbPhone;
         private DateTimePicker dtpDob;
         private Label lbDob;
-        private TextBox textBox3;
         private Label lbFullname;
         private TextBox txtCode;
         private Label lbCode;
         private TextBox txtUsername;
         private Label lbUsername;
-        private PictureBox picImg;
+        private PictureBox pictureBox;
         private Label lbStudyGoals;
         private RichTextBox rtbStudyGoals;
         private GroupBox grbListActions;

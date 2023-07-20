@@ -1,6 +1,6 @@
 ﻿namespace YogaCenterWinApp_Group9
 {
-    partial class frmCalendar
+    partial class frmDailySchedule
     {
         /// <summary>
         /// Required designer variable.

@@ -3,12 +3,12 @@ using YogaCenter.Repository.Models;
 
 namespace YogaCenter.Repository.Repos;
 
-public class CourseRegisterRepository : ICourseRegisterRepository
+public class CourseRosterRepository : ICourseRosterRepository
 {
-    public IEnumerable<CourseRegister> GetAllCourseRegisterEntries() => CourseRegisterDAO.Instance.GetAll();
-    public IEnumerable<CourseRegister> GetCourseRegisterEntriesByCourse(int courseId) => CourseRegisterDAO.Instance.GetByCourse(courseId);
-    public IEnumerable<CourseRegister> GetCourseRegisterEntriesByLearner(long learnerId) => CourseRegisterDAO.Instance.GetByLearner(learnerId);
-    public CourseRegister? GetCourseRegisterEntry(int courseId, long learnerId) => CourseRegisterDAO.Instance.Get(courseId, learnerId);
+    public IEnumerable<CourseRoster> GetAllCourseRosters() => CourseRosterDAO.Instance.GetAll();
+    public IEnumerable<CourseRoster> GetCourseRosterByCourse(int courseId) => CourseRosterDAO.Instance.GetByCourse(courseId);
+    public IEnumerable<CourseRoster> GetCourseRosterEntriesByLearner(long learnerId) => CourseRosterDAO.Instance.GetByLearner(learnerId);
+    public CourseRoster? GetCourseRosterEntry(int courseId, long learnerId) => CourseRosterDAO.Instance.Get(courseId, learnerId);
 
 
     public void Add(int courseId, long learnerId, decimal tuitionFee)
@@ -22,10 +22,10 @@ public class CourseRegisterRepository : ICourseRegisterRepository
 
         var course = CourseDAO.Instance.Get(courseId)
             ?? throw new ArgumentException("Course does not exist.");
-        if (CourseRegisterDAO.Instance.Get(courseId, learnerId) != null)
+        if (CourseRosterDAO.Instance.Get(courseId, learnerId) != null)
             throw new ArgumentException("Learner is already enrolled in target Course.");
 
-        CourseRegisterDAO.Instance.Add(new CourseRegister()
+        CourseRosterDAO.Instance.Add(new CourseRoster()
         {
             CourseId = courseId,
             LearnerId = learnerId,
@@ -45,10 +45,10 @@ public class CourseRegisterRepository : ICourseRegisterRepository
 
         _ = CourseDAO.Instance.Get(courseId)
             ?? throw new ArgumentException("Course does not exist.");
-        _ = CourseRegisterDAO.Instance.Get(courseId, learnerId)
+        _ = CourseRosterDAO.Instance.Get(courseId, learnerId)
             ?? throw new ArgumentException("Learner was not enrolled in target Course.");
 
-        CourseRegisterDAO.Instance.Delete(courseId, learnerId);
+        CourseRosterDAO.Instance.Delete(courseId, learnerId);
     }
 
     public void ChangeCourse(int oldCourseId, long learnerId, int newCourseId, decimal tuitionFee)

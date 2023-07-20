@@ -42,7 +42,7 @@
             dateTimePickerCourseEnd = new DateTimePicker();
             dateTimePickerCourseStart = new DateTimePicker();
             btnEnrol = new Button();
-            pictureBox1 = new PictureBox();
+            pictureBox = new PictureBox();
             rtbschedule = new RichTextBox();
             lbSchedule = new Label();
             dataGridView1 = new DataGridView();
@@ -56,7 +56,7 @@
             txtStatusfilter = new TextBox();
             label2 = new Label();
             btnRequestAssignment = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -205,14 +205,14 @@
             btnEnrol.UseVisualStyleBackColor = true;
             btnEnrol.Click += btnEnrol_Click;
             // 
-            // pictureBox1
+            // pictureBox
             // 
-            pictureBox1.Location = new Point(377, 317);
-            pictureBox1.Margin = new Padding(4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(96, 139);
-            pictureBox1.TabIndex = 24;
-            pictureBox1.TabStop = false;
+            pictureBox.Location = new Point(377, 317);
+            pictureBox.Margin = new Padding(4);
+            pictureBox.Name = "pictureBox";
+            pictureBox.Size = new Size(96, 139);
+            pictureBox.TabIndex = 24;
+            pictureBox.TabStop = false;
             // 
             // rtbschedule
             // 
@@ -243,6 +243,7 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(120, 129);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(835, 181);
@@ -312,7 +313,7 @@
             txtStatusfilter.Location = new Point(908, 53);
             txtStatusfilter.Name = "txtStatusfilter";
             txtStatusfilter.ReadOnly = true;
-            txtStatusfilter.Size = new Size(100, 29);
+            txtStatusfilter.Size = new Size(100, 23);
             txtStatusfilter.TabIndex = 34;
             // 
             // label2
@@ -350,7 +351,7 @@
             Controls.Add(dataGridView1);
             Controls.Add(lbSchedule);
             Controls.Add(rtbschedule);
-            Controls.Add(pictureBox1);
+            Controls.Add(pictureBox);
             Controls.Add(dateTimePickerCourseStart);
             Controls.Add(dateTimePickerCourseEnd);
             Controls.Add(dateTimePickerAvailableTo);
@@ -371,7 +372,7 @@
             Name = "frmCourseList";
             StartPosition = FormStartPosition.CenterParent;
             Load += frmCourseList_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -380,7 +381,6 @@
         #endregion
 
         private Label lbCourseNum;
-        private Button btBack;
         private Label lbInstructor;
         private Label lbProgram;
         private TextBox txtProgramId;
@@ -394,7 +394,7 @@
         private DateTimePicker dateTimePickerCourseEnd;
         private DateTimePicker dateTimePickerCourseStart;
         private Button btnEnrol;
-        private PictureBox pictureBox1;
+        private PictureBox pictureBox;
         private RichTextBox rtbschedule;
         private Label lbSchedule;
         private DataGridView dataGridView1;

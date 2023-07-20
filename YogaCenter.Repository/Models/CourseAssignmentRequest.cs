@@ -7,7 +7,7 @@ namespace YogaCenter.Repository.Models
     {
         public int CourseId { get; set; }
         public long InstructorId { get; set; }
-        public bool? New { get; set; }
+        public bool? IsNew { get; set; }
 
         public virtual Course Course { get; set; } = null!;
         public virtual User Instructor { get; set; } = null!;

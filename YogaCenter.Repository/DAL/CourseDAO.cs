@@ -143,12 +143,12 @@ public class CourseDAO
 
         if (!string.IsNullOrEmpty(schedule))
         {
-            query = query.Where(c => c.Schedule.Contains(schedule));
+            query = query.Where(c => c.Schedule != null && c.Schedule.Contains(schedule));
         }
 
         if (!string.IsNullOrEmpty(instructorName))
         {
-            query = query.Where(c => c.Instructor.Fullname.Contains(instructorName));
+            query = query.Where(c => c.Instructor != null && c.Instructor.Fullname.Contains(instructorName));
         }
 
         if (startDate.HasValue)

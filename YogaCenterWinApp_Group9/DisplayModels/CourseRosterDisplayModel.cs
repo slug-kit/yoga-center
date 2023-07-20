@@ -2,7 +2,7 @@
 using YogaCenter.Repository.Models;
 
 namespace YogaCenterWinApp_Group9.DisplayModels;
-internal class CourseRegisterDisplayModel : CourseRegister
+internal class CourseRosterDisplayModel : CourseRoster
 {
     public string CourseCode { get => Course.GetCourseCode(); }
 

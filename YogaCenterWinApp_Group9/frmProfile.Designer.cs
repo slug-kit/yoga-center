@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
+            pictureBox = new PictureBox();
             txtEmail = new TextBox();
             mtbphonenumber = new MaskedTextBox();
             txtFullname = new TextBox();
@@ -54,18 +54,19 @@
             lbStudyGoal = new Label();
             lbSpecialization = new Label();
             lbExperience = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCourse).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
+            // pictureBox
             // 
-            pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.Location = new Point(10, 12);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(157, 132);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            pictureBox.Anchor = AnchorStyles.None;
+            pictureBox.Location = new Point(10, 12);
+            pictureBox.Name = "pictureBox";
+            pictureBox.Size = new Size(105, 140);
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.TabIndex = 0;
+            pictureBox.TabStop = false;
             // 
             // txtEmail
             // 
@@ -181,20 +182,25 @@
             lbCourse.Anchor = AnchorStyles.None;
             lbCourse.AutoSize = true;
             lbCourse.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            lbCourse.Location = new Point(540, 112);
+            lbCourse.Location = new Point(564, 110);
             lbCourse.Name = "lbCourse";
-            lbCourse.Size = new Size(113, 25);
+            lbCourse.Size = new Size(109, 25);
             lbCourse.TabIndex = 42;
-            lbCourse.Text = "In Progress";
+            lbCourse.Text = "Completed";
             // 
             // dgvCourse
             // 
+            dgvCourse.AllowUserToAddRows = false;
+            dgvCourse.AllowUserToDeleteRows = false;
+            dgvCourse.AllowUserToResizeRows = false;
             dgvCourse.Anchor = AnchorStyles.None;
             dgvCourse.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCourse.Location = new Point(442, 150);
             dgvCourse.Name = "dgvCourse";
+            dgvCourse.ReadOnly = true;
             dgvCourse.RowHeadersWidth = 62;
             dgvCourse.RowTemplate.Height = 33;
+            dgvCourse.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCourse.Size = new Size(351, 217);
             dgvCourse.TabIndex = 43;
             // 
@@ -263,6 +269,7 @@
             txtpassword.Anchor = AnchorStyles.None;
             txtpassword.Location = new Point(147, 223);
             txtpassword.Name = "txtpassword";
+            txtpassword.ReadOnly = true;
             txtpassword.Size = new Size(261, 29);
             txtpassword.TabIndex = 50;
             // 
@@ -281,6 +288,7 @@
             txtGoalOrExper.Anchor = AnchorStyles.None;
             txtGoalOrExper.Location = new Point(147, 409);
             txtGoalOrExper.Name = "txtGoalOrExper";
+            txtGoalOrExper.ReadOnly = true;
             txtGoalOrExper.Size = new Size(261, 29);
             txtGoalOrExper.TabIndex = 52;
             // 
@@ -289,6 +297,7 @@
             txtSpecialization.Anchor = AnchorStyles.None;
             txtSpecialization.Location = new Point(147, 444);
             txtSpecialization.Name = "txtSpecialization";
+            txtSpecialization.ReadOnly = true;
             txtSpecialization.Size = new Size(261, 29);
             txtSpecialization.TabIndex = 53;
             // 
@@ -350,14 +359,14 @@
             Controls.Add(lbGender);
             Controls.Add(lbFullname);
             Controls.Add(lbUsername);
-            Controls.Add(pictureBox1);
+            Controls.Add(pictureBox);
             Controls.Add(btnSave);
             Controls.Add(btnCancel);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "frmProfile";
             Text = "frmProfile";
             Load += frmProfile_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvCourse).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -365,7 +374,7 @@
 
         #endregion
 
-        private PictureBox pictureBox1;
+        private PictureBox pictureBox;
         private TextBox txtEmail;
         private MaskedTextBox mtbphonenumber;
         private TextBox txtFullname;

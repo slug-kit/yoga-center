@@ -50,7 +50,7 @@
             toolStripSeparator2 = new ToolStripSeparator();
             userManagementToolStripMenuItem = new ToolStripMenuItem();
             mainTool = new ToolStrip();
-            toolStripButton1 = new ToolStripButton();
+            toolStripButtonCloseForm = new ToolStripButton();
             mainStatus.SuspendLayout();
             mainMenu.SuspendLayout();
             mainTool.SuspendLayout();
@@ -215,7 +215,7 @@
             // mainTool
             // 
             mainTool.GripStyle = ToolStripGripStyle.Hidden;
-            mainTool.Items.AddRange(new ToolStripItem[] { toolStripButton1 });
+            mainTool.Items.AddRange(new ToolStripItem[] { toolStripButtonCloseForm });
             mainTool.Location = new Point(0, 25);
             mainTool.Name = "mainTool";
             mainTool.Padding = new Padding(12, 2, 1, 2);
@@ -223,14 +223,15 @@
             mainTool.Size = new Size(1334, 27);
             mainTool.TabIndex = 1;
             // 
-            // toolStripButton1
+            // toolStripButtonCloseForm
             // 
-            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
-            toolStripButton1.ImageTransparentColor = Color.Magenta;
-            toolStripButton1.Name = "toolStripButton1";
-            toolStripButton1.Size = new Size(23, 20);
-            toolStripButton1.Text = "toolStripButton1";
+            toolStripButtonCloseForm.Alignment = ToolStripItemAlignment.Right;
+            toolStripButtonCloseForm.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButtonCloseForm.Image = (Image)resources.GetObject("toolStripButtonCloseForm.Image");
+            toolStripButtonCloseForm.ImageTransparentColor = Color.Magenta;
+            toolStripButtonCloseForm.Name = "toolStripButtonCloseForm";
+            toolStripButtonCloseForm.Size = new Size(23, 20);
+            toolStripButtonCloseForm.Click += toolStripButtonCloseForm_Click;
             // 
             // frmMain
             // 
@@ -269,7 +270,6 @@
         private ToolStripMenuItem logoutToolStripMenuItem;
         private ToolStripMenuItem navigationToolStripMenuItem;
         private ToolStrip mainTool;
-        private ToolStripButton toolStripButton1;
         private ToolStripMenuItem switchFormControlToolStripMenuItem;
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripMenuItem loginToolStripMenuItem;
@@ -282,5 +282,6 @@
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem userManagementToolStripMenuItem;
         private ToolStripMenuItem dailyScheduleManagementToolStripMenuItem;
+        private ToolStripButton toolStripButtonCloseForm;
     }
 }

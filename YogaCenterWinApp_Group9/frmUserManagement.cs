@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
 using YogaCenter.Repository.Models;
-using YogaCenter.Repository.Repos;
-using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace YogaCenterWinApp_Group9;
 
 public partial class frmUserManagement : Form
 {
+    private const string DEFAULT_IMG_LOCATION = ".\\Images\\YogaIcon.jpg";
+
     IUserRepository userRepository = new UserRepository();
     BindingSource source = new BindingSource();
 
@@ -56,9 +48,10 @@ public partial class frmUserManagement : Form
             dob.DataBindings.Add("Text", source, "Dob");
             rtbSpecialization.DataBindings.Add("Text", source, "Specializations");
 
-            var imageBinding = new Binding(nameof(PictureBox.ImageLocation), source, nameof(Program.CurrentUser.Img),
+            var imageBinding = new Binding(nameof(PictureBox.ImageLocation), source, nameof(User.Img),
                 true, DataSourceUpdateMode.Never);
-            pictureBox1.DataBindings.Add(imageBinding);
+            imageBinding.Format += EmptyImageLocationToDefaultImage;
+            pictureBox.DataBindings.Add(imageBinding);
 
             dgvuser.DataSource = null;
             dgvuser.DataSource = source;
@@ -70,7 +63,14 @@ public partial class frmUserManagement : Form
             throw;
         }
     }
-    private void source_CurrentChanged(object sender, EventArgs e)
+
+    private void EmptyImageLocationToDefaultImage(object? sender, ConvertEventArgs cevent)
+    {
+        if (cevent.DesiredType != typeof(string)) return;
+        cevent.Value ??= DEFAULT_IMG_LOCATION;
+    }
+
+    private void source_CurrentChanged(object? sender, EventArgs e)
     {
         // Update the visibility of the labels whenever the selected user changes
         User? selectedUser = source.Current as User;
@@ -103,7 +103,7 @@ public partial class frmUserManagement : Form
             rtbGoalOrExperience.Text = ""; // If no user selected, clear the text box
         }
     }
-    private void ShowGoalOrExperience(string textToShow)
+    private void ShowGoalOrExperience(string? textToShow)
     {
         rtbGoalOrExperience.Text = textToShow ?? ""; // Show the provided text or an empty string if null
     }
@@ -253,9 +253,9 @@ public partial class frmUserManagement : Form
         var filteredUsers = userList
             .Where(user =>
                 (string.IsNullOrEmpty(usernameSearch) || user.Username.Contains(usernameSearch)) &&
-                (string.IsNullOrEmpty(phoneNumberSearch) || user.Phone.Contains(phoneNumberSearch)) &&
-                (string.IsNullOrEmpty(memberCodeSearch) || user.Code.Contains(memberCodeSearch)) &&
-                (string.IsNullOrEmpty(emailSearch) || user.Email.Contains(emailSearch)) &&
+                (string.IsNullOrEmpty(phoneNumberSearch) || user.Phone != null && user.Phone.Contains(phoneNumberSearch)) &&
+                (string.IsNullOrEmpty(memberCodeSearch) || user.Code != null && user.Code.Contains(memberCodeSearch)) &&
+                (string.IsNullOrEmpty(emailSearch) || user.Email != null && user.Email.Contains(emailSearch)) &&
                 (string.IsNullOrEmpty(fullnameSearch) || user.Fullname.Contains(fullnameSearch)) &&
                 (string.IsNullOrEmpty(roleIdSearch) || (user.RoleId == byte.Parse(roleIdSearch))) && // Tìm kiếm theo RoleId
                 (string.IsNullOrEmpty(genderSearch) || (user.Gender == byte.Parse(genderSearch))) &&

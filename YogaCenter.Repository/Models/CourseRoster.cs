@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace YogaCenter.Repository.Models
 {
-    public partial class CourseRegister
+    public partial class CourseRoster
     {
         public int CourseId { get; set; }
         public long LearnerId { get; set; }

@@ -36,10 +36,10 @@ public class UserDAO
         return db.Users
             .Where(u => !u.Inactive)
             .Include(u => u.Role)
-            .Include(u => u.Attendances)
+            .Include(u => u.LessonSchedules)
             .Include(u => u.CourseAssignmentRequests)
             .Include(u => u.CoursesAssigned)
-            .Include(u => u.CourseRegisters)
+            .Include(u => u.CourseRosters)
             .Include(u => u.Programs)
             .Where(selector)
             .ToList();
@@ -60,10 +60,10 @@ public class UserDAO
         return db.Users
             .Where(u => !u.Inactive)
             .Include(u => u.Role)
-            .Include(u => u.Attendances)
+            .Include(u => u.LessonSchedules)
             .Include (u => u.CourseAssignmentRequests)
             .Include(u => u.CoursesAssigned)
-            .Include(u => u.CourseRegisters)
+            .Include(u => u.CourseRosters)
             .Include(u => u.Programs)
             .Where(selector)
             .FirstOrDefault(u => u.Id == id);
@@ -91,14 +91,14 @@ public class UserDAO
     //{
     //    using var db = new YogaCenterContext();
     //    var user = db.Users
-    //        .Include(u => u.CourseRegisters)
+    //        .Include(u => u.CourseRosters)
     //        .FirstOrDefault(u => u.Id == userId);
     //    if (user != null)
     //    {
     //        var course = db.Courses.SingleOrDefault(c => c.Id == courseId);
     //        if (course != null)
     //        {
-    //            user.CourseRegisters.Add(course);
+    //            user.CourseRosters.Add(course);
     //            db.Users.Update(user);
     //            db.SaveChanges();
     //        }
@@ -109,14 +109,14 @@ public class UserDAO
     //{
     //    using var db = new YogaCenterContext();
     //    var user = db.Users
-    //        .Include(u => u.CourseRegisters)
+    //        .Include(u => u.CourseRosters)
     //        .FirstOrDefault(u => u.Id == userId);
     //    if (user != null)
     //    {
-    //        var course = user.CourseRegisters.SingleOrDefault(c => c.Id == courseId);
+    //        var course = user.CourseRosters.SingleOrDefault(c => c.Id == courseId);
     //        if (course != null)
     //        {
-    //            if (user.CourseRegisters.Remove(course))
+    //            if (user.CourseRosters.Remove(course))
     //            {
     //                db.Users.Update(user);
     //                db.SaveChanges();

@@ -10,9 +10,9 @@ namespace YogaCenterWinApp_Group9
             InitializeComponent();
         }
 
-        public IProgramRepository ProgramRepository { get; set; }
+        public IProgramRepository ProgramRepository { get; set; } = new ProgramRepository();
         public bool InsertOrUpdate { get; set; }
-        public YogaCenter.Repository.Models.Program Programme { get; set; }
+        public YogaCenter.Repository.Models.Program Programme { get; set; } = new();
 
         private void btnsave_Click(object sender, EventArgs e)
         {

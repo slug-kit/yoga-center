@@ -36,7 +36,7 @@ public partial class frmLessonManagementEdit : Form
 
             Course = value.Course,
             TimeslotNavigation = value.TimeslotNavigation,
-            Attendances = value.Attendances,
+            LessonSchedules = value.LessonSchedules,
 
             ProgramCode = value.Course?.Program?.Code ?? string.Empty,
             LessonNumber = value.LessonNumber,

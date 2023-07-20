@@ -234,6 +234,7 @@ namespace YogaCenterWinApp_Group9
             pictureBox.Location = new Point(250, 355);
             pictureBox.Name = "pictureBox";
             pictureBox.Size = new Size(75, 100);
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox.TabIndex = 45;
             pictureBox.TabStop = false;
             // 

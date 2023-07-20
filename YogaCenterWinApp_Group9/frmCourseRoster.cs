@@ -3,9 +3,9 @@ using YogaCenter.Repository.Repos;
 
 namespace YogaCenterWinApp_Group9;
 
-public partial class frmCourseRegister : Form
+public partial class frmCourseRoster : Form
 {
-    private readonly ICourseRegisterRepository courseRegisterRepository = new CourseRegisterRepository();
+    private readonly ICourseRosterRepository courseRosterRepository = new CourseRosterRepository();
     private readonly BindingSource bindingSource = new();
 
     private readonly Course _course = new();
@@ -22,12 +22,12 @@ public partial class frmCourseRegister : Form
         init => _adminMode = value;
     }
 
-    public frmCourseRegister()
+    public frmCourseRoster()
     {
         InitializeComponent();
     }
 
-    private void frmCourseRegister_Load(object sender, EventArgs e)
+    private void frmCourseRoster_Load(object sender, EventArgs e)
     {
         // 1. If user does not have admin privileges, start in limited mode
         // 2. Load data to grid view
@@ -61,17 +61,17 @@ public partial class frmCourseRegister : Form
         bindingSource.DataSource = null;
 
         // 2. Bind table to ListView + Customize columns
-        // Add attendance count via select
-        var courseRegisterEntries = courseRegisterRepository.GetCourseRegisterEntriesByCourse(_course.Id);
-        bindingSource.DataSource = courseRegisterEntries;
+        // Add lesson schedule count via select
+        var courseRosterEntries = courseRosterRepository.GetCourseRosterByCourse(_course.Id);
+        bindingSource.DataSource = courseRosterEntries;
         lsvLearners.DataSource = bindingSource;
 
-        var learnerIdColumn = lsvLearners.Columns[nameof(CourseRegister.LearnerId)];
+        var learnerIdColumn = lsvLearners.Columns[nameof(CourseRoster.LearnerId)];
         learnerIdColumn.Text = "Learner";
         learnerIdColumn.Width = 160;
 
-        lsvLearners.Columns.RemoveByKey(nameof(CourseRegister.CourseId));
-        lsvLearners.Columns.RemoveByKey(nameof(CourseRegister.Course));
-        lsvLearners.Columns.RemoveByKey(nameof(CourseRegister.Learner));
+        lsvLearners.Columns.RemoveByKey(nameof(CourseRoster.CourseId));
+        lsvLearners.Columns.RemoveByKey(nameof(CourseRoster.Course));
+        lsvLearners.Columns.RemoveByKey(nameof(CourseRoster.Learner));
     }
 }

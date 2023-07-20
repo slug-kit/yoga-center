@@ -5,6 +5,8 @@ namespace YogaCenterWinApp_Group9
 {
     public partial class frmResolveAssignmentRequests : Form
     {
+        private const string DEFAULT_IMG_LOCATION = ".\\Images\\YogaIcon.jpg";
+
         private readonly ICourseAssignmentRequestRepository courseAssignmentRequestRepository = new CourseAssignmentRequestRepository();
 
         private BindingSource bindingSource = new();
@@ -26,7 +28,7 @@ namespace YogaCenterWinApp_Group9
             var oldInstructor = _course.Instructor;
             txtNameOld.Text = oldInstructor?.Fullname;
             txtCodeOld.Text = oldInstructor?.Code;
-            pictureBoxOld.ImageLocation = oldInstructor?.Img;
+            pictureBoxOld.ImageLocation = oldInstructor?.Img ?? DEFAULT_IMG_LOCATION;
 
             var assignmentRequests = courseAssignmentRequestRepository
                 .GetAssignmentRequestsByCourse(Course.Id);
@@ -39,9 +41,23 @@ namespace YogaCenterWinApp_Group9
             txtCodeNew.DataBindings.Add(nameof(TextBox.Text), bindingSource,
                 $"{nameof(CourseAssignmentRequest.Instructor)}.{nameof(User.Code)}",
                 true, DataSourceUpdateMode.Never);
-            pictureBoxNew.DataBindings.Add(nameof(PictureBox.ImageLocation), bindingSource,
+
+            var imageBinding = new Binding(nameof(PictureBox.ImageLocation), bindingSource,
                 $"{nameof(CourseAssignmentRequest.Instructor)}.{nameof(User.Img)}",
                 true, DataSourceUpdateMode.Never);
+            imageBinding.Format += EmptyImageLocationToDefaultImage;
+            pictureBoxNew.DataBindings.Add(imageBinding);
+
+            if (dgvRequests.Rows.Count == 0)
+            {
+                btnAccept.Enabled = false;
+            }
+        }
+
+        private void EmptyImageLocationToDefaultImage(object? sender, ConvertEventArgs cevent)
+        {
+            if (cevent.DesiredType != typeof(string)) return;
+            cevent.Value ??= DEFAULT_IMG_LOCATION;
         }
 
         private CourseAssignmentRequest GetCourseAssignmentRequests()
@@ -52,15 +68,25 @@ namespace YogaCenterWinApp_Group9
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show($"Accept this request?",
-                "Confirm Request Approval", MessageBoxButtons.YesNo);
-            if (confirmResult == DialogResult.Yes)
+            if (dgvRequests.Rows.Count == 0) return;
+            try
             {
-                courseAssignmentRequestRepository.AcceptRequest(GetCourseAssignmentRequests());
-                Close();
-                DialogResult = DialogResult.OK;
+                var confirmResult = MessageBox.Show($"Accept this request?",
+                    "Confirm Request Approval", MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    courseAssignmentRequestRepository.AcceptRequest(GetCourseAssignmentRequests());
+                    Close();
+                    DialogResult = DialogResult.OK;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.InnerException is null ? ex.Message : ex.InnerException.Message,
+                    "ERROR -- Accept Request");
             }
         }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();

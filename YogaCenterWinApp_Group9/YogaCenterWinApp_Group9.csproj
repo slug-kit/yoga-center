@@ -9,12 +9,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="frmAttendance.cs" />
+    <Compile Remove="frmAttendance.Designer.cs" />
+    <Compile Remove="frmEduCareer.cs" />
+    <Compile Remove="frmEduCareer.Designer.cs" />
+    <Compile Remove="frmLearningRecord.cs" />
+    <Compile Remove="frmLearningRecord.Designer.cs" />
     <Compile Remove="frmNav.cs" />
     <Compile Remove="frmNav.Designer.cs" />
+    <Compile Remove="frmRateInstructor.cs" />
+    <Compile Remove="frmRateInstructor.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Remove="frmAttendance.resx" />
+    <EmbeddedResource Remove="frmEduCareer.resx" />
+    <EmbeddedResource Remove="frmLearningRecord.resx" />
     <EmbeddedResource Remove="frmNav.resx" />
+    <EmbeddedResource Remove="frmRateInstructor.resx" />
   </ItemGroup>
 
   <ItemGroup>

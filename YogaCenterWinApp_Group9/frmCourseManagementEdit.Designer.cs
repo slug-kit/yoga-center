@@ -349,6 +349,7 @@
             picbInstructorImg.Location = new Point(475, 150);
             picbInstructorImg.Name = "picbInstructorImg";
             picbInstructorImg.Size = new Size(90, 120);
+            picbInstructorImg.SizeMode = PictureBoxSizeMode.StretchImage;
             picbInstructorImg.TabIndex = 29;
             picbInstructorImg.TabStop = false;
             // 

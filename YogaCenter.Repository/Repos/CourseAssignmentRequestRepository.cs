@@ -29,16 +29,16 @@ public class CourseAssignmentRequestRepository : ICourseAssignmentRequestReposit
             .FirstOrDefault(r => r.CourseId == courseAssignmentRequest.CourseId);
         if (existingRequest != null)
         {
-            if (existingRequest.New == false)
+            if (existingRequest.IsNew == false)
             {
-                existingRequest.New = true;
+                existingRequest.IsNew = true;
                 Update(existingRequest);
             }
             else throw new ArgumentException("Instructor has already submitted an assignment request for target Course.");
         }
         else
         {
-            courseAssignmentRequest.New = true;
+            courseAssignmentRequest.IsNew = true;
             CourseAssignmentRequestDAO.Instance.Add(courseAssignmentRequest);
         }
 
@@ -65,7 +65,7 @@ public class CourseAssignmentRequestRepository : ICourseAssignmentRequestReposit
                 var requests = CourseAssignmentRequestDAO.Instance.GetByCourse(courseId);
                 foreach ( var request in requests )
                 {
-                    request.New = false;
+                    request.IsNew = false;
                     CourseAssignmentRequestDAO.Instance.Update(request);
                 }
             }

@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProgramManagement));
             splitContainer = new SplitContainer();
             groupBox2 = new GroupBox();
+            txtMaxRating = new TextBox();
+            txtMinRating = new TextBox();
             txtSearchCode = new TextBox();
             lbSearchCode = new Label();
             txtMaxFee = new TextBox();
@@ -54,13 +56,11 @@
             txtName = new TextBox();
             label9 = new Label();
             lbDescription = new Label();
-            pictureBox1 = new PictureBox();
+            pictureBox = new PictureBox();
             txtboxdescription = new RichTextBox();
             txtFee = new TextBox();
             label1 = new Label();
             label2 = new Label();
-            txtMinRating = new TextBox();
-            txtMaxRating = new TextBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer).BeginInit();
             splitContainer.Panel1.SuspendLayout();
             splitContainer.Panel2.SuspendLayout();
@@ -68,7 +68,7 @@
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPrograms).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             SuspendLayout();
             // 
             // splitContainer
@@ -93,7 +93,7 @@
             splitContainer.Panel2.Controls.Add(txtName);
             splitContainer.Panel2.Controls.Add(label9);
             splitContainer.Panel2.Controls.Add(lbDescription);
-            splitContainer.Panel2.Controls.Add(pictureBox1);
+            splitContainer.Panel2.Controls.Add(pictureBox);
             splitContainer.Panel2.Controls.Add(txtboxdescription);
             splitContainer.Panel2.Controls.Add(txtFee);
             splitContainer.Panel2.Controls.Add(label1);
@@ -125,6 +125,20 @@
             groupBox2.Size = new Size(563, 235);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
+            // 
+            // txtMaxRating
+            // 
+            txtMaxRating.Location = new Point(280, 197);
+            txtMaxRating.Name = "txtMaxRating";
+            txtMaxRating.Size = new Size(66, 29);
+            txtMaxRating.TabIndex = 21;
+            // 
+            // txtMinRating
+            // 
+            txtMinRating.Location = new Point(178, 197);
+            txtMinRating.Name = "txtMinRating";
+            txtMinRating.Size = new Size(66, 29);
+            txtMinRating.TabIndex = 20;
             // 
             // txtSearchCode
             // 
@@ -271,7 +285,6 @@
             // 
             dgvPrograms.AllowUserToAddRows = false;
             dgvPrograms.AllowUserToDeleteRows = false;
-            dgvPrograms.AllowUserToOrderColumns = true;
             dgvPrograms.AllowUserToResizeRows = false;
             dgvPrograms.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPrograms.Location = new Point(12, 247);
@@ -346,13 +359,13 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(12, 12);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(412, 216);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 5;
-            pictureBox1.TabStop = false;
+            pictureBox.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox.Location = new Point(12, 12);
+            pictureBox.Name = "pictureBox1";
+            pictureBox.Size = new Size(412, 216);
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.TabIndex = 5;
+            pictureBox.TabStop = false;
             // 
             // txtboxdescription
             // 
@@ -388,20 +401,6 @@
             label2.TabIndex = 6;
             label2.Text = "Fee";
             // 
-            // txtMinRating
-            // 
-            txtMinRating.Location = new Point(178, 197);
-            txtMinRating.Name = "txtMinRating";
-            txtMinRating.Size = new Size(66, 29);
-            txtMinRating.TabIndex = 20;
-            // 
-            // txtMaxRating
-            // 
-            txtMaxRating.Location = new Point(280, 197);
-            txtMaxRating.Name = "txtMaxRating";
-            txtMaxRating.Size = new Size(66, 29);
-            txtMaxRating.TabIndex = 21;
-            // 
             // frmProgramManagement
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
@@ -422,7 +421,7 @@
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvPrograms).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             ResumeLayout(false);
         }
 
@@ -431,7 +430,7 @@
         private SplitContainer splitContainer;
         private Label lbDescription;
         private RichTextBox txtboxdescription;
-        private PictureBox pictureBox1;
+        private PictureBox pictureBox;
         private TextBox txtFee;
         private Label label1;
         private Label label2;

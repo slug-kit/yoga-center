@@ -69,6 +69,7 @@
             dgvPrograms.Location = new Point(10, 202);
             dgvPrograms.Margin = new Padding(4);
             dgvPrograms.Name = "dgvPrograms";
+            dgvPrograms.ReadOnly = true;
             dgvPrograms.RowTemplate.Height = 25;
             dgvPrograms.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvPrograms.Size = new Size(636, 326);

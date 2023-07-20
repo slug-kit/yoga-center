@@ -7,6 +7,11 @@ namespace YogaCenterWinApp_Group9;
 
 public partial class frmCourseManagement : Form
 {
+    private const int COURSE_HAS_STARTED_STATUS_CODE = 50;
+    private const int COURSE_HAS_FINISHED_STATUS_CODE = 70;
+
+    private const string DEFAULT_IMG_LOCATION = ".\\Images\\YogaIcon.jpg";
+
     ICourseRepository courseRepository = new CourseRepository();
     IProgramRepository programRepository = new ProgramRepository();
     IUserRepository userRepository = new UserRepository();
@@ -35,6 +40,7 @@ public partial class frmCourseManagement : Form
             rtbSchedule.DataBindings.Clear();
             registationopendate.DataBindings.Clear();
             registationclosedate.DataBindings.Clear();
+            pictureBox.DataBindings.Clear();
 
             registationclosedate.DataBindings.Add("Text", source, "RegistrationCloseDate");
             registationopendate.DataBindings.Add("Text", source, "RegistrationOpenDate");
@@ -47,15 +53,26 @@ public partial class frmCourseManagement : Form
             txtcoursecode.DataBindings.Add("Text", source, "CourseNumber");
             cboprogram.DataBindings.Add("Text", source, "Program.Id");
 
+            var imageBinding = new Binding(nameof(PictureBox.ImageLocation), source, $"{nameof(Course.Instructor)}.{nameof(User.Img)}",
+                true, DataSourceUpdateMode.Never);
+            imageBinding.Format += EmptyImageLocationToDefaultImage;
+            pictureBox.DataBindings.Add(imageBinding);
+
             dgvcourse.DataSource = null;
             dgvcourse.DataSource = source;
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-
-            throw;
+            MessageBox.Show(ex.InnerException is null ? ex.Message : ex.InnerException.Message,
+                "ERROR -- Load Course List");
         }
 
+    }
+
+    private void EmptyImageLocationToDefaultImage(object? sender, ConvertEventArgs cevent)
+    {
+        if (cevent.DesiredType != typeof(string)) return;
+        cevent.Value ??= DEFAULT_IMG_LOCATION;
     }
 
     private void frmCourseManagement_Load(object sender, EventArgs e)
@@ -87,15 +104,13 @@ public partial class frmCourseManagement : Form
         }
     }
 
-    private const int COURSE_HAS_STARTED_STATUS_CODE = 52;
-    private const int COURSE_HAS_FINISHED_STATUS_CODE = 70;
     //DELETE(BUG NOT FIX --SQL BUG) ----------------------------------------------------------------------------------
     private void btndelete_Click(object sender, EventArgs e)
     {
         if (dgvcourse.SelectedRows.Count > 0)
         {
             var selectedCourse = GetCourse();
-            var statusCode = selectedCourse.GetStatusCode(true);
+            var statusCode = selectedCourse.GetStatusCode();
             if (statusCode == COURSE_HAS_STARTED_STATUS_CODE || statusCode == COURSE_HAS_FINISHED_STATUS_CODE)
             {
                 MessageBox.Show("A Course that is in progress or has finished may not be deleted.",
@@ -214,7 +229,10 @@ public partial class frmCourseManagement : Form
         {
             Course = GetCourse(),
         };
-        frmResolveAssignmentRequests.ShowDialog();
+        if (frmResolveAssignmentRequests.ShowDialog() == DialogResult.OK)
+        {
+            LoadCourseList();
+        }
     }
 }
 

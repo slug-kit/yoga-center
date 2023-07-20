@@ -4,14 +4,16 @@ namespace YogaCenterWinApp_Group9
 {
     public partial class frmUserManagementEdit : Form
     {
+        private const string DEFAULT_IMG_LOCATION = ".\\Images\\YogaIcon.jpg";
+
         public frmUserManagementEdit()
         {
             InitializeComponent();
         }
 
-        public IUserRepository UserRepository { get; set; }
+        public IUserRepository UserRepository { get; set; } = new UserRepository();
         public bool InsertOrUpdate { get; set; }
-        public User UserDetail { get; set; }
+        public User UserDetail { get; set; } = new();
 
         private void btnsave_Click(object sender, EventArgs e)
         {
@@ -82,6 +84,8 @@ namespace YogaCenterWinApp_Group9
                 cbogender.Text = UserDetail?.Gender.ToString();
                 txtphonenumber.Text = UserDetail?.Phone?.ToString();
                 txtemail.Text = UserDetail?.Email?.ToString();
+
+                pictureBox.ImageLocation = UserDetail?.Img ?? DEFAULT_IMG_LOCATION;
             }
         }
 

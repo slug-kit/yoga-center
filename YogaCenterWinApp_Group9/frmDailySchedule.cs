@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace YogaCenterWinApp_Group9
 {
-    public partial class frmCalendar : Form
+    public partial class frmDailySchedule : Form
     {
         int month, year;
-        public frmCalendar()
+        public frmDailySchedule()
         {
             InitializeComponent();
         }

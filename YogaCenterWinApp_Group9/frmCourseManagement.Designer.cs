@@ -64,7 +64,7 @@
             rtbSchedule = new RichTextBox();
             label7 = new Label();
             label6 = new Label();
-            pictureBox1 = new PictureBox();
+            pictureBox = new PictureBox();
             label5 = new Label();
             dateend = new DateTimePicker();
             label4 = new Label();
@@ -84,7 +84,7 @@
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvcourse).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
@@ -115,7 +115,7 @@
             splitContainer1.Panel2.Controls.Add(rtbSchedule);
             splitContainer1.Panel2.Controls.Add(label7);
             splitContainer1.Panel2.Controls.Add(label6);
-            splitContainer1.Panel2.Controls.Add(pictureBox1);
+            splitContainer1.Panel2.Controls.Add(pictureBox);
             splitContainer1.Panel2.Controls.Add(label5);
             splitContainer1.Panel2.Controls.Add(dateend);
             splitContainer1.Panel2.Controls.Add(label4);
@@ -457,13 +457,14 @@
             label6.TabIndex = 12;
             label6.Text = "Specializations";
             // 
-            // pictureBox1
+            // pictureBox
             // 
-            pictureBox1.Location = new Point(245, 216);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(75, 100);
-            pictureBox1.TabIndex = 10;
-            pictureBox1.TabStop = false;
+            pictureBox.Location = new Point(245, 216);
+            pictureBox.Name = "pictureBox";
+            pictureBox.Size = new Size(75, 100);
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.TabIndex = 10;
+            pictureBox.TabStop = false;
             // 
             // label5
             // 
@@ -572,7 +573,7 @@
             Margin = new Padding(4);
             Name = "frmCourseManagement";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "frmCourseManagement";
+            Text = "Course Management";
             Load += frmCourseManagement_Load;
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
@@ -583,7 +584,7 @@
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvcourse).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
         }
@@ -599,7 +600,7 @@
         private Label label4;
         private DateTimePicker datestart;
         private Label label5;
-        private PictureBox pictureBox1;
+        private PictureBox pictureBox;
         private ComboBox cboinstructor;
         private DateTimePicker registationclosedate;
         private Label label9;

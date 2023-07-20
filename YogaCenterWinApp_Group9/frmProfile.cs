@@ -1,14 +1,18 @@
 ﻿using System.Reflection;
-using System.Windows.Forms;
-using YogaCenter.Repository.DAL;
+using YogaCenter.Repository.ModelExtensions;
 using YogaCenter.Repository.Models;
 using YogaCenterWinApp_Group9.Utils;
 using YogaCenterWinApp_Group9.Utils.CustomEventHandlers;
+using UserModel = YogaCenter.Repository.Models.User;
 
 namespace YogaCenterWinApp_Group9;
 
 public partial class frmProfile : Form
 {
+    private const int COURSE_HAS_FINISHED_STATUS_CODE = 70;
+
+    private const string DEFAULT_IMG_LOCATION = ".\\Images\\YogaIcon.jpg";
+
     public event UserChangedEventHandler? ProfileUpdated;
 
     private readonly IUserRepository userRepository = new UserRepository();
@@ -17,8 +21,9 @@ public partial class frmProfile : Form
 
     private readonly List<Control> dataInputControls;
 
-    private readonly User _pom = new()
+    private readonly UserModel _pom = new()
     {
+        Id = Program.CurrentUser!.Id,
         Password = Program.CurrentUser.Password,
         Username = Program.CurrentUser.Username,
         Fullname = Program.CurrentUser.Fullname,
@@ -31,20 +36,19 @@ public partial class frmProfile : Form
         JoinDate = Program.CurrentUser.JoinDate,
         Experience = Program.CurrentUser.Experience,
         Specializations = Program.CurrentUser.Specializations,
-        Attendances = Program.CurrentUser.Attendances,
+        LessonSchedules = Program.CurrentUser.LessonSchedules,
         Code = Program.CurrentUser.Code,
         LastLogin = Program.CurrentUser.LastLogin,
         CourseAssignmentRequests = Program.CurrentUser.CourseAssignmentRequests,
-        CourseRegisters = Program.CurrentUser.CourseRegisters,
+        CourseRosters = Program.CurrentUser.CourseRosters,
         Img = Program.CurrentUser.Img,
         Inactive = Program.CurrentUser.Inactive,
         Programs = Program.CurrentUser.Programs,
-        Reviews = Program.CurrentUser.Reviews,
         CoursesAssigned = Program.CurrentUser.CoursesAssigned,
         StudyGoals = Program.CurrentUser.StudyGoals,
     };
 
-    public User User => _pom;
+    public UserModel User => _pom;
 
     public frmProfile()
     {
@@ -56,8 +60,11 @@ public partial class frmProfile : Form
             txtUsername,
             txtpassword,
             dob,
+            txtgender,
+            txtEmail,
             mtbphonenumber,
-            txtgender
+            txtGoalOrExper,
+            txtSpecialization,
         };
     }
 
@@ -69,7 +76,7 @@ public partial class frmProfile : Form
         LoadCourseOfUser();
 
         // Kiểm tra giá trị của Role và ẩn/hiện label và textbox tương ứng
-        if (Program.CurrentUser.RoleId == 2)
+        if (Program.CurrentUser!.RoleId == 2)
         {
             lbStudyGoal.Visible = true;
             lbExperience.Visible = false;
@@ -103,7 +110,9 @@ public partial class frmProfile : Form
         long userId = _pom.Id;
 
         // Get the enrolled courses for the user
-        IEnumerable<Course> enrolledCourses = userRepository.GetEnrolledCourses(userId);
+        IEnumerable<Course> enrolledCourses = userRepository
+            .GetEnrolledCourses(userId)
+            .Where(c => c.GetStatusCode() == COURSE_HAS_FINISHED_STATUS_CODE);
 
         // Clear any existing data in the DataGridView
         dgvCourse.DataSource = null;
@@ -135,9 +144,16 @@ public partial class frmProfile : Form
             .Parse += DataField_DetectChange!;
         mtbphonenumber.DataBindings.Add("Text", bindingSource, "Phone", true)
             .Parse += DataField_DetectChange!;
-        var imageBinding = new Binding(nameof(PictureBox.ImageLocation), bindingSource, nameof(Program.CurrentUser.Img),
+        var imageBinding = new Binding(nameof(PictureBox.ImageLocation), bindingSource, nameof(UserModel.Img),
                 true, DataSourceUpdateMode.Never);
-        pictureBox1.DataBindings.Add(imageBinding);
+        imageBinding.Format += EmptyImageLocationToDefaultImage;
+        pictureBox.DataBindings.Add(imageBinding);
+    }
+
+    private void EmptyImageLocationToDefaultImage(object? sender, ConvertEventArgs cevent)
+    {
+        if (cevent.DesiredType != typeof(string)) return;
+        cevent.Value ??= DEFAULT_IMG_LOCATION;
     }
 
     private void DataField_DetectChange(object sender, ConvertEventArgs e) => isModified = true;

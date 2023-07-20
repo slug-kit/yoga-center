@@ -8,7 +8,6 @@ namespace YogaCenter.Repository.Models
         public Program()
         {
             Courses = new HashSet<Course>();
-            Reviews = new HashSet<Review>();
             Instructors = new HashSet<User>();
         }
 
@@ -22,7 +21,6 @@ namespace YogaCenter.Repository.Models
         public bool Inactive { get; set; }
 
         public virtual ICollection<Course> Courses { get; set; }
-        public virtual ICollection<Review> Reviews { get; set; }
 
         public virtual ICollection<User> Instructors { get; set; }
     }

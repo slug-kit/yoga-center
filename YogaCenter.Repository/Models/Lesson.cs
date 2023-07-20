@@ -7,7 +7,7 @@ namespace YogaCenter.Repository.Models
     {
         public Lesson()
         {
-            Attendances = new HashSet<Attendance>();
+            LessonSchedules = new HashSet<LessonSchedule>();
         }
 
         public int Id { get; set; }
@@ -21,6 +21,6 @@ namespace YogaCenter.Repository.Models
 
         public virtual Course Course { get; set; } = null!;
         public virtual Timeslot? TimeslotNavigation { get; set; }
-        public virtual ICollection<Attendance> Attendances { get; set; }
+        public virtual ICollection<LessonSchedule> LessonSchedules { get; set; }
     }
 }

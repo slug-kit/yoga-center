@@ -48,10 +48,10 @@
             datejoin = new DateTimePicker();
             cboroleid = new ComboBox();
             cbogender = new ComboBox();
-            pictureBox1 = new PictureBox();
+            pictureBox = new PictureBox();
             btnsave = new Button();
             btnexit = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             SuspendLayout();
             // 
             // label2
@@ -236,13 +236,14 @@
             cbogender.Size = new Size(121, 28);
             cbogender.TabIndex = 23;
             // 
-            // pictureBox1
+            // pictureBox
             // 
-            pictureBox1.Location = new Point(555, 130);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(125, 146);
-            pictureBox1.TabIndex = 24;
-            pictureBox1.TabStop = false;
+            pictureBox.Location = new Point(555, 130);
+            pictureBox.Name = "pictureBox";
+            pictureBox.Size = new Size(120, 160);
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.TabIndex = 24;
+            pictureBox.TabStop = false;
             // 
             // btnsave
             // 
@@ -273,7 +274,7 @@
             ClientSize = new Size(795, 613);
             Controls.Add(btnexit);
             Controls.Add(btnsave);
-            Controls.Add(pictureBox1);
+            Controls.Add(pictureBox);
             Controls.Add(cbogender);
             Controls.Add(cboroleid);
             Controls.Add(datejoin);
@@ -298,7 +299,7 @@
             StartPosition = FormStartPosition.CenterParent;
             Text = "frmUserManagementDetail";
             Load += frmUserManagementDetail_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -324,7 +325,7 @@
         private DateTimePicker datejoin;
         private ComboBox cboroleid;
         private ComboBox cbogender;
-        private PictureBox pictureBox1;
+        private PictureBox pictureBox;
         private Button btnsave;
         private Button btnexit;
     }

@@ -36,7 +36,7 @@ public class CourseAssignmentRequestDAO
         using var db = new YogaCenterContext();
         return db.CourseAssignmentRequests
             .Where(r => r.CourseId == courseId)
-            .Where(r => r.New == true)
+            .Where(r => r.IsNew == true)
             .Include(r => r.Course)
                 .ThenInclude(r => r.Program)
             .Include(r => r.Instructor)

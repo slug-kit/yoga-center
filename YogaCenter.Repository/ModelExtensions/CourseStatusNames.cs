@@ -40,7 +40,9 @@ public static class CourseStatus
             { 61, "<CANNOT START> - No Instructor" },
             { 62, "<CANCELLED> - Registration Issues" },
 
-            { 70, "Course Finished" },
+            { 70, "*** Course Has Finished ***" },
+            { 71, "<YOU SHOULDN'T BE SEEING THIS>" },
+            { 72, "Course Finished" },
         };
 
         public string this[int index]

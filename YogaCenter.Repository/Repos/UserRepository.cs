@@ -56,10 +56,10 @@ public class UserRepository : IUserRepository
     public IEnumerable<Course> GetEnrolledCourses(long userId)
     {
         var courses = new List<Course>();
-        var courseRegisterEntries = CourseRegisterDAO.Instance.GetByLearner(userId);
-        foreach (var courseRegisterEntry in courseRegisterEntries)
+        var courseRosterEntries = CourseRosterDAO.Instance.GetByLearner(userId);
+        foreach (var courseRosterEntry in courseRosterEntries)
         {
-            var course = CourseDAO.Instance.Get(courseRegisterEntry.CourseId);
+            var course = CourseDAO.Instance.Get(courseRosterEntry.CourseId);
             if (course != null)
             {
                 courses.Add(course);

@@ -70,7 +70,6 @@ public partial class frmProgramList : Form
             dgvPrograms.Columns[nameof(ProgramModel.Inactive)].Visible = false;
             dgvPrograms.Columns[nameof(ProgramModel.Courses)].Visible = false;
             dgvPrograms.Columns[nameof(ProgramModel.Instructors)].Visible = false;
-            dgvPrograms.Columns[nameof(ProgramModel.Reviews)].Visible = false;
 
             // 3. Bind properties to output boxes
             // Image

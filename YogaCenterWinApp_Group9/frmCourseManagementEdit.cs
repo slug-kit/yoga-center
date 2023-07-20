@@ -10,8 +10,10 @@ namespace YogaCenterWinApp_Group9;
 
 public partial class frmCourseManagementEdit : Form
 {
-    private const int COURSE_HAS_STARTED_STATUS_CODE = 52;
+    private const int COURSE_HAS_STARTED_STATUS_CODE = 50;
     private const int COURSE_HAS_FINISHED_STATUS_CODE = 70;
+
+    private const string DEFAULT_IMG_LOCATION = ".\\Images\\YogaIcon.jpg";
     private const string DEFAULT_COURSE_NUMBER = "[AUTO]";
 
     private readonly TimeSpan MIN_COURSE_DATE_RANGE = TimeSpan.FromDays(7);
@@ -44,7 +46,7 @@ public partial class frmCourseManagementEdit : Form
             Instructor = value.Instructor,
             Program = value.Program,
             CourseAssignmentRequests = value.CourseAssignmentRequests,
-            CourseRegisters = value.CourseRegisters,
+            CourseRosters = value.CourseRosters,
             Lessons = value.Lessons,
 
             ProgramCode = value.Program?.Code ?? string.Empty,
@@ -86,7 +88,7 @@ public partial class frmCourseManagementEdit : Form
         // which will lock a few functionalities
         if (_update)
         {
-            var courseStatus = _pom.GetStatusCode(true);
+            var courseStatus = _pom.GetStatusCode();
             courseHasFinished = courseStatus == COURSE_HAS_FINISHED_STATUS_CODE;
             courseHasStartedOrFinished = courseStatus == COURSE_HAS_STARTED_STATUS_CODE || courseHasFinished;
         }
@@ -143,7 +145,7 @@ public partial class frmCourseManagementEdit : Form
         // Instructors...Load profile image
         cboInstructor.SelectedIndexChanged += (o, e) =>
         {
-            picbInstructorImg.ImageLocation = $"{(cboInstructor.SelectedItem as User)?.Img}";
+            picbInstructorImg.ImageLocation = $"{(cboInstructor.SelectedItem as User)?.Img ?? DEFAULT_IMG_LOCATION}";
         };
     }
 
@@ -255,7 +257,7 @@ public partial class frmCourseManagementEdit : Form
         dgvLessons.Columns[nameof(Lesson.Timeslot)].Visible = false;
         dgvLessons.Columns[nameof(Lesson.Course)].Visible = false;
         dgvLessons.Columns[nameof(Lesson.TimeslotNavigation)].Visible = false;
-        dgvLessons.Columns[nameof(Lesson.Attendances)].Visible = false;
+        dgvLessons.Columns[nameof(Lesson.LessonSchedules)].Visible = false;
 
         dgvLessons.Columns[programCodeColumnName].DisplayIndex = 1;
         dgvLessons.Columns[nameof(Lesson.CourseNumber)].DisplayIndex = 2;
@@ -339,6 +341,12 @@ public partial class frmCourseManagementEdit : Form
         {
             cevent.Value = sourceValue[..(sourceValue.Length - numberOfDigitsAtEnd)] + DEFAULT_COURSE_NUMBER;
         }
+    }
+
+    private void EmptyImageLocationToDefaultImage(object sender, ConvertEventArgs cevent)
+    {
+        if (cevent.DesiredType != typeof(string)) return;
+        cevent.Value ??= DEFAULT_IMG_LOCATION;
     }
 
     #endregion

@@ -17,13 +17,12 @@ namespace YogaCenter.Repository.Models
         {
         }
 
-        public virtual DbSet<Attendance> Attendances { get; set; } = null!;
         public virtual DbSet<Course> Courses { get; set; } = null!;
         public virtual DbSet<CourseAssignmentRequest> CourseAssignmentRequests { get; set; } = null!;
-        public virtual DbSet<CourseRegister> CourseRegisters { get; set; } = null!;
+        public virtual DbSet<CourseRoster> CourseRosters { get; set; } = null!;
         public virtual DbSet<Lesson> Lessons { get; set; } = null!;
+        public virtual DbSet<LessonSchedule> LessonSchedules { get; set; } = null!;
         public virtual DbSet<Program> Programs { get; set; } = null!;
-        public virtual DbSet<Review> Reviews { get; set; } = null!;
         public virtual DbSet<Role> Roles { get; set; } = null!;
         public virtual DbSet<Timeslot> Timeslots { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
@@ -48,27 +47,6 @@ namespace YogaCenter.Repository.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Attendance>(entity =>
-            {
-                entity.HasKey(e => new { e.LessonId, e.LearnerId });
-
-                entity.ToTable("attendance");
-
-                entity.Property(e => e.LessonId).HasColumnName("lesson_id");
-
-                entity.Property(e => e.LearnerId).HasColumnName("learner_id");
-
-                entity.Property(e => e.Attended).HasColumnName("attended");
-
-                entity.HasOne(d => d.Learner)
-                    .WithMany(p => p.Attendances)
-                    .HasForeignKey(d => d.LearnerId);
-
-                entity.HasOne(d => d.Lesson)
-                    .WithMany(p => p.Attendances)
-                    .HasForeignKey(d => d.LessonId);
-            });
-
             modelBuilder.Entity<Course>(entity =>
             {
                 entity.ToTable("course");
@@ -129,9 +107,9 @@ namespace YogaCenter.Repository.Models
 
                 entity.Property(e => e.InstructorId).HasColumnName("instructor_id");
 
-                entity.Property(e => e.New)
+                entity.Property(e => e.IsNew)
                     .IsRequired()
-                    .HasColumnName("new")
+                    .HasColumnName("is_new")
                     .HasDefaultValueSql("((1))");
 
                 entity.HasOne(d => d.Course)
@@ -143,12 +121,12 @@ namespace YogaCenter.Repository.Models
                     .HasForeignKey(d => d.InstructorId);
             });
 
-            modelBuilder.Entity<CourseRegister>(entity =>
+            modelBuilder.Entity<CourseRoster>(entity =>
             {
                 entity.HasKey(e => new { e.CourseId, e.LearnerId })
-                    .HasName("PK_courseregister");
+                    .HasName("PK_courseroster");
 
-                entity.ToTable("course_register");
+                entity.ToTable("course_roster");
 
                 entity.Property(e => e.CourseId).HasColumnName("course_id");
 
@@ -163,11 +141,11 @@ namespace YogaCenter.Repository.Models
                     .HasColumnName("tuition_fee");
 
                 entity.HasOne(d => d.Course)
-                    .WithMany(p => p.CourseRegisters)
+                    .WithMany(p => p.CourseRosters)
                     .HasForeignKey(d => d.CourseId);
 
                 entity.HasOne(d => d.Learner)
-                    .WithMany(p => p.CourseRegisters)
+                    .WithMany(p => p.CourseRosters)
                     .HasForeignKey(d => d.LearnerId);
             });
 
@@ -210,6 +188,27 @@ namespace YogaCenter.Repository.Models
                     .HasPrincipalKey(p => new { p.ProgramId, p.CourseNumber })
                     .HasForeignKey(d => new { d.ProgramId, d.CourseNumber })
                     .HasConstraintName("FK_lesson_course_course_id");
+            });
+
+            modelBuilder.Entity<LessonSchedule>(entity =>
+            {
+                entity.HasKey(e => new { e.LessonId, e.LearnerId });
+
+                entity.ToTable("lesson_schedule");
+
+                entity.Property(e => e.LessonId).HasColumnName("lesson_id");
+
+                entity.Property(e => e.LearnerId).HasColumnName("learner_id");
+
+                entity.Property(e => e.Type).HasColumnName("type");
+
+                entity.HasOne(d => d.Learner)
+                    .WithMany(p => p.LessonSchedules)
+                    .HasForeignKey(d => d.LearnerId);
+
+                entity.HasOne(d => d.Lesson)
+                    .WithMany(p => p.LessonSchedules)
+                    .HasForeignKey(d => d.LessonId);
             });
 
             modelBuilder.Entity<Program>(entity =>
@@ -263,31 +262,6 @@ namespace YogaCenter.Repository.Models
 
                             j.IndexerProperty<long>("InstructorId").HasColumnName("instructor_id");
                         });
-            });
-
-            modelBuilder.Entity<Review>(entity =>
-            {
-                entity.ToTable("review");
-
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Content)
-                    .HasMaxLength(1000)
-                    .HasColumnName("content");
-
-                entity.Property(e => e.LearnerId).HasColumnName("learner_id");
-
-                entity.Property(e => e.ProgramId).HasColumnName("program_id");
-
-                entity.HasOne(d => d.Learner)
-                    .WithMany(p => p.Reviews)
-                    .HasForeignKey(d => d.LearnerId);
-
-                entity.HasOne(d => d.Program)
-                    .WithMany(p => p.Reviews)
-                    .HasForeignKey(d => d.ProgramId);
             });
 
             modelBuilder.Entity<Role>(entity =>

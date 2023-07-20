@@ -3,28 +3,28 @@ using YogaCenter.Repository.Models;
 
 namespace YogaCenter.Repository.DAL;
 
-public class CourseRegisterDAO
+public class CourseRosterDAO
 {
-    private static CourseRegisterDAO? instance;
+    private static CourseRosterDAO? instance;
     private readonly static object instanceLock = new();
-    public static CourseRegisterDAO Instance
+    public static CourseRosterDAO Instance
     {
         get
         {
             lock (instanceLock)
             {
-                instance ??= new CourseRegisterDAO();
+                instance ??= new CourseRosterDAO();
                 return instance;
             }
         }
     }
 
-    private CourseRegisterDAO() { }
+    private CourseRosterDAO() { }
 
-    public IEnumerable<CourseRegister> GetAll()
+    public IEnumerable<CourseRoster> GetAll()
     {
         using var db = new YogaCenterContext();
-        return db.CourseRegisters
+        return db.CourseRosters
             .Include(cr => cr.Course)
                 .ThenInclude(c => c.Program)
             .Include(cr => cr.Course)
@@ -32,10 +32,10 @@ public class CourseRegisterDAO
             .ToList();
     }
 
-    public IEnumerable<CourseRegister> GetByCourse(int courseId)
+    public IEnumerable<CourseRoster> GetByCourse(int courseId)
     {
         using var db = new YogaCenterContext();
-        return db.CourseRegisters
+        return db.CourseRosters
             .Where(cr => cr.CourseId == courseId)
             .Include(cr => cr.Course)
                 .ThenInclude(c => c.Program)
@@ -44,10 +44,10 @@ public class CourseRegisterDAO
             .ToList();
     }   
     
-    public IEnumerable<CourseRegister> GetByLearner(long learnerId)
+    public IEnumerable<CourseRoster> GetByLearner(long learnerId)
     {
         using var db = new YogaCenterContext();
-        return db.CourseRegisters
+        return db.CourseRosters
             .Where(cr => cr.LearnerId == learnerId)
             .Include(cr => cr.Course)
                 .ThenInclude(c => c.Program)
@@ -56,10 +56,10 @@ public class CourseRegisterDAO
             .ToList();
     }
 
-    public CourseRegister? Get(int courseId, long learnerId)
+    public CourseRoster? Get(int courseId, long learnerId)
     {
         using var db = new YogaCenterContext();
-        return db.CourseRegisters
+        return db.CourseRosters
             .Include(cr => cr.Course)
                 .ThenInclude(c => c.Program)
             .Include(cr => cr.Course)
@@ -68,20 +68,20 @@ public class CourseRegisterDAO
                 && cr.LearnerId == learnerId);
     }
 
-    public void Add(CourseRegister courseRegisterEntry)
+    public void Add(CourseRoster courseRosterEntry)
     {
         using var db = new YogaCenterContext();
-        db.Entry(courseRegisterEntry).State = EntityState.Added;
+        db.Entry(courseRosterEntry).State = EntityState.Added;
         db.SaveChanges();
     }
 
-    public void Update(CourseRegister courseRegisterEntry)
+    public void Update(CourseRoster courseRosterEntry)
     {
-        var a = Get(courseRegisterEntry.CourseId, courseRegisterEntry.LearnerId);
+        var a = Get(courseRosterEntry.CourseId, courseRosterEntry.LearnerId);
         if (a != null)
         {
             using var db = new YogaCenterContext();
-            db.Entry(courseRegisterEntry).State = EntityState.Modified;
+            db.Entry(courseRosterEntry).State = EntityState.Modified;
             db.SaveChanges();
         }
     }
@@ -89,10 +89,10 @@ public class CourseRegisterDAO
     public void Delete(int courseId, long learnerId)
     {
         using var db = new YogaCenterContext();
-        var courseRegisterEntry = db.CourseRegisters.Find(courseId, learnerId);
-        if (courseRegisterEntry != null)
+        var courseRosterEntry = db.CourseRosters.Find(courseId, learnerId);
+        if (courseRosterEntry != null)
         {
-            db.CourseRegisters.Remove(courseRegisterEntry);
+            db.CourseRosters.Remove(courseRosterEntry);
             db.SaveChanges();
         }
     }
